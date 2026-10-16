@@ -1,24 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-krevia-darker: #050811;
-  --color-krevia-dark: #070a11;
-  --color-krevia-card: #0d121f;
-  --color-krevia-border: #1e293b;
-  --color-krevia-cyan: #06b6d4;
+  --color-krevia-bg: #f8fafc;
+  --color-krevia-card: #ffffff;
+  --color-krevia-border: #e2e8f0;
+  --color-krevia-text: #0f172a;
+  --color-krevia-muted: #64748b;
+  --color-krevia-cyan: #0284c7;
   --color-krevia-blue: #2563eb;
-  --color-krevia-sky: #0ea5e9;
-  --color-krevia-muted: #94a3b8;
 }
 
 :root {
-  --background: #070a11;
-  --foreground: #f8fafc;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -28,27 +27,27 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar for light theme */
 ::-webkit-scrollbar {
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #070a11;
+  background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 3px;
+  background: #cbd5e1;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #94a3b8;
 }
 
-/* Background grid effect */
+/* Background grid effect for light theme */
 .bg-grid {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.045) 1px, transparent 1px);
 }
 
 .font-mono-code {

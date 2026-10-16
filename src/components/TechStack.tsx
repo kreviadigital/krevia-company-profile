@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Terminal, Layers, Database, Cpu, Cloud, Smartphone, Check } from "lucide-react";
+import { Terminal, Layers, Database, Cpu, Cloud, Smartphone } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function TechStack() {
@@ -45,18 +45,18 @@ export function TechStack() {
   ];
 
   return (
-    <section id="tech" className="py-24 relative overflow-hidden bg-[#070A11] bg-grid">
+    <section id="tech" className="py-24 relative overflow-hidden bg-white bg-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/70 border border-cyan-800/80 text-cyan-400 font-mono-code text-xs mb-4">
-            <span className="text-cyan-500 font-bold">// 04</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 border border-sky-200 text-sky-800 font-mono-code text-xs mb-4">
+            <span className="text-sky-600 font-bold">// 04</span>
             <span>OPEN_SOURCE_ECOSYSTEM</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Ekosistem Teknologi Teruji
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Kami hanya memilih teknologi open-source yang aktif dikembangkan secara global, memiliki performa tinggi, dan bebas dari ketergantungan lisensi komersial terikat.
           </p>
         </div>
@@ -66,22 +66,22 @@ export function TechStack() {
           {stackCategories.map((cat, idx) => {
             const Icon = cat.icon;
             return (
-              <SpotlightCard key={idx} className="flex flex-col justify-between">
+              <SpotlightCard key={idx} className="flex flex-col justify-between bg-slate-50/70 border-slate-200/90 shadow-xs">
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                    <div className="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-sky-600 shadow-xs">
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className="font-mono-code text-[11px] text-slate-500">[{cat.code}]</span>
+                    <span className="font-mono-code text-[11px] text-slate-400 font-medium">[{cat.code}]</span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white mb-4">{cat.title}</h3>
+                  <h3 className="text-base font-bold text-slate-900 mb-4">{cat.title}</h3>
 
                   <div className="flex flex-wrap gap-2">
                     {cat.items.map((item, itemIdx) => (
                       <span
                         key={itemIdx}
-                        className="font-mono-code text-xs px-2.5 py-1 rounded bg-[#070a11] border border-slate-800 text-slate-300"
+                        className="font-mono-code text-xs px-2.5 py-1 rounded bg-white border border-slate-200 text-slate-700 shadow-xs font-medium"
                       >
                         {item}
                       </span>

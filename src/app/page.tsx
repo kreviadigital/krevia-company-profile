@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#070A11] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
+    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-sky-500/20 selection:text-sky-900">
       <Navbar />
       <Hero />
       <ServicesBento />

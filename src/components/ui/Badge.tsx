@@ -13,10 +13,10 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const variantStyles = {
-    default: "bg-slate-800/80 text-slate-300 border border-slate-700/60",
-    cyan: "bg-cyan-500/10 text-cyan-400 border border-cyan-500/30",
-    emerald: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
-    mono: "bg-slate-900 text-slate-300 border border-slate-700 font-mono-code text-[11px]",
+    default: "bg-slate-100 text-slate-700 border border-slate-200",
+    cyan: "bg-sky-50 text-sky-700 border border-sky-200 font-semibold",
+    emerald: "bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold",
+    mono: "bg-slate-100 text-slate-800 border border-slate-200 font-mono-code text-[11px]",
   };
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Lock, Boxes, MessageSquareCheck, ShieldCheck, Terminal, CheckCircle2 } from "lucide-react";
+import { Lock, Boxes, MessageSquareCheck, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function WhyChooseUs() {
@@ -33,18 +33,18 @@ export function WhyChooseUs() {
   ];
 
   return (
-    <section id="why-us" className="py-24 relative overflow-hidden bg-[#090d16]">
+    <section id="why-us" className="py-24 relative overflow-hidden bg-slate-50/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-950/70 border border-cyan-800/80 text-cyan-400 font-mono-code text-xs mb-4">
-            <span className="text-cyan-500 font-bold">// 03</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 border border-sky-200 text-sky-800 font-mono-code text-xs mb-4">
+            <span className="text-sky-600 font-bold">// 03</span>
             <span>ENGINEERING_STANDARDS</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
             Standar Rekayasa yang Membedakan Kami
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
             Kami menjamin setiap proyek dieksekusi dengan disiplin teknis tinggi agar sistem Anda dapat diandalkan selama bertahun-tahun.
           </p>
         </div>
@@ -54,20 +54,20 @@ export function WhyChooseUs() {
           {points.map((pt, idx) => {
             const Icon = pt.icon;
             return (
-              <SpotlightCard key={idx} className="flex flex-col justify-between">
+              <SpotlightCard key={idx} className="flex flex-col justify-between bg-white border-slate-200 shadow-xs hover:shadow-md">
                 <div>
                   <div className="flex items-center justify-between mb-5">
-                    <div className="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-400">
+                    <div className="w-10 h-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="font-mono-code text-[11px] text-slate-500">[{pt.code}]</span>
+                    <span className="font-mono-code text-[11px] text-slate-400 font-medium">[{pt.code}]</span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-2">{pt.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">{pt.desc}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{pt.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{pt.desc}</p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center gap-1.5 text-xs font-mono-code text-emerald-400">
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-mono-code text-emerald-600 font-semibold">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                   <span>KREVIA_VERIFIED</span>
                 </div>
