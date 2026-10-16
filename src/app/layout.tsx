@@ -40,6 +40,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('scrollRestoration' in history) {
+                history.scrollRestoration = 'manual';
+              }
+              window.scrollTo(0, 0);
+            `,
+          }}
+        />
+      </head>
       <body className={`${plusJakarta.className} bg-[#FAFCFF] text-slate-800 antialiased selection:bg-blue-600/10 selection:text-blue-700`}>
         {children}
       </body>

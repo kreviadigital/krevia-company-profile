@@ -10,9 +10,21 @@ export function Preloader() {
   const [statusText, setStatusText] = useState("Menginisialisasi Sistem Digital...");
 
   useEffect(() => {
+    // Pin viewport strictly to top on mount
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+      if (window.location.hash) {
+        window.history.replaceState(null, "", window.location.pathname);
+      }
+    }
+
     // Prevent scrolling while loading
     document.body.style.overflow = "hidden";
-    const lenis = (window as unknown as { lenis?: { stop: Function; start: Function } }).lenis;
+    const lenis = (window as unknown as { lenis?: { stop: Function; start: Function; scrollTo: Function } }).lenis;
+    lenis?.scrollTo(0, { immediate: true });
     lenis?.stop();
 
     // Progress counter animation
