@@ -11,6 +11,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function ServicesBento() {
   const services = [
@@ -152,7 +153,12 @@ export function ServicesBento() {
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <a
                     href="#contact"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-[#101D35] hover:text-[#2563EB] group/link transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      smoothScrollTo("#contact", { offset: 80, duration: 950 });
+                      window.history.pushState(null, "", "#contact");
+                    }}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-[#101D35] hover:text-[#2563EB] group/link transition-colors cursor-pointer"
                   >
                     <span>Konsultasikan Kebutuhan Ini</span>
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

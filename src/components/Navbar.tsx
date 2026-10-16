@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X, ArrowRight, MessageCircle } from "lucide-react";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +26,13 @@ export function Navbar() {
     { label: "Proses", href: "#process" },
     { label: "Kontak", href: "#contact" },
   ];
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    smoothScrollTo(href, { offset: 80, duration: 950 });
+    window.history.pushState(null, "", href);
+  };
 
   return (
     <header
@@ -54,7 +62,8 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors cursor-pointer"
               >
                 {link.label}
               </a>
@@ -65,7 +74,8 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-md shadow-[#101D35]/20 hover:shadow-[#101D35]/35 transition-all duration-200 hover:-translate-y-0.5"
+              onClick={(e) => handleNavClick(e, "#contact")}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-md shadow-[#101D35]/20 hover:shadow-[#101D35]/35 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Konsultasi Gratis</span>
@@ -92,16 +102,16 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-slate-700 hover:text-[#101D35] py-2 px-3 rounded-lg hover:bg-slate-50"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-base font-semibold text-slate-700 hover:text-[#2563EB] py-2 px-3 rounded-lg hover:bg-slate-50 cursor-pointer"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] text-white font-bold text-sm shadow-md"
+              onClick={(e) => handleNavClick(e, "#contact")}
+              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] text-white font-bold text-sm shadow-md cursor-pointer"
             >
               <span>Konsultasi Gratis Sekarang</span>
               <ArrowRight className="w-4 h-4" />

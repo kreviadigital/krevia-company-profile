@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MessageCircle, ArrowRight, Sparkles, Mail } from "lucide-react";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function CtaBanner() {
   return (
@@ -40,7 +41,12 @@ export function CtaBanner() {
 
               <a
                 href="#contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#101D35] font-bold text-sm border border-slate-200 shadow-xs transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  smoothScrollTo("#contact", { offset: 80, duration: 950 });
+                  window.history.pushState(null, "", "#contact");
+                }}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#101D35] font-bold text-sm border border-slate-200 shadow-xs transition-colors cursor-pointer"
               >
                 <Mail className="w-4 h-4 text-blue-600" />
                 <span>Isi Formulir Kebutuhan</span>

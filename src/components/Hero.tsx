@@ -13,6 +13,7 @@ import {
   MapPin,
   Zap,
 } from "lucide-react";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Hero() {
   const highlights = [
@@ -66,7 +67,12 @@ export function Hero() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
             <a
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-blue-600/30 transition-all duration-200 hover:-translate-y-0.5 group"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("#contact", { offset: 80, duration: 950 });
+                window.history.pushState(null, "", "#contact");
+              }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-blue-600/30 transition-all duration-200 hover:-translate-y-0.5 group cursor-pointer"
             >
               <span>Konsultasikan Kebutuhan Proyek</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -74,7 +80,12 @@ export function Hero() {
 
             <a
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-blue-200 text-[#101D35] font-bold text-base hover:bg-blue-50/50 hover:border-blue-300 shadow-xs transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollTo("#services", { offset: 80, duration: 950 });
+                window.history.pushState(null, "", "#services");
+              }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-blue-200 text-[#101D35] font-bold text-base hover:bg-blue-50/50 hover:border-blue-300 shadow-xs transition-colors cursor-pointer"
             >
               <span>Jelajahi 4 Layanan Utama</span>
             </a>

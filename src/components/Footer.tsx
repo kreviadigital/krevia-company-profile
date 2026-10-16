@@ -4,14 +4,17 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, ArrowUp } from "lucide-react";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Footer() {
   const scrollToTop = () => {
-    if (typeof window !== "undefined" && (window as any).lenis) {
-      (window as any).lenis.scrollTo(0, { duration: 1.4 });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    smoothScrollTo("#hero", { offset: 80, duration: 950 });
+  };
+
+  const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, { offset: 80, duration: 950 });
+    window.history.pushState(null, "", href);
   };
 
   return (
@@ -47,22 +50,38 @@ export function Footer() {
             </p>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => handleFooterLink(e, "#services")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Custom Software Development
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => handleFooterLink(e, "#services")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   System Integration & APIs
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => handleFooterLink(e, "#services")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   UI/UX Design & Prototyping
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#services"
+                  onClick={(e) => handleFooterLink(e, "#services")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Business Process Digitization
                 </a>
               </li>
@@ -76,27 +95,47 @@ export function Footer() {
             </p>
             <ul className="space-y-2.5 text-sm text-slate-600">
               <li>
-                <a href="#hero" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#hero"
+                  onClick={(e) => handleFooterLink(e, "#hero")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Beranda
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#about"
+                  onClick={(e) => handleFooterLink(e, "#about")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Tentang Krevia
                 </a>
               </li>
               <li>
-                <a href="#why-us" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#why-us"
+                  onClick={(e) => handleFooterLink(e, "#why-us")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Mengapa Kami
                 </a>
               </li>
               <li>
-                <a href="#process" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#process"
+                  onClick={(e) => handleFooterLink(e, "#process")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Proses Kerja
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-[#2563EB] transition-colors">
+                <a
+                  href="#contact"
+                  onClick={(e) => handleFooterLink(e, "#contact")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
                   Hubungi Kami
                 </a>
               </li>
