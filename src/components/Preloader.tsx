@@ -1,0 +1,166 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+export function Preloader() {
+  const [progress, setProgress] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
+  const [statusText, setStatusText] = useState("Menginisialisasi Sistem Digital...");
+
+  useEffect(() => {
+    // Prevent scrolling while loading
+    document.body.style.overflow = "hidden";
+
+    // Progress counter animation
+    const startTime = performance.now();
+    const duration = 1400; // 1.4 seconds total loading time
+
+    const updateProgress = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const rawProgress = Math.min(elapsed / duration, 1);
+      
+      // Quartic ease-out for realistic loading speed deceleration
+      const easedProgress = Math.round((1 - Math.pow(1 - rawProgress, 3)) * 100);
+      setProgress(easedProgress);
+
+      if (easedProgress < 35) {
+        setStatusText("Menginisialisasi Ekosistem Digital...");
+      } else if (easedProgress < 75) {
+        setStatusText("Memuat Layanan & Integrasi...");
+      } else if (easedProgress < 99) {
+        setStatusText("Menyiapkan Tampilan Sistem...");
+      } else {
+        setStatusText("Selamat Datang di Krevia Digital");
+      }
+
+      if (rawProgress < 1) {
+        requestAnimationFrame(updateProgress);
+      } else {
+        // Short pause at 100% before curtain reveal
+        setTimeout(() => {
+          setIsComplete(true);
+          document.body.style.overflow = "";
+        }, 250);
+      }
+    };
+
+    const animFrame = requestAnimationFrame(updateProgress);
+
+    // Safety fallback: ensure screen is never stuck
+    const fallbackTimer = setTimeout(() => {
+      setIsComplete(true);
+      document.body.style.overflow = "";
+    }, 2500);
+
+    return () => {
+      cancelAnimationFrame(animFrame);
+      clearTimeout(fallbackTimer);
+      document.body.style.overflow = "";
+    };
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {!isComplete && (
+        <motion.div
+          key="krevia-preloader"
+          initial={{ y: 0 }}
+          exit={{
+            y: "-100%",
+            transition: {
+              duration: 0.85,
+              ease: [0.76, 0, 0.24, 1], // Custom luxury cubic-bezier curtain wipe
+            },
+          }}
+          className="fixed inset-0 z-[99999] bg-white flex flex-col justify-between p-6 sm:p-12 select-none overflow-hidden"
+        >
+          {/* Ambient Lighting Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-blue-500/8 via-sky-400/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
+
+          {/* Top Status Header */}
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative z-10 flex items-center justify-between text-[11px] font-bold tracking-[0.25em] text-slate-400 uppercase"
+          >
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+              <span>Krevia Digital Enterprise</span>
+            </div>
+            <span>Pekanbaru • Riau</span>
+          </motion.div>
+
+          {/* Center Brand Lockup & Animation */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
+            {/* Logo with delicate breathing pulse */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="relative mb-8"
+            >
+              <div className="relative h-14 sm:h-16 w-auto flex items-center justify-center">
+                <Image
+                  src="/logo-horizontal.png"
+                  alt="Krevia Digital"
+                  width={420}
+                  height={100}
+                  className="h-14 sm:h-16 w-auto object-contain"
+                  priority
+                />
+              </div>
+
+              {/* Shimmer line underneath */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent" />
+            </motion.div>
+
+            {/* Dynamic Status Text */}
+            <motion.p
+              key={statusText}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-xs sm:text-sm font-semibold tracking-wide text-slate-500 mt-2"
+            >
+              {statusText}
+            </motion.p>
+          </div>
+
+          {/* Bottom Progress Metrics & Sleek Bar */}
+          <div className="relative z-10 max-w-xl mx-auto w-full">
+            {/* Number Counter & Percent */}
+            <div className="flex items-end justify-between mb-3 text-slate-900">
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                Memuat Pengalaman
+              </span>
+              <div className="flex items-baseline gap-1">
+                <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101D35] tabular-nums">
+                  {progress}
+                </span>
+                <span className="text-sm font-bold text-[#2563EB]">%</span>
+              </div>
+            </div>
+
+            {/* Micro Progress Bar */}
+            <div className="relative h-[3px] w-full bg-slate-100 rounded-full overflow-hidden">
+              <motion.div
+                className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#101D35] via-[#1D4ED8] to-[#2563EB] rounded-full"
+                style={{ width: `${progress}%` }}
+                transition={{ ease: "easeOut" }}
+              />
+            </div>
+
+            {/* Footer Tagline */}
+            <div className="mt-3 flex items-center justify-between text-[10px] tracking-wider font-semibold text-slate-400 uppercase">
+              <span>Arsitektur Perangkat Lunak Bespoke</span>
+              <span>v1.0.0</span>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}

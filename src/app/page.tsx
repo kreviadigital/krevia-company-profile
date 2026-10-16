@@ -1,3 +1,4 @@
+import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
@@ -13,6 +14,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FAFCFF] text-slate-800">
+      <Preloader />
       <SmoothScroll />
       <Navbar />
       <Hero />
