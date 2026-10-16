@@ -1,111 +1,91 @@
 "use client";
 
 import React from "react";
-import { MapPin, Shield, Terminal } from "lucide-react";
+import { MapPin, ShieldCheck, Users, Zap, CheckCircle2, Award } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function About() {
-  const commitments = [
+  const values = [
     {
-      code: "01",
-      title: "Tanpa Perantara Sales Birokratis",
-      desc: "Diskusi proyek Anda dilakukan langsung bersama Systems Architect dan Lead Engineer di Pekanbaru. Tidak ada janji muluk dari tim sales yang mustahil dieksekusi secara teknis.",
+      icon: Users,
+      title: "Kolaborasi Langsung & Transparan",
+      desc: "Anda berkomunikasi langsung dengan software engineer dan arsitek sistem kami di Pekanbaru. Tanpa rantai perantara, memastikan setiap detail teknis dipahami secara presisi.",
     },
     {
-      code: "02",
-      title: "100% Kepemilikan Intelektual Klien",
-      desc: "Kami tidak menyandera sistem Anda. Seluruh kode sumber, dokumentasi arsitektur, dan skema basis data diserahkan secara utuh ke repositori privat perusahaan Anda.",
+      icon: ShieldCheck,
+      title: "100% Hak Cipta & Kepemilikan Sistem",
+      desc: "Seluruh kode sumber, basis data, dan aset desain adalah milik penuh Anda. Kami menjamin kebebasan Anda tanpa jebakan lisensi terikat atau ketergantungan sepihak.",
     },
     {
-      code: "03",
-      title: "Kualitas Kode Berstandar Enterprise",
-      desc: "Menerapkan automated testing, CI/CD pipeline, type safety ketat dengan TypeScript, dan arsitektur modular yang siap discale seiring pertumbuhan bisnis Anda.",
+      icon: Zap,
+      title: "Arsitektur Skalabel Berstandar Enterprise",
+      desc: "Kami menerapkan standar kode yang bersih, terdokumentasi, dan modular, sehingga sistem siap menampung lonjakan traffic dan penambahan fitur bisnis di masa mendatang.",
     },
   ];
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-white">
+    <section id="about" className="py-24 sm:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 border border-sky-200 text-sky-800 font-mono-code text-xs mb-4">
-            <span className="text-sky-600 font-bold">// 02</span>
-            <span>ORIGIN_AND_MANIFESTO</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Rekayasa Software Serius, Lahir di Pekanbaru
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Krevia Digital didirikan untuk menjawab frustrasi pelaku bisnis terhadap software house generik yang menjual template rapuh dan menghilang saat sistem mengalami gangguan.
-          </p>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Column: Narrative & Stats */}
+          <div className="lg:col-span-6 space-y-6">
+            <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+              Tentang Krevia Digital
+            </span>
 
-        {/* Narrative Box */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-14">
-          <div className="lg:col-span-7 bg-slate-50 border border-slate-200/90 rounded-xl p-7 sm:p-9 relative overflow-hidden">
-            <div className="font-mono-code text-xs text-sky-700 font-semibold mb-3 flex items-center gap-2">
-              <Terminal className="w-3.5 h-3.5" />
-              <span>PEKANBARU_ANCHOR // LOCAL_PARTNER_GLOBAL_STANDARDS</span>
-            </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              Akselerator Transformasi Digital untuk Sumatra dan Nasional
-            </h3>
-            <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-4">
-              Beroperasi langsung dari kota <strong className="text-sky-700">Pekanbaru, Riau</strong>, Krevia Digital memadukan kedekatan geografis dan kecepatan koordinasi lokal dengan standar rekayasa teknologi kelas dunia.
-            </p>
-            <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-              Kami percaya bahwa transformasi digital bisnis bukan sekadar membuat website atau aplikasi yang indah dipandang, melainkan membangun infrastruktur data dan sistem otomatisasi yang kokoh, terukur, dan mampu menghemat miliaran rupiah biaya inefisiensi operasional.
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.18]">
+              Startup Teknologi dari Pekanbaru untuk Kemajuan Bisnis Indonesia
+            </h2>
+
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              Krevia Digital hadir sebagai mitra rekayasa perangkat lunak dan transformasi digital strategis bagi perusahaan regional di Sumatra maupun nasional. Kami memadukan kedekatan komunikasi lokal di Pekanbaru dengan standar eksekusi teknologi berstandar internasional.
             </p>
 
-            <div className="pt-4 border-t border-slate-200 flex flex-wrap items-center gap-5 font-mono-code text-xs text-slate-600">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-sky-600" />
-                <span className="font-medium text-slate-800">Pekanbaru, Riau, Indonesia</span>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              Bagi kami, setiap sistem yang dibangun harus memberikan dampak nyata—memangkas biaya operasional, mengeliminasi pekerjaan repetitif, dan memberikan visibilitas penuh bagi para pemimpin bisnis untuk mengambil keputusan dengan data yang akurat.
+            </p>
+
+            {/* Quick Stat Badges */}
+            <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-100">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</span>
+                <p className="text-xs font-semibold text-slate-700 mt-1">Milik Klien</p>
               </div>
-              <div className="flex items-center gap-2">
-                <Shield className="w-4 h-4 text-emerald-600" />
-                <span className="font-medium text-slate-800">Production-Grade Reliability</span>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600">4 Pilar</span>
+                <p className="text-xs font-semibold text-slate-700 mt-1">Layanan Utama</p>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-emerald-600">Pekanbaru</span>
+                <p className="text-xs font-semibold text-slate-700 mt-1">Pusat Tim</p>
               </div>
             </div>
           </div>
 
-          {/* Quick Metrics Cards */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs">
-              <span className="font-mono-code text-3xl sm:text-4xl font-extrabold text-sky-600">
-                100%
-              </span>
-              <p className="font-bold text-slate-900 text-base mt-1">Hak Milik Penuh Klien</p>
-              <p className="text-xs text-slate-600 mt-1">
-                Zero vendor lock-in. Seluruh source code, kredensial, dan dokumentasi arsitektur diserahkan sepenuhnya kepada Anda.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-xl bg-white border border-slate-200 shadow-xs">
-              <span className="font-mono-code text-3xl sm:text-4xl font-extrabold text-emerald-600">
-                0% Slop
-              </span>
-              <p className="font-bold text-slate-900 text-base mt-1">Tanpa Template Rapuh</p>
-              <p className="text-xs text-slate-600 mt-1">
-                Sistem dirancang dan dikoding bespoke dari baris pertama untuk mencerminkan logika bisnis unik perusahaan Anda.
-              </p>
-            </div>
+          {/* Right Column: Values Cards */}
+          <div className="lg:col-span-6 space-y-5">
+            {values.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <div
+                  key={i}
+                  className="p-6 sm:p-7 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex items-start gap-5 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
+                      {v.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {v.desc}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </div>
-
-        {/* Commitments Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {commitments.map((c, idx) => (
-            <SpotlightCard key={idx} className="flex flex-col justify-between bg-white border-slate-200 shadow-xs">
-              <div>
-                <span className="font-mono-code text-xs text-sky-700 font-bold bg-sky-50 border border-sky-200 px-2 py-0.5 rounded">
-                  PRINSIP #{c.code}
-                </span>
-                <h4 className="text-lg font-bold text-slate-900 mt-4 mb-2">{c.title}</h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{c.desc}</p>
-              </div>
-            </SpotlightCard>
-          ))}
         </div>
       </div>
     </section>

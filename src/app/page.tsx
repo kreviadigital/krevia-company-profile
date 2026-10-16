@@ -3,18 +3,22 @@ import { Hero } from "@/components/Hero";
 import { ServicesBento } from "@/components/ServicesBento";
 import { About } from "@/components/About";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { WorkProcess } from "@/components/WorkProcess";
+import { CtaBanner } from "@/components/CtaBanner";
 import { TechStack } from "@/components/TechStack";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-slate-900 selection:bg-sky-500/20 selection:text-sky-900">
+    <main className="min-h-screen bg-[#FAFCFF] text-slate-800">
       <Navbar />
       <Hero />
       <ServicesBento />
       <About />
       <WhyChooseUs />
+      <WorkProcess />
+      <CtaBanner />
       <TechStack />
       <ContactSection />
       <Footer />

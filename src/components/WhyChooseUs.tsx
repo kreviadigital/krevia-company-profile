@@ -1,51 +1,46 @@
 "use client";
 
 import React from "react";
-import { Lock, Boxes, MessageSquareCheck, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Lock, Clock, Users, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
 export function WhyChooseUs() {
   const points = [
     {
+      icon: Users,
+      title: "Tim Responsif di Pekanbaru",
+      desc: "Kemudahan koordinasi langsung tanpa terhalang birokrasi. Diskusi teknis cepat, tatap muka, dan pemahaman mendalam atas karakter bisnis lokal maupun nasional.",
+    },
+    {
       icon: Lock,
-      code: "NO_LOCK_IN",
-      title: "100% Kepemilikan Kode & Data",
-      desc: "Tidak ada keterikatan lisensi eksklusif atau sandbox tertutup. Seluruh kode, skema database, dan aset diserahkan ke repo Git privat milik perusahaan Anda.",
+      title: "100% Kepemilikan Kode (No Lock-in)",
+      desc: "Seluruh kode sumber, dokumentasi arsitektur, dan hak kekayaan intelektual sepenuhnya menjadi milik Anda. Anda memegang kendali penuh tanpa keterikatan lisensi.",
     },
     {
-      icon: MessageSquareCheck,
-      code: "DIRECT_COMMS",
-      title: "Komunikasi Langsung Tanpa Perantara",
-      desc: "Anda berdiskusi langsung dengan software engineer dan systems architect kami di Pekanbaru. Komunikasi teknis cepat, akurat, dan tanpa distorsi informasi.",
-    },
-    {
-      icon: Boxes,
-      code: "MODULAR_ARCH",
-      title: "Arsitektur Modular & Siap Skala",
-      desc: "Sistem dirancang dengan pemisahan domain yang bersih. Penambahan fitur baru di masa depan tidak akan merusak kestabilan fondasi yang sudah berjalan.",
+      icon: Clock,
+      title: "Estimasi Jelas & Tepat Waktu",
+      desc: "Kami menerapkan roadmap kerja bertahap (milestone-based) yang transparan, memastikan setiap modul fungsional selesai sesuai kesepakatan waktu yang direncanakan.",
     },
     {
       icon: ShieldCheck,
-      code: "SECURE_STANDARDS",
-      title: "Keamanan Data Standar Enterprise",
-      desc: "Menerapkan enkripsi data saat diam dan transit, Role-Based Access Control (RBAC) ketat, sanitasi input terhadap celah injeksi, dan jejak audit aktivitas sistem.",
+      title: "Keamanan Standar Industri",
+      desc: "Perlindungan data perusahaan melalui enkripsi modern, proteksi celah keamanan ketat, dan Role-Based Access Control (RBAC) untuk menjaga kerahasiaan bisnis Anda.",
     },
   ];
 
   return (
-    <section id="why-us" className="py-24 relative overflow-hidden bg-slate-50/60">
+    <section id="why-us" className="py-24 sm:py-32 relative overflow-hidden bg-slate-50/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 border border-sky-200 text-sky-800 font-mono-code text-xs mb-4">
-            <span className="text-sky-600 font-bold">// 03</span>
-            <span>ENGINEERING_STANDARDS</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Standar Rekayasa yang Membedakan Kami
+          <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+            Nilai Keunggulan Kami
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mt-4">
+            Mengapa Krevia Digital Pilihan Tepat?
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Kami menjamin setiap proyek dieksekusi dengan disiplin teknis tinggi agar sistem Anda dapat diandalkan selama bertahun-tahun.
+            Kami memprioritaskan ketenangan pikiran Anda dengan memberikan transparansi proses, keamanan sistem, dan hasil kerja yang nyata.
           </p>
         </div>
 
@@ -54,22 +49,22 @@ export function WhyChooseUs() {
           {points.map((pt, idx) => {
             const Icon = pt.icon;
             return (
-              <SpotlightCard key={idx} className="flex flex-col justify-between bg-white border-slate-200 shadow-xs hover:shadow-md">
+              <SpotlightCard
+                key={idx}
+                className="flex flex-col justify-between p-7 sm:p-8 bg-white border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all"
+              >
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-10 h-10 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="font-mono-code text-[11px] text-slate-400 font-medium">[{pt.code}]</span>
+                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6">
+                    <Icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{pt.title}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{pt.desc}</p>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2.5">{pt.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">{pt.desc}</p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-mono-code text-emerald-600 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>KREVIA_VERIFIED</span>
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-semibold text-blue-600">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                  <span>Jaminan Standar Krevia</span>
                 </div>
               </SpotlightCard>
             );

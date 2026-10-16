@@ -7,7 +7,8 @@ import {
   Mail,
   Clock,
   CheckCircle2,
-  Terminal,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 import { SpotlightCard } from "./ui/SpotlightCard";
 
@@ -27,24 +28,24 @@ export function ContactSection() {
     "System Integration & APIs",
     "UI/UX Design & Prototyping",
     "Business Process Digitization",
-    "Konsultasi Arsitektur Enterprise Lengkap",
+    "Konsultasi Transformasi Digital Komprehensif",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const text = `Halo Systems Architect Krevia Digital,
-Saya ingin menginisiasi technical discovery call untuk proyek sistem:
+    const text = `Halo Krevia Digital,
+Saya ingin berkonsultasi mengenai kebutuhan proyek sistem:
 
-• Nama Pengirim: ${formData.name || "-"}
+• Nama: ${formData.name || "-"}
 • Perusahaan / Bisnis: ${formData.company || "-"}
 • Layanan Terkait: ${formData.service}
 • Kontak HP/WA: ${formData.phone || "-"}
 
-Gambaran Kendala / Kebutuhan Sistem:
-${formData.message || "Ingin mendiskusikan kebutuhan arsitektur sistem lebih lanjut."}
+Catatan / Deskripsi Kebutuhan:
+${formData.message || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
 
-Mohon informasi jadwal diskusi teknisnya. Terima kasih!`;
+Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
 
     const encodedText = encodeURIComponent(text);
     const waUrl = `https://wa.me/6282283000000?text=${encodedText}`;
@@ -54,138 +55,148 @@ Mohon informasi jadwal diskusi teknisnya. Terima kasih!`;
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-slate-50/70 bg-grid">
+    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden bg-slate-50/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 border border-sky-200 text-sky-800 font-mono-code text-xs mb-4">
-            <span className="text-sky-600 font-bold">// 05</span>
-            <span>TECHNICAL_DISCOVERY_CALL</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Konsultasikan Kebutuhan Sistem Anda
+          <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+            Hubungi Kami
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mt-4">
+            Konsultasikan Kebutuhan Proyek Anda
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Diskusikan bottleneck operasional dan target digitalisasi perusahaan Anda langsung dengan engineer kami di Pekanbaru.
+            Tim Krevia Digital di Pekanbaru siap membantu menganalisis kebutuhan sistem dan memberikan rekomendasi solusi teknis terbaik tanpa komitmen awal.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Office & Operations Card */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Office & Contact Info Card */}
           <div className="lg:col-span-5 space-y-6">
-            <SpotlightCard className="p-7 sm:p-8 bg-white border-slate-200 shadow-xs">
-              <div className="flex items-center gap-2 font-mono-code text-xs text-sky-700 font-semibold mb-2">
-                <Terminal className="w-3.5 h-3.5" />
-                <span>OFFICE_AND_OPERATIONS // PKU</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Pusat Rekayasa Pekanbaru</h3>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-                Krevia Digital berbasis di Pekanbaru, Riau, siap melayani kemitraan teknologi di seluruh kawasan Sumatra dan nasional.
+            <div className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">
+                Kantor Pusat & Operasional
+              </span>
+              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+                Krevia Digital Pekanbaru
+              </h3>
+              <p className="text-sm text-slate-600 mb-8 leading-relaxed">
+                Kami siap menyambut diskusi tatap muka di Pekanbaru maupun pertemuan virtual untuk klien di seluruh Indonesia.
               </p>
 
-              <div className="space-y-4 font-mono-code text-xs">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
-                    <MapPin className="w-4 h-4" />
+              <div className="space-y-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-slate-400 uppercase tracking-wider block">LOKASI KANTOR</span>
-                    <span className="text-slate-800 font-medium">Kota Pekanbaru, Riau, Indonesia</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">LOKASI KANTOR</span>
+                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                      Kota Pekanbaru, Riau, Indonesia
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
-                    <Mail className="w-4 h-4" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-slate-400 uppercase tracking-wider block">EMAIL KEMITRAAN</span>
-                    <span className="text-slate-800 font-medium">halo@kreviadigital.com</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">EMAIL RESMI</span>
+                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                      halo@kreviadigital.com
+                    </span>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 border border-sky-100 flex items-center justify-center text-sky-600 shrink-0">
-                    <Clock className="w-4 h-4" />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-slate-400 uppercase tracking-wider block">JAM RESPON TEKNIS</span>
-                    <span className="text-slate-800 font-medium">Senin – Sabtu, 08:30 – 17:30 WIB</span>
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">JAM OPERASIONAL</span>
+                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                      Senin – Sabtu, 08:30 – 17:30 WIB
+                    </span>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 p-3.5 rounded-lg bg-slate-50 border border-slate-200 flex items-center gap-3">
-                <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-4 h-4" />
+              <div className="mt-8 pt-6 border-t border-slate-100 flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <div className="text-xs text-slate-700 font-mono-code">
-                  <strong className="text-slate-900">SLA 1x24 JAM:</strong> Setiap formulir dianalisis langsung oleh Systems Architect kami.
-                </div>
+                <p className="text-xs text-slate-600 leading-snug">
+                  <strong className="text-slate-900">Respons Cepat 1x24 Jam:</strong> Setiap formulir ditinjau langsung oleh tim teknis kami.
+                </p>
               </div>
-            </SpotlightCard>
+            </div>
           </div>
 
-          {/* Form */}
+          {/* Form Card */}
           <div className="lg:col-span-7">
-            <SpotlightCard className="p-7 sm:p-9 bg-white border-slate-200 shadow-xs">
+            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+              <h3 className="text-xl font-bold text-slate-900 mb-6">
+                Formulir Permintaan Konsultasi
+              </h3>
+
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block font-mono-code text-xs text-slate-700 font-semibold uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                       Nama Lengkap *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Budi Hartono"
+                      placeholder="Contoh: Budi Santoso"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-mono-code text-xs sm:text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-mono-code text-xs text-slate-700 font-semibold uppercase tracking-wider mb-2">
-                      Perusahaan / Organisasi *
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      Perusahaan / Bisnis *
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="e.g. PT Maju Bersama Riau"
+                      placeholder="Contoh: PT Kreasi Maju Bersama"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-mono-code text-xs sm:text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="block font-mono-code text-xs text-slate-700 font-semibold uppercase tracking-wider mb-2">
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                       Nomor WhatsApp / HP *
                     </label>
                     <input
                       type="tel"
                       required
-                      placeholder="0812xxxxxxxx"
+                      placeholder="Contoh: 0812xxxxxxxx"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-mono-code text-xs sm:text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-mono-code text-xs text-slate-700 font-semibold uppercase tracking-wider mb-2">
-                      Layanan yang Diperlukan
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                      Layanan yang Dibutuhkan
                     </label>
                     <select
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 font-mono-code text-xs sm:text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
                     >
                       {servicesList.map((svc) => (
-                        <option key={svc} value={svc} className="bg-white text-slate-900">
+                        <option key={svc} value={svc}>
                           {svc}
                         </option>
                       ))}
@@ -194,33 +205,33 @@ Mohon informasi jadwal diskusi teknisnya. Terima kasih!`;
                 </div>
 
                 <div>
-                  <label className="block font-mono-code text-xs text-slate-700 font-semibold uppercase tracking-wider mb-2">
-                    Deskripsi Masalah / Target Sistem
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Ceritakan Kebutuhan atau Hambatan Sistem Anda
                   </label>
                   <textarea
                     rows={4}
-                    placeholder="Jelaskan alur kerja yang ingin diotomatisasi, sistem lama yang ingin diintegrasikan, atau aplikasi yang ingin dibangun..."
+                    placeholder="Ceritakan proses operasional yang ingin diotomatisasi, sistem yang ingin dibangun, atau target yang ingin dicapai..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 font-mono-code text-xs sm:text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-lg bg-gradient-to-r from-sky-600 to-blue-600 hover:from-sky-500 hover:to-blue-500 text-white font-mono-code font-bold text-xs shadow-md shadow-sky-600/25 transition-all duration-200 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all duration-200 cursor-pointer"
                 >
-                  <Send className="w-4 h-4 text-white" />
-                  <span>DISPATCH_TO_WHATSAPP()</span>
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Kirim Permintaan Konsultasi via WhatsApp</span>
                 </button>
 
                 {submitted && (
-                  <p className="text-center font-mono-code text-xs text-emerald-700 font-semibold mt-2">
-                    ✓ Pesan terformat! WhatsApp terbuka di tab baru. Tim engineer kami siap merespons Anda.
+                  <p className="text-center text-xs text-emerald-600 font-semibold mt-2">
+                    ✓ Pesan terformat! WhatsApp terbuka di tab baru. Tim kami siap merespons Anda.
                   </p>
                 )}
               </form>
-            </SpotlightCard>
+            </div>
           </div>
         </div>
       </div>
