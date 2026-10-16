@@ -36,31 +36,16 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo with Main Color Emblem */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-blue-50/80 border border-blue-100 p-1.5 flex items-center justify-center shadow-xs group-hover:border-[#101D35] transition-colors">
-              <Image
-                src="/logo-mark.png"
-                alt="Krevia Digital Logo"
-                width={88}
-                height={88}
-                className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                priority
-              />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-xl font-extrabold tracking-tight text-[#101D35]">
-                  Krevia<span className="text-[#2563EB] font-bold">Digital</span>
-                </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-[#101D35] border border-blue-200/80">
-                  Pekanbaru
-                </span>
-              </div>
-              <span className="text-[11px] font-medium text-slate-500 tracking-wide">
-                Digital Solutions & Custom Software
-              </span>
-            </div>
+          {/* Authentic Elegant Brand Lockup */}
+          <Link href="/" className="flex items-center group py-1">
+            <Image
+              src="/logo-horizontal.png"
+              alt="Krevia Digital"
+              width={375}
+              height={90}
+              className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

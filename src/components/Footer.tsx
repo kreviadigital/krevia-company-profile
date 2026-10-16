@@ -16,29 +16,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-100">
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-blue-50/80 border border-blue-100 p-1.5 flex items-center justify-center shadow-xs group-hover:border-[#101D35] transition-colors">
-                <Image
-                  src="/logo-mark.png"
-                  alt="Krevia Digital Logo"
-                  width={88}
-                  height={88}
-                  className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-xl font-extrabold tracking-tight text-[#101D35]">
-                    Krevia<span className="text-[#2563EB] font-bold">Digital</span>
-                  </span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-[#101D35] border border-blue-100">
-                    Pekanbaru
-                  </span>
-                </div>
-                <span className="text-[11px] font-medium text-slate-500 tracking-wide">
-                  Digital Solutions & Custom Software
-                </span>
-              </div>
+            <Link href="/" className="inline-block group py-1">
+              <Image
+                src="/logo-horizontal.png"
+                alt="Krevia Digital"
+                width={375}
+                height={90}
+                className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+              />
             </Link>
 
             <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
