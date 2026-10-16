@@ -36,11 +36,11 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Logo with Main Color Logo (Krevia Navy #101D35) */}
+          {/* Brand Logo with Main Color Emblem */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shadow-xs group-hover:border-[#101D35] transition-colors">
+            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-xl bg-blue-50/80 border border-blue-100 p-1.5 flex items-center justify-center shadow-xs group-hover:border-[#101D35] transition-colors">
               <Image
-                src="/logo-main.png"
+                src="/logo-mark.png"
                 alt="Krevia Digital Logo"
                 width={88}
                 height={88}
@@ -51,9 +51,9 @@ export function Navbar() {
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
                 <span className="text-xl font-extrabold tracking-tight text-[#101D35]">
-                  Krevia<span className="text-blue-600 font-bold">Digital</span>
+                  Krevia<span className="text-[#2563EB] font-bold">Digital</span>
                 </span>
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#101D35]/5 text-[#101D35] border border-[#101D35]/15">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-[#101D35] border border-blue-200/80">
                   Pekanbaru
                 </span>
               </div>
@@ -69,7 +69,7 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-semibold text-slate-600 hover:text-[#101D35] transition-colors"
+                className="text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors"
               >
                 {link.label}
               </a>
@@ -80,7 +80,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1B2E52] text-white text-sm font-bold shadow-md shadow-[#101D35]/20 hover:shadow-[#101D35]/35 transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-md shadow-[#101D35]/20 hover:shadow-[#101D35]/35 transition-all duration-200 hover:-translate-y-0.5"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Konsultasi Gratis</span>

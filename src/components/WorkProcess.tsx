@@ -35,7 +35,7 @@ export function WorkProcess() {
     <section id="process" className="py-24 sm:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
             Metodologi Kerja
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -52,14 +52,14 @@ export function WorkProcess() {
             return (
               <div
                 key={i}
-                className="relative p-7 rounded-2xl bg-slate-50 border border-slate-200/80 hover:bg-white hover:shadow-xl hover:border-[#101D35]/40 transition-all duration-300 flex flex-col justify-between"
+                className="relative p-7 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-[#101D35] text-white flex items-center justify-center shadow-md shadow-[#101D35]/20">
+                    <div className="w-12 h-12 rounded-xl bg-[#101D35] group-hover:bg-[#1D4ED8] text-white flex items-center justify-center shadow-md shadow-[#101D35]/20 transition-colors">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-2xl font-black text-[#101D35]/25">
+                    <span className="text-2xl font-black text-blue-100 group-hover:text-blue-200 transition-colors">
                       {st.step}
                     </span>
                   </div>

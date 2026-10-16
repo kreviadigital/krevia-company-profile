@@ -29,7 +29,7 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Narrative & Stats */}
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
+            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
               Tentang Krevia Digital
             </span>
 
@@ -47,15 +47,15 @@ export function About() {
 
             {/* Quick Stat Badges */}
             <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-100">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">100%</span>
                 <p className="text-xs font-bold text-slate-600 mt-1">Milik Klien</p>
               </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">4 Pilar</span>
                 <p className="text-xs font-bold text-slate-600 mt-1">Layanan Utama</p>
               </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+              <div className="p-4 rounded-xl bg-white border border-slate-200 shadow-xs text-center">
                 <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">Pekanbaru</span>
                 <p className="text-xs font-bold text-slate-600 mt-1">Pusat Tim</p>
               </div>
@@ -69,13 +69,13 @@ export function About() {
               return (
                 <div
                   key={i}
-                  className="p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200/90 hover:bg-white hover:shadow-lg hover:border-[#101D35]/40 transition-all duration-300 flex items-start gap-5 group"
+                  className="p-6 sm:p-7 rounded-2xl bg-slate-50/70 border border-slate-200/90 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all duration-300 flex items-start gap-5 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-[#101D35] text-white flex items-center justify-center shrink-0 shadow-sm shadow-[#101D35]/20 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-[#101D35] text-white flex items-center justify-center shrink-0 shadow-sm shadow-[#101D35]/20 group-hover:bg-[#1D4ED8] group-hover:scale-105 transition-all">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-[#101D35] mb-1.5 group-hover:text-blue-950 transition-colors">
+                    <h3 className="text-lg font-bold text-[#101D35] mb-1.5 group-hover:text-[#1D4ED8] transition-colors">
                       {v.title}
                     </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">

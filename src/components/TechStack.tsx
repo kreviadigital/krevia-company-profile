@@ -41,7 +41,7 @@ export function TechStack() {
     <section id="tech" className="py-24 sm:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
             Ekosistem Teknologi
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -58,10 +58,10 @@ export function TechStack() {
             return (
               <div
                 key={idx}
-                className="p-7 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-lg hover:border-[#101D35]/40 transition-all duration-300"
+                className="p-7 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:shadow-lg hover:border-blue-300 transition-all duration-300"
               >
                 <div className="flex items-center gap-3.5 mb-5">
-                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#101D35] flex items-center justify-center">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-base font-bold text-[#101D35]">{cat.title}</h3>

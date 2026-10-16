@@ -41,7 +41,7 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           {/* Location & Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-[#101D35]/15 shadow-xs mb-8">
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50/60 border border-blue-200/80 shadow-xs mb-8">
             <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-xs sm:text-sm font-bold text-[#101D35]">
               Startup Teknologi Pekanbaru, Riau • Melayani Seluruh Indonesia
@@ -51,7 +51,7 @@ export function Hero() {
           {/* Headline */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#101D35] leading-[1.14]">
             Mitra Rekayasa Perangkat Lunak &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#101D35] via-[#1E3A8A] to-[#2563EB]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#101D35] via-[#1D4ED8] to-[#2563EB]">
               Transformasi Digital
             </span>{" "}
             Bisnis Anda
@@ -66,7 +66,7 @@ export function Hero() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
             <a
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1B2E52] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-[#101D35]/40 transition-all duration-200 hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-blue-600/30 transition-all duration-200 hover:-translate-y-0.5 group"
             >
               <span>Konsultasikan Kebutuhan Proyek</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -74,7 +74,7 @@ export function Hero() {
 
             <a
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-slate-300 text-[#101D35] font-bold text-base hover:bg-slate-50 hover:border-[#101D35]/40 shadow-xs transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-blue-200 text-[#101D35] font-bold text-base hover:bg-blue-50/50 hover:border-blue-300 shadow-xs transition-colors"
             >
               <span>Jelajahi 4 Layanan Utama</span>
             </a>
@@ -83,13 +83,13 @@ export function Hero() {
 
         {/* Visual Showcase Card: Enterprise Digital Suite */}
         <div className="mt-16 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-slate-200/90 bg-white shadow-2xl shadow-[#101D35]/5 p-6 sm:p-10 relative overflow-hidden">
+          <div className="rounded-3xl border border-blue-100 bg-white shadow-2xl shadow-blue-900/5 p-6 sm:p-10 relative overflow-hidden">
             {/* Top Showcase Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-slate-100">
               <div className="flex items-center gap-4">
-                <div className="relative h-12 w-12 shrink-0 rounded-2xl bg-white border border-[#101D35]/20 p-1 flex items-center justify-center shadow-xs">
+                <div className="relative h-12 w-12 shrink-0 rounded-2xl bg-blue-50/80 border border-blue-100 p-1.5 flex items-center justify-center shadow-xs">
                   <Image
-                    src="/logo-main.png"
+                    src="/logo-mark.png"
                     alt="Krevia Emblem"
                     width={96}
                     height={96}
@@ -97,7 +97,7 @@ export function Hero() {
                   />
                 </div>
                 <div>
-                  <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3 py-1 rounded-full border border-[#101D35]/15">
+                  <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3 py-1 rounded-full border border-blue-200/80">
                     Krevia Digital Enterprise Suite
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[#101D35] mt-1">

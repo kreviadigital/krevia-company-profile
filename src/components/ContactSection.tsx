@@ -59,7 +59,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
             Hubungi Kami
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -219,7 +219,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-[#101D35] hover:bg-[#1B2E52] text-white font-bold text-sm shadow-lg shadow-[#101D35]/25 hover:shadow-[#101D35]/40 transition-all duration-200 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-sm shadow-lg shadow-[#101D35]/25 hover:shadow-blue-600/30 transition-all duration-200 cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Kirim Permintaan Konsultasi via WhatsApp</span>
