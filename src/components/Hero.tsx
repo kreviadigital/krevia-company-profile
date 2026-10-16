@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   ShieldCheck,
@@ -10,9 +11,7 @@ import {
   Layers,
   Cpu,
   MapPin,
-  Sparkles,
   Zap,
-  TrendingUp,
 } from "lucide-react";
 
 export function Hero() {
@@ -36,23 +35,23 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-subtle-grid">
-      {/* Ambient background light gradients */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-blue-400/10 via-indigo-400/15 to-sky-400/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Subtle ambient lighting */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-[#101D35]/10 via-blue-500/10 to-sky-400/10 rounded-full blur-[130px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
-          {/* Top Location & Credibility Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-blue-100 shadow-sm shadow-blue-500/5 mb-8">
+          {/* Location & Status Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-[#101D35]/15 shadow-xs mb-8">
             <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold text-slate-700">
+            <span className="text-xs sm:text-sm font-bold text-[#101D35]">
               Startup Teknologi Pekanbaru, Riau • Melayani Seluruh Indonesia
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.14]">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#101D35] leading-[1.14]">
             Mitra Rekayasa Perangkat Lunak &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#101D35] via-[#1E3A8A] to-[#2563EB]">
               Transformasi Digital
             </span>{" "}
             Bisnis Anda
@@ -67,7 +66,7 @@ export function Hero() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
             <a
               href="#contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all duration-200 hover:-translate-y-0.5 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1B2E52] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-[#101D35]/40 transition-all duration-200 hover:-translate-y-0.5 group"
             >
               <span>Konsultasikan Kebutuhan Proyek</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -75,28 +74,39 @@ export function Hero() {
 
             <a
               href="#services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-slate-200 text-slate-700 font-bold text-base hover:bg-slate-50 hover:border-slate-300 shadow-xs transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-slate-300 text-[#101D35] font-bold text-base hover:bg-slate-50 hover:border-[#101D35]/40 shadow-xs transition-colors"
             >
               <span>Jelajahi 4 Layanan Utama</span>
             </a>
           </div>
         </div>
 
-        {/* Visual Showcase Card: Modern Digital Architecture Preview */}
+        {/* Visual Showcase Card: Enterprise Digital Suite */}
         <div className="mt-16 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-slate-200/90 bg-white shadow-2xl shadow-blue-950/5 p-6 sm:p-10 relative overflow-hidden">
+          <div className="rounded-3xl border border-slate-200/90 bg-white shadow-2xl shadow-[#101D35]/5 p-6 sm:p-10 relative overflow-hidden">
             {/* Top Showcase Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-slate-100">
-              <div>
-                <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-                  Krevia Digital Enterprise Suite
-                </span>
-                <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">
-                  Ekosistem Solusi Digital Terpadu
-                </h3>
+              <div className="flex items-center gap-4">
+                <div className="relative h-12 w-12 shrink-0 rounded-2xl bg-white border border-[#101D35]/20 p-1 flex items-center justify-center shadow-xs">
+                  <Image
+                    src="/logo-main.png"
+                    alt="Krevia Emblem"
+                    width={96}
+                    height={96}
+                    className="h-full w-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3 py-1 rounded-full border border-[#101D35]/15">
+                    Krevia Digital Enterprise Suite
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#101D35] mt-1">
+                    Solusi Terintegrasi Tanpa Vendor Lock-in
+                  </h3>
+                </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
+                <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   Sistem Siap Skala
                 </span>
@@ -105,41 +115,41 @@ export function Hero() {
 
             {/* 4 Pillars Interactive Preview Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-50/70 to-white border border-blue-100 hover:border-blue-300 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-4 shadow-sm">
+              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
                   <Code2 className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-base">Custom Software</h4>
+                <h4 className="font-bold text-[#101D35] text-base">Custom Software</h4>
                 <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                   Web & mobile app bespoke berkinerja tinggi sesuai alur bisnis spesifik.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-50/70 to-white border border-indigo-100 hover:border-indigo-300 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center mb-4 shadow-sm">
+              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
                   <Workflow className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-base">System Integration</h4>
+                <h4 className="font-bold text-[#101D35] text-base">System Integration</h4>
                 <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                   Sinkronisasi ERP, CRM, payment gateway, dan database secara real-time.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-sky-50/70 to-white border border-sky-100 hover:border-sky-300 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-sky-600 text-white flex items-center justify-center mb-4 shadow-sm">
+              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
                   <Layers className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-base">UI/UX Design</h4>
+                <h4 className="font-bold text-[#101D35] text-base">UI/UX Design</h4>
                 <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                   Riset pengalaman pengguna, wireframing, dan desain Figma berstandar global.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50/70 to-white border border-emerald-100 hover:border-emerald-300 transition-all">
-                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center mb-4 shadow-sm">
+              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
+                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
                   <Cpu className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-slate-900 text-base">Process Digitization</h4>
+                <h4 className="font-bold text-[#101D35] text-base">Process Digitization</h4>
                 <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                   Automasi alur kerja, paperless approval, dan dashboard monitoring bisnis.
                 </p>
@@ -152,11 +162,11 @@ export function Hero() {
                 const Icon = h.icon;
                 return (
                   <div key={i} className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-8 h-8 rounded-lg bg-[#101D35]/5 text-[#101D35] flex items-center justify-center shrink-0 mt-0.5">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-slate-900">{h.title}</p>
+                      <p className="text-sm font-bold text-[#101D35]">{h.title}</p>
                       <p className="text-xs text-slate-500 mt-0.5">{h.desc}</p>
                     </div>
                   </div>

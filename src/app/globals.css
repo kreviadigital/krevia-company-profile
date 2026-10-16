@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1d4ed8;
-  --color-primary-dark: #1e3a8a;
-  --color-primary-light: #3b82f6;
-  --color-accent: #0284c7;
-  --color-surface: #ffffff;
-  --color-canvas: #fafcff;
-  --color-dark-surface: #0a192f;
+  --color-krevia-navy: #101d35;
+  --color-krevia-navy-dark: #0a1324;
+  --color-krevia-navy-light: #1b2e52;
+  --color-krevia-blue: #1d4ed8;
+  --color-krevia-sky: #0284c7;
+  --color-krevia-canvas: #f8fafc;
+  --color-krevia-card: #ffffff;
 }
 
 :root {
-  --background: #fafcff;
-  --foreground: #0f172a;
+  --background: #f8fafc;
+  --foreground: #101d35;
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
@@ -25,17 +26,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle modern mesh pattern */
+/* Subtle grid pattern tinted with the official Krevia Navy #101D35 */
 .bg-subtle-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(16, 29, 53, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 29, 53, 0.035) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   background: #f1f5f9;

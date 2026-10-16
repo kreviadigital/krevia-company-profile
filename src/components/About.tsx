@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { MapPin, ShieldCheck, Users, Zap, CheckCircle2, Award } from "lucide-react";
-import { SpotlightCard } from "./ui/SpotlightCard";
+import Image from "next/image";
+import { ShieldCheck, Users, Zap } from "lucide-react";
 
 export function About() {
   const values = [
@@ -29,11 +29,11 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Narrative & Stats */}
           <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
               Tentang Krevia Digital
             </span>
 
-            <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.18]">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight leading-[1.18]">
               Startup Teknologi dari Pekanbaru untuk Kemajuan Bisnis Indonesia
             </h2>
 
@@ -47,17 +47,17 @@ export function About() {
 
             {/* Quick Stat Badges */}
             <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-100">
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-blue-600">100%</span>
-                <p className="text-xs font-semibold text-slate-700 mt-1">Milik Klien</p>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">100%</span>
+                <p className="text-xs font-bold text-slate-600 mt-1">Milik Klien</p>
               </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600">4 Pilar</span>
-                <p className="text-xs font-semibold text-slate-700 mt-1">Layanan Utama</p>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">4 Pilar</span>
+                <p className="text-xs font-bold text-slate-600 mt-1">Layanan Utama</p>
               </div>
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                <span className="text-2xl sm:text-3xl font-extrabold text-emerald-600">Pekanbaru</span>
-                <p className="text-xs font-semibold text-slate-700 mt-1">Pusat Tim</p>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                <span className="text-2xl sm:text-3xl font-extrabold text-[#101D35]">Pekanbaru</span>
+                <p className="text-xs font-bold text-slate-600 mt-1">Pusat Tim</p>
               </div>
             </div>
           </div>
@@ -69,13 +69,13 @@ export function About() {
               return (
                 <div
                   key={i}
-                  className="p-6 sm:p-7 rounded-2xl bg-slate-50/70 border border-slate-200/80 hover:bg-white hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex items-start gap-5 group"
+                  className="p-6 sm:p-7 rounded-2xl bg-slate-50 border border-slate-200/90 hover:bg-white hover:shadow-lg hover:border-[#101D35]/40 transition-all duration-300 flex items-start gap-5 group"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-                    <Icon className="w-6 h-6" />
+                  <div className="w-12 h-12 rounded-xl bg-[#101D35] text-white flex items-center justify-center shrink-0 shadow-sm shadow-[#101D35]/20 group-hover:scale-105 transition-transform">
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-lg font-bold text-[#101D35] mb-1.5 group-hover:text-blue-950 transition-colors">
                       {v.title}
                     </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">

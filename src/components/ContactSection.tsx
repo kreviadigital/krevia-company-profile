@@ -59,10 +59,10 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-100">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-[#101D35]/5 px-3.5 py-1.5 rounded-full border border-[#101D35]/15">
             Hubungi Kami
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mt-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
             Konsultasikan Kebutuhan Proyek Anda
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
@@ -74,10 +74,10 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
           {/* Office & Contact Info Card */}
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
-              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">
+              <span className="text-xs font-bold text-[#101D35] uppercase tracking-wider block mb-1">
                 Kantor Pusat & Operasional
               </span>
-              <h3 className="text-2xl font-bold text-slate-900 mb-3">
+              <h3 className="text-2xl font-bold text-[#101D35] mb-3">
                 Krevia Digital Pekanbaru
               </h3>
               <p className="text-sm text-slate-600 mb-8 leading-relaxed">
@@ -86,36 +86,36 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
 
               <div className="space-y-5">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">LOKASI KANTOR</span>
-                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
                       Kota Pekanbaru, Riau, Indonesia
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">EMAIL RESMI</span>
-                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
                       halo@kreviadigital.com
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">JAM OPERASIONAL</span>
-                    <span className="text-sm font-semibold text-slate-900 mt-0.5 block">
+                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
                       Senin – Sabtu, 08:30 – 17:30 WIB
                     </span>
                   </div>
@@ -127,7 +127,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
                 <p className="text-xs text-slate-600 leading-snug">
-                  <strong className="text-slate-900">Respons Cepat 1x24 Jam:</strong> Setiap formulir ditinjau langsung oleh tim teknis kami.
+                  <strong className="text-[#101D35]">Respons Cepat 1x24 Jam:</strong> Setiap formulir ditinjau langsung oleh tim teknis kami.
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
           {/* Form Card */}
           <div className="lg:col-span-7">
             <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-6">
+              <h3 className="text-xl font-bold text-[#101D35] mb-6">
                 Formulir Permintaan Konsultasi
               </h3>
 
@@ -152,7 +152,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                       placeholder="Contoh: Budi Santoso"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
                     />
                   </div>
 
@@ -166,7 +166,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                       placeholder="Contoh: PT Kreasi Maju Bersama"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
                     />
                   </div>
                 </div>
@@ -182,7 +182,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                       placeholder="Contoh: 0812xxxxxxxx"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
                     />
                   </div>
 
@@ -193,7 +193,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                     <select
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
                     >
                       {servicesList.map((svc) => (
                         <option key={svc} value={svc}>
@@ -213,13 +213,13 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
                     placeholder="Ceritakan proses operasional yang ingin diotomatisasi, sistem yang ingin dibangun, atau target yang ingin dicapai..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-500 focus:bg-white transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors resize-none"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-lg shadow-blue-600/25 hover:shadow-blue-600/40 transition-all duration-200 cursor-pointer"
+                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-[#101D35] hover:bg-[#1B2E52] text-white font-bold text-sm shadow-lg shadow-[#101D35]/25 hover:shadow-[#101D35]/40 transition-all duration-200 cursor-pointer"
                 >
                   <MessageCircle className="w-4 h-4" />
                   <span>Kirim Permintaan Konsultasi via WhatsApp</span>
