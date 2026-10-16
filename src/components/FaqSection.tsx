@@ -1,58 +1,49 @@
 "use client";
 
 import React, { useState } from "react";
-import { 
-  HelpCircle, 
-  ChevronDown, 
-  ShieldCheck, 
-  FileCheck, 
-  Clock, 
-  Lock, 
-  MessageSquare, 
-  ArrowRight 
-} from "lucide-react";
+import { Plus, Minus, ArrowRight, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 interface FaqItem {
+  id: string;
   question: string;
   answer: string;
-  category: string;
 }
 
 export function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // Default open first question
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs: FaqItem[] = [
     {
-      category: "Kepemilikan & Hak Cipta",
-      question: "Apakah source code, database, dan sistem sepenuhnya menjadi milik perusahaan kami?",
-      answer: "Ya, 100% mutlak milik Anda. Setelah serah terima proyek dan pelunasan, seluruh hak kekayaan intelektual (IP), repositori kode sumber (Git source code), skema basis data, dan aset arsitektur diserahkan sepenuhnya kepada perusahaan Anda. Krevia Digital tidak menerapkan sistem sewa lisensi tahunan ataupun vendor lock-in. Anda memiliki kebebasan penuh untuk mengelola atau mengembangkannya secara mandiri di kemudian hari.",
+      id: "source-code-ip",
+      question: "Apakah seluruh source code dan hak cipta sistem menjadi milik kami?",
+      answer: "Ya, 100% mutlak milik perusahaan Anda. Setelah serah terima dan pelunasan, seluruh repositori kode sumber, skema basis data, dan dokumentasi arsitektur diserahkan sepenuhnya. Kami tidak membebankan biaya lisensi tahunan, royalti berulang, atau sistem vendor lock-in.",
     },
     {
-      category: "Kerahasiaan Data",
-      question: "Apakah Krevia Digital bersedia menandatangani Non-Disclosure Agreement (NDA) sebelum diskusi?",
-      answer: "Tentu saja. Kami sangat menghargai privasi dan kerahasiaan proses bisnis, strategi operasional, serta data sensitif klien kami. Kami siap menandatangani dokumen NDA (Perjanjian Kerahasiaan) resmi berbadan hukum sebelum Anda membagikan detail alur kerja teknis atau data operasional perusahaan.",
+      id: "nda-confidentiality",
+      question: "Apakah Krevia Digital bersedia menandatangani Non-Disclosure Agreement (NDA)?",
+      answer: "Tentu. Kami menerapkan standar kerahasiaan ketat dan siap menandatangani dokumen NDA berbadan hukum resmi sebelum Anda membagikan alur proses bisnis internal atau data operasional perusahaan.",
     },
     {
-      category: "Garansi & Purnajual",
-      question: "Bagaimana dukungan teknis dan garansi sistem setelah tahap peluncuran (Go-Live)?",
-      answer: "Setiap proyek rekayasa perangkat lunak Krevia Digital dilindungi dengan Garansi Bug-Free selama 3 hingga 6 bulan pasca peluncuran tanpa biaya tambahan. Jika ditemukan kesalahan sistem atau anomali teknis yang tidak sesuai spesifikasi awal, tim engineer kami akan menyelesaikannya dengan prioritas tertinggi. Kami juga menyediakan opsi kontrak Service Level Agreement (SLA) untuk pemeliharaan preventif, security patch, dan backup berkala.",
+      id: "warranty-sla",
+      question: "Bagaimana garansi dan pemeliharaan sistem pasca peluncuran (Go-Live)?",
+      answer: "Setiap sistem dilindungi masa garansi perbaikan bug gratis selama 3 hingga 6 bulan pasca peluncuran. Kami juga menyediakan opsi kontrak Service Level Agreement (SLA) untuk pemantauan performa server, security update, dan cadangan data rutin.",
     },
     {
-      category: "Skema Finansial",
-      question: "Bagaimana mekanisme dan skema pembayaran proyek di Krevia Digital?",
-      answer: "Pembayaran dilakukan secara transparan dan bertahap berbasis pencapaian (Milestone-Based): biasanya dimulai dengan Down Payment (DP) untuk fase Discovery & Arsitektur Sistem, pembayaran termin sesuai progres modul yang diverifikasi, dan termin final setelah sistem lolos User Acceptance Testing (UAT) serta siap dideploy ke server produksi.",
+      id: "payment-milestone",
+      question: "Bagaimana skema pembayaran proyek di Krevia Digital?",
+      answer: "Pembayaran dilakukan bertahap sesuai pencapaian (milestone-based): diawali uang muka (DP) untuk fase arsitektur & desain, pembayaran termin sesuai modul fungsional yang diverifikasi, dan pelunasan final setelah lolos User Acceptance Testing (UAT).",
     },
     {
-      category: "Integrasi Sistem",
-      question: "Apakah sistem baru dapat diintegrasikan dengan database lama atau software pihak ketiga?",
-      answer: "Sangat bisa. Kami memiliki keahlian mendalam dalam System Integration & API Engineering. Kami dapat menghubungkan sistem baru dengan database legacy (seperti MySQL, SQL Server, PostgreSQL, Oracle), sistem akuntansi/ERP global (seperti SAP, Accurate), Payment Gateway (Midtrans, Xendit), hingga hardware IoT seperti barcode scanner pabrik dan mesin absensi RFID.",
+      id: "legacy-integration",
+      question: "Apakah sistem baru dapat dihubungkan dengan database atau aplikasi lama kami?",
+      answer: "Bisa. Kami memiliki keahlian integrasi API untuk menjembatani sistem baru dengan basis data lama (MySQL, SQL Server, Oracle), software akuntansi (SAP, Accurate), payment gateway nasional, maupun perangkat keras operasional.",
     },
     {
-      category: "Timeline & Metodologi",
-      question: "Berapa lama estimasi durasi pengerjaan dan bagaimana transparansi progresnya?",
-      answer: "Durasi bervariasi tergantung skala kompleksitas: modul digitalisasi operasional spesifik umumnya memakan waktu 4–8 minggu, sedangkan sistem enterprise terintegrasi memakan waktu 10–16 minggu. Kami menerapkan metodologi Agile-Scrum dengan sprint demo berkala setiap 2 minggu, sehingga Anda dapat langsung menguji setiap fitur yang selesai dan memberikan masukan secara iteratif.",
+      id: "timeline-agile",
+      question: "Berapa lama estimasi pengerjaan dan bagaimana pemantauan progresnya?",
+      answer: "Digitalisasi modul spesifik umumnya memakan waktu 4–8 minggu, sedangkan sistem enterprise terintegrasi berkisar 10–16 minggu. Kami menggunakan metode Agile dengan demo berkala setiap 2 pekan, sehingga Anda dapat langsung menguji setiap progres.",
     },
   ];
 
@@ -67,146 +58,101 @@ export function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-24 bg-white relative overflow-hidden border-t border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
-            Tata Kelola & Transparansi Kemitraan
-          </span>
+    <section id="faq" className="scroll-mt-20 py-24 sm:py-32 bg-white relative overflow-hidden border-t border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Sticky Section Overview */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+              Tata Kelola Kemitraan
+            </span>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
-            Pertanyaan yang Sering Diajukan (FAQ)
-          </h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4 leading-tight">
+              Pertanyaan yang Sering Diajukan
+            </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Jawaban transparan mengenai kepemilikan kode, kerahasiaan data, skema pembayaran, dan jaminan purna jual bersama Krevia Digital.
-          </p>
-        </div>
+            <p className="mt-4 text-base text-slate-600 leading-relaxed">
+              Transparansi penuh mengenai kepemilikan kode, kerahasiaan data perusahaan, skema pembayaran, dan garansi teknis sebelum memulai proyek bersama kami.
+            </p>
 
-        {/* 4 Trust Badges Horizontal Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-14">
-          <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#101D35]">100% Hak Cipta</p>
-              <p className="text-[11px] text-slate-500">Source code milik Anda</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
-              <Lock className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#101D35]">NDA Terikat Hukum</p>
-              <p className="text-[11px] text-slate-500">Kerahasiaan data terjamin</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
-              <FileCheck className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#101D35]">Garansi Bug 3-6 Bln</p>
-              <p className="text-[11px] text-slate-500">Dukungan purna jual aktif</p>
-            </div>
-          </div>
-
-          <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
-              <Clock className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#101D35]">Milestone Transparan</p>
-              <p className="text-[11px] text-slate-500">Sprint demo setiap 2 pekan</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Accordion Questions List */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={index}
-                className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
-                  isOpen
-                    ? "bg-white border-slate-300 shadow-sm"
-                    : "bg-[#FAFCFF] border-slate-200/80 hover:border-slate-300"
-                }`}
-              >
-                <button
-                  type="button"
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full py-5 px-6 sm:px-8 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
-                  aria-expanded={isOpen}
-                >
-                  <div className="space-y-1">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-slate-500 block">
-                      {faq.category}
-                    </span>
-                    <span className="text-base sm:text-lg font-bold text-[#101D35] block leading-snug">
-                      {faq.question}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "bg-[#101D35] text-white rotate-180" : "bg-slate-100 text-slate-600"
-                    }`}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </div>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <div className="px-6 sm:px-8 pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+            {/* Direct Inquiry Card */}
+            <div className="mt-8 p-6 rounded-2xl bg-slate-50 border border-slate-200/90 shadow-xs">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-[#101D35] text-white flex items-center justify-center shadow-xs">
+                  <MessageCircle className="w-4 h-4" />
+                </div>
+                <h4 className="text-sm font-bold text-[#101D35]">
+                  Ada pertanyaan teknis lain?
+                </h4>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Direct Contact Inquiries Strip */}
-        <div className="mt-14 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-slate-50/90 border border-slate-200/90 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-xs border border-slate-200 flex items-center justify-center text-[#101D35] shrink-0">
-              <MessageSquare className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-base sm:text-lg font-bold text-[#101D35]">
-                Ada pertanyaan teknis yang belum terjawab di sini?
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-600 mt-0.5">
-                Diskusikan langsung kebutuhan spesifik perusahaan Anda dengan tim arsitek teknologi kami.
+              <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                Tim teknis kami di Pekanbaru siap mendiskusikan kebutuhan sistem Anda secara langsung.
               </p>
+              <a
+                href="#contact"
+                onClick={handleContactClick}
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#101D35] hover:text-[#1D4ED8] group/link transition-colors cursor-pointer"
+              >
+                <span>Konsultasi Teknis Gratis</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
 
-          <a
-            href="#contact"
-            onClick={handleContactClick}
-            className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-sm font-bold shadow-md shadow-[#101D35]/20 hover:shadow-[#1D4ED8]/25 transition-all duration-200 cursor-pointer"
-          >
-            <span>Tanya Langsung ke Tim Kami</span>
-            <ArrowRight className="w-4 h-4" />
-          </a>
+          {/* Right Column: Clean Hairline Accordion List */}
+          <div className="lg:col-span-7">
+            <div className="border-t border-b border-slate-200/90 divide-y divide-slate-200/90">
+              {faqs.map((faq, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div key={faq.id} className="transition-colors duration-200">
+                    <button
+                      type="button"
+                      onClick={() => toggleAccordion(index)}
+                      className="w-full py-6 text-left flex items-start justify-between gap-6 cursor-pointer focus:outline-none group"
+                      aria-expanded={isOpen}
+                    >
+                      <span className={`text-base sm:text-lg font-bold transition-colors leading-snug ${
+                        isOpen ? "text-[#101D35]" : "text-slate-800 group-hover:text-[#101D35]"
+                      }`}>
+                        {faq.question}
+                      </span>
+
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors mt-0.5 ${
+                        isOpen 
+                          ? "bg-[#101D35] text-white" 
+                          : "bg-slate-100 text-slate-600 group-hover:bg-slate-200"
+                      }`}>
+                        {isOpen ? (
+                          <Minus className="w-4 h-4" />
+                        ) : (
+                          <Plus className="w-4 h-4" />
+                        )}
+                      </div>
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-6 pr-10 text-sm sm:text-base text-slate-600 leading-relaxed">
+                            {faq.answer}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
