@@ -149,6 +149,14 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <Link
+                  href="/kebijakan-privasi"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                >
+                  Kebijakan Privasi
+                </Link>
+              </li>
+              <li>
                 <a
                   href="#contact"
                   onClick={(e) => handleFooterLink(e, "#contact")}
@@ -163,9 +171,19 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>
-            © {new Date().getFullYear()} Krevia Digital. All rights reserved. Pekanbaru, Riau, Indonesia.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
+            <p>
+              © {new Date().getFullYear()} Krevia Digital. All rights reserved. Pekanbaru, Riau, Indonesia.
+            </p>
+            <div className="flex items-center gap-4 text-slate-500">
+              <Link
+                href="/kebijakan-privasi"
+                className="hover:text-[#1D4ED8] transition-colors underline underline-offset-4 decoration-slate-300"
+              >
+                Kebijakan Privasi & PDP
+              </Link>
+            </div>
+          </div>
 
           <button
             onClick={scrollToTop}
