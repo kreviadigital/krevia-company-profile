@@ -12,6 +12,8 @@ export function Preloader() {
   useEffect(() => {
     // Prevent scrolling while loading
     document.body.style.overflow = "hidden";
+    const lenis = (window as unknown as { lenis?: { stop: Function; start: Function } }).lenis;
+    lenis?.stop();
 
     // Progress counter animation
     const startTime = performance.now();
@@ -42,6 +44,8 @@ export function Preloader() {
         setTimeout(() => {
           setIsComplete(true);
           document.body.style.overflow = "";
+          const activeLenis = (window as unknown as { lenis?: { start: Function } }).lenis;
+          activeLenis?.start();
         }, 250);
       }
     };
@@ -52,12 +56,16 @@ export function Preloader() {
     const fallbackTimer = setTimeout(() => {
       setIsComplete(true);
       document.body.style.overflow = "";
+      const activeLenis = (window as unknown as { lenis?: { start: Function } }).lenis;
+      activeLenis?.start();
     }, 2500);
 
     return () => {
       cancelAnimationFrame(animFrame);
       clearTimeout(fallbackTimer);
       document.body.style.overflow = "";
+      const activeLenis = (window as unknown as { lenis?: { start: Function } }).lenis;
+      activeLenis?.start();
     };
   }, []);
 

@@ -8,12 +8,12 @@ import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Footer() {
   const scrollToTop = () => {
-    smoothScrollTo("#hero", { offset: 80, duration: 950 });
+    smoothScrollTo("#hero", { offset: 80, duration: 1500 });
   };
 
   const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, { offset: 80, duration: 950 });
+    smoothScrollTo(href, { offset: 80, duration: 1500 });
     window.history.pushState(null, "", href);
   };
 

@@ -10,8 +10,9 @@ export function smoothScrollTo(
 ) {
   if (typeof window === "undefined") return;
 
-  const duration = options?.duration ?? 950; // ~1 second luxurious glide
   const offset = options?.offset ?? 80; // Offset for sticky navbar
+  const durationMs = options?.duration ?? 1400; // ~1.4s luxurious glide
+  const durationSeconds = durationMs / 1000;
 
   let targetElement: HTMLElement | null = null;
   if (typeof target === "string") {
@@ -22,6 +23,23 @@ export function smoothScrollTo(
   }
 
   if (!targetElement) return;
+
+  // 1. If Lenis is active on window, delegate directly to Lenis for supreme momentum
+  const lenis = (window as unknown as { lenis?: { scrollTo: Function } }).lenis;
+  if (lenis && typeof lenis.scrollTo === "function") {
+    lenis.scrollTo(targetElement, {
+      offset: -offset, // Lenis offset is negative to leave space for navbar
+      duration: durationSeconds,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      immediate: false,
+      lock: false,
+      force: true,
+      onComplete: () => {
+        if (options?.onComplete) options.onComplete();
+      },
+    });
+    return;
+  }
 
   const startPosition = window.pageYOffset || document.documentElement.scrollTop;
   const elementRect = targetElement.getBoundingClientRect();
@@ -55,7 +73,7 @@ export function smoothScrollTo(
     if (startTime === null) startTime = currentTime;
 
     const timeElapsed = currentTime - startTime;
-    const progress = Math.min(timeElapsed / duration, 1);
+    const progress = Math.min(timeElapsed / durationMs, 1);
     const ease = easeInOutQuart(progress);
 
     window.scrollTo(0, Math.round(startPosition + distance * ease));

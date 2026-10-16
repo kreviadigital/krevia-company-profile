@@ -43,7 +43,7 @@ export function CtaBanner() {
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
-                  smoothScrollTo("#contact", { offset: 80, duration: 950 });
+                  smoothScrollTo("#contact", { offset: 80, duration: 1500 });
                   window.history.pushState(null, "", "#contact");
                 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#101D35] font-bold text-sm border border-slate-200 shadow-xs transition-colors cursor-pointer"

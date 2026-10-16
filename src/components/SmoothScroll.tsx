@@ -1,10 +1,27 @@
 "use client";
 
 import { useEffect } from "react";
+import Lenis from "lenis";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function SmoothScroll() {
   useEffect(() => {
+    // Initialize Lenis with bespoke floating inertia physics
+    const lenis = new Lenis({
+      lerp: 0.075, // Silky exponential dampening for mousewheel & trackpad
+      wheelMultiplier: 0.9, // Balanced wheel impulse for luxurious float without jerkiness
+      touchMultiplier: 1.5,
+      smoothWheel: true,
+      syncTouch: false,
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      respectReducedMotion: false, // Ensures Windows doesn't snap to instant/un-eased
+      autoRaf: true,
+    });
+
+    // Expose lenis globally for universal access across components
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
+
     // Intercept all internal anchor clicks across the entire document
     const handleAnchorClick = (e: MouseEvent) => {
       // Find closest anchor tag
@@ -18,9 +35,9 @@ export function SmoothScroll() {
           e.preventDefault();
           e.stopPropagation();
 
-          // Trigger high-precision cinematic smooth scroll
+          // Trigger high-precision cinematic smooth scroll via Lenis
           smoothScrollTo(targetElement, {
-            duration: 950,
+            duration: 1500,
             offset: 80,
           });
 
@@ -35,6 +52,8 @@ export function SmoothScroll() {
 
     return () => {
       document.removeEventListener("click", handleAnchorClick, { capture: true });
+      lenis.destroy();
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 

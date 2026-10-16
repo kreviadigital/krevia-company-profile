@@ -30,7 +30,7 @@ export function Navbar() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    smoothScrollTo(href, { offset: 80, duration: 950 });
+    smoothScrollTo(href, { offset: 80, duration: 1500 });
     window.history.pushState(null, "", href);
   };
 

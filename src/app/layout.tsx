@@ -39,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="id">
       <body className={`${plusJakarta.className} bg-[#FAFCFF] text-slate-800 antialiased selection:bg-blue-600/10 selection:text-blue-700`}>
         {children}
       </body>
