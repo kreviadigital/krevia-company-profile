@@ -64,7 +64,7 @@ export function FaqSection() {
           
           {/* Left Column: Sticky Section Overview */}
           <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+            <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3.5 py-1.5 rounded-full border border-blue-100">
               Tata Kelola Kemitraan
             </span>
 

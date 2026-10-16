@@ -127,7 +127,7 @@ export function PortfolioSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3.5 py-1.5 rounded-full border border-blue-100">
             Portofolio & Studi Kasus
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -225,7 +225,7 @@ export function PortfolioSection() {
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-[#101D35] mb-2.5 group-hover:text-blue-900 transition-colors">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#101D35] mb-2.5 group-hover:text-[#1D4ED8] transition-colors">
                   {item.title}
                 </h3>
 

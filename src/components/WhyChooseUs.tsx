@@ -33,7 +33,7 @@ export function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3.5 py-1.5 rounded-full border border-blue-100">
             Nilai Keunggulan Kami
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -51,10 +51,10 @@ export function WhyChooseUs() {
             return (
               <SpotlightCard
                 key={idx}
-                className="flex flex-col justify-between p-7 sm:p-8 bg-white border-slate-200/90 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all group"
+                className="flex flex-col justify-between p-7 sm:p-8 bg-white border-slate-200/90 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#101D35] group-hover:bg-[#101D35] group-hover:text-white flex items-center justify-center mb-6 shadow-xs transition-colors">
+                  <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#101D35] group-hover:bg-[#101D35] group-hover:text-white flex items-center justify-center mb-6 shadow-xs transition-colors">
                     <Icon className="w-6 h-6" />
                   </div>
 
@@ -62,8 +62,8 @@ export function WhyChooseUs() {
                   <p className="text-sm text-slate-600 leading-relaxed">{pt.desc}</p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-[#2563EB]">
-                  <CheckCircle2 className="w-4 h-4 text-[#2563EB]" />
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center gap-1.5 text-xs font-bold text-[#1D4ED8]">
+                  <CheckCircle2 className="w-4 h-4 text-[#1D4ED8]" />
                   <span>Jaminan Standar Krevia</span>
                 </div>
               </SpotlightCard>

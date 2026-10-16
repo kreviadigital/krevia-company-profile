@@ -95,7 +95,7 @@ export function Preloader() {
             className="relative z-10 flex items-center justify-between text-[11px] font-bold tracking-[0.25em] text-slate-400 uppercase"
           >
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#1D4ED8] animate-pulse" />
               <span>Krevia Digital Enterprise</span>
             </div>
             <span>Pekanbaru • Riau</span>
@@ -122,7 +122,7 @@ export function Preloader() {
               </div>
 
               {/* Shimmer line underneath */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#2563EB]/40 to-transparent" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#1D4ED8]/40 to-transparent" />
             </motion.div>
 
             {/* Dynamic Status Text */}
@@ -148,14 +148,14 @@ export function Preloader() {
                 <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101D35] tabular-nums">
                   {progress}
                 </span>
-                <span className="text-sm font-bold text-[#2563EB]">%</span>
+                <span className="text-sm font-bold text-[#1D4ED8]">%</span>
               </div>
             </div>
 
             {/* Micro Progress Bar */}
             <div className="relative h-[3px] w-full bg-slate-100 rounded-full overflow-hidden">
               <motion.div
-                className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#101D35] via-[#1D4ED8] to-[#2563EB] rounded-full"
+                className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#101D35] to-[#1D4ED8] rounded-full"
                 style={{ width: `${progress}%` }}
                 transition={{ ease: "easeOut" }}
               />

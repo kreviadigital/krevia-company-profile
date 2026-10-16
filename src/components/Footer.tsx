@@ -38,7 +38,7 @@ export function Footer() {
             </p>
 
             <div className="flex items-center gap-2 text-xs text-slate-500 pt-2">
-              <MapPin className="w-4 h-4 text-[#2563EB] shrink-0" />
+              <MapPin className="w-4 h-4 text-[#1D4ED8] shrink-0" />
               <span>Kota Pekanbaru, Riau, Indonesia</span>
             </div>
           </div>
@@ -53,7 +53,7 @@ export function Footer() {
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Custom Software Development
                 </a>
@@ -62,7 +62,7 @@ export function Footer() {
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   System Integration & APIs
                 </a>
@@ -71,7 +71,7 @@ export function Footer() {
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   UI/UX Design & Prototyping
                 </a>
@@ -80,7 +80,7 @@ export function Footer() {
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Business Process Digitization
                 </a>
@@ -98,7 +98,7 @@ export function Footer() {
                 <a
                   href="#hero"
                   onClick={(e) => handleFooterLink(e, "#hero")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Beranda
                 </a>
@@ -107,7 +107,7 @@ export function Footer() {
                 <a
                   href="#about"
                   onClick={(e) => handleFooterLink(e, "#about")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Tentang Krevia
                 </a>
@@ -116,7 +116,7 @@ export function Footer() {
                 <a
                   href="#portfolio"
                   onClick={(e) => handleFooterLink(e, "#portfolio")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Studi Kasus & Portofolio
                 </a>
@@ -125,7 +125,7 @@ export function Footer() {
                 <a
                   href="#why-us"
                   onClick={(e) => handleFooterLink(e, "#why-us")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Mengapa Kami
                 </a>
@@ -134,7 +134,7 @@ export function Footer() {
                 <a
                   href="#process"
                   onClick={(e) => handleFooterLink(e, "#process")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Proses Kerja
                 </a>
@@ -143,7 +143,7 @@ export function Footer() {
                 <a
                   href="#faq"
                   onClick={(e) => handleFooterLink(e, "#faq")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Tanya Jawab (FAQ)
                 </a>
@@ -152,7 +152,7 @@ export function Footer() {
                 <a
                   href="#contact"
                   onClick={(e) => handleFooterLink(e, "#contact")}
-                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
                 >
                   Hubungi Kami
                 </a>
@@ -169,7 +169,7 @@ export function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-slate-500 hover:text-[#2563EB] transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-slate-500 hover:text-[#1D4ED8] transition-colors cursor-pointer"
           >
             <span>Kembali ke Atas</span>
             <ArrowUp className="w-3.5 h-3.5" />

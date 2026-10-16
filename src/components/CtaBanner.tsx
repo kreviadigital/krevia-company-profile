@@ -8,14 +8,14 @@ export function CtaBanner() {
   return (
     <section className="py-20 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl p-8 sm:p-14 lg:p-16 overflow-hidden bg-gradient-to-br from-blue-50/90 via-sky-50/40 to-blue-50/90 border border-blue-100 shadow-xl shadow-blue-500/5">
+        <div className="relative rounded-3xl p-8 sm:p-14 lg:p-16 overflow-hidden bg-slate-50/90 border border-slate-200/90 shadow-xl shadow-slate-900/5">
           {/* Subtle background ambient glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-sky-300/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#101D35]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#1D4ED8]/5 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-200 text-blue-700 text-xs font-bold mb-6 shadow-xs">
-              <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-blue-100 text-[#101D35] text-xs font-bold mb-6 shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-[#1D4ED8]" />
               <span>Mulai Langkah Pertama Transformasi Bisnis Anda</span>
             </div>
 
@@ -48,7 +48,7 @@ export function CtaBanner() {
                 }}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-50 text-[#101D35] font-bold text-sm border border-slate-200 shadow-xs transition-colors cursor-pointer"
               >
-                <Mail className="w-4 h-4 text-blue-600" />
+                <Mail className="w-4 h-4 text-[#1D4ED8]" />
                 <span>Isi Formulir Kebutuhan</span>
               </a>
             </div>

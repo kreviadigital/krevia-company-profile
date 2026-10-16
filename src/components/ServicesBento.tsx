@@ -86,7 +86,7 @@ export function ServicesBento() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3.5 py-1.5 rounded-full border border-blue-100">
             Layanan Utama Kami
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
@@ -104,7 +104,7 @@ export function ServicesBento() {
             return (
               <SpotlightCard
                 key={svc.id}
-                className="flex flex-col justify-between p-8 sm:p-10 border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:border-blue-300 transition-all group"
+                className="flex flex-col justify-between p-8 sm:p-10 border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:border-slate-300 transition-all group"
               >
                 <div>
                   {/* Card Header */}
@@ -112,15 +112,15 @@ export function ServicesBento() {
                     <div className="w-14 h-14 rounded-2xl bg-[#101D35] text-white flex items-center justify-center shadow-md shadow-[#101D35]/20 group-hover:bg-[#1D4ED8] group-hover:scale-105 transition-all duration-300">
                       <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <span className="text-sm font-extrabold text-blue-200 group-hover:text-[#101D35] transition-colors">
+                    <span className="text-sm font-extrabold text-slate-300 group-hover:text-[#101D35] transition-colors">
                       {svc.number}
                     </span>
                   </div>
 
-                  <span className="text-xs font-bold text-blue-600 uppercase tracking-wider block mb-1">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">
                     {svc.category}
                   </span>
-                  <h3 className="text-2xl font-bold text-[#101D35] mb-3 group-hover:text-blue-900 transition-colors">
+                  <h3 className="text-2xl font-bold text-[#101D35] mb-3 group-hover:text-[#1D4ED8] transition-colors">
                     {svc.title}
                   </h3>
                   <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
@@ -134,15 +134,15 @@ export function ServicesBento() {
                     </p>
                     {svc.features.map((item, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800">
-                        <CheckCircle2 className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-[#1D4ED8] shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Impact Highlight Box */}
-                  <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-100 flex items-start gap-3 mb-6">
-                    <TrendingUp className="w-4 h-4 text-[#2563EB] shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3 mb-6">
+                    <TrendingUp className="w-4 h-4 text-[#1D4ED8] shrink-0 mt-0.5" />
                     <p className="text-xs text-[#101D35] font-medium leading-relaxed">
                       <strong className="font-bold">Manfaat Bisnis:</strong> {svc.impact}
                     </p>
@@ -155,10 +155,10 @@ export function ServicesBento() {
                     href="#contact"
                     onClick={(e) => {
                       e.preventDefault();
-                      smoothScrollTo("#contact", { offset: 80, duration: 950 });
+                      smoothScrollTo("#contact", { offset: 80, duration: 1500 });
                       window.history.pushState(null, "", "#contact");
                     }}
-                    className="inline-flex items-center gap-2 text-sm font-bold text-[#101D35] hover:text-[#2563EB] group/link transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-2 text-sm font-bold text-[#101D35] hover:text-[#1D4ED8] group/link transition-colors cursor-pointer"
                   >
                     <span>Konsultasikan Kebutuhan Ini</span>
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

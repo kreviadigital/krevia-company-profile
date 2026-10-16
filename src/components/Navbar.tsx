@@ -64,7 +64,7 @@ export function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors cursor-pointer"
+                className="text-sm font-semibold text-slate-600 hover:text-[#1D4ED8] transition-colors cursor-pointer"
               >
                 {link.label}
               </a>
@@ -104,7 +104,7 @@ export function Navbar() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-base font-semibold text-slate-700 hover:text-[#2563EB] py-2 px-3 rounded-lg hover:bg-slate-50 cursor-pointer"
+                className="text-base font-semibold text-slate-700 hover:text-[#1D4ED8] py-2 px-3 rounded-lg hover:bg-slate-50 cursor-pointer"
               >
                 {link.label}
               </a>
@@ -112,7 +112,7 @@ export function Navbar() {
             <a
               href="#contact"
               onClick={(e) => handleNavClick(e, "#contact")}
-              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] text-white font-bold text-sm shadow-md cursor-pointer"
+              className="mt-2 flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-sm shadow-md cursor-pointer transition-colors"
             >
               <span>Konsultasi Gratis Sekarang</span>
               <ArrowRight className="w-4 h-4" />
