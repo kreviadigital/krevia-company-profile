@@ -9,6 +9,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kreviadigital.com"),
   title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital di Pekanbaru",
   description:
     "Krevia Digital adalah mitra rekayasa perangkat lunak dan transformasi digital di Pekanbaru, Riau, Indonesia. Layanan mencakup Custom Software Development, System Integration, UI/UX Design, dan Business Process Digitization.",
@@ -23,6 +24,15 @@ export const metadata: Metadata = {
     "Konsultan IT Pekanbaru",
   ],
   authors: [{ name: "Krevia Digital" }],
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital",
     description: "Mitra rekayasa teknologi terpercaya untuk Custom Software, Integrasi Sistem, Desain UI/UX, dan Digitalisasi Bisnis.",
@@ -30,6 +40,20 @@ export const metadata: Metadata = {
     siteName: "Krevia Digital",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Krevia Digital - Solusi Software Kustom & Arsitektur Skalabel di Pekanbaru",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital",
+    description: "Mitra rekayasa teknologi terpercaya untuk Custom Software, Integrasi Sistem, Desain UI/UX, dan Digitalisasi Bisnis.",
+    images: ["/og-image.png"],
   },
 };
 
