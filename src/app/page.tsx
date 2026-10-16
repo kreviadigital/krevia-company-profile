@@ -5,7 +5,6 @@ import { Hero } from "@/components/Hero";
 import { ServicesBento } from "@/components/ServicesBento";
 import { PortfolioSection } from "@/components/PortfolioSection";
 import { About } from "@/components/About";
-import { FounderSection } from "@/components/FounderSection";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { WorkProcess } from "@/components/WorkProcess";
 import { TechStack } from "@/components/TechStack";
@@ -24,7 +23,6 @@ export default function Home() {
       <ServicesBento />
       <PortfolioSection />
       <About />
-      <FounderSection />
       <WhyChooseUs />
       <WorkProcess />
       <TechStack />
