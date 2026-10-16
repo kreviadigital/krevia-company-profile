@@ -2,324 +2,280 @@
 
 import React, { useState } from "react";
 import { 
-  Briefcase, 
   ArrowUpRight, 
   Layers, 
-  CheckCircle2, 
-  ShieldCheck, 
-  TrendingUp, 
   Server, 
-  Smartphone, 
   BarChart3, 
-  Building2 
+  Smartphone, 
+  Building2,
+  CheckCircle2,
+  Activity
 } from "lucide-react";
 import { smoothScrollTo } from "@/lib/smoothScroll";
+import { SpotlightCard } from "./ui/SpotlightCard";
 
-interface CaseStudy {
+interface ProjectItem {
   id: string;
   category: "all" | "erp" | "analytics" | "mobile" | "gov";
   categoryLabel: string;
-  categoryIcon: React.ElementType;
   title: string;
   clientType: string;
-  challenge: string;
-  solution: string;
+  description: string;
   metrics: { value: string; label: string }[];
   tags: string[];
-  systemHighlights: string[];
+  mockup: {
+    status: string;
+    headline: string;
+    subline: string;
+    statLeft: { label: string; val: string };
+    statRight: { label: string; val: string };
+  };
 }
 
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState<"all" | "erp" | "analytics" | "mobile" | "gov">("all");
 
-  const caseStudies: CaseStudy[] = [
+  const projects: ProjectItem[] = [
     {
       id: "omnilogix-erp",
       category: "erp",
-      categoryLabel: "Supply Chain & Logistik",
-      categoryIcon: Server,
-      title: "OmniLogix: Multi-Warehouse ERP & Automated Inventory Sync",
-      clientType: "Perusahaan Distribusi Komoditas Regional",
-      challenge: "Keterlambatan sinkronisasi data antar 5 gudang cabang menyebabkan stock discrepancy 14% dan proses pemenuhan pesanan memakan waktu hingga 48 jam dengan kertas kerja manual.",
-      solution: "Membangun sistem ERP cloud terintegrasi dengan arsitektur event-driven, batch-tracking barcode, manajemen armada otomatis, dan rekonsiliasi inventori real-time.",
+      categoryLabel: "Supply Chain & ERP",
+      title: "OmniLogix: Cloud ERP & Multi-Warehouse",
+      clientType: "Distributor Regional",
+      description: "Sistem rantai pasok dan inventori multi-gudang terdistribusi dengan sinkronisasi batch barcode real-time untuk memangkas selisih stok fisik.",
       metrics: [
-        { value: "+72%", label: "Kecepatan Pemenuhan Pesanan" },
-        { value: "0%", label: "Selisih Stok Fisik vs Sistem" },
-        { value: "< 150ms", label: "Latensi Antar-Cabang" },
+        { value: "+72%", label: "Kecepatan Order" },
+        { value: "< 150ms", label: "Latensi Antar-Gudang" },
       ],
-      tags: ["Next.js", "PostgreSQL", "Go / Golang", "Redis", "Docker"],
-      systemHighlights: [
-        "Sinkronisasi multi-warehouse terdistribusi",
-        "Pencatatan mutasi barcode scanner real-time",
-        "Audit trail perubahan stok anti-tamper",
-      ],
+      tags: ["Next.js", "PostgreSQL", "Go", "Docker"],
+      mockup: {
+        status: "5 Gudang Aktif • Real-time Sync",
+        headline: "Sinkronisasi Inventori Batch #TX-9042",
+        subline: "Stok fisik cabang Riau & Sumbar terverifikasi",
+        statLeft: { label: "Discrepancy", val: "0.0%" },
+        statRight: { label: "Throughput", val: "1.2k req/s" },
+      },
     },
     {
       id: "finpulse-analytics",
       category: "analytics",
-      categoryLabel: "Corporate Finance & Holding",
-      categoryIcon: BarChart3,
-      title: "FinPulse: Multi-Entity Financial Governance & Executive Intelligence",
-      clientType: "Grup Usaha Holding Multi-Sektor (8 Unit Bisnis)",
-      challenge: "Manajemen eksekutif membutuhkan 12 jam setiap akhir pekan hanya untuk menyusun laporan konsolidasi keuangan dari berbagai database toko dan cabang yang terpisah.",
-      solution: "Pengembangan data pipeline otomatis yang mengekstraksi transaksi kasir harian dari 8 unit usaha, mengotomasi rekonsiliasi bank, dan menyajikan dashboard margin laba per detik.",
+      categoryLabel: "Corporate Governance",
+      title: "FinPulse: Multi-Entity Executive Intelligence",
+      clientType: "Holding 8 Unit Usaha",
+      description: "Platform konsolidasi data kasir dan arus kas otomatis multi-perusahaan dengan audit trail terverifikasi dan dashboard margin laba per detik.",
       metrics: [
-        { value: "5 Menit", label: "Waktu Rekonsiliasi Kas (dari 12 Jam)" },
-        { value: "100%", label: "Kepatuhan Audit Finansial" },
-        { value: "8 Entitas", label: "Terkonsolidasi Otomatis" },
+        { value: "5 Menit", label: "Waktu Rekonsiliasi" },
+        { value: "100%", label: "Kepatuhan Audit" },
       ],
-      tags: ["Next.js", "TypeScript", "Python / FastAPI", "ClickHouse", "TailwindCSS"],
-      systemHighlights: [
-        "Otomasi rekonsiliasi arus kas harian",
-        "Role-based access control (RBAC) granular",
-        "Ekspor laporan berstandar akuntansi PSAK",
-      ],
+      tags: ["TypeScript", "FastAPI", "ClickHouse", "Tailwind"],
+      mockup: {
+        status: "8 Unit Bisnis Terkonsolidasi",
+        headline: "Audit Rekonsiliasi Arus Kas Otomatis",
+        subline: "Integrasi mutasi perbankan & POS cabang",
+        statLeft: { label: "Efisiensi Waktu", val: "94%" },
+        statRight: { label: "Audit Match", val: "100%" },
+      },
     },
     {
       id: "lapanganku-pos",
       category: "mobile",
-      categoryLabel: "FMCG & Sales Lapangan",
-      categoryIcon: Smartphone,
-      title: "Lapanganku: Offline-First Field Mobility & Direct Store Delivery POS",
-      clientType: "Distributor FMCG & Grosir Retail",
-      challenge: "Ratusan tim kanvaser di wilayah rural sering kehilangan data transaksi order akibat titik blank spot seluler, mengakibatkan double booking dan komplain pelanggan.",
-      solution: "Aplikasi mobile sales lapangan berbasis offline-first dengan database lokal terenkripsi, sinkronisasi otomatis background saat internet pulih, serta cetak struk thermal Bluetooth.",
+      categoryLabel: "FMCG Field Mobility",
+      title: "Lapanganku: Offline-First Mobile Sales POS",
+      clientType: "Grosir & Distribusi FMCG",
+      description: "Aplikasi mobile tim kanvaser lapangan dengan basis data lokal terenkripsi, toleran terhadap blank spot seluler, dan cetak struk Bluetooth instan.",
       metrics: [
-        { value: "0 Data Hilang", label: "Toleransi Blank Spot Area" },
-        { value: "+45%", label: "Volume Kunjungan Toko / Hari" },
-        { value: "Instant", label: "Cetak Nota Thermal Lapangan" },
+        { value: "0 Data Loss", label: "Toleransi Blank Spot" },
+        { value: "+45%", label: "Kunjungan Toko / Hari" },
       ],
-      tags: ["React Native", "SQLite", "Node.js", "PostgreSQL", "REST & WebSockets"],
-      systemHighlights: [
-        "Mekanisme antrean offline & conflict resolution",
-        "Verifikasi GPS radius saat kunjungan toko",
-        "Katalog produk dengan kalkulasi diskon bertingkat",
-      ],
+      tags: ["React Native", "SQLite", "Node.js", "WebSockets"],
+      mockup: {
+        status: "Mode Offline Aktif • Auto-Sync",
+        headline: "Faktur Penjualan Toko #INV-4418",
+        subline: "Verifikasi koordinat GPS kunjungan valid",
+        statLeft: { label: "Nota Tercetak", val: "Instant" },
+        statRight: { label: "Data Integrity", val: "100%" },
+      },
     },
     {
       id: "silayanan-gov",
       category: "gov",
-      categoryLabel: "Layanan Publik & E-Gov",
-      categoryIcon: Building2,
-      title: "SiLayanan: Single-Window Licensing & Verification Portal",
-      clientType: "Instansi Layanan Publik Terpadu",
-      challenge: "Antrean fisik verifikasi dokumen izin usaha memicu keluhan publik dengan waktu proses hingga 14 hari kerja dan resiko human error berkas fisik.",
-      solution: "Mendigitalkan seluruh alur perizinan menjadi portal web responsif dengan integrasi e-Sign digital, notifikasi progres via WhatsApp gateway, dan tracking tiket permohonan transparan.",
+      categoryLabel: "Public Sector Portal",
+      title: "SiLayanan: Single-Window Licensing Portal",
+      clientType: "Instansi Layanan Publik",
+      description: "Transformasi proses perizinan manual menjadi portal satu pintu dengan e-Sign bersertifikat dan notifikasi tiket otomatis via WhatsApp.",
       metrics: [
-        { value: "2 Hari", label: "Rata-rata Terbit Izin (dari 14 Hari)" },
-        { value: "99.98%", label: "Uptime Selama Peak Traffic" },
-        { value: "100%", label: "Paperless Digital Workflow" },
+        { value: "2 Hari", label: "Durasi Terbit Izin" },
+        { value: "99.98%", label: "SLA Uptime Sistem" },
       ],
-      tags: ["Next.js", "PostgreSQL", "MinIO Storage", "Redis Queue", "TailwindCSS"],
-      systemHighlights: [
-        "Tanda tangan digital tersertifikasi",
-        "Notifikasi real-time via WhatsApp bot",
-        "Penyimpanan berkas terenkripsi enterprise",
-      ],
+      tags: ["Next.js", "PostgreSQL", "MinIO", "Redis"],
+      mockup: {
+        status: "Tanda Tangan Digital Sah (e-Sign)",
+        headline: "Penerbitan Dokumen Izin Usaha #SK-819",
+        subline: "Alur verifikasi multi-tier 100% paperless",
+        statLeft: { label: "Pemrosesan", val: "2 Hari" },
+        statRight: { label: "SLA Uptime", val: "99.98%" },
+      },
     },
   ];
 
-  const filteredCaseStudies = activeFilter === "all"
-    ? caseStudies
-    : caseStudies.filter((item) => item.category === activeFilter);
-
-  const handleDiscussSimilar = (e: React.MouseEvent<HTMLAnchorElement>, projectTitle: string) => {
-    e.preventDefault();
-    smoothScrollTo("#contact", { offset: 80, duration: 1500 });
-    window.history.pushState(null, "", "#contact");
-  };
+  const filteredProjects = activeFilter === "all"
+    ? projects
+    : projects.filter((item) => item.category === activeFilter);
 
   return (
-    <section id="portfolio" className="py-24 bg-[#FAFCFF] relative overflow-hidden border-t border-slate-200/80">
-      {/* Ambient background decoration */}
-      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 -left-40 w-96 h-96 bg-sky-500/5 rounded-full blur-3xl pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="portfolio" className="scroll-mt-20 py-24 sm:py-32 relative overflow-hidden bg-[#FAFCFF] border-t border-slate-200/80">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 text-xs font-bold mb-4 shadow-xs">
-            <Briefcase className="w-3.5 h-3.5 text-blue-600" />
-            <span>Portofolio & Rekayasa Arsitektur</span>
-          </div>
-
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Studi Kasus Solusi Digital Berkelanjutan
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+            Portofolio & Studi Kasus
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
+            Bukti Kinerja Solusi Digital Kami
           </h2>
-
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Dari digitalisasi operasional hingga platform cloud enterprise terdistribusi, inilah gambaran standar arsitektur sistem yang kami bangun untuk mengakselerasi performa bisnis mitra.
+            Ringkasan arsitektur sistem nyata yang kami rancang untuk memecahkan hambatan operasional dan meningkatkan efisiensi bisnis mitra.
           </p>
-        </div>
 
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
-          {[
-            { key: "all", label: "Semua Solusi" },
-            { key: "erp", label: "Enterprise ERP & Logistik" },
-            { key: "analytics", label: "Finance & Analytics" },
-            { key: "mobile", label: "Mobile Field POS" },
-            { key: "gov", label: "Public Service & E-Gov" },
-          ].map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveFilter(tab.key as any)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
-                activeFilter === tab.key
-                  ? "bg-[#101D35] text-white shadow-md shadow-[#101D35]/20 scale-[1.02]"
-                  : "bg-white text-slate-600 hover:text-[#101D35] hover:bg-slate-100/80 border border-slate-200"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Case Studies Cards Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {filteredCaseStudies.map((study) => {
-            const Icon = study.categoryIcon;
-            return (
-              <div
-                key={study.id}
-                className="group relative rounded-3xl bg-white border border-slate-200/90 hover:border-blue-300 p-7 sm:p-9 shadow-sm hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 flex flex-col justify-between"
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8">
+            {[
+              { key: "all", label: "Semua Solusi" },
+              { key: "erp", label: "Supply Chain & ERP" },
+              { key: "analytics", label: "Financial Intelligence" },
+              { key: "mobile", label: "Field Mobility & POS" },
+              { key: "gov", label: "Public Sector Portal" },
+            ].map((tab) => (
+              <button
+                key={tab.key}
+                onClick={() => setActiveFilter(tab.key as any)}
+                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                  activeFilter === tab.key
+                    ? "bg-[#101D35] text-white shadow-sm shadow-[#101D35]/20"
+                    : "bg-white text-slate-600 hover:text-[#101D35] hover:bg-slate-100/80 border border-slate-200/90"
+                }`}
               >
-                <div>
-                  {/* Card Header: Category & Client Type */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pb-5 border-b border-slate-100">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-700">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-xs font-bold text-blue-700 uppercase tracking-wider block">
-                          {study.categoryLabel}
-                        </span>
-                        <span className="text-xs text-slate-500 font-medium">
-                          {study.clientType}
-                        </span>
-                      </div>
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 2x2 Showcase Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {filteredProjects.map((item) => (
+            <SpotlightCard
+              key={item.id}
+              className="flex flex-col justify-between p-7 sm:p-9 border border-slate-200/90 bg-white shadow-xs hover:shadow-xl hover:border-slate-300 transition-all group"
+            >
+              <div>
+                {/* Visual Minimalist Software UI Preview */}
+                <div className="rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-5 mb-6 text-white overflow-hidden shadow-inner">
+                  {/* Window Chrome Header */}
+                  <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800/80">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
                     </div>
-
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200">
-                      <ShieldCheck className="w-3.5 h-3.5" />
-                      Full IP Ownership
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-black text-[#101D35] tracking-tight mt-6 group-hover:text-blue-700 transition-colors">
-                    {study.title}
-                  </h3>
-
-                  {/* Problem & Solution Comparison */}
-                  <div className="mt-5 space-y-3.5 text-sm text-slate-600">
-                    <div className="p-3.5 rounded-xl bg-rose-50/50 border border-rose-100/80">
-                      <span className="text-xs font-bold text-rose-800 uppercase tracking-wider block mb-1">
-                        Tantangan Awal:
-                      </span>
-                      <p className="text-slate-700 leading-relaxed text-xs sm:text-sm">
-                        {study.challenge}
-                      </p>
-                    </div>
-
-                    <div className="p-3.5 rounded-xl bg-blue-50/50 border border-blue-100/80">
-                      <span className="text-xs font-bold text-blue-800 uppercase tracking-wider block mb-1">
-                        Solusi Rekayasa Krevia:
-                      </span>
-                      <p className="text-slate-700 leading-relaxed text-xs sm:text-sm">
-                        {study.solution}
-                      </p>
+                    <div className="flex items-center gap-2 text-[11px] font-medium text-slate-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>{item.mockup.status}</span>
                     </div>
                   </div>
 
-                  {/* Key System Highlights */}
-                  <div className="mt-5 pt-4 border-t border-slate-100">
-                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-2.5">
-                      Pilar Arsitektur Kunci:
-                    </span>
-                    <ul className="grid grid-cols-1 gap-2 text-xs text-slate-600">
-                      {study.systemHighlights.map((highlight, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
-                          <span className="font-medium">{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  {/* Mockup Data Display */}
+                  <div className="space-y-1">
+                    <div className="text-sm sm:text-base font-bold text-slate-100 tracking-tight">
+                      {item.mockup.headline}
+                    </div>
+                    <div className="text-xs text-slate-400">
+                      {item.mockup.subline}
+                    </div>
+                  </div>
+
+                  {/* Micro Metric Telemetry */}
+                  <div className="grid grid-cols-2 gap-3 mt-4 pt-3 border-t border-slate-800/80 text-xs">
+                    <div>
+                      <span className="text-slate-500 block text-[10px] uppercase tracking-wider font-semibold">
+                        {item.mockup.statLeft.label}
+                      </span>
+                      <span className="text-slate-200 font-bold text-sm">
+                        {item.mockup.statLeft.val}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500 block text-[10px] uppercase tracking-wider font-semibold">
+                        {item.mockup.statRight.label}
+                      </span>
+                      <span className="text-slate-200 font-bold text-sm">
+                        {item.mockup.statRight.val}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-                {/* Bottom Section: Metrics, Tech Stack & CTA */}
-                <div className="mt-8 pt-6 border-t border-slate-100">
-                  {/* Measurable ROI Metrics */}
-                  <div className="grid grid-cols-3 gap-2 py-3 px-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-5 text-center">
-                    {study.metrics.map((metric, idx) => (
-                      <div key={idx} className={idx !== 0 ? "border-l border-slate-200" : ""}>
-                        <div className="text-base sm:text-lg font-black text-[#101D35] tracking-tight">
-                          {metric.value}
-                        </div>
-                        <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 mt-0.5 leading-tight">
-                          {metric.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                {/* Meta & Title */}
+                <div className="flex items-center justify-between gap-3 mb-2">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    {item.categoryLabel}
+                  </span>
+                  <span className="text-xs text-slate-400 font-medium">
+                    {item.clientType}
+                  </span>
+                </div>
 
-                  {/* Tech Stack Chips & Action Link */}
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      {study.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-white text-slate-600 border border-slate-200"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                <h3 className="text-xl sm:text-2xl font-bold text-[#101D35] mb-2.5 group-hover:text-blue-900 transition-colors">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  {item.description}
+                </p>
+
+                {/* Minimalist 2-Metric Strip */}
+                <div className="grid grid-cols-2 gap-4 py-3 px-4 rounded-xl bg-slate-50 border border-slate-200/80 mb-6">
+                  {item.metrics.map((metric, idx) => (
+                    <div key={idx} className={idx !== 0 ? "border-l border-slate-200 pl-4" : ""}>
+                      <span className="text-base sm:text-lg font-extrabold text-[#101D35] block">
+                        {metric.value}
+                      </span>
+                      <span className="text-[11px] font-medium text-slate-500 block">
+                        {metric.label}
+                      </span>
                     </div>
-
-                    <a
-                      href="#contact"
-                      onClick={(e) => handleDiscussSimilar(e, study.title)}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-[#101D35] group/link cursor-pointer"
-                    >
-                      <span>Konsultasikan Kebutuhan Serupa</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                    </a>
-                  </div>
+                  ))}
                 </div>
               </div>
-            );
-          })}
-        </div>
 
-        {/* Bottom Assurance Note */}
-        <div className="mt-14 max-w-4xl mx-auto rounded-2xl bg-white border border-blue-100 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left shadow-xs">
-          <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
-              <Layers className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-sm font-bold text-[#101D35]">
-                Punya proses bisnis unik yang membutuhkan arsitektur kustom?
-              </p>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Kami siap merancang solusi arsitektur perangkat lunak dari nol sesuai alur kerja eksklusif perusahaan Anda.
-              </p>
-            </div>
-          </div>
+              {/* Footer: Tags & Action */}
+              <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 rounded-md text-[11px] font-medium bg-slate-100/90 text-slate-600"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
 
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault();
-              smoothScrollTo("#contact", { offset: 80, duration: 1500 });
-              window.history.pushState(null, "", "#contact");
-            }}
-            className="shrink-0 px-5 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-xs font-bold shadow-md shadow-[#101D35]/20 transition-all duration-200 cursor-pointer"
-          >
-            Minta Blueprint Sistem
-          </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    smoothScrollTo("#contact", { offset: 80, duration: 1500 });
+                    window.history.pushState(null, "", "#contact");
+                  }}
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#101D35] hover:text-[#1D4ED8] group/link transition-colors cursor-pointer"
+                >
+                  <span>Bahas Solusi Serupa</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
+            </SpotlightCard>
+          ))}
         </div>
       </div>
     </section>

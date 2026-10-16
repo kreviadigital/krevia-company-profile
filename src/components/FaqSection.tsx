@@ -71,12 +71,11 @@ export function FaqSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 text-xs font-bold mb-4 shadow-xs">
-            <HelpCircle className="w-3.5 h-3.5 text-blue-600" />
-            <span>Transparansi & Tata Kelola Kemitraan</span>
-          </div>
+          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
+            Tata Kelola & Transparansi Kemitraan
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
             Pertanyaan yang Sering Diajukan (FAQ)
           </h2>
 
@@ -88,7 +87,7 @@ export function FaqSection() {
         {/* 4 Trust Badges Horizontal Strip */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-14">
           <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -98,7 +97,7 @@ export function FaqSection() {
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
               <Lock className="w-5 h-5" />
             </div>
             <div>
@@ -108,7 +107,7 @@ export function FaqSection() {
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
               <FileCheck className="w-5 h-5" />
             </div>
             <div>
@@ -118,7 +117,7 @@ export function FaqSection() {
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAFCFF] border border-slate-200/80 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#101D35] flex items-center justify-center shrink-0">
               <Clock className="w-5 h-5" />
             </div>
             <div>
@@ -137,7 +136,7 @@ export function FaqSection() {
                 key={index}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isOpen
-                    ? "bg-white border-blue-200 shadow-md shadow-blue-500/5 ring-1 ring-blue-500/10"
+                    ? "bg-white border-slate-300 shadow-sm"
                     : "bg-[#FAFCFF] border-slate-200/80 hover:border-slate-300"
                 }`}
               >
@@ -148,7 +147,7 @@ export function FaqSection() {
                   aria-expanded={isOpen}
                 >
                   <div className="space-y-1">
-                    <span className="text-[11px] font-bold tracking-wider uppercase text-blue-700 block">
+                    <span className="text-[11px] font-bold tracking-wider uppercase text-slate-500 block">
                       {faq.category}
                     </span>
                     <span className="text-base sm:text-lg font-bold text-[#101D35] block leading-snug">
@@ -158,7 +157,7 @@ export function FaqSection() {
 
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? "bg-blue-600 text-white rotate-180" : "bg-slate-100 text-slate-600"
+                      isOpen ? "bg-[#101D35] text-white rotate-180" : "bg-slate-100 text-slate-600"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
@@ -171,7 +170,7 @@ export function FaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className="px-6 sm:px-8 pb-6 pt-1 text-sm sm:text-base text-slate-600 leading-relaxed border-t border-slate-100">
                         {faq.answer}
@@ -185,9 +184,9 @@ export function FaqSection() {
         </div>
 
         {/* Direct Contact Inquiries Strip */}
-        <div className="mt-14 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-50/80 via-sky-50/50 to-blue-50/80 border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+        <div className="mt-14 max-w-4xl mx-auto p-6 sm:p-8 rounded-3xl bg-slate-50/90 border border-slate-200/90 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-white shadow-xs border border-blue-200 flex items-center justify-center text-blue-700 shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-white shadow-xs border border-slate-200 flex items-center justify-center text-[#101D35] shrink-0">
               <MessageSquare className="w-6 h-6" />
             </div>
             <div>
