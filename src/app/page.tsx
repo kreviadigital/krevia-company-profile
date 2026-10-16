@@ -1,3 +1,4 @@
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ServicesBento } from "@/components/ServicesBento";
@@ -12,6 +13,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#FAFCFF] text-slate-800">
+      <SmoothScroll />
       <Navbar />
       <Hero />
       <ServicesBento />

@@ -34,7 +34,7 @@ export function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-subtle-grid">
+    <section id="hero" className="scroll-mt-20 relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-subtle-grid">
       {/* Subtle ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-[#101D35]/10 via-blue-500/10 to-sky-400/10 rounded-full blur-[130px] pointer-events-none" />
 

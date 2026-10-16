@@ -55,7 +55,7 @@ Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
   };
 
   return (
-    <section id="contact" className="py-24 sm:py-32 relative overflow-hidden bg-slate-50/70">
+    <section id="contact" className="scroll-mt-20 py-24 sm:py-32 relative overflow-hidden bg-slate-50/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

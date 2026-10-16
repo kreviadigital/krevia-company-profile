@@ -24,7 +24,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-24 sm:py-32 relative overflow-hidden bg-white">
+    <section id="about" className="scroll-mt-20 py-24 sm:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Narrative & Stats */}

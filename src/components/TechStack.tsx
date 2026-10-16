@@ -38,7 +38,7 @@ export function TechStack() {
   ];
 
   return (
-    <section id="tech" className="py-24 sm:py-32 relative overflow-hidden bg-white">
+    <section id="tech" className="scroll-mt-20 py-24 sm:py-32 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200/80">
