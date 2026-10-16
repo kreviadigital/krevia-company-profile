@@ -114,6 +114,15 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  href="#portfolio"
+                  onClick={(e) => handleFooterLink(e, "#portfolio")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
+                  Studi Kasus & Portofolio
+                </a>
+              </li>
+              <li>
+                <a
                   href="#why-us"
                   onClick={(e) => handleFooterLink(e, "#why-us")}
                   className="hover:text-[#2563EB] transition-colors cursor-pointer"
@@ -128,6 +137,15 @@ export function Footer() {
                   className="hover:text-[#2563EB] transition-colors cursor-pointer"
                 >
                   Proses Kerja
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#faq"
+                  onClick={(e) => handleFooterLink(e, "#faq")}
+                  className="hover:text-[#2563EB] transition-colors cursor-pointer"
+                >
+                  Tanya Jawab (FAQ)
                 </a>
               </li>
               <li>

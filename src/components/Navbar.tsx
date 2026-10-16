@@ -21,9 +21,10 @@ export function Navbar() {
   const navLinks = [
     { label: "Beranda", href: "#hero" },
     { label: "Layanan", href: "#services" },
-    { label: "Tentang Kami", href: "#about" },
+    { label: "Studi Kasus", href: "#portfolio" },
     { label: "Keunggulan", href: "#why-us" },
     { label: "Proses", href: "#process" },
+    { label: "FAQ", href: "#faq" },
     { label: "Kontak", href: "#contact" },
   ];
 
@@ -57,7 +58,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.label}
