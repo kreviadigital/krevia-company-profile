@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   ArrowUpRight, 
   Layers, 
@@ -9,7 +9,15 @@ import {
   Smartphone, 
   Building2,
   CheckCircle2,
-  Activity
+  Activity,
+  X,
+  ShieldCheck,
+  Cpu,
+  MessageCircle,
+  Database,
+  Lock,
+  Workflow,
+  Sparkles
 } from "lucide-react";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 import { SpotlightCard } from "./ui/SpotlightCard";
@@ -30,10 +38,39 @@ interface ProjectItem {
     statLeft: { label: string; val: string };
     statRight: { label: string; val: string };
   };
+  deepDive: {
+    problemStatement: string;
+    architectureTitle: string;
+    architecturePoints: { title: string; desc: string }[];
+    securityHighlights: string[];
+    businessImpact: string;
+  };
 }
 
 export function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState<"all" | "erp" | "analytics" | "mobile" | "gov">("all");
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+
+  // Close modal on Escape key and prevent background scroll
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedProject]);
 
   const projects: ProjectItem[] = [
     {
@@ -55,6 +92,32 @@ export function PortfolioSection() {
         statLeft: { label: "Discrepancy", val: "0.0%" },
         statRight: { label: "Throughput", val: "1.2k req/s" },
       },
+      deepDive: {
+        problemStatement:
+          "Distributor regional dengan 5 cabang gudang di Riau & Sumatera Barat mengalami selisih stok fisik 4-7% setiap bulan akibat input manual berbasis spreadsheet dan delay rekonsiliasi data hingga 24 jam.",
+        architectureTitle: "Event-Driven Ledger & Multi-Node Synchronization",
+        architecturePoints: [
+          {
+            title: "Atomic Mutation Ledger (PostgreSQL 16)",
+            desc: "Setiap mutasi stok dicatat sebagai transaksi buku besar atomik dengan row-level lock untuk mencegah race condition saat pemindaian serentak dari 5 gudang.",
+          },
+          {
+            title: "Go Microservice & Redis Sync Engine",
+            desc: "Pipeline pemrosesan mutasi barang berbasis Go mampu menangani lonjakan throughput hingga 1.200 req/s dengan latensi sub-150ms.",
+          },
+          {
+            title: "Automated Barcode Batch Ingestion",
+            desc: "Integrasi langsung ke scanner mobile dengan validasi checksum instan untuk mengeliminasi kekeliruan varian SKU barang.",
+          },
+        ],
+        securityHighlights: [
+          "Role-Based Access Control (RBAC) ketat per gudang & supervisor",
+          "Enkripsi data transit TLS 1.3 & token sesi aman",
+          "Immutable Audit Log untuk verifikasi audit kepatuhan berkala",
+        ],
+        businessImpact:
+          "Menghilangkan selisih stok fisik (0.0% discrepancy), memangkas siklus pemenuhan order pelanggan sebesar 72%, serta menghemat ratusan jam kerja rekonsiliasi manual setiap bulan.",
+      },
     },
     {
       id: "finpulse-analytics",
@@ -74,6 +137,32 @@ export function PortfolioSection() {
         subline: "Integrasi mutasi perbankan & POS cabang",
         statLeft: { label: "Efisiensi Waktu", val: "94%" },
         statRight: { label: "Audit Match", val: "100%" },
+      },
+      deepDive: {
+        problemStatement:
+          "Holding dengan 8 unit usaha kesulitan mengawasi likuiditas harian dan potensi kebocoran dana karena masing-masing cabang menggunakan software kasir dan rekening bank yang terpisah.",
+        architectureTitle: "Columnar OLAP Storage & Automated Ingestion Pipeline",
+        architecturePoints: [
+          {
+            title: "Universal Ingestion Pipeline (FastAPI & Python)",
+            desc: "Menerima dan menormalisasi mutasi rekening perbankan serta webhook POS cabang ke skema data keuangan tunggal terstandarisasi.",
+          },
+          {
+            title: "ClickHouse Columnar Database",
+            desc: "Mengagregasi puluhan juta baris histori transaksi keuangan dalam hitungan milidetik untuk query margin laba per detik tanpa membebani database transaksional.",
+          },
+          {
+            title: "Automated Cash Discrepancy Detection",
+            desc: "Sistem mendeteksi deviasi secara otomatis antara setoran kasir fisik dan mutasi rekening koran harian.",
+          },
+        ],
+        securityHighlights: [
+          "Enkripsi AES-256 pada level kolom rekening bank",
+          "Zero-Knowledge View untuk staf non-eksekutif",
+          "Two-Factor Authentication (2FA) pada portal pengeluaran kas",
+        ],
+        businessImpact:
+          "Waktu konsolidasi laporan keuangan holding terpangkas drastis dari 3 hari menjadi 5 menit, dengan tingkat kepatuhan audit mencapai 100%.",
       },
     },
     {
@@ -95,6 +184,32 @@ export function PortfolioSection() {
         statLeft: { label: "Nota Tercetak", val: "Instant" },
         statRight: { label: "Data Integrity", val: "100%" },
       },
+      deepDive: {
+        problemStatement:
+          "Tenaga sales kanvaser di daerah pelosok Sumatera kerap kehilangan sinyal 4G/3G, mengakibatkan transaksi penjualan tertunda, nota fisik tercecer, dan stok kanvas tidak sinkron.",
+        architectureTitle: "Offline-First SQLite Engine & Two-Way Sync Protocol",
+        architecturePoints: [
+          {
+            title: "Local Embedded SQLite Storage",
+            desc: "Seluruh data katalog produk, tier harga grosir, dan riwayat piutang toko tersimpan lokal di perangkat, memungkinkan transaksi berjalan lancar tanpa sinyal.",
+          },
+          {
+            title: "Deterministic Conflict Resolution",
+            desc: "Saat mendeteksi kembali jaringan internet, background sync engine mengirimkan batch faktur dengan algoritma timestamp-vector untuk mencegah duplikasi order.",
+          },
+          {
+            title: "Native Bluetooth Thermal Driver",
+            desc: "Pencetakan nota fisik langsung ke printer thermal portabel melalui protokol Bluetooth BLE tanpa bergantung pada server internet.",
+          },
+        ],
+        securityHighlights: [
+          "Enkripsi database lokal (SQLCipher) untuk proteksi bila gawai hilang",
+          "Validasi anti-spoofing koordinat GPS pada saat check-in toko",
+          "PIN otorisasi limit kredit toko per kanvaser",
+        ],
+        businessImpact:
+          "Menghilangkan risiko kehilangan data (0 data loss), serta meningkatkan kapasitas kunjungan toko harian sales kanvaser sebesar 45%.",
+      },
     },
     {
       id: "silayanan-gov",
@@ -115,6 +230,32 @@ export function PortfolioSection() {
         statLeft: { label: "Pemrosesan", val: "2 Hari" },
         statRight: { label: "SLA Uptime", val: "99.98%" },
       },
+      deepDive: {
+        problemStatement:
+          "Pemohon izin usaha harus melewati 5 loket tatap muka dengan tumpukan map fisik, memakan waktu hingga 14 hari kerja dan minimnya transparansi status bagi pemohon.",
+        architectureTitle: "State-Machine Workflow Engine & Tamper-Proof Digital Verification",
+        architecturePoints: [
+          {
+            title: "Finite State-Machine Engine",
+            desc: "Berkas permohonan bergerak secara terprogram antar-meja verifikator dengan SLA countdown ketat yang dapat dipantau langsung oleh pimpinan dinas.",
+          },
+          {
+            title: "Certified e-Sign & Secure Object Storage",
+            desc: "Surat Keputusan (SK) dibubuhi sertifikat digital resmi X.509 dan disimpan di storage terenkripsi MinIO yang terlindungi dari manipulasi berkas.",
+          },
+          {
+            title: "Dynamic QR Verification",
+            desc: "Masyarakat dan petugas pemeriksa dapat memvalidasi keaslian dokumen SK izin cukup dengan memindai kode QR dinamis melalui kamera smartphone.",
+          },
+        ],
+        securityHighlights: [
+          "Sertifikasi tanda tangan digital anti-pemalsuan",
+          "Watermark dinamis pada dokumen pratinjau berkas",
+          "Audit log terdistribusi yang tidak dapat dimanipulasi",
+        ],
+        businessImpact:
+          "Durasi pemrosesan izin terpangkas drastis dari 14 hari menjadi 2 hari kerja, dengan sistem beroperasi stabil pada SLA Uptime 99.98%.",
+      },
     },
   ];
 
@@ -131,10 +272,10 @@ export function PortfolioSection() {
             Portofolio & Studi Kasus
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
-            Bukti Kinerja Solusi Digital Kami
+            Bukti Kinerja & Rekayasa Solusi Kami
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Ringkasan arsitektur sistem nyata yang kami rancang untuk memecahkan hambatan operasional dan meningkatkan efisiensi bisnis mitra.
+            Klik pada setiap solusi untuk membedah tantangan operasional, arsitektur teknis, dan alasan pemilihan teknologi yang kami gunakan.
           </p>
 
           {/* Filter Tabs */}
@@ -170,7 +311,10 @@ export function PortfolioSection() {
             >
               <div>
                 {/* Visual Minimalist Software UI Preview */}
-                <div className="rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-5 mb-6 text-white overflow-hidden shadow-inner">
+                <div 
+                  onClick={() => setSelectedProject(item)}
+                  className="rounded-2xl bg-slate-900 border border-slate-800 p-4 sm:p-5 mb-6 text-white overflow-hidden shadow-inner cursor-pointer group-hover:border-slate-700 transition-colors"
+                >
                   {/* Window Chrome Header */}
                   <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800/80">
                     <div className="flex items-center gap-1.5">
@@ -225,7 +369,10 @@ export function PortfolioSection() {
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-[#101D35] mb-2.5 group-hover:text-[#1D4ED8] transition-colors">
+                <h3 
+                  onClick={() => setSelectedProject(item)}
+                  className="text-xl sm:text-2xl font-bold text-[#101D35] mb-2.5 group-hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                >
                   {item.title}
                 </h3>
 
@@ -248,7 +395,7 @@ export function PortfolioSection() {
                 </div>
               </div>
 
-              {/* Footer: Tags & Action */}
+              {/* Footer: Tags & Actions */}
               <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-1.5">
                   {item.tags.map((tag) => (
@@ -261,23 +408,153 @@ export function PortfolioSection() {
                   ))}
                 </div>
 
-                <a
-                  href="#contact"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    smoothScrollTo("#contact", { offset: 80, duration: 1500 });
-                    window.history.pushState(null, "", "#contact");
-                  }}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#101D35] hover:text-[#1D4ED8] group/link transition-colors cursor-pointer"
-                >
-                  <span>Bahas Solusi Serupa</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
-                </a>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => setSelectedProject(item)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1D4ED8] hover:text-[#101D35] transition-colors cursor-pointer py-1"
+                  >
+                    <span>Bedah Solusi</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
             </SpotlightCard>
           ))}
         </div>
       </div>
+
+      {/* Technical Deep-Dive Modal */}
+      {selectedProject && (
+        <div 
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8"
+        >
+          {/* Backdrop with Blur */}
+          <div 
+            onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 bg-[#0A1120]/75 backdrop-blur-sm transition-opacity"
+          />
+
+          {/* Modal Container */}
+          <div className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden flex flex-col z-10 animate-in fade-in zoom-in-95 duration-200">
+            {/* Modal Header */}
+            <div className="p-6 sm:p-8 border-b border-slate-200 flex items-start justify-between gap-4 bg-slate-50/70">
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#101D35] bg-blue-50 border border-blue-100 px-3 py-1 rounded-full">
+                    {selectedProject.categoryLabel}
+                  </span>
+                  <span className="text-xs text-slate-500 font-medium">
+                    {selectedProject.clientType}
+                  </span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-[#101D35] tracking-tight">
+                  {selectedProject.title}
+                </h3>
+              </div>
+
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="w-10 h-10 rounded-xl bg-white border border-slate-200 hover:bg-slate-100 text-slate-600 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                aria-label="Tutup Detail"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Scrollable Body */}
+            <div className="p-6 sm:p-8 overflow-y-auto space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+              {/* Problem Section */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#101D35] uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-red-500" />
+                  <span>Tantangan Bisnis Klien</span>
+                </div>
+                <p className="p-4 rounded-2xl bg-red-50/50 border border-red-100 text-slate-700 text-sm sm:text-base">
+                  {selectedProject.deepDive.problemStatement}
+                </p>
+              </div>
+
+              {/* Architecture Breakdown */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#101D35] uppercase tracking-wider">
+                  <Workflow className="w-4 h-4 text-[#1D4ED8]" />
+                  <span>Pendekatan Rekayasa Arsitektur</span>
+                </div>
+                <h4 className="text-lg font-bold text-[#101D35]">
+                  {selectedProject.deepDive.architectureTitle}
+                </h4>
+
+                <div className="space-y-3">
+                  {selectedProject.deepDive.architecturePoints.map((pt, i) => (
+                    <div 
+                      key={i} 
+                      className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1"
+                    >
+                      <p className="font-bold text-[#101D35] text-sm">
+                        {pt.title}
+                      </p>
+                      <p className="text-xs sm:text-sm text-slate-600">
+                        {pt.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Security & Governance */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#101D35] uppercase tracking-wider">
+                  <ShieldCheck className="w-4 h-4 text-[#1D4ED8]" />
+                  <span>Tata Kelola Keamanan & Integritas</span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {selectedProject.deepDive.securityHighlights.map((sec, i) => (
+                    <div key={i} className="p-3.5 rounded-xl bg-white border border-slate-200 text-xs text-slate-700 font-medium flex items-start gap-2 shadow-xs">
+                      <Lock className="w-3.5 h-3.5 text-[#1D4ED8] shrink-0 mt-0.5" />
+                      <span>{sec}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Business Impact Box */}
+              <div className="p-5 rounded-2xl bg-blue-50/60 border border-blue-100 space-y-2">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#101D35] uppercase tracking-wider">
+                  <Sparkles className="w-4 h-4 text-[#1D4ED8]" />
+                  <span>Dampak Nyata bagi Operasional</span>
+                </div>
+                <p className="text-sm font-semibold text-[#101D35]">
+                  {selectedProject.deepDive.businessImpact}
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Footer CTA */}
+            <div className="p-6 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-slate-700 text-sm font-bold border border-slate-200 transition-colors cursor-pointer"
+              >
+                Tutup
+              </button>
+
+              <a
+                href={`https://wa.me/6282283000000?text=${encodeURIComponent(
+                  `Halo Krevia Digital, saya membaca studi kasus arsitektur "${selectedProject.title}" di website Anda dan ingin berkonsultasi mengenai solusi serupa untuk kebutuhan bisnis kami.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white text-sm font-bold transition-all shadow-md cursor-pointer"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>Konsultasikan Solusi Serupa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
