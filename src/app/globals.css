@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-krevia-darker: #050811;
+  --color-krevia-dark: #070a11;
+  --color-krevia-card: #0d121f;
+  --color-krevia-border: #1e293b;
+  --color-krevia-cyan: #06b6d4;
+  --color-krevia-blue: #2563eb;
+  --color-krevia-sky: #0ea5e9;
+  --color-krevia-muted: #94a3b8;
+}
+
+:root {
+  --background: #070a11;
+  --foreground: #f8fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #070a11;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Background grid effect */
+.bg-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.font-mono-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
