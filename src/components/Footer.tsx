@@ -3,20 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle, ArrowUp } from "lucide-react";
-import { smoothScrollTo } from "@/lib/smoothScroll";
+import { MessageCircle } from "lucide-react";
+import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Footer() {
-  const scrollToTop = () => {
-    smoothScrollTo("#hero", { offset: 80, duration: 1200 });
-  };
-
-  const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    smoothScrollTo(href, { offset: 80, duration: 1200 });
-    window.history.pushState(null, "", href);
-  };
-
   const WHATSAPP_NUMBER = "6282283868800";
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Halo Krevia Digital, saya ingin berdiskusi mengenai solusi sistem digital untuk bisnis saya."
@@ -51,7 +41,7 @@ export function Footer() {
               <li>
                 <a
                   href="#services"
-                  onClick={(e) => handleFooterLink(e, "#services")}
+                  onClick={(e) => handleNavClick(e, "#services")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Custom Software
@@ -60,7 +50,7 @@ export function Footer() {
               <li>
                 <a
                   href="#services"
-                  onClick={(e) => handleFooterLink(e, "#services")}
+                  onClick={(e) => handleNavClick(e, "#services")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   System Integration
@@ -69,7 +59,7 @@ export function Footer() {
               <li>
                 <a
                   href="#services"
-                  onClick={(e) => handleFooterLink(e, "#services")}
+                  onClick={(e) => handleNavClick(e, "#services")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   UI/UX Design
@@ -78,7 +68,7 @@ export function Footer() {
               <li>
                 <a
                   href="#services"
-                  onClick={(e) => handleFooterLink(e, "#services")}
+                  onClick={(e) => handleNavClick(e, "#services")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Digitalisasi Proses Bisnis
@@ -121,7 +111,7 @@ export function Footer() {
         <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© 2026 Krevia Digital. Seluruh hak dilindungi.</p>
 
-          <div className="flex items-center gap-6">
+          <div>
             <a
               href={whatsappUrl}
               target="_blank"
@@ -131,15 +121,6 @@ export function Footer() {
               <MessageCircle className="w-4 h-4 text-[#D4A373]" />
               <span>Chat WhatsApp</span>
             </a>
-
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors cursor-pointer"
-              aria-label="Kembali ke atas"
-            >
-              <span>Atas</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
       </div>

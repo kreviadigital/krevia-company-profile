@@ -89,3 +89,22 @@ export function smoothScrollTo(
 
   requestAnimationFrame(step);
 }
+
+/**
+ * Standard anchor click handler for seamless navigation across all components.
+ */
+export function handleNavClick(
+  e: React.MouseEvent<HTMLAnchorElement>,
+  href: string,
+  options?: { offset?: number; duration?: number; onComplete?: () => void }
+) {
+  e.preventDefault();
+  smoothScrollTo(href, {
+    offset: options?.offset ?? 80,
+    duration: options?.duration ?? 1200,
+    onComplete: options?.onComplete,
+  });
+  if (typeof window !== "undefined") {
+    window.history.pushState(null, "", href);
+  }
+}

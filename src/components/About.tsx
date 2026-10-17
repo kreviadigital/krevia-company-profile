@@ -21,6 +21,10 @@ export function About() {
               Krevia Digital membantu UMKM dan bisnis menengah meninggalkan pencatatan manual dengan sistem yang sederhana dan sesuai anggaran. Kami bekerja online, dan untuk klien di Pekanbaru kami siap datang langsung.
             </p>
 
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Didirikan oleh praktisi rekayasa perangkat lunak lokal, kami mendedikasikan keahlian teknologi untuk memodernisasi cara kerja bisnis di Riau tanpa keterikatan pada platform vendor yang kaku atau biaya bulanan yang memberatkan.
+            </p>
+
             <div className="pt-2 space-y-4 text-sm sm:text-base leading-relaxed">
               <div>
                 <span className="font-bold text-[#D4A373]">Sederhana. </span>

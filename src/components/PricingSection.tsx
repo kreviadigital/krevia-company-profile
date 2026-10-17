@@ -1,20 +1,12 @@
 "use client";
 
 import React from "react";
-import { Check } from "lucide-react";
-import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function PricingSection() {
-  const handleCta = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    smoothScrollTo("#contact", { offset: 80, duration: 1200 });
-    window.history.pushState(null, "", "#contact");
-  };
-
   const tiers = [
     {
       name: "Dasar",
-      price: "Terjangkau",
+      price: "Mulai Rp 5 Jt",
       featured: false,
       features: [
         "Website profil usaha",
@@ -24,7 +16,7 @@ export function PricingSection() {
     },
     {
       name: "Usaha",
-      price: "Investasi Bertahap",
+      price: "Mulai Rp 15 Jt",
       featured: true,
       features: [
         "Semua fitur Dasar",
@@ -73,7 +65,7 @@ export function PricingSection() {
                 </h3>
 
                 <p
-                  className={`text-lg font-semibold mt-2 mb-6 ${
+                  className={`text-base font-semibold mt-2 mb-6 ${
                     tier.featured ? "text-[#D4A373]" : "text-slate-600"
                   }`}
                 >
@@ -88,29 +80,17 @@ export function PricingSection() {
                         tier.featured ? "text-slate-300" : "text-slate-600"
                       }`}
                     >
-                      <Check
-                        className={`w-4 h-4 shrink-0 mt-0.5 ${
-                          tier.featured ? "text-[#D4A373]" : "text-[#0D1829]"
+                      <span
+                        className={`text-base leading-none select-none ${
+                          tier.featured ? "text-[#D4A373]" : "text-slate-400"
                         }`}
-                      />
+                      >
+                        •
+                      </span>
                       <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              <div className="mt-8 pt-4">
-                <a
-                  href="#contact"
-                  onClick={handleCta}
-                  className={`block w-full text-center py-2.5 rounded-full text-sm font-medium transition-colors ${
-                    tier.featured
-                      ? "bg-[#D4A373] text-[#0D1829] hover:bg-[#c49262] font-semibold"
-                      : "bg-[#0D1829] text-white hover:bg-slate-800"
-                  }`}
-                >
-                  Pilih Paket
-                </a>
               </div>
             </div>
           ))}

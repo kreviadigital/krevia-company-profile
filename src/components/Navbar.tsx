@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { smoothScrollTo } from "@/lib/smoothScroll";
+import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,11 +26,9 @@ export function Navbar() {
     { label: "FAQ", href: "#faq" },
   ];
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setMobileMenuOpen(false);
-    smoothScrollTo(href, { offset: 80, duration: 1200 });
-    window.history.pushState(null, "", href);
+    handleNavClick(e, href);
   };
 
   return (
@@ -61,7 +59,7 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={(e) => onNavClick(e, link.href)}
                 className="text-sm font-medium text-slate-700 hover:text-[#0D1829] transition-colors cursor-pointer"
               >
                 {link.label}
@@ -73,7 +71,7 @@ export function Navbar() {
           <div className="hidden md:flex items-center">
             <a
               href="#contact"
-              onClick={(e) => handleNavClick(e, "#contact")}
+              onClick={(e) => onNavClick(e, "#contact")}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0D1829] hover:bg-slate-800 text-white text-xs sm:text-sm font-medium transition-all duration-200 hover:shadow-md cursor-pointer"
             >
               Konsultasi Gratis
@@ -99,7 +97,7 @@ export function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={(e) => onNavClick(e, link.href)}
                 className="text-sm font-medium text-slate-700 hover:text-[#0D1829] py-2 px-3 rounded-lg hover:bg-slate-50 cursor-pointer"
               >
                 {link.label}
@@ -107,7 +105,7 @@ export function Navbar() {
             ))}
             <a
               href="#contact"
-              onClick={(e) => handleNavClick(e, "#contact")}
+              onClick={(e) => onNavClick(e, "#contact")}
               className="mt-2 flex items-center justify-center py-2.5 rounded-full bg-[#0D1829] hover:bg-slate-800 text-white font-medium text-sm transition-colors cursor-pointer"
             >
               Konsultasi Gratis
