@@ -7,7 +7,7 @@ import { MessageCircle } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Footer() {
-  const WHATSAPP_NUMBER = "6282283868800";
+  const WHATSAPP_NUMBER = "6285121114148";
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Halo Krevia Digital, saya ingin berdiskusi mengenai solusi sistem digital untuk bisnis saya."
   )}`;
@@ -92,15 +92,15 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: +62 822-8386-8800
+                  WhatsApp: +62 851-2111-4148
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:halo@kreviadigital.com"
+                  href="mailto:kreviadigitalid@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  halo@kreviadigital.com
+                  kreviadigitalid@gmail.com
                 </a>
               </li>
             </ul>

@@ -198,7 +198,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
                 <Mail className="w-4 h-4 text-[#1D4ED8] shrink-0" />
-                <span>Email: halo@kreviadigital.com</span>
+                <span>Email: kreviadigitalid@gmail.com</span>
               </div>
             </div>
           </section>

@@ -38,7 +38,7 @@ ${formData.needs || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
 Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
 
     const encodedText = encodeURIComponent(text);
-    const waUrl = `https://wa.me/6282283868800?text=${encodedText}`;
+    const waUrl = `https://wa.me/6285121114148?text=${encodedText}`;
 
     setSubmitted(true);
     window.open(waUrl, "_blank", "noopener,noreferrer");
@@ -60,19 +60,19 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
               <span className="block mt-1">
                 WhatsApp{" "}
                 <a
-                  href="https://wa.me/6282283868800"
+                  href="https://wa.me/6285121114148"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#D4A373] hover:underline"
                 >
-                  +62 822-8386-8800
+                  +62 851-2111-4148
                 </a>{" "}
                 · Email{" "}
                 <a
-                  href="mailto:halo@kreviadigital.com"
+                  href="mailto:kreviadigitalid@gmail.com"
                   className="text-[#D4A373] hover:underline"
                 >
-                  halo@kreviadigital.com
+                  kreviadigitalid@gmail.com
                 </a>
               </span>
             </p>
