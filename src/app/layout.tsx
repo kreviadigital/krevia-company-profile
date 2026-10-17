@@ -76,7 +76,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.className} bg-[#FAFCFF] text-slate-800 antialiased selection:bg-blue-600/10 selection:text-blue-700`}>
+      <body className={`${plusJakarta.className} bg-[#F8FAFC] text-[#0D1829] antialiased selection:bg-amber-500/20 selection:text-amber-900`}>
         {children}
       </body>
     </html>

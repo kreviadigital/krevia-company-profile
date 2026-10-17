@@ -2,187 +2,97 @@
 
 import React from "react";
 import Image from "next/image";
-import {
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  Code2,
-  Workflow,
-  Layers,
-  Cpu,
-  MapPin,
-  Zap,
-} from "lucide-react";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Hero() {
-  const highlights = [
-    {
-      icon: ShieldCheck,
-      title: "100% Hak Milik Klien",
-      desc: "Source code & data sepenuhnya milik Anda tanpa lock-in.",
-    },
-    {
-      icon: Zap,
-      title: "Eksekusi Cepat & Terukur",
-      desc: "Metodologi agile dengan pemantauan progress berkala.",
-    },
-    {
-      icon: MapPin,
-      title: "Mitra Lokal Terpercaya",
-      desc: "Tim berbasis di Pekanbaru, responsif dan siap berkolaborasi.",
-    },
-  ];
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    smoothScrollTo(href, { offset: 80, duration: 1200 });
+    window.history.pushState(null, "", href);
+  };
 
   return (
-    <section id="hero" className="scroll-mt-20 relative pt-32 pb-20 sm:pt-40 sm:pb-28 overflow-hidden bg-subtle-grid">
-      {/* Subtle ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-[#101D35]/5 via-[#1D4ED8]/5 to-transparent rounded-full blur-[130px] pointer-events-none" />
+    <section id="hero" className="scroll-mt-24 pt-32 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-transparent">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left Column: Editorial Headline & Copy */}
+          <div className="lg:col-span-7 space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-extrabold tracking-tight text-[#0D1829] leading-[1.12]">
+              Berhenti mencatat di buku. Jalankan bisnis dari satu layar.
+            </h1>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Location & Status Badge */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-50/60 border border-blue-100 shadow-xs mb-8">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs sm:text-sm font-bold text-[#101D35]">
-              Startup Teknologi Pekanbaru, Riau • Melayani Seluruh Indonesia
-            </span>
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+              Kami membuat sistem untuk hotel, bengkel, dan UMKM di Pekanbaru: reservasi yang tidak bentrok, riwayat servis yang tidak hilang, laporan yang bisa dibaca kapan saja.
+            </p>
+
+            {/* Dual CTAs */}
+            <div className="pt-2 flex flex-wrap items-center gap-5 sm:gap-7">
+              <a
+                href="#contact"
+                onClick={(e) => handleScrollTo(e, "#contact")}
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0D1829] hover:bg-slate-800 text-white font-medium text-sm sm:text-base transition-all duration-200 hover:shadow-lg shadow-sm cursor-pointer"
+              >
+                Ceritakan kebutuhan Anda
+              </a>
+
+              <a
+                href="#services"
+                onClick={(e) => handleScrollTo(e, "#services")}
+                className="text-sm sm:text-base font-semibold text-[#0D1829] underline underline-offset-8 decoration-slate-300 hover:decoration-[#0D1829] transition-colors cursor-pointer py-2"
+              >
+                Lihat layanan
+              </a>
+            </div>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#101D35] leading-[1.14]">
-            Mitra Rekayasa Perangkat Lunak &{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#101D35] to-[#1D4ED8]">
-              Transformasi Digital
-            </span>{" "}
-            Bisnis Anda
-          </h1>
+          {/* Right Column: Stylized Monogram Graphic & Live Operational Cards */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] py-4">
+            {/* Center Monogram Graphic */}
+            <div className="relative w-64 sm:w-72 aspect-square flex items-center justify-center">
+              <Image
+                src="/logo-mark.png"
+                alt="Krevia Digital Emblem"
+                width={320}
+                height={320}
+                className="w-full h-full object-contain select-none opacity-95 drop-shadow-sm"
+                priority
+              />
+            </div>
 
-          {/* Subtitle */}
-          <p className="mt-6 text-base sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Krevia Digital membantu korporasi, instansi, dan bisnis modern merancang custom software berstandar enterprise, mengintegrasikan sistem multi-platform, dan mengotomatisasi alur operasional.
-          </p>
-
-          {/* Dual CTAs */}
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5">
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("#contact", { offset: 80, duration: 1500 });
-                window.history.pushState(null, "", "#contact");
-              }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-base shadow-lg shadow-[#101D35]/25 hover:shadow-[#1D4ED8]/25 transition-all duration-200 hover:-translate-y-0.5 group cursor-pointer"
-            >
-              <span>Konsultasikan Kebutuhan Proyek</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-
-            <a
-              href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                smoothScrollTo("#services", { offset: 80, duration: 1500 });
-                window.history.pushState(null, "", "#services");
-              }}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl bg-white border border-slate-200 text-[#101D35] font-bold text-base hover:bg-slate-50 hover:border-slate-300 shadow-xs transition-colors cursor-pointer"
-            >
-              <span>Jelajahi 4 Layanan Utama</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Visual Showcase Card: Enterprise Digital Suite */}
-        <div className="mt-16 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-slate-200/90 bg-white shadow-xl shadow-slate-900/5 p-6 sm:p-10 relative overflow-hidden">
-            {/* Top Showcase Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-8 border-b border-slate-100">
-              <div className="flex items-center gap-4">
-                <div className="relative h-12 w-12 shrink-0 rounded-2xl bg-slate-50 border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs">
-                  <Image
-                    src="/logo-mark.png"
-                    alt="Krevia Emblem"
-                    width={96}
-                    height={96}
-                    className="h-full w-full object-contain"
-                  />
-                </div>
-                <div>
-                  <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3 py-1 rounded-full border border-blue-100">
-                    Krevia Digital Enterprise Suite
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#101D35] mt-1">
-                    Solusi Terintegrasi Tanpa Vendor Lock-in
-                  </h3>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  Sistem Siap Skala
+            {/* Floating Card 1: Reservasi Hotel */}
+            <div className="absolute top-2 left-0 sm:-left-4 bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-lg shadow-slate-900/5 max-w-[210px] sm:max-w-[230px] transition-transform hover:-translate-y-1 duration-200">
+              <p className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
+                RESERVASI · CONTOH
+              </p>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 mt-1">
+                Kamar Deluxe 204
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Check-in 18 Okt · 2 malam
+              </p>
+              <div className="mt-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-[#0D1829] text-white text-[11px] font-medium shadow-xs">
+                  Terkonfirmasi
                 </span>
               </div>
             </div>
 
-            {/* 4 Pillars Interactive Preview Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
-                  <Code2 className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-[#101D35] text-base">Custom Software</h4>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                  Web & mobile app bespoke berkinerja tinggi sesuai alur bisnis spesifik.
+            {/* Floating Card 2: Servis Bengkel Pekanbaru (BM Plat) */}
+            <div className="absolute bottom-2 right-0 sm:-right-4 bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-lg shadow-slate-900/5 max-w-[240px] sm:max-w-[270px] transition-transform hover:-translate-y-1 duration-200">
+              <p className="text-[10px] font-semibold tracking-wider text-slate-500 uppercase">
+                SERVIS · CONTOH
+              </p>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 mt-1">
+                BM 1234 AB
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Ganti oli + filter udara
+              </p>
+              <div className="mt-2.5 pt-2 border-t border-slate-100">
+                <p className="text-[11px] font-medium text-slate-600 leading-tight">
+                  Pengerjaan 75% · pengingat servis berikutnya aktif
                 </p>
               </div>
-
-              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
-                  <Workflow className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-[#101D35] text-base">System Integration</h4>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                  Sinkronisasi ERP, CRM, payment gateway, dan database secara real-time.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
-                  <Layers className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-[#101D35] text-base">UI/UX Design</h4>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                  Riset pengalaman pengguna, wireframing, dan desain Figma berstandar global.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#101D35] transition-all">
-                <div className="w-10 h-10 rounded-xl bg-[#101D35] text-white flex items-center justify-center mb-4 shadow-sm">
-                  <Cpu className="w-5 h-5" />
-                </div>
-                <h4 className="font-bold text-[#101D35] text-base">Process Digitization</h4>
-                <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                  Automasi alur kerja, paperless approval, dan dashboard monitoring bisnis.
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom Proof Strip */}
-            <div className="mt-8 pt-6 border-t border-slate-100 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {highlights.map((h, i) => {
-                const Icon = h.icon;
-                return (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#101D35]/5 text-[#101D35] flex items-center justify-center shrink-0 mt-0.5">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-[#101D35]">{h.title}</p>
-                      <p className="text-xs text-slate-500 mt-0.5">{h.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </div>

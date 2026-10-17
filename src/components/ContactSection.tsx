@@ -1,237 +1,197 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  Send,
-  MapPin,
-  Mail,
-  Clock,
-  CheckCircle2,
-  Phone,
-  MessageCircle,
-} from "lucide-react";
-import { SpotlightCard } from "./ui/SpotlightCard";
+import { CheckCircle2 } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
-    company: "",
-    phone: "",
-    service: "Custom Software Development",
-    message: "",
+    contact: "",
+    businessType: "UMKM & Retail",
+    needs: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
 
-  const servicesList = [
-    "Custom Software Development",
-    "System Integration & APIs",
-    "UI/UX Design & Prototyping",
-    "Business Process Digitization",
-    "Konsultasi Transformasi Digital Komprehensif",
+  const businessTypes = [
+    "UMKM & Retail",
+    "Hotel & Penginapan",
+    "Bengkel & Otomotif",
+    "Distribusi & Pergudangan",
+    "Klinik & Kesehatan",
+    "Bisnis / Layanan Lainnya",
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const text = `Halo Krevia Digital,
-Saya ingin berkonsultasi mengenai kebutuhan proyek sistem:
+Saya ingin menceritakan kendala dan kebutuhan bisnis saya:
 
 • Nama: ${formData.name || "-"}
-• Perusahaan / Bisnis: ${formData.company || "-"}
-• Layanan Terkait: ${formData.service}
-• Kontak HP/WA: ${formData.phone || "-"}
+• Kontak (WA/Email): ${formData.contact || "-"}
+• Jenis Usaha: ${formData.businessType}
 
-Catatan / Deskripsi Kebutuhan:
-${formData.message || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
+Kebutuhan / Masalah Operasional:
+${formData.needs || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
 
-Mohon informasi jadwal diskusi berikutnya. Terima kasih!`;
+Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
 
     const encodedText = encodeURIComponent(text);
-    const waUrl = `https://wa.me/6282283000000?text=${encodedText}`;
+    const waUrl = `https://wa.me/6282283868800?text=${encodedText}`;
 
     setSubmitted(true);
     window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
-    <section id="contact" className="scroll-mt-20 py-24 sm:py-32 relative overflow-hidden bg-slate-50/70">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold tracking-wider uppercase text-[#101D35] bg-blue-50/60 px-3.5 py-1.5 rounded-full border border-blue-100">
-            Hubungi Kami
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight mt-4">
-            Konsultasikan Kebutuhan Proyek Anda
-          </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            Tim Krevia Digital di Pekanbaru siap membantu menganalisis kebutuhan sistem dan memberikan rekomendasi solusi teknis terbaik tanpa komitmen awal.
-          </p>
-        </div>
+    <section id="contact" className="scroll-mt-24 py-12 px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto bg-[#0D1829] text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-800 shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          {/* Left Column: Heading & Context */}
+          <div className="lg:col-span-5 space-y-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
+              Ceritakan masalah <br />
+              bisnis Anda.
+            </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Office & Contact Info Card */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
-              <span className="text-xs font-bold text-[#101D35] uppercase tracking-wider block mb-1">
-                Kantor Pusat & Operasional
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed pt-2">
+              Konsultasi awal gratis.{" "}
+              <span className="block mt-1">
+                WhatsApp{" "}
+                <a
+                  href="https://wa.me/6282283868800"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D4A373] hover:underline"
+                >
+                  +62 822-8386-8800
+                </a>{" "}
+                · Email{" "}
+                <a
+                  href="mailto:halo@kreviadigital.com"
+                  className="text-[#D4A373] hover:underline"
+                >
+                  halo@kreviadigital.com
+                </a>
               </span>
-              <h3 className="text-2xl font-bold text-[#101D35] mb-3">
-                Krevia Digital Pekanbaru
-              </h3>
-              <p className="text-sm text-slate-600 mb-8 leading-relaxed">
-                Kami siap menyambut diskusi tatap muka di Pekanbaru maupun pertemuan virtual untuk klien di seluruh Indonesia.
-              </p>
-
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">LOKASI KANTOR</span>
-                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
-                      Kota Pekanbaru, Riau, Indonesia
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">EMAIL RESMI</span>
-                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
-                      halo@kreviadigital.com
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-[#101D35]/10 text-[#101D35] flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">JAM OPERASIONAL</span>
-                    <span className="text-sm font-semibold text-[#101D35] mt-0.5 block">
-                      Senin – Sabtu, 08:30 – 17:30 WIB
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <p className="text-xs text-slate-600 leading-snug">
-                  <strong className="text-[#101D35]">Respons Cepat 1x24 Jam:</strong> Setiap formulir ditinjau langsung oleh tim teknis kami.
-                </p>
-              </div>
-            </div>
+            </p>
           </div>
 
-          {/* Form Card */}
+          {/* Right Column: Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
-              <h3 className="text-xl font-bold text-[#101D35] mb-6">
-                Formulir Permintaan Konsultasi
-              </h3>
-
+            {submitted ? (
+              <div className="p-8 rounded-2xl bg-[#14233c] border border-slate-700/80 text-center space-y-4">
+                <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
+                <h3 className="text-xl font-bold text-white">
+                  Permintaan Terkirim!
+                </h3>
+                <p className="text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                  Kami membuka chat WhatsApp agar Anda dapat langsung terhubung dengan tim teknis kami. Anda juga dapat mengirimkan formulir baru jika diperlukan.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="text-xs text-[#D4A373] hover:underline pt-2 font-medium"
+                >
+                  Kirim permintaan lain
+                </button>
+              </div>
+            ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Nama Lengkap *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Contoh: Budi Santoso"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Perusahaan / Bisnis *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="Contoh: PT Kreasi Maju Bersama"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Nomor WhatsApp / HP *
-                    </label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="Contoh: 0812xxxxxxxx"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Layanan yang Dibutuhkan
-                    </label>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors"
-                    >
-                      {servicesList.map((svc) => (
-                        <option key={svc} value={svc}>
-                          {svc}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Ceritakan Kebutuhan atau Hambatan Sistem Anda
+                  <label
+                    htmlFor="name"
+                    className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2"
+                  >
+                    Nama
                   </label>
-                  <textarea
-                    rows={4}
-                    placeholder="Ceritakan proses operasional yang ingin diotomatisasi, sistem yang ingin dibangun, atau target yang ingin dicapai..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-[#101D35] focus:bg-white transition-colors resize-none"
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    placeholder="Nama Anda atau penanggung jawab"
+                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-[#D4A373] text-sm transition-colors"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-xl bg-[#101D35] hover:bg-[#1D4ED8] text-white font-bold text-sm shadow-lg shadow-[#101D35]/25 hover:shadow-[#1D4ED8]/25 transition-all duration-200 cursor-pointer"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Kirim Permintaan Konsultasi via WhatsApp</span>
-                </button>
+                <div>
+                  <label
+                    htmlFor="contact"
+                    className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2"
+                  >
+                    WhatsApp / Email
+                  </label>
+                  <input
+                    type="text"
+                    id="contact"
+                    required
+                    value={formData.contact}
+                    onChange={(e) =>
+                      setFormData({ ...formData, contact: e.target.value })
+                    }
+                    placeholder="Nomor WhatsApp aktif atau alamat email"
+                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-[#D4A373] text-sm transition-colors"
+                  />
+                </div>
 
-                {submitted && (
-                  <p className="text-center text-xs text-emerald-600 font-semibold mt-2">
-                    ✓ Pesan terformat! WhatsApp terbuka di tab baru. Tim kami siap merespons Anda.
-                  </p>
-                )}
+                <div>
+                  <label
+                    htmlFor="businessType"
+                    className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2"
+                  >
+                    Jenis usaha
+                  </label>
+                  <select
+                    id="businessType"
+                    value={formData.businessType}
+                    onChange={(e) =>
+                      setFormData({ ...formData, businessType: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white focus:outline-none focus:border-[#D4A373] text-sm transition-colors"
+                  >
+                    {businessTypes.map((bt) => (
+                      <option key={bt} value={bt} className="bg-[#0D1829] text-white">
+                        {bt}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="needs"
+                    className="block text-xs font-medium text-slate-300 uppercase tracking-wider mb-2"
+                  >
+                    Kebutuhan Anda
+                  </label>
+                  <textarea
+                    id="needs"
+                    rows={4}
+                    required
+                    value={formData.needs}
+                    onChange={(e) =>
+                      setFormData({ ...formData, needs: e.target.value })
+                    }
+                    placeholder="Ceritakan kendala manual, pembukuan, stok, atau sistem yang ingin dibangun..."
+                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-[#D4A373] text-sm transition-colors resize-none"
+                  />
+                </div>
+
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="px-8 py-3.5 rounded-full bg-[#E4C99D] hover:bg-[#d8bc8f] text-[#0D1829] font-bold text-sm tracking-wide transition-all shadow-md cursor-pointer hover:shadow-lg"
+                  >
+                    Kirim Permintaan
+                  </button>
+                </div>
               </form>
-            </div>
+            )}
           </div>
         </div>
       </div>

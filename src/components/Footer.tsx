@@ -3,195 +3,144 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, ArrowUp } from "lucide-react";
+import { MessageCircle, ArrowUp } from "lucide-react";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function Footer() {
   const scrollToTop = () => {
-    smoothScrollTo("#hero", { offset: 80, duration: 1500 });
+    smoothScrollTo("#hero", { offset: 80, duration: 1200 });
   };
 
   const handleFooterLink = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    smoothScrollTo(href, { offset: 80, duration: 1500 });
+    smoothScrollTo(href, { offset: 80, duration: 1200 });
     window.history.pushState(null, "", href);
   };
 
+  const WHATSAPP_NUMBER = "6282283868800";
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    "Halo Krevia Digital, saya ingin berdiskusi mengenai solusi sistem digital untuk bisnis saya."
+  )}`;
+
   return (
-    <footer className="bg-white text-slate-600 pt-16 pb-12 relative overflow-hidden border-t border-slate-200/90">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-100">
-          {/* Brand Column */}
-          <div className="lg:col-span-5 space-y-4">
-            <Link href="/" className="inline-block group py-1">
+    <footer className="w-full pb-8 pt-4 px-4 sm:px-6 lg:px-8 bg-transparent">
+      <div className="max-w-6xl mx-auto bg-[#0D1829] text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800/60">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-8">
+          {/* Col 1: Brand & Desc */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/" className="inline-block group">
               <Image
                 src="/logo-horizontal.png"
                 alt="Krevia Digital"
                 width={375}
                 height={90}
-                className="h-9 sm:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                className="h-8 w-auto object-contain brightness-0 invert opacity-95 transition-opacity group-hover:opacity-100"
               />
             </Link>
-
-            <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
-              Startup rekayasa perangkat lunak dan transformasi digital berbasis di Pekanbaru, Riau, Indonesia. Membantu bisnis membangun sistem kustom modern yang aman, andal, dan siap bertumbuh.
+            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
+              Software dan solusi digital untuk bisnis lokal di Pekanbaru.
             </p>
-
-            <div className="flex items-center gap-2 text-xs text-slate-500 pt-2">
-              <MapPin className="w-4 h-4 text-[#1D4ED8] shrink-0" />
-              <span>Kota Pekanbaru, Riau, Indonesia</span>
-            </div>
           </div>
 
-          {/* 4 Core Services */}
-          <div className="lg:col-span-4 space-y-3">
-            <p className="text-xs font-bold text-[#101D35] uppercase tracking-wider">
-              Layanan Utama
+          {/* Col 2: Layanan */}
+          <div className="md:col-span-3 space-y-3">
+            <p className="text-sm font-semibold text-white tracking-wide">
+              Layanan
             </p>
-            <ul className="space-y-2.5 text-sm text-slate-600">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Custom Software Development
+                  Custom Software
                 </a>
               </li>
               <li>
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  System Integration & APIs
+                  System Integration
                 </a>
               </li>
               <li>
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  UI/UX Design & Prototyping
+                  UI/UX Design
                 </a>
               </li>
               <li>
                 <a
                   href="#services"
                   onClick={(e) => handleFooterLink(e, "#services")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Business Process Digitization
+                  Digitalisasi Proses Bisnis
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Quick Links */}
-          <div className="lg:col-span-3 space-y-3">
-            <p className="text-xs font-bold text-[#101D35] uppercase tracking-wider">
-              Navigasi Cepat
+          {/* Col 3: Hubungi */}
+          <div className="md:col-span-4 space-y-3">
+            <p className="text-sm font-semibold text-white tracking-wide">
+              Hubungi
             </p>
-            <ul className="space-y-2.5 text-sm text-slate-600">
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li>Layanan online, berbasis di Pekanbaru</li>
+              <li>Siap datang langsung di Pekanbaru</li>
               <li>
                 <a
-                  href="#hero"
-                  onClick={(e) => handleFooterLink(e, "#hero")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
                 >
-                  Beranda
+                  WhatsApp: +62 822-8386-8800
                 </a>
               </li>
               <li>
                 <a
-                  href="#about"
-                  onClick={(e) => handleFooterLink(e, "#about")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
+                  href="mailto:halo@kreviadigital.com"
+                  className="hover:text-white transition-colors"
                 >
-                  Tentang Krevia
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#portfolio"
-                  onClick={(e) => handleFooterLink(e, "#portfolio")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Studi Kasus & Portofolio
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#why-us"
-                  onClick={(e) => handleFooterLink(e, "#why-us")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Mengapa Kami
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#process"
-                  onClick={(e) => handleFooterLink(e, "#process")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Proses Kerja
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  onClick={(e) => handleFooterLink(e, "#faq")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Tanya Jawab (FAQ)
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/kebijakan-privasi"
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Kebijakan Privasi
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  onClick={(e) => handleFooterLink(e, "#contact")}
-                  className="hover:text-[#1D4ED8] transition-colors cursor-pointer"
-                >
-                  Hubungi Kami
+                  halo@kreviadigital.com
                 </a>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-center sm:text-left">
-            <p>
-              © {new Date().getFullYear()} Krevia Digital. All rights reserved. Pekanbaru, Riau, Indonesia.
-            </p>
-            <div className="flex items-center gap-4 text-slate-500">
-              <Link
-                href="/kebijakan-privasi"
-                className="hover:text-[#1D4ED8] transition-colors underline underline-offset-4 decoration-slate-300"
-              >
-                Kebijakan Privasi & PDP
-              </Link>
-            </div>
-          </div>
+        {/* Bottom bar */}
+        <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p>© 2026 Krevia Digital. Seluruh hak dilindungi.</p>
 
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-slate-500 hover:text-[#1D4ED8] transition-colors cursor-pointer"
-          >
-            <span>Kembali ke Atas</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-6">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+            >
+              <MessageCircle className="w-4 h-4 text-[#D4A373]" />
+              <span>Chat WhatsApp</span>
+            </a>
+
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors cursor-pointer"
+              aria-label="Kembali ke atas"
+            >
+              <span>Atas</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
     </footer>

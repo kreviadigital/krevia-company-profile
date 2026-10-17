@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-krevia-navy: #101d35;
-  --color-krevia-navy-dark: #0a1324;
-  --color-krevia-navy-light: #1b2e52;
-  --color-krevia-blue: #1d4ed8;
-  --color-krevia-sky: #0284c7;
+  --color-krevia-navy: #0d1829;
+  --color-krevia-navy-dark: #070d18;
+  --color-krevia-navy-card: #0d1829;
+  --color-krevia-navy-light: #182844;
+  --color-krevia-soft: #f2f4f8;
+  --color-krevia-soft-border: #e2e8f0;
   --color-krevia-canvas: #f8fafc;
   --color-krevia-card: #ffffff;
+  --color-krevia-amber: #d4a373;
+  --color-krevia-amber-hover: #c49262;
+  --color-krevia-amber-btn: #e4c99d;
+  --color-krevia-amber-btn-hover: #d8bc8f;
+  --color-krevia-blue: #1d4ed8;
 }
 
 :root {
   --background: #f8fafc;
-  --foreground: #101d35;
+  --foreground: #0d1829;
 }
 
 html {
