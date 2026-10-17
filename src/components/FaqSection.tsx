@@ -64,7 +64,7 @@ export function FaqSection() {
                   className="w-full flex items-center justify-between text-left gap-4 py-2 group cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-semibold text-slate-900 group-hover:text-[#101D35] transition-colors flex items-center gap-3">
+                  <span className="text-base sm:text-lg font-semibold text-slate-900 group-hover:text-[#0D1829] transition-colors flex items-center gap-3">
                     <ChevronRight
                       className={`w-4 h-4 text-slate-500 transition-transform duration-200 shrink-0 ${
                         isOpen ? "rotate-90 text-[#0D1829]" : ""

@@ -10,6 +10,7 @@ import { PricingSection } from "@/components/PricingSection";
 import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <FaqSection />
       <ContactSection />
       <Footer />
+      <FloatingWhatsApp />
     </main>
   );
 }

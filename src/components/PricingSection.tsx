@@ -39,7 +39,7 @@ export function PricingSection() {
 
   return (
     <section id="pricing" className="scroll-mt-24 py-12 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto bg-[#F2F4F8] rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-200/80 shadow-xs">
+      <div className="max-w-6xl mx-auto bg-[#F3F4F9] rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-200/80 shadow-xs">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0D1829] tracking-tight mb-10 sm:mb-12">
           Paket untuk setiap skala <br className="hidden sm:inline" />
           usaha.

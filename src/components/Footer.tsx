@@ -5,12 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { MessageCircle } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function Footer() {
-  const WHATSAPP_NUMBER = "6285121114148";
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    "Halo Krevia Digital, saya ingin berdiskusi mengenai solusi sistem digital untuk bisnis saya."
-  )}`;
+  const whatsappUrl = SITE_CONFIG.getWhatsappUrl();
 
   return (
     <footer className="w-full pb-8 pt-4 px-4 sm:px-6 lg:px-8 bg-transparent">
@@ -28,7 +26,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              Software dan solusi digital untuk bisnis lokal di Pekanbaru.
+              {SITE_CONFIG.tagline}
             </p>
           </div>
 
@@ -40,8 +38,8 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
-                  href="#services"
-                  onClick={(e) => handleNavClick(e, "#services")}
+                  href="#custom-software"
+                  onClick={(e) => handleNavClick(e, "#custom-software")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Custom Software
@@ -49,8 +47,8 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={(e) => handleNavClick(e, "#services")}
+                  href="#system-integration"
+                  onClick={(e) => handleNavClick(e, "#system-integration")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   System Integration
@@ -58,8 +56,8 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={(e) => handleNavClick(e, "#services")}
+                  href="#ui-ux-design"
+                  onClick={(e) => handleNavClick(e, "#ui-ux-design")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   UI/UX Design
@@ -67,8 +65,8 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="#services"
-                  onClick={(e) => handleNavClick(e, "#services")}
+                  href="#digitalisasi-proses-bisnis"
+                  onClick={(e) => handleNavClick(e, "#digitalisasi-proses-bisnis")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Digitalisasi Proses Bisnis
@@ -92,15 +90,15 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: +62 851-2111-4148
+                  WhatsApp: {SITE_CONFIG.whatsappDisplay}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:kreviadigitalid@gmail.com"
+                  href={`mailto:${SITE_CONFIG.email}`}
                   className="hover:text-white transition-colors"
                 >
-                  kreviadigitalid@gmail.com
+                  {SITE_CONFIG.email}
                 </a>
               </li>
             </ul>

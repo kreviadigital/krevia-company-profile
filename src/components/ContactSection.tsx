@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ export function ContactSection() {
     needs: "",
   });
 
+  const [contactError, setContactError] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   const businessTypes = [
@@ -22,23 +24,38 @@ export function ContactSection() {
     "Bisnis / Layanan Lainnya",
   ];
 
+  const validateContact = (val: string): boolean => {
+    const trimmed = val.trim();
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed);
+    // Allows Indonesian local or international phone format (+62, 08, etc.)
+    const isPhone = /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]{8,15}$/.test(trimmed);
+    return isEmail || isPhone;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateContact(formData.contact)) {
+      setContactError(
+        "Format kontak tidak valid. Masukkan nomor WhatsApp aktif (contoh: 0851...) atau email yang valid."
+      );
+      return;
+    }
+    setContactError("");
 
     const text = `Halo Krevia Digital,
 Saya ingin menceritakan kendala dan kebutuhan bisnis saya:
 
-• Nama: ${formData.name || "-"}
-• Kontak (WA/Email): ${formData.contact || "-"}
+• Nama: ${formData.name.trim()}
+• Kontak (WA/Email): ${formData.contact.trim()}
 • Jenis Usaha: ${formData.businessType}
 
 Kebutuhan / Masalah Operasional:
-${formData.needs || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
+${formData.needs.trim() || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
 
 Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
 
-    const encodedText = encodeURIComponent(text);
-    const waUrl = `https://wa.me/6285121114148?text=${encodedText}`;
+    const waUrl = SITE_CONFIG.getWhatsappUrl(text);
 
     setSubmitted(true);
     window.open(waUrl, "_blank", "noopener,noreferrer");
@@ -60,19 +77,19 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
               <span className="block mt-1">
                 WhatsApp{" "}
                 <a
-                  href="https://wa.me/6285121114148"
+                  href={SITE_CONFIG.getWhatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#D4A373] hover:underline"
                 >
-                  +62 851-2111-4148
+                  {SITE_CONFIG.whatsappDisplay}
                 </a>{" "}
                 · Email{" "}
                 <a
-                  href="mailto:kreviadigitalid@gmail.com"
+                  href={`mailto:${SITE_CONFIG.email}`}
                   className="text-[#D4A373] hover:underline"
                 >
-                  kreviadigitalid@gmail.com
+                  {SITE_CONFIG.email}
                 </a>
               </span>
             </p>
@@ -91,14 +108,22 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                 </p>
                 <button
                   type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="text-xs text-[#D4A373] hover:underline pt-2 font-medium"
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({
+                      name: "",
+                      contact: "",
+                      businessType: "UMKM & Retail",
+                      needs: "",
+                    });
+                  }}
+                  className="text-xs text-[#D4A373] hover:underline pt-2 font-medium cursor-pointer"
                 >
                   Kirim permintaan lain
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div>
                   <label
                     htmlFor="name"
@@ -131,12 +156,21 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                     id="contact"
                     required
                     value={formData.contact}
-                    onChange={(e) =>
-                      setFormData({ ...formData, contact: e.target.value })
-                    }
+                    onChange={(e) => {
+                      setFormData({ ...formData, contact: e.target.value });
+                      if (contactError) setContactError("");
+                    }}
                     placeholder="Nomor WhatsApp aktif atau alamat email"
-                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-[#D4A373] text-sm transition-colors"
+                    className={`w-full px-4 py-3 rounded-xl bg-[#14233c] border ${
+                      contactError ? "border-rose-500" : "border-slate-700/80"
+                    } text-white placeholder-slate-500 focus:outline-none focus:border-[#D4A373] text-sm transition-colors`}
                   />
+                  {contactError && (
+                    <p className="mt-1.5 text-xs text-rose-400 flex items-center gap-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{contactError}</span>
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -152,7 +186,7 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                     onChange={(e) =>
                       setFormData({ ...formData, businessType: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white focus:outline-none focus:border-[#D4A373] text-sm transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-[#14233c] border border-slate-700/80 text-white focus:outline-none focus:border-[#D4A373] text-sm transition-colors cursor-pointer"
                   >
                     {businessTypes.map((bt) => (
                       <option key={bt} value={bt} className="bg-[#0D1829] text-white">

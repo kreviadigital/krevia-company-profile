@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Shield, Lock, FileText, CheckCircle2, Mail, MapPin } from "lucide-react";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Kebijakan Privasi & Perlindungan Data | Krevia Digital",
@@ -198,7 +199,7 @@ export default function PrivacyPolicyPage() {
               </div>
               <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-600">
                 <Mail className="w-4 h-4 text-[#1D4ED8] shrink-0" />
-                <span>Email: kreviadigitalid@gmail.com</span>
+                <span>Email: {SITE_CONFIG.email}</span>
               </div>
             </div>
           </section>
