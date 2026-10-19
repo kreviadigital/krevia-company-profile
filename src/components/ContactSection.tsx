@@ -32,10 +32,23 @@ export function ContactSection() {
     return isEmail || isPhone;
   };
 
+  const sanitizeInput = (val: string, maxLen = 100): string => {
+    return val.replace(/[<>]/g, "").trim().slice(0, maxLen);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateContact(formData.contact)) {
+    const cleanName = sanitizeInput(formData.name, 100);
+    const cleanContact = sanitizeInput(formData.contact, 100);
+    const cleanNeeds = sanitizeInput(formData.needs, 1000);
+
+    if (!cleanName) {
+      setContactError("Mohon masukkan nama Anda.");
+      return;
+    }
+
+    if (!validateContact(cleanContact)) {
       setContactError(
         "Format kontak tidak valid. Masukkan nomor WhatsApp aktif (contoh: 0851...) atau email yang valid."
       );
@@ -46,12 +59,12 @@ export function ContactSection() {
     const text = `Halo Krevia Digital,
 Saya ingin menceritakan kendala dan kebutuhan bisnis saya:
 
-• Nama: ${formData.name.trim()}
-• Kontak (WA/Email): ${formData.contact.trim()}
+• Nama: ${cleanName}
+• Kontak (WA/Email): ${cleanContact}
 • Jenis Usaha: ${formData.businessType}
 
 Kebutuhan / Masalah Operasional:
-${formData.needs.trim() || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
+${cleanNeeds || "Ingin berdiskusi lebih lanjut mengenai solusi sistem."}
 
 Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
 
@@ -90,6 +103,15 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                   className="text-[#D4A373] hover:underline"
                 >
                   {SITE_CONFIG.email}
+                </a>{" "}
+                · Instagram{" "}
+                <a
+                  href={SITE_CONFIG.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#D4A373] hover:underline"
+                >
+                  @{SITE_CONFIG.instagramUsername}
                 </a>
               </span>
             </p>
@@ -135,6 +157,7 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                     type="text"
                     id="name"
                     required
+                    maxLength={100}
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -155,6 +178,7 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                     type="text"
                     id="contact"
                     required
+                    maxLength={100}
                     value={formData.contact}
                     onChange={(e) => {
                       setFormData({ ...formData, contact: e.target.value });
@@ -207,6 +231,7 @@ Mohon informasi ketersediaan jadwal konsultasi gratis. Terima kasih!`;
                     id="needs"
                     rows={4}
                     required
+                    maxLength={1000}
                     value={formData.needs}
                     onChange={(e) =>
                       setFormData({ ...formData, needs: e.target.value })

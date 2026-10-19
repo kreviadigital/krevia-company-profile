@@ -8,6 +8,8 @@ export const SITE_CONFIG = {
   whatsappNumber: "6285121114148",
   whatsappDisplay: "+62 851-2111-4148",
   email: "kreviadigitalid@gmail.com",
+  instagramUsername: "kreviadigital",
+  instagramUrl: "https://www.instagram.com/kreviadigital",
   location: "Kota Pekanbaru, Riau, Indonesia",
   getWhatsappUrl(message?: string) {
     const defaultMsg =

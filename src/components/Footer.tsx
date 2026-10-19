@@ -7,6 +7,24 @@ import { MessageCircle } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
+function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
+}
+
 export function Footer() {
   const whatsappUrl = SITE_CONFIG.getWhatsappUrl();
 
@@ -101,6 +119,17 @@ export function Footer() {
                   {SITE_CONFIG.email}
                 </a>
               </li>
+              <li>
+                <a
+                  href={SITE_CONFIG.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <InstagramIcon className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
+                  <span>Instagram: @{SITE_CONFIG.instagramUsername}</span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -109,7 +138,17 @@ export function Footer() {
         <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© 2026 Krevia Digital. Seluruh hak dilindungi.</p>
 
-          <div>
+          <div className="flex items-center gap-5">
+            <a
+              href={SITE_CONFIG.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
+              aria-label="Instagram Krevia Digital"
+            >
+              <InstagramIcon className="w-4 h-4 text-[#D4A373]" />
+              <span>Instagram</span>
+            </a>
             <a
               href={whatsappUrl}
               target="_blank"
