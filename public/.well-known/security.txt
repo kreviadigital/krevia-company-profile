@@ -1,5 +1,5 @@
-Contact: mailto:security@kreviadigital.com
-Contact: https://wa.me/6285121114148
+Contact: mailto:support@kreviadigitalid.my.id
+Contact: https://wa.me/6285121282601
 Expires: 2027-12-31T23:59:59.000Z
 Preferred-Languages: id, en
 Canonical: https://kreviadigital.com/.well-known/security.txt

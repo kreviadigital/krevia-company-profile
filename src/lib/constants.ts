@@ -5,9 +5,9 @@
 export const SITE_CONFIG = {
   name: "Krevia Digital",
   tagline: "Software dan solusi digital untuk bisnis lokal di Pekanbaru.",
-  whatsappNumber: "6285121114148",
-  whatsappDisplay: "+62 851-2111-4148",
-  email: "kreviadigitalid@gmail.com",
+  whatsappNumber: "6285121282601",
+  whatsappDisplay: "+62 851-2128-2601",
+  email: "support@kreviadigitalid.my.id",
   instagramUsername: "kreviadigital",
   instagramUrl: "https://www.instagram.com/kreviadigital",
   location: "Kota Pekanbaru, Riau, Indonesia",
