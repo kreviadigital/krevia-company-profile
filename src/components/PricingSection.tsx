@@ -11,16 +11,53 @@ import {
   ChevronUp, 
   Layers, 
   Clock, 
-  Wrench,
-  Users,
-  Briefcase
+  Wrench, 
+  Users, 
+  Briefcase,
+  Search,
+  X,
+  SlidersHorizontal
 } from "lucide-react";
-import { PRICING_PLANS, ERP_MODULE_CATALOG, PricingPlan } from "@/lib/pricingData";
+import { 
+  PRICING_PLANS, 
+  ERP_MODULE_CATALOG, 
+  ERP_MODULE_CATEGORIES, 
+  PricingPlan,
+  ModuleStatus,
+  ErpModule
+} from "@/lib/pricingData";
 import { SITE_CONFIG } from "@/lib/constants";
 import { handleNavClick } from "@/lib/smoothScroll";
 
 export function PricingSection() {
   const [showModuleCatalog, setShowModuleCatalog] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedStatus, setSelectedStatus] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  // Filter modules based on search query, category, and status
+  const filteredModules: ErpModule[] = ERP_MODULE_CATALOG.filter((mod) => {
+    const matchesCategory = 
+      selectedCategory === "all" || mod.categorySlug === selectedCategory;
+    const matchesStatus = 
+      selectedStatus === "all" || mod.status === selectedStatus;
+    const q = searchQuery.trim().toLowerCase();
+    const matchesQuery = 
+      !q || 
+      mod.name.toLowerCase().includes(q) ||
+      mod.category.toLowerCase().includes(q) ||
+      mod.description.toLowerCase().includes(q);
+    return matchesCategory && matchesStatus && matchesQuery;
+  });
+
+  const resetFilters = () => {
+    setSelectedCategory("all");
+    setSelectedStatus("all");
+    setSearchQuery("");
+  };
+
+  const hasActiveFilters = 
+    selectedCategory !== "all" || selectedStatus !== "all" || searchQuery.trim() !== "";
 
   return (
     <section id="pricing" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-transparent">
@@ -142,7 +179,7 @@ export function PricingSection() {
                     <span>{plan.ctaText}</span>
                     <ArrowRight className="w-4 h-4" />
                   </a>
-                  <p className={`text-xs text-center mt-2.5 ${isFeatured ? "text-slate-400" : "text-slate-400"}`}>
+                  <p className="text-xs text-center mt-2.5 text-slate-400">
                     Konsultasi langsung tanpa komitmen awal
                   </p>
                 </div>
@@ -160,7 +197,7 @@ export function PricingSection() {
               <span>Transparansi Implementasi & Kustomisasi</span>
             </div>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Semua paket langganan mencakup infrastruktur server awan dan pembaruan sistem. Penambahan modul khusus, migrasi basis data lama, atau integrasi pihak ketiga dapat disesuaikan berdasarkan kesepakatan cakupan kerja teknis.
+              Semua paket langganan mencakup infrastruktur cloud terkelola dan pembaruan sistem. Anda dapat mengeksplorasi seluruh katalog 44+ modul kami untuk merancang konfigurasi yang paling tepat bagi bisnis Anda.
             </p>
           </div>
 
@@ -169,7 +206,7 @@ export function PricingSection() {
             onClick={() => setShowModuleCatalog(!showModuleCatalog)}
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-[#101D35] text-xs sm:text-sm font-bold transition-colors cursor-pointer shrink-0"
           >
-            <span>{showModuleCatalog ? "Tutup Katalog Modul" : "Lihat Katalog Modul ERP"}</span>
+            <span>{showModuleCatalog ? "Tutup Katalog Modul" : `Lihat Katalog Lengkap (${ERP_MODULE_CATALOG.length} Modul)`}</span>
             {showModuleCatalog ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
@@ -177,67 +214,205 @@ export function PricingSection() {
         {/* Expandable Module Catalog Breakdown */}
         {showModuleCatalog && (
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-md space-y-6 animate-in fade-in duration-200">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#101D35]">
-                Daftar & Status Kesiapan Modul Krevia ERP
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Kami secara transparan memisahkan modul yang telah siap digunakan, modul dalam perencanaan, dan modul yang memerlukan pengembangan kustom.
-              </p>
+            
+            {/* Catalog Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#101D35]">
+                  Daftar & Status Kesiapan {ERP_MODULE_CATALOG.length} Modul Krevia ERP
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                  Kami secara transparan memisahkan modul yang telah siap digunakan, modul dalam perencanaan, dan modul pengembangan kustom.
+                </p>
+              </div>
+
+              {hasActiveFilters && (
+                <button
+                  type="button"
+                  onClick={resetFilters}
+                  className="text-xs font-bold text-[#101D35] hover:text-rose-600 underline cursor-pointer shrink-0"
+                >
+                  Reset Semua Filter
+                </button>
+              )}
             </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm border-collapse">
-                <thead>
-                  <tr className="border-b border-slate-200 text-slate-500 font-bold uppercase text-xs tracking-wider">
-                    <th className="py-3 px-3">Nama Modul</th>
-                    <th className="py-3 px-3">Kategori</th>
-                    <th className="py-3 px-3">Deskripsi Singkat</th>
-                    <th className="py-3 px-3 text-center">Status</th>
-                    <th className="py-3 px-3 text-right">Ketersediaan Paket</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100">
-                  {ERP_MODULE_CATALOG.map((mod) => {
-                    let badgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
-                    let IconComponent = Check;
-                    if (mod.status === "planned") {
-                      badgeClass = "bg-amber-50 text-amber-700 border-amber-200";
-                      IconComponent = Clock;
-                    } else if (mod.status === "custom") {
-                      badgeClass = "bg-purple-50 text-purple-700 border-purple-200";
-                      IconComponent = Wrench;
-                    }
+            {/* Search and Status Filters Toolbar */}
+            <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+              {/* Search Box */}
+              <div className="relative flex-1">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari modul (misal: General Ledger, PPh 21, PO, Kurva S, POS)..."
+                  className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#24D6B0]/40 focus:border-[#24D6B0]"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
+                    aria-label="Hapus pencarian"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
 
-                    return (
-                      <tr key={mod.id} className="hover:bg-slate-50/70 transition-colors">
-                        <td className="py-3.5 px-3 font-bold text-[#101D35] whitespace-nowrap">
-                          {mod.name}
-                        </td>
-                        <td className="py-3.5 px-3 text-slate-600 whitespace-nowrap">
-                          {mod.category}
-                        </td>
-                        <td className="py-3.5 px-3 text-slate-600 min-w-[240px]">
-                          {mod.description}
-                        </td>
-                        <td className="py-3.5 px-3 text-center whitespace-nowrap">
-                          <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeClass}`}>
-                            <IconComponent className="w-3 h-3" />
-                            <span>{mod.statusLabel}</span>
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-3 text-right whitespace-nowrap font-medium text-slate-700">
-                          {mod.includedIn.map((p) => p.toUpperCase()).join(", ")}
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+              {/* Status Filter Chips */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 shrink-0">
+                <span className="text-xs text-slate-400 font-semibold mr-1 hidden sm:inline">Status:</span>
+                {[
+                  { id: "all", label: "Semua Status" },
+                  { id: "available", label: "Tersedia" },
+                  { id: "planned", label: "Direncanakan" },
+                  { id: "custom", label: "Kustom" },
+                ].map((s) => (
+                  <button
+                    key={s.id}
+                    type="button"
+                    onClick={() => setSelectedStatus(s.id)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer ${
+                      selectedStatus === s.id
+                        ? "bg-[#101D35] text-white"
+                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    }`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
+            {/* Category Filter Tabs */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
+              {ERP_MODULE_CATEGORIES.map((cat) => {
+                const isSelected = selectedCategory === cat.id;
+                const count = cat.id === "all"
+                  ? ERP_MODULE_CATALOG.length
+                  : ERP_MODULE_CATALOG.filter((m) => m.categorySlug === cat.id).length;
+
+                return (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
+                      isSelected
+                        ? "bg-[#24D6B0] text-[#101D35]"
+                        : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                    }`}
+                  >
+                    <span>{cat.label}</span>
+                    <span className={`px-1.5 py-0.2 rounded-full text-xs font-semibold ${
+                      isSelected ? "bg-[#101D35]/15 text-[#101D35]" : "bg-slate-200 text-slate-500"
+                    }`}>
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Results Counter */}
+            <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
+              <span>
+                Menampilkan <strong className="text-slate-800">{filteredModules.length}</strong> dari {ERP_MODULE_CATALOG.length} modul
+              </span>
+              {hasActiveFilters && (
+                <span className="text-[#24D6B0] font-semibold">Filter Aktif</span>
+              )}
+            </div>
+
+            {/* Table of Modules */}
+            {filteredModules.length > 0 ? (
+              <div className="overflow-x-auto rounded-xl border border-slate-200">
+                <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                  <thead>
+                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-bold uppercase text-xs tracking-wider">
+                      <th className="py-3 px-4">Nama Modul</th>
+                      <th className="py-3 px-4">Kategori</th>
+                      <th className="py-3 px-4">Deskripsi Kapabilitas</th>
+                      <th className="py-3 px-4 text-center">Status</th>
+                      <th className="py-3 px-4 text-right">Paket</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100">
+                    {filteredModules.map((mod) => {
+                      let badgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
+                      let IconComponent = Check;
+                      if (mod.status === "planned") {
+                        badgeClass = "bg-amber-50 text-amber-700 border-amber-200";
+                        IconComponent = Clock;
+                      } else if (mod.status === "custom") {
+                        badgeClass = "bg-purple-50 text-purple-700 border-purple-200";
+                        IconComponent = Wrench;
+                      }
+
+                      return (
+                        <tr key={mod.id} className="hover:bg-slate-50/70 transition-colors">
+                          <td className="py-3.5 px-4 font-bold text-[#101D35] whitespace-nowrap">
+                            <div className="flex items-center gap-1.5">
+                              <span>{mod.name}</span>
+                              {mod.isHighlight && (
+                                <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#24D6B0]" title="Pilar Utama" />
+                              )}
+                            </div>
+                          </td>
+                          <td className="py-3.5 px-4 text-slate-600 whitespace-nowrap">
+                            {mod.category}
+                          </td>
+                          <td className="py-3.5 px-4 text-slate-600 min-w-[260px] leading-relaxed">
+                            {mod.description}
+                          </td>
+                          <td className="py-3.5 px-4 text-center whitespace-nowrap">
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold border ${badgeClass}`}>
+                              <IconComponent className="w-3 h-3" />
+                              <span>{mod.statusLabel}</span>
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 text-right whitespace-nowrap font-medium text-slate-700">
+                            {mod.includedIn.map((p) => p.toUpperCase()).join(", ")}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              /* Empty State */
+              <div className="text-center py-12 px-4 rounded-2xl bg-slate-50 border border-dashed border-slate-200 space-y-3">
+                <p className="text-sm font-semibold text-slate-700">
+                  Tidak ada modul yang cocok dengan kriteria pencarian &quot;{searchQuery}&quot;.
+                </p>
+                <p className="text-xs text-slate-500 max-w-md mx-auto">
+                  Perusahaan Anda membutuhkan alur kerja atau modul yang belum tercantum? Tim perekayasa Krevia dapat mengembangkannya secara kustom.
+                </p>
+                <div className="pt-2 flex items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Reset Filter
+                  </button>
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleNavClick(e, "#contact")}
+                    className="px-4 py-2 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white text-xs font-bold transition-colors cursor-pointer"
+                  >
+                    Diskusikan Modul Kustom
+                  </a>
+                </div>
+              </div>
+            )}
+
+            {/* Catalog Drawer Footer */}
             <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
-              <span>Modul dapat ditambahkan sesuai kompatibilitas teknis dan kesepakatan lisensi.</span>
+              <span>Modul dapat dikombinasikan dan ditambahkan sesuai skala bisnis Anda tanpa migrasi ulang database.</span>
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
@@ -246,6 +421,7 @@ export function PricingSection() {
                 Diskusikan Kebutuhan Modul Bisnis Anda &rarr;
               </a>
             </div>
+
           </div>
         )}
 
