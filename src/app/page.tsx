@@ -2,29 +2,27 @@ import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { ServicesBento } from "@/components/ServicesBento";
-import { IndustrySolutions } from "@/components/IndustrySolutions";
+import { ProductSpotlight } from "@/components/ProductSpotlight";
+import { ErpCapabilities } from "@/components/ErpCapabilities";
+import { WhyKrevia } from "@/components/WhyKrevia";
+import { HowWeWork } from "@/components/HowWeWork";
 import { About } from "@/components/About";
-import { WorkProcess } from "@/components/WorkProcess";
-import { PricingSection } from "@/components/PricingSection";
-import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F8FAFC] text-[#0D1829]">
+    <main className="min-h-screen bg-[#F4F7FB] text-[#101D35]">
       <Preloader />
       <SmoothScroll />
       <Navbar />
       <Hero />
-      <ServicesBento />
-      <IndustrySolutions />
+      <ProductSpotlight />
+      <ErpCapabilities />
+      <WhyKrevia />
+      <HowWeWork />
       <About />
-      <WorkProcess />
-      <PricingSection />
-      <FaqSection />
       <ContactSection />
       <Footer />
       <FloatingWhatsApp />

@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-krevia-navy: #0d1829;
-  --color-krevia-navy-dark: #070d18;
-  --color-krevia-navy-card: #0d1829;
-  --color-krevia-navy-light: #182844;
-  --color-krevia-soft: #f3f4f9;
+  --color-krevia-navy: #101d35;
+  --color-krevia-navy-dark: #0b1322;
+  --color-krevia-navy-card: #13223f;
+  --color-krevia-navy-light: #1c2e4f;
+  --color-krevia-teal: #24d6b0;
+  --color-krevia-teal-hover: #1ab895;
+  --color-krevia-teal-subtle: rgba(36, 214, 176, 0.12);
+  --color-krevia-soft: #f1f5f9;
   --color-krevia-soft-border: #e2e8f0;
-  --color-krevia-input: #14233c;
-  --color-krevia-input-border: #334155;
-  --color-krevia-canvas: #f8fafc;
+  --color-krevia-canvas: #f4f7fb;
   --color-krevia-card: #ffffff;
-  --color-krevia-amber: #d4a373;
-  --color-krevia-amber-hover: #c49262;
-  --color-krevia-amber-btn: #e4c99d;
-  --color-krevia-amber-btn-hover: #d8bc8f;
-  --color-krevia-blue: #1d4ed8;
+  --color-krevia-slate: #64748b;
+  --color-krevia-slate-dark: #334155;
+  --color-krevia-input: #101d35;
+  --color-krevia-input-border: #334155;
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0d1829;
+  --background: #f4f7fb;
+  --foreground: #101d35;
 }
 
 html {
@@ -56,12 +56,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Subtle grid pattern tinted with the official Krevia Navy #101D35 */
+/* Subtle engineering grid pattern */
 .bg-subtle-grid {
   background-size: 40px 40px;
   background-image: 
     linear-gradient(to right, rgba(16, 29, 53, 0.035) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(16, 29, 53, 0.035) 1px, transparent 1px);
+}
+
+.bg-dark-grid {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */

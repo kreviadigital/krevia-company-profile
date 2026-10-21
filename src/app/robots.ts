@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://kreviadigital.com/sitemap.xml",
+    sitemap: "https://kreviadigitalid.my.id/sitemap.xml",
   };
 }

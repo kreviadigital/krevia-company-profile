@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageCircle } from "lucide-react";
+import { MessageSquare, Mail, MapPin, ArrowUpRight } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -17,6 +17,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
     >
       <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -26,15 +27,16 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 }
 
 export function Footer() {
-  const whatsappUrl = SITE_CONFIG.getWhatsappUrl();
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="w-full pb-8 pt-4 px-4 sm:px-6 lg:px-8 bg-transparent">
-      <div className="max-w-6xl mx-auto bg-[#0D1829] text-white rounded-3xl p-8 sm:p-12 shadow-xl border border-slate-800/60">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-8">
+      <div className="max-w-6xl mx-auto bg-[#101D35] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-slate-800">
+          
           {/* Col 1: Brand & Desc */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="inline-block group">
+            <Link href="/" className="inline-block group" aria-label="Krevia Digital Home">
               <Image
                 src="/logo-horizontal.png"
                 alt="Krevia Digital"
@@ -44,74 +46,78 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              {SITE_CONFIG.tagline}
+              Integrated ERP solutions for modern businesses. Connecting field operations, budgets, and project visibility into one unified system.
+            </p>
+            <p className="text-xs text-slate-400 font-medium">
+              Build Smarter. Operate Better.
             </p>
           </div>
 
-          {/* Col 2: Layanan */}
+          {/* Col 2: ERP Solutions */}
           <div className="md:col-span-3 space-y-3">
-            <p className="text-sm font-semibold text-white tracking-wide">
-              Layanan
+            <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
+              ERP Products
             </p>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
-                  href="#custom-software"
-                  onClick={(e) => handleNavClick(e, "#custom-software")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                  href="#construction-erp"
+                  onClick={(e) => handleNavClick(e, "#construction-erp")}
+                  className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  Custom Software
+                  <span>Construction ERP</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">Early Access</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="#system-integration"
-                  onClick={(e) => handleNavClick(e, "#system-integration")}
+                  href="#capabilities"
+                  onClick={(e) => handleNavClick(e, "#capabilities")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  System Integration
+                  Core Capabilities
                 </a>
               </li>
               <li>
                 <a
-                  href="#ui-ux-design"
-                  onClick={(e) => handleNavClick(e, "#ui-ux-design")}
+                  href="#why-krevia"
+                  onClick={(e) => handleNavClick(e, "#why-krevia")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  UI/UX Design
+                  Why Krevia
                 </a>
               </li>
               <li>
                 <a
-                  href="#digitalisasi-proses-bisnis"
-                  onClick={(e) => handleNavClick(e, "#digitalisasi-proses-bisnis")}
+                  href="#how-we-work"
+                  onClick={(e) => handleNavClick(e, "#how-we-work")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Digitalisasi Proses Bisnis
+                  Implementation Process
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Hubungi */}
+          {/* Col 3: Direct Contact */}
           <div className="md:col-span-4 space-y-3">
-            <p className="text-sm font-semibold text-white tracking-wide">
-              Hubungi
+            <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
+              Direct Contact
             </p>
-            <ul className="space-y-2 text-sm text-slate-300">
-              <li>Layanan online, berbasis di Pekanbaru</li>
-              <li>Siap datang langsung di Pekanbaru</li>
-              <li>
+            <ul className="space-y-2.5 text-sm text-slate-300">
+              <li className="flex items-center gap-2.5">
+                <MessageSquare className="w-4 h-4 text-[#24D6B0] shrink-0" />
                 <a
-                  href={whatsappUrl}
+                  href={SITE_CONFIG.getWhatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
-                  WhatsApp: {SITE_CONFIG.whatsappDisplay}
+                  {SITE_CONFIG.whatsappDisplay}
                 </a>
               </li>
-              <li>
+              <li className="flex items-center gap-2.5">
+                <Mail className="w-4 h-4 text-[#24D6B0] shrink-0" />
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
                   className="hover:text-white transition-colors"
@@ -119,47 +125,52 @@ export function Footer() {
                   {SITE_CONFIG.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={SITE_CONFIG.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors flex items-center gap-1.5"
-                >
-                  <InstagramIcon className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
-                  <span>Instagram: @{SITE_CONFIG.instagramUsername}</span>
-                </a>
+              <li className="flex items-start gap-2.5">
+                <MapPin className="w-4 h-4 text-[#24D6B0] shrink-0 mt-0.5" />
+                <span className="text-slate-400">
+                  {SITE_CONFIG.location}
+                </span>
               </li>
             </ul>
+
+            <div className="pt-2">
+              <a
+                href={SITE_CONFIG.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+              >
+                <InstagramIcon className="w-4 h-4" />
+                <span>@{SITE_CONFIG.instagramUsername}</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Bottom Sub-bar */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <p>
+            &copy; {currentYear} Krevia Digital. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-6">
+            <Link
+              href="/kebijakan-privasi"
+              className="hover:text-white transition-colors"
+            >
+              Privacy Policy & Data Protection
+            </Link>
+            <a
+              href="#hero"
+              onClick={(e) => handleNavClick(e, "#hero")}
+              className="hover:text-white transition-colors"
+            >
+              Back to Top ↑
+            </a>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 Krevia Digital. Seluruh hak dilindungi.</p>
-
-          <div className="flex items-center gap-5">
-            <a
-              href={SITE_CONFIG.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
-              aria-label="Instagram Krevia Digital"
-            >
-              <InstagramIcon className="w-4 h-4 text-[#D4A373]" />
-              <span>Instagram</span>
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors"
-            >
-              <MessageCircle className="w-4 h-4 text-[#D4A373]" />
-              <span>Chat WhatsApp</span>
-            </a>
-          </div>
-        </div>
       </div>
     </footer>
   );

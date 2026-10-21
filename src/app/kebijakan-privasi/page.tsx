@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
               Komitmen Privasi Krevia Digital
             </h2>
             <p>
-              Krevia Digital (&ldquo;kami&rdquo;) merupakan entitas rekayasa perangkat lunak dan transformasi digital yang berbasis di Kota Pekanbaru, Riau, Indonesia. Kami berkomitmen menjunjung tinggi standar keamanan tertinggi dalam mengelola data mitra bisnis, calon klien, dan pengunjung situs web kami (<strong>kreviadigital.com</strong>).
+              Krevia Digital (&ldquo;kami&rdquo;) merupakan entitas rekayasa perangkat lunak dan transformasi digital yang berbasis di Kota Pekanbaru, Riau, Indonesia. Kami berkomitmen menjunjung tinggi standar keamanan tertinggi dalam mengelola data mitra bisnis, calon klien, dan pengunjung situs web kami (<strong>kreviadigitalid.my.id</strong>).
             </p>
             <p>
               Kebijakan ini menjelaskan bagaimana kami mengumpulkan, mengamankan, dan menggunakan data Anda secara transparan tanpa pernah memperjualbelikannya kepada pihak ketiga mana pun.

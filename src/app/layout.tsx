@@ -9,19 +9,19 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kreviadigital.com"),
-  title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital di Pekanbaru",
+  metadataBase: new URL("https://kreviadigitalid.my.id"),
+  title: "Krevia Digital | Integrated ERP Solutions",
   description:
-    "Krevia Digital adalah mitra rekayasa perangkat lunak dan transformasi digital di Pekanbaru, Riau, Indonesia. Layanan mencakup Custom Software Development, System Integration, UI/UX Design, dan Business Process Digitization.",
+    "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
   keywords: [
     "Krevia Digital",
-    "Software House Pekanbaru",
-    "Custom Software Pekanbaru",
-    "System Integration Indonesia",
-    "UI/UX Design Pekanbaru",
-    "Digitalisasi Proses Bisnis",
-    "Jasa Pembuatan Aplikasi Riau",
-    "Konsultan IT Pekanbaru",
+    "Construction ERP",
+    "Integrated ERP Solutions",
+    "Project Cost Control",
+    "Construction Management Software",
+    "Indonesian ERP Software",
+    "B2B Enterprise Systems",
+    "Business Process Digitization",
   ],
   authors: [{ name: "Krevia Digital" }],
   icons: {
@@ -34,25 +34,27 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital",
-    description: "Mitra rekayasa teknologi terpercaya untuk Custom Software, Integrasi Sistem, Desain UI/UX, dan Digitalisasi Bisnis.",
-    url: "https://kreviadigital.com",
+    title: "Krevia Digital | Integrated ERP Solutions",
+    description:
+      "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
+    url: "https://kreviadigitalid.my.id",
     siteName: "Krevia Digital",
-    locale: "id_ID",
+    locale: "en_US",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Krevia Digital - Solusi Software Kustom & Arsitektur Skalabel di Pekanbaru",
+        alt: "Krevia Digital - Integrated ERP Solutions & Construction Management",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krevia Digital | Solusi Software Kustom & Transformasi Digital",
-    description: "Mitra rekayasa teknologi terpercaya untuk Custom Software, Integrasi Sistem, Desain UI/UX, dan Digitalisasi Bisnis.",
+    title: "Krevia Digital | Integrated ERP Solutions",
+    description:
+      "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
     images: ["/og-image.png"],
   },
 };
@@ -63,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="id">
+    <html lang="en">
       <head>
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -78,7 +80,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.className} bg-[#F8FAFC] text-[#0D1829] antialiased selection:bg-amber-500/20 selection:text-amber-900`}>
+      <body className={`${plusJakarta.className} bg-[#F4F7FB] text-[#101D35] antialiased selection:bg-[#24D6B0]/20 selection:text-[#101D35]`}>
         {children}
       </body>
     </html>
