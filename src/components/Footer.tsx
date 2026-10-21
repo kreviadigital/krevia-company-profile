@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { MessageSquare, Mail, MapPin, ArrowUpRight } from "lucide-react";
+import { MessageSquare, Mail, MapPin } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -36,7 +36,7 @@ export function Footer() {
           
           {/* Col 1: Brand & Desc */}
           <div className="md:col-span-5 space-y-4">
-            <Link href="/" className="inline-block group" aria-label="Krevia Digital Home">
+            <Link href="/" className="inline-block group" aria-label="Beranda Krevia Digital">
               <Image
                 src="/logo-horizontal.png"
                 alt="Krevia Digital"
@@ -46,27 +46,36 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              Integrated ERP solutions for modern businesses. Connecting field operations, budgets, and project visibility into one unified system.
+              Solusi platform ERP modular untuk bisnis modern. Menghubungkan alur operasional, anggaran, dan visibilitas proyek ke dalam satu sistem terpadu.
             </p>
             <p className="text-xs text-slate-400 font-medium">
-              Build Smarter. Operate Better.
+              Bangun Lebih Cerdas. Beroperasi Lebih Baik.
             </p>
           </div>
 
           {/* Col 2: ERP Solutions */}
           <div className="md:col-span-3 space-y-3">
             <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              ERP Products
+              Produk & Navigasi
             </p>
             <ul className="space-y-2 text-sm text-slate-300">
+              <li>
+                <a
+                  href="#pricing"
+                  onClick={(e) => handleNavClick(e, "#pricing")}
+                  className="hover:text-white transition-colors cursor-pointer font-semibold text-white"
+                >
+                  Paket Langganan ERP
+                </a>
+              </li>
               <li>
                 <a
                   href="#construction-erp"
                   onClick={(e) => handleNavClick(e, "#construction-erp")}
                   className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  <span>Construction ERP</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">Early Access</span>
+                  <span>Konstruksi ERP</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">Akses Awal</span>
                 </a>
               </li>
               <li>
@@ -75,7 +84,7 @@ export function Footer() {
                   onClick={(e) => handleNavClick(e, "#capabilities")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Core Capabilities
+                  Kapabilitas Modul
                 </a>
               </li>
               <li>
@@ -84,7 +93,7 @@ export function Footer() {
                   onClick={(e) => handleNavClick(e, "#why-krevia")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Why Krevia
+                  Mengapa Krevia
                 </a>
               </li>
               <li>
@@ -93,7 +102,7 @@ export function Footer() {
                   onClick={(e) => handleNavClick(e, "#how-we-work")}
                   className="hover:text-white transition-colors cursor-pointer"
                 >
-                  Implementation Process
+                  Alur Implementasi
                 </a>
               </li>
             </ul>
@@ -102,7 +111,7 @@ export function Footer() {
           {/* Col 3: Direct Contact */}
           <div className="md:col-span-4 space-y-3">
             <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              Direct Contact
+              Kontak Resmi
             </p>
             <ul className="space-y-2.5 text-sm text-slate-300">
               <li className="flex items-center gap-2.5">
@@ -151,7 +160,7 @@ export function Footer() {
         {/* Bottom Sub-bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>
-            &copy; {currentYear} Krevia Digital. All rights reserved.
+            &copy; {currentYear} Krevia Digital. Hak Cipta Dilindungi.
           </p>
 
           <div className="flex items-center gap-6">
@@ -159,14 +168,14 @@ export function Footer() {
               href="/kebijakan-privasi"
               className="hover:text-white transition-colors"
             >
-              Privacy Policy & Data Protection
+              Kebijakan Privasi & Tata Kelola Data
             </Link>
             <a
               href="#hero"
               onClick={(e) => handleNavClick(e, "#hero")}
               className="hover:text-white transition-colors"
             >
-              Back to Top ↑
+              Kembali ke Atas ↑
             </a>
           </div>
         </div>

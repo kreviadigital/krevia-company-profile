@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, ShieldCheck, Compass, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export function About() {
   return (
@@ -17,54 +17,54 @@ export function About() {
           <div className="lg:col-span-5 space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-[#24D6B0] text-xs font-bold tracking-wider uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>About Krevia Digital</span>
+              <span>Tentang Krevia Digital</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.15]">
-              Purpose-Built Business Systems.
+              Sistem Bisnis yang Dirancang Tepat Guna.
             </h2>
 
             <p className="text-sm font-medium text-slate-400">
-              Pekanbaru, Riau, Indonesia • Operating Online & On-Site
+              Kota Pekanbaru, Riau, Indonesia • Beroperasi Online & On-Site
             </p>
           </div>
 
           {/* Right Column: Narrative & Values */}
           <div className="lg:col-span-7 space-y-6">
             <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
-              Krevia Digital is building integrated software products to help businesses manage complex operations with greater clarity and control. We focus on understanding business workflows, developing practical systems, and growing our products through structured implementation and continuous improvement.
+              Krevia Digital membangun produk perangkat lunak terintegrasi untuk membantu bisnis mengelola operasional kompleks dengan kejelasan dan kendali lebih baik. Kami fokus pada pemahaman alur kerja bisnis, pengembangan sistem yang praktis, dan menumbuhkan produk kami melalui implementasi terstruktur dan perbaikan berkelanjutan.
             </p>
 
             <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-              As an early-stage technology company, we prioritize engineering depth, system interoperability, and honest communication over surface-level marketing claims. We believe modern businesses deserve software that solves real operational bottlenecks without excessive complexity or prohibitive vendor lock-in.
+              Sebagai entitas teknologi lokal, kami memprioritaskan ketajaman teknis, interoperabilitas sistem, dan transparansi daripada sekadar klaim pemasaran. Kami meyakini pemilik bisnis berhak mendapatkan sistem operasional yang memecahkan hambatan nyata tanpa kerumitan yang berlebihan atau keterikatan vendor yang kaku.
             </p>
 
             {/* Core Commitments */}
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-slate-800/80">
               <div className="p-4 rounded-2xl bg-[#0B1322] border border-slate-800">
                 <span className="block text-sm font-bold text-[#24D6B0] mb-1">
-                  Practical
+                  Praktis
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Designed around real field and office operational workflows.
+                  Dirancang mengikuti alur kerja operasional nyata di kantor dan lapangan.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#0B1322] border border-slate-800">
                 <span className="block text-sm font-bold text-[#24D6B0] mb-1">
-                  Transparent
+                  Transparan
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Explicit scope, clear milestones, and realistic timelines.
+                  Ruang lingkup kerja jelas, jadwal terukur, dan biaya yang disepakati bersama.
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#0B1322] border border-slate-800">
                 <span className="block text-sm font-bold text-[#24D6B0] mb-1">
-                  Iterative
+                  Bertahap
                 </span>
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  Start with core modules, validate with users, and scale safely.
+                  Mulai dari modul prioritas, validasi dengan tim, lalu kembangkan secara aman.
                 </p>
               </div>
             </div>

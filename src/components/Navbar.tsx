@@ -19,12 +19,13 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Solutions", href: "#solutions" },
-    { label: "Construction ERP", href: "#construction-erp" },
-    { label: "Capabilities", href: "#capabilities" },
-    { label: "Why Krevia", href: "#why-krevia" },
-    { label: "How We Work", href: "#how-we-work" },
-    { label: "About", href: "#about" },
+    { label: "Solusi ERP", href: "#solutions" },
+    { label: "Konstruksi ERP", href: "#construction-erp" },
+    { label: "Kapabilitas", href: "#capabilities" },
+    { label: "Paket Harga", href: "#pricing" },
+    { label: "Mengapa Krevia", href: "#why-krevia" },
+    { label: "Cara Kerja", href: "#how-we-work" },
+    { label: "Tentang", href: "#about" },
   ];
 
   const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -43,7 +44,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
           {/* Logo Lockup */}
-          <Link href="/" className="flex items-center group py-1" aria-label="Krevia Digital Home">
+          <Link href="/" className="flex items-center group py-1" aria-label="Beranda Krevia Digital">
             <Image
               src="/logo-horizontal.png"
               alt="Krevia Digital"
@@ -55,7 +56,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-7" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center gap-6" aria-label="Navigasi Utama">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -75,7 +76,7 @@ export function Navbar() {
               onClick={(e) => onNavClick(e, "#contact")}
               className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white text-xs sm:text-sm font-semibold transition-all duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
             >
-              <span>Discuss Your ERP Needs</span>
+              <span>Konsultasi ERP</span>
               <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
             </a>
           </div>
@@ -85,7 +86,7 @@ export function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -111,7 +112,7 @@ export function Navbar() {
                 onClick={(e) => onNavClick(e, "#contact")}
                 className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] text-white text-sm font-semibold hover:bg-[#1C2E4F] transition-colors"
               >
-                <span>Discuss Your ERP Needs</span>
+                <span>Konsultasi ERP</span>
                 <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
               </a>
             </div>

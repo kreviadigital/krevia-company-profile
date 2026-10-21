@@ -7,33 +7,33 @@ export function WhyKrevia() {
   const pillars = [
     {
       icon: Workflow,
-      title: "Connected Workflows Over Disconnected Silos",
+      title: "Alur Terhubung Menggantikan Data Terisolasi",
       description:
-        "Instead of maintaining isolated spreadsheets for budget, procurement, and daily logs, our system links records so a change on-site updates the financial picture automatically.",
+        "Alih-alih mengelola file spreadsheet terpisah untuk RAB, pengadaan, dan log lapangan, platform kami menghubungkan data secara dinamis sehingga perubahan di lapangan langsung memperbarui kalkulasi anggaran.",
     },
     {
       icon: Hammer,
-      title: "Engineered for Field Realities",
+      title: "Dirancang Sesuai Realitas Kerja Lapangan",
       description:
-        "Software should conform to the way construction personnel actually work. We prioritize rapid data entry, clean interfaces, and straightforward daily reporting over burdensome bureaucratic menus.",
+        "Software yang baik harus beradaptasi dengan ritme kerja manusia. Kami mengutamakan input data cepat, visual yang jernih, dan laporan harian ringkas daripada menu birokrasi yang membingungkan.",
     },
     {
       icon: Blocks,
-      title: "Modular, Step-by-Step Rollout",
+      title: "Penerapan Modular & Bertahap",
       description:
-        "You do not need to replace your entire operation overnight. Start with core project tracking or RAB budgeting, validate adoption with your team, and expand modules as confidence grows.",
+        "Anda tidak perlu mengubah seluruh sistem kerja dalam satu malam. Mulai dari modul utama yang paling mendesak, buktikan kenyamanan tim, lalu perluas modul seiring kesiapan organisasi.",
     },
     {
       icon: MessageSquareCheck,
-      title: "Clear Scope & Direct Accountability",
+      title: "Cakupan Jelas & Akuntabilitas Terbuka",
       description:
-        "We set realistic expectations on implementation timelines, software boundaries, and commercial terms before building. No hidden vendor lock-in or ambiguous promises.",
+        "Kami menetapkan ekspektasi yang jujur terkait jadwal implementasi, batasan teknis sistem, dan transparansi biaya sejak awal. Tanpa biaya tersembunyi atau janji berlebihan.",
     },
     {
       icon: Milestone,
-      title: "A Long-Term Systems Mindset",
+      title: "Pola Pikir Sistem Berkelanjutan",
       description:
-        "Building effective enterprise business systems requires continuous feedback and refinement. We treat our software as an evolving asset that matures alongside your operational requirements.",
+        "Membangun perangkat lunak perusahaan membutuhkan perbaikan berkala. Kami memperlakukan sistem ERP Anda sebagai aset jangka panjang yang terus berevolusi mendukung skala bisnis Anda.",
     },
   ];
 
@@ -44,15 +44,15 @@ export function WhyKrevia() {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-300 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-            <span>Our Product Philosophy</span>
+            <span>Filosofi Produk Kami</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Why Krevia Digital.
+            Mengapa Memilih Krevia Digital.
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            We avoid vague buzzwords and unsupported claims. Instead, our software is guided by pragmatic engineering principles focused on operational visibility and reliability.
+            Kami menghindari jargon pemasaran kosong dan klaim sepihak. Perangkat lunak kami dikembangkan dengan prinsip kejujuran rekayasa teknis dan keandalan operasional nyata.
           </p>
         </div>
 
@@ -86,18 +86,18 @@ export function WhyKrevia() {
           <div className="bg-[#101D35] text-white rounded-3xl p-7 sm:p-8 border border-slate-800 shadow-md flex flex-col justify-between">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-                Integrity in Engineering
+                Integritas Rekayasa
               </span>
               <h3 className="text-xl font-bold text-white">
-                Honest Product Maturity
+                Kejujuran Maturitas Produk
               </h3>
               <p className="text-sm text-slate-300 leading-relaxed">
-                As an early-stage technology company, we partner with forward-thinking businesses to build and validate software that truly solves practical problems.
+                Sebagai entitas teknologi tahap awal, kami berkolaborasi erat dengan pemilik usaha untuk menguji dan memvalidasi sistem yang memecahkan hambatan bisnis secara nyata.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400">
-              Build Smarter. Operate Better.
+              Bangun Lebih Cerdas. Beroperasi Lebih Baik.
             </div>
           </div>
         </div>

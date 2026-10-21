@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, AlertCircle, ArrowRight, MessageSquare, Mail, MapPin, Send } from "lucide-react";
+import { CheckCircle2, AlertCircle, ArrowRight, MessageSquare, Mail, MapPin } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     contact: "",
-    businessType: "General Contracting & Construction",
+    businessType: "Kontraktor & Konstruksi Umum",
     operationalNeeds: "",
   });
 
@@ -17,12 +17,14 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const businessTypes = [
-    "General Contracting & Construction",
-    "Specialty Trade & Subcontractor",
-    "Real Estate & Property Development",
-    "Civil Engineering & Infrastructure",
-    "Materials & Equipment Supply",
-    "Other Project-Based Business",
+    "Kontraktor & Konstruksi Umum",
+    "Subkontraktor & Pekerjaan Spesialis",
+    "Properti & Pengembangan Real Estat",
+    "Ritel, Grosir & Distribusi",
+    "Logistik & Pergudangan",
+    "Manufaktur & Fabrikasi",
+    "Perhotelan & Pariwisata",
+    "Bisnis Berbasis Proyek / Layanan Lainnya",
   ];
 
   const validateContact = (val: string): boolean => {
@@ -44,31 +46,30 @@ export function ContactSection() {
     const cleanNeeds = sanitizeInput(formData.operationalNeeds, 1000);
 
     if (!cleanName) {
-      setContactError("Please enter your name.");
+      setContactError("Mohon masukkan nama Anda.");
       return;
     }
 
     if (!validateContact(cleanContact)) {
       setContactError(
-        "Please provide a valid WhatsApp number (e.g. +62 851...) or a valid business email."
+        "Format kontak tidak valid. Masukkan nomor WhatsApp aktif (contoh: 0851...) atau email bisnis yang valid."
       );
       return;
     }
     setContactError("");
     setIsSubmitting(true);
 
-    const text = `Hello Krevia Digital,
-I would like to discuss our business operations and explore Krevia's ERP direction:
+    const text = `Halo Krevia Digital,
+Saya ingin mendiskusikan operasional bisnis dan mengeksplorasi solusi ERP modular:
 
-• Name: ${cleanName}
-• Contact: ${cleanContact}
-• Industry / Business Type: ${formData.businessType}
-• Operational Needs & Current Challenges:
-${cleanNeeds || "Not specified yet."}
+• Nama: ${cleanName}
+• Kontak: ${cleanContact}
+• Bidang Industri / Bisnis: ${formData.businessType}
+• Kebutuhan Modul & Kendala Saat Ini:
+${cleanNeeds || "Belum dijelaskan spesifik."}
 
-Looking forward to hearing from your team.`;
+Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanjut.`;
 
-    // Simulated short dispatch delay for realistic UI feedback
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -85,7 +86,7 @@ Looking forward to hearing from your team.`;
     setFormData({
       name: "",
       contact: "",
-      businessType: "General Contracting & Construction",
+      businessType: "Kontraktor & Konstruksi Umum",
       operationalNeeds: "",
     });
   };
@@ -98,15 +99,15 @@ Looking forward to hearing from your team.`;
           {/* Left Column: Direct CTA Copy & Contact Methods */}
           <div className="lg:col-span-5 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-              <span>Direct Discovery</span>
+              <span>Konsultasi Langsung</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-              Let&apos;s Understand Your Business Operations.
+              Ceritakan Alur Operasional Bisnis Anda.
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Tell us how your business currently manages projects, costs, materials, and daily operations. We&apos;ll discuss whether Krevia&apos;s ERP direction fits your needs.
+              Sampaikan bagaimana bisnis Anda saat ini mengelola proyek, pengeluaran, inventaris material, dan alur harian. Kami akan mendiskusikan konfigurasi ERP yang paling tepat tanpa beban biaya awal.
             </p>
 
             {/* Direct Verified Contact Channels */}
@@ -121,7 +122,7 @@ Looking forward to hearing from your team.`;
                   <MessageSquare className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase">Direct WhatsApp</p>
+                  <p className="text-xs text-slate-500 font-semibold uppercase">WhatsApp Resmi</p>
                   <p className="text-sm sm:text-base font-bold text-[#101D35] group-hover:text-emerald-700 transition-colors">
                     {SITE_CONFIG.whatsappDisplay}
                   </p>
@@ -136,7 +137,7 @@ Looking forward to hearing from your team.`;
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase">Email Inquiries</p>
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Email Korespondensi</p>
                   <p className="text-sm sm:text-base font-bold text-[#101D35] group-hover:text-blue-700 transition-colors">
                     {SITE_CONFIG.email}
                   </p>
@@ -148,7 +149,7 @@ Looking forward to hearing from your team.`;
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-semibold uppercase">Operating Base</p>
+                  <p className="text-xs text-slate-500 font-semibold uppercase">Basis Operasional</p>
                   <p className="text-sm font-bold text-[#101D35]">
                     {SITE_CONFIG.location}
                   </p>
@@ -163,10 +164,10 @@ Looking forward to hearing from your team.`;
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div>
                   <h3 className="text-xl font-bold text-[#101D35]">
-                    Discuss Your ERP Needs
+                    Diskusikan Kebutuhan ERP Anda
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                    Fill out this form to initiate a direct consultation with our engineering team.
+                    Isi formulir ini untuk memulai konsultasi teknis langsung dengan tim engineer kami.
                   </p>
                 </div>
 
@@ -184,7 +185,7 @@ Looking forward to hearing from your team.`;
                 {/* Name Field */}
                 <div>
                   <label htmlFor="client-name" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Your Name <span className="text-red-500">*</span>
+                    Nama Lengkap <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="client-name"
@@ -192,7 +193,7 @@ Looking forward to hearing from your team.`;
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Hendra Pratama"
+                    placeholder="Contoh: Hendra Pratama"
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#24D6B0] focus:border-transparent text-sm transition-all"
                   />
                 </div>
@@ -200,7 +201,7 @@ Looking forward to hearing from your team.`;
                 {/* Contact Field */}
                 <div>
                   <label htmlFor="client-contact" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    WhatsApp or Work Email <span className="text-red-500">*</span>
+                    Nomor WhatsApp atau Email Kerja <span className="text-red-500">*</span>
                   </label>
                   <input
                     id="client-contact"
@@ -208,7 +209,7 @@ Looking forward to hearing from your team.`;
                     required
                     value={formData.contact}
                     onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
-                    placeholder="e.g. +62 851... or name@company.com"
+                    placeholder="Contoh: 0851... atau nama@perusahaan.com"
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#24D6B0] focus:border-transparent text-sm transition-all"
                   />
                 </div>
@@ -216,7 +217,7 @@ Looking forward to hearing from your team.`;
                 {/* Business Type Field */}
                 <div>
                   <label htmlFor="business-type" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Industry / Business Domain
+                    Bidang Industri / Domain Usaha
                   </label>
                   <select
                     id="business-type"
@@ -235,14 +236,14 @@ Looking forward to hearing from your team.`;
                 {/* Operational Needs Field */}
                 <div>
                   <label htmlFor="operational-needs" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Operational Challenges or Scope (Optional)
+                    Kendala Operasional atau Kebutuhan Modul (Opsional)
                   </label>
                   <textarea
                     id="operational-needs"
                     rows={4}
                     value={formData.operationalNeeds}
                     onChange={(e) => setFormData({ ...formData, operationalNeeds: e.target.value })}
-                    placeholder="Describe your current bottlenecks: e.g. tracking RAB variance across multiple job sites, reconciling concrete and rebar purchase orders, or coordinating field teams."
+                    placeholder="Ceritakan kendala Anda: misalnya pencatatan varian anggaran RAB antar proyek, verifikasi purchase order material semen dan besi, atau integrasi kasir multi-cabang."
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#24D6B0] focus:border-transparent text-sm transition-all resize-none"
                   />
                 </div>
@@ -254,17 +255,17 @@ Looking forward to hearing from your team.`;
                   className="w-full inline-flex items-center justify-center gap-2 py-4 px-6 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white font-bold text-sm sm:text-base transition-all duration-200 hover:shadow-lg disabled:opacity-70 cursor-pointer"
                 >
                   {isSubmitting ? (
-                    <span>Formatting Inquiry...</span>
+                    <span>Menyiapkan Pesan...</span>
                   ) : (
                     <>
-                      <span>Discuss Your ERP Needs</span>
+                      <span>Diskusikan Kebutuhan ERP</span>
                       <ArrowRight className="w-4 h-4 text-[#24D6B0]" />
                     </>
                   )}
                 </button>
 
                 <p className="text-xs text-center text-slate-400">
-                  Your inquiry connects directly to our engineering team with zero promotional spam.
+                  Konsultasi awal langsung terhubung ke tim rekayasa perangkat lunak Krevia Digital.
                 </p>
               </form>
             ) : (
@@ -273,10 +274,10 @@ Looking forward to hearing from your team.`;
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#101D35]">
-                  Inquiry Dispatched Successfully!
+                  Pesan Konsultasi Berhasil Disiapkan!
                 </h3>
                 <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-                  Your inquiry details have been formatted and routed to our team. If WhatsApp didn&apos;t open automatically, you can also reach us directly at{" "}
+                  Rincian kebutuhan Anda telah diformat dan diteruskan ke WhatsApp resmi kami. Jika WhatsApp tidak terbuka secara otomatis, Anda juga dapat menghubungi kami langsung di{" "}
                   <a
                     href={SITE_CONFIG.getWhatsappUrl()}
                     target="_blank"
@@ -291,7 +292,7 @@ Looking forward to hearing from your team.`;
                   onClick={resetForm}
                   className="mt-4 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-colors cursor-pointer"
                 >
-                  Submit Another Inquiry
+                  Kirim Pesan Lainnya
                 </button>
               </div>
             )}

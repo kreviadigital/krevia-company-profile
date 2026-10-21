@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function Preloader() {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-  const [statusText, setStatusText] = useState("Initializing ERP Systems...");
+  const [statusText, setStatusText] = useState("Menginisialisasi Sistem ERP...");
 
   useEffect(() => {
     // Pin viewport strictly to top on mount
@@ -40,13 +40,13 @@ export function Preloader() {
       setProgress(easedProgress);
 
       if (easedProgress < 35) {
-        setStatusText("Initializing Enterprise Core...");
+        setStatusText("Menginisialisasi Sistem Inti...");
       } else if (easedProgress < 75) {
-        setStatusText("Loading Operational Workflows...");
+        setStatusText("Memuat Alur Kerja Operasional...");
       } else if (easedProgress < 99) {
-        setStatusText("Connecting ERP Modules...");
+        setStatusText("Menghubungkan Modul ERP...");
       } else {
-        setStatusText("Welcome to Krevia Digital");
+        setStatusText("Selamat Datang di Krevia Digital");
       }
 
       if (rawProgress < 1) {
@@ -91,7 +91,7 @@ export function Preloader() {
             y: "-100%",
             transition: {
               duration: 0.75,
-              ease: [0.76, 0, 0.24, 1], // Custom luxury cubic-bezier curtain wipe
+              ease: [0.76, 0, 0.24, 1],
             },
           }}
           className="fixed inset-0 z-[99999] bg-white flex flex-col justify-between p-6 sm:p-12 select-none overflow-hidden"
@@ -108,14 +108,13 @@ export function Preloader() {
           >
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#24D6B0] animate-pulse" />
-              <span>Krevia Digital • Integrated ERP</span>
+              <span>Krevia Digital • ERP Terintegrasi</span>
             </div>
-            <span>Build Smarter. Operate Better.</span>
+            <span>Bangun Lebih Cerdas. Beroperasi Lebih Baik.</span>
           </motion.div>
 
           {/* Center Brand Lockup & Animation */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center my-auto">
-            {/* Logo with delicate breathing pulse */}
             <motion.div
               initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -151,10 +150,9 @@ export function Preloader() {
 
           {/* Bottom Progress Metrics & Sleek Bar */}
           <div className="relative z-10 max-w-xl mx-auto w-full">
-            {/* Number Counter & Percent */}
             <div className="flex items-end justify-between mb-3 text-slate-900">
               <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
-                System Readiness
+                Kesiapan Sistem
               </span>
               <div className="flex items-baseline gap-1">
                 <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101D35] tabular-nums">
@@ -164,7 +162,6 @@ export function Preloader() {
               </div>
             </div>
 
-            {/* Micro Progress Bar */}
             <div className="relative h-[3px] w-full bg-slate-100 rounded-full overflow-hidden">
               <motion.div
                 className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#101D35] via-[#1C2E4F] to-[#24D6B0] rounded-full"
@@ -173,9 +170,8 @@ export function Preloader() {
               />
             </div>
 
-            {/* Footer Tagline */}
             <div className="mt-3 flex items-center justify-between text-xs tracking-wider font-semibold text-slate-400 uppercase">
-              <span>Modular ERP Architecture</span>
+              <span>Arsitektur ERP Modular</span>
               <span>v1.0.0</span>
             </div>
           </div>

@@ -8,37 +8,37 @@ export function HowWeWork() {
     {
       number: "01",
       icon: Search,
-      title: "Understand the Business",
+      title: "Pahami Alur Bisnis",
       description:
-        "We begin by learning your existing workflows, spreadsheet habits, and operational bottlenecks across job sites and the administrative office.",
+        "Kami mendengarkan bagaimana bisnis Anda saat ini berjalan, kebiasaan pencatatan tim, dan kendala operasional yang paling sering muncul antara kantor dan lapangan.",
     },
     {
       number: "02",
       icon: Map,
-      title: "Map the Requirements",
+      title: "Petakan Kebutuhan & Modul",
       description:
-        "We identify which ERP modules, user permissions, and data structures are essential for your initial operational baseline.",
+        "Kami menentukan modul ERP standar mana yang relevan, hak akses pengguna, serta struktur data dasar yang perlu disiapkan pada fase awal.",
     },
     {
       number: "03",
       icon: CalendarCheck,
-      title: "Plan the Implementation",
+      title: "Rencanakan Implementasi",
       description:
-        "We agree on a realistic initial deployment scope, milestone schedule, team responsibilities, and clear commercial terms.",
+        "Menyepakati cakupan peluncuran bertahap, target jadwal realistis, pembagian tanggung jawab, dan kesepakatan komersial yang transparan.",
     },
     {
       number: "04",
       icon: Code2,
-      title: "Develop and Validate",
+      title: "Kembangkan & Validasi",
       description:
-        "We configure and test the software against your actual project data, gathering continuous feedback from field personnel and estimators.",
+        "Menyiapkan konfigurasi sistem dan menguji alur kerja langsung dengan data riil operasional Anda untuk memastikan staf dapat menggunakannya dengan nyaman.",
     },
     {
       number: "05",
       icon: HeadphonesIcon,
-      title: "Improve and Support",
+      title: "Dampingi & Evaluasi",
       description:
-        "Following initial launch, we assist your team through onboarding, user training, and iterative refinements based on daily field usage.",
+        "Setelah sistem aktif, kami memberikan pelatihan pengguna, pendampingan teknis, dan perbaikan berkelanjutan berdasarkan masukan harian tim Anda.",
     },
   ];
 
@@ -49,15 +49,15 @@ export function HowWeWork() {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-            <span>Implementation Framework</span>
+            <span>Kerangka Kerja Implementasi</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            How We Work With You.
+            Cara Kami Bekerja Bersama Anda.
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Successful ERP implementations require deliberate pacing and shared clarity. This is our structured approach from initial operational discovery through field validation.
+            Keberhasilan implementasi ERP memerlukan komunikasi yang terbuka dan tahapan terukur. Berikut adalah pendekatan kerja kolaboratif kami dari konsultasi awal hingga sistem berjalan.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export function HowWeWork() {
                 </div>
 
                 <div className="mt-6 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                  Phase {st.number}
+                  Tahap {st.number}
                 </div>
               </div>
             );

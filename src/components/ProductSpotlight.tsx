@@ -18,33 +18,33 @@ export function ProductSpotlight() {
   const challenges = [
     {
       icon: FileSpreadsheet,
-      problem: "Fragmented Project Data",
+      problem: "Data Proyek Terfragmentasi",
       description:
-        "Project updates, material approvals, and site logs get buried across messy spreadsheets and chaotic WhatsApp group chats.",
+        "Pembaruan proyek, persetujuan material, dan catatan harian tercecer di berbagai file spreadsheet dan riwayat percakapan grup WhatsApp.",
     },
     {
       icon: Calculator,
-      problem: "Budget Variance Blind Spots",
+      problem: "Kebutaan Varian Anggaran",
       description:
-        "Discrepancies between approved RAB (Budget Plan) and field expenses only surface after invoices arrive, causing costly budget overruns.",
+        "Ketidaksesuaian antara baseline RAB dan realisasi pengeluaran lapangan baru terdeteksi setelah tagihan membengkak, memicu kerugian proyek.",
     },
     {
       icon: Eye,
-      problem: "Limited Site-to-Office Visibility",
+      problem: "Visibilitas Lapangan Terbatas",
       description:
-        "Management struggles to verify actual daily progress on distant job sites without waiting for delayed manual reporting.",
+        "Manajemen kesulitan memverifikasi progres fisik harian nyata di lapangan tanpa menunggu laporan manual berkala yang sering terlambat.",
     },
     {
       icon: PackageSearch,
-      problem: "Reconciliation Delays in Procurement",
+      problem: "Keterlambatan Rekonsiliasi Pengadaan",
       description:
-        "Purchasing orders, delivery receipts, and warehouse inventories fail to reconcile seamlessly, leading to material waste or work stoppages.",
+        "Pesanan pembelian, surat jalan penerimaan barang, dan sisa inventaris gudang sulit dicocokkan, memicu pemborosan atau penghentian kerja.",
     },
     {
       icon: FileCheck,
-      problem: "Repetitive Manual Reporting",
+      problem: "Penyusunan Laporan Manual Berulang",
       description:
-        "Site engineers and project managers spend hours preparing manual progress dossiers instead of managing actual construction execution.",
+        "Staf proyek dan estimator menghabiskan banyak waktu merekap berkas laporan secara manual daripada fokus pada pelaksanaan operasional.",
     },
   ];
 
@@ -62,15 +62,15 @@ export function ProductSpotlight() {
           <div className="max-w-3xl space-y-4 relative z-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-[#24D6B0] text-xs font-bold tracking-wider uppercase">
               <Building2 className="w-3.5 h-3.5" />
-              <span>Flagship Direction • Early Access / In Development</span>
+              <span>Solusi Unggulan • Akses Awal / Dalam Pengembangan</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Construction Management, Connected.
+              Manajemen Konstruksi, Saling Terhubung.
             </h2>
 
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              We are developing <strong className="text-white font-semibold">Krevia Construction ERP</strong> to eliminate operational disconnects between site teams, project estimators, and executive leadership.
+              Sebagai salah satu wujud nyata fleksibilitas platform modular kami, <strong className="text-white font-semibold">Krevia Construction ERP</strong> dibangun khusus untuk menjembatani koordinasi antara staf lapangan, estimator RAB, dan pimpinan perusahaan.
             </p>
           </div>
 
@@ -78,18 +78,18 @@ export function ProductSpotlight() {
           <div className="my-10 p-6 rounded-2xl bg-[#182844] border border-slate-700/70 relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1">
               <span className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-                The Intended Outcome
+                Hasil yang Dituju
               </span>
               <p className="text-base sm:text-lg font-semibold text-white">
-                &ldquo;A more connected view of projects, budgets, field activities, and operational data.&rdquo;
+                &ldquo;Visibilitas terpadu untuk proyek, anggaran, aktivitas lapangan, dan data operasional bisnis.&rdquo;
               </p>
             </div>
             <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, "#contact")}
+              href="#pricing"
+              onClick={(e) => handleNavClick(e, "#pricing")}
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#24D6B0] hover:bg-[#1AB895] text-[#101D35] font-bold text-xs sm:text-sm shrink-0 transition-all shadow-xs cursor-pointer"
             >
-              <span>Explore Early Access</span>
+              <span>Pelajari Skema Langganan</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -97,7 +97,7 @@ export function ProductSpotlight() {
           {/* The Operational Gaps We Are Solving */}
           <div className="relative z-10 space-y-6">
             <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Operational problems we are engineering to resolve:
+              Kendala operasional nyata yang kami selesaikan:
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -122,7 +122,7 @@ export function ProductSpotlight() {
 
                     <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-1.5 text-xs text-[#24D6B0] font-medium">
                       <CheckCircle2 className="w-3.5 h-3.5" />
-                      <span>Targeted in ERP Architecture</span>
+                      <span>Terakomodasi dalam Arsitektur ERP</span>
                     </div>
                   </div>
                 );
@@ -135,15 +135,15 @@ export function ProductSpotlight() {
                     <ShieldAlert className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-bold text-white">
-                    Validated with Field Practitioners
+                    Divalidasi Bersama Praktisi Lapangan
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    Module workflows are mapped alongside contractors, civil engineers, and project accountants to ensure practical site adoption.
+                    Alur modul dipetakan langsung bersama kontraktor, teknisi sipil, dan akuntan proyek untuk memastikan kemudahan adopsi nyata.
                   </p>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-slate-800/80 text-xs text-slate-400 font-medium">
-                  Status: Active Prototype & Scope Validation
+                  Status: Prototipe Aktif & Validasi Kebutuhan
                 </div>
               </div>
             </div>

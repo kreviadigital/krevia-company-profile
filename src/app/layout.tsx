@@ -10,18 +10,18 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kreviadigitalid.my.id"),
-  title: "Krevia Digital | Integrated ERP Solutions",
+  title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
   description:
-    "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
+    "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja di Pekanbaru dan Indonesia.",
   keywords: [
     "Krevia Digital",
-    "Construction ERP",
-    "Integrated ERP Solutions",
-    "Project Cost Control",
-    "Construction Management Software",
-    "Indonesian ERP Software",
-    "B2B Enterprise Systems",
-    "Business Process Digitization",
+    "ERP Pekanbaru",
+    "Platform ERP Modular",
+    "ERP Konstruksi Indonesia",
+    "Software ERP Riau",
+    "Kontrol Biaya Proyek",
+    "Sistem Bisnis Terintegrasi",
+    "Aplikasi Manajemen Bisnis",
   ],
   authors: [{ name: "Krevia Digital" }],
   icons: {
@@ -34,27 +34,27 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Krevia Digital | Integrated ERP Solutions",
+    title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
     description:
-      "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
+      "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja.",
     url: "https://kreviadigitalid.my.id",
     siteName: "Krevia Digital",
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Krevia Digital - Integrated ERP Solutions & Construction Management",
+        alt: "Krevia Digital - Platform ERP Modular & Sistem Bisnis Terintegrasi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krevia Digital | Integrated ERP Solutions",
+    title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
     description:
-      "Krevia Digital is building integrated ERP solutions to help businesses connect operations, manage projects, and improve visibility across business workflows.",
+      "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja.",
     images: ["/og-image.png"],
   },
 };
@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />

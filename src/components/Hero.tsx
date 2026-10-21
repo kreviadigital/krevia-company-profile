@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
-import { ArrowRight, Layers, BarChart3, HardHat, TrendingUp, CheckCircle2, Clock, AlertTriangle, ShieldCheck } from "lucide-react";
+import { ArrowRight, Layers, HardHat, TrendingUp, CheckCircle2, Clock, ShieldCheck } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Hero() {
@@ -18,25 +17,25 @@ export function Hero() {
             {/* Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/5 border border-slate-300/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
               <span className="w-2 h-2 rounded-full bg-[#24D6B0]" />
-              <span>Integrated Business Systems</span>
+              <span>Sistem Bisnis Terintegrasi</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#101D35] leading-[1.12]">
-              Bring Your Business Operations Into One Connected System.
+              Hubungkan Seluruh Operasional Bisnis ke Dalam Satu Sistem.
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
-              Krevia Digital is building integrated ERP solutions to help businesses connect workflows, improve operational visibility, and manage information more effectively.
+              Krevia Digital membangun solusi ERP modular untuk membantu bisnis menghubungkan alur kerja, meningkatkan visibilitas operasional, dan mengelola informasi secara terpadu.
             </p>
 
             {/* Dual CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
               <a
-                href="#construction-erp"
-                onClick={(e) => handleNavClick(e, "#construction-erp")}
+                href="#pricing"
+                onClick={(e) => handleNavClick(e, "#pricing")}
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:shadow-lg shadow-sm cursor-pointer group"
               >
-                <span>Explore Construction ERP</span>
+                <span>Lihat Paket Harga</span>
                 <ArrowRight className="w-4 h-4 text-[#24D6B0] transition-transform duration-200 group-hover:translate-x-1" />
               </a>
 
@@ -45,7 +44,7 @@ export function Hero() {
                 onClick={(e) => handleNavClick(e, "#contact")}
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#101D35] font-semibold text-sm sm:text-base border border-slate-300/80 transition-colors cursor-pointer"
               >
-                Discuss Your Business Needs
+                Konsultasi Kebutuhan Bisnis
               </a>
             </div>
 
@@ -53,11 +52,11 @@ export function Hero() {
             <div className="pt-4 flex items-center gap-6 text-xs text-slate-500 font-medium">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#24D6B0]" />
-                <span>Field-tested operational logic</span>
+                <span>Logika operasional teruji lapangan</span>
               </div>
               <div className="flex items-center gap-2">
                 <Layers className="w-4 h-4 text-[#24D6B0]" />
-                <span>Modular architecture</span>
+                <span>Arsitektur modular fleksibel</span>
               </div>
             </div>
           </div>
@@ -79,14 +78,14 @@ export function Hero() {
                     <span className="w-2.5 h-2.5 rounded-full bg-slate-600" />
                   </div>
                   <span className="text-xs font-semibold text-slate-300 ml-2">
-                    Krevia Construction ERP • Workspace
+                    Krevia ERP • Ruang Kerja Operasional
                   </span>
                 </div>
                 
                 {/* Status indicator: Explicitly labelled illustrative concept */}
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] text-xs font-bold tracking-wide">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#24D6B0] animate-pulse" />
-                  Illustrative Concept
+                  Konsep Ilustratif
                 </span>
               </div>
 
@@ -101,7 +100,7 @@ export function Hero() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  Project Operations
+                  Operasional Proyek
                 </button>
                 <button
                   type="button"
@@ -112,7 +111,7 @@ export function Hero() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  RAB & Cost Control
+                  RAB & Biaya
                 </button>
                 <button
                   type="button"
@@ -123,7 +122,7 @@ export function Hero() {
                       : "text-slate-400 hover:text-slate-200"
                   }`}
                 >
-                  Procurement
+                  Pengadaan
                 </button>
               </div>
 
@@ -132,25 +131,25 @@ export function Hero() {
                 <div className="space-y-4 animate-in fade-in duration-200">
                   <div className="bg-[#182844] rounded-2xl p-4 border border-slate-700/60 flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-slate-400 font-medium">Active Project</p>
-                      <h4 className="text-base font-bold text-white mt-0.5">Grand Sudirman Commercial Tower</h4>
+                      <p className="text-xs text-slate-400 font-medium">Proyek Aktif</p>
+                      <h4 className="text-base font-bold text-white mt-0.5">Menara Niaga Sudirman Tahap 2</h4>
                       <p className="text-xs text-slate-300 mt-1 flex items-center gap-2">
-                        <span>Structural Phase 3</span>
+                        <span>Pekerjaan Struktur Lantai 4</span>
                         <span>•</span>
-                        <span className="text-[#24D6B0]">On Schedule</span>
+                        <span className="text-[#24D6B0]">Sesuai Jadwal</span>
                       </p>
                     </div>
                     <div className="text-right">
                       <span className="text-2xl font-extrabold text-[#24D6B0]">68%</span>
-                      <p className="text-xs text-slate-400 uppercase font-semibold">Total Progress</p>
+                      <p className="text-xs text-slate-400 uppercase font-semibold">Total Progres</p>
                     </div>
                   </div>
 
                   {/* Progress Bar */}
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs text-slate-300">
-                      <span>Milestone: Reinforced Slab Cast</span>
-                      <span className="font-semibold text-slate-200">92 / 120 Days</span>
+                      <span>Milestone: Pengecoran Plat & Kolom</span>
+                      <span className="font-semibold text-slate-200">92 / 120 Hari</span>
                     </div>
                     <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-blue-500 to-[#24D6B0] rounded-full w-[68%]" />
@@ -162,14 +161,14 @@ export function Hero() {
                     <div className="flex items-center justify-between text-xs text-slate-400">
                       <span className="font-semibold text-slate-300 flex items-center gap-1.5">
                         <HardHat className="w-3.5 h-3.5 text-[#24D6B0]" />
-                        Latest Field Log #142
+                        Log Harian Lapangan #142
                       </span>
                       <span className="flex items-center gap-1 text-xs text-slate-400">
-                        <Clock className="w-3 h-3" /> Today, 14:30
+                        <Clock className="w-3 h-3" /> Hari ini, 14:30
                       </span>
                     </div>
                     <p className="text-xs text-slate-300 leading-relaxed">
-                      Concrete batch pouring completed for Zone B. Ready-mix test cylinders collected; 24 workers on site.
+                      Pengecoran beton ready-mix zona B selesai tanpa kendala. Uji kuat tekan silinder telah diambil; 24 pekerja aktif di lokasi.
                     </p>
                   </div>
                 </div>
@@ -180,30 +179,30 @@ export function Hero() {
                 <div className="space-y-4 animate-in fade-in duration-200">
                   <div className="grid grid-cols-2 gap-3">
                     <div className="bg-[#182844] rounded-2xl p-4 border border-slate-700/60">
-                      <p className="text-xs text-slate-400 font-medium">Planned Budget (RAB)</p>
-                      <p className="text-lg sm:text-xl font-bold text-white mt-1">IDR 4.850.000.000</p>
-                      <p className="text-xs text-slate-400 mt-1">Approved Baseline</p>
+                      <p className="text-xs text-slate-400 font-medium">Anggaran Rencana (RAB)</p>
+                      <p className="text-lg sm:text-xl font-bold text-white mt-1">Rp 4.850.000.000</p>
+                      <p className="text-xs text-slate-400 mt-1">Baseline Disetujui</p>
                     </div>
                     <div className="bg-[#182844] rounded-2xl p-4 border border-slate-700/60">
-                      <p className="text-xs text-slate-400 font-medium">Actual Cost to Date</p>
-                      <p className="text-lg sm:text-xl font-bold text-white mt-1">IDR 3.120.000.000</p>
+                      <p className="text-xs text-slate-400 font-medium">Realisasi Biaya Saat Ini</p>
+                      <p className="text-lg sm:text-xl font-bold text-white mt-1">Rp 3.120.000.000</p>
                       <p className="text-xs text-[#24D6B0] mt-1 flex items-center gap-1">
-                        <TrendingUp className="w-3 h-3" /> Within -3.4% Target
+                        <TrendingUp className="w-3 h-3" /> Efisiensi -3.4% dari Target
                       </p>
                     </div>
                   </div>
 
                   <div className="bg-[#0B1322] rounded-xl p-3.5 border border-slate-800 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-300 font-medium">Heavy Machinery Rental</span>
-                      <span className="text-slate-300 font-bold">94% used</span>
+                      <span className="text-slate-300 font-medium">Sewa Alat Berat & Crane</span>
+                      <span className="text-slate-300 font-bold">94% terserap</span>
                     </div>
                     <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
                       <div className="h-full bg-amber-400 rounded-full w-[94%]" />
                     </div>
                     <div className="flex items-center justify-between text-xs pt-1">
-                      <span className="text-slate-300 font-medium">Steel & Rebar Procurement</span>
-                      <span className="text-slate-300 font-bold">61% used</span>
+                      <span className="text-slate-300 font-medium">Pengadaan Besi Beton & Material Pokok</span>
+                      <span className="text-slate-300 font-bold">61% terserap</span>
                     </div>
                     <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
                       <div className="h-full bg-[#24D6B0] rounded-full w-[61%]" />
@@ -217,35 +216,35 @@ export function Hero() {
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="bg-[#182844] rounded-2xl p-3.5 border border-slate-700/60 flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-bold text-white">Purchase Order #PO-2026-089</p>
-                      <p className="text-xs text-slate-300">500 Sacks Portland Cement Type I</p>
+                      <p className="text-xs font-bold text-white">Pesanan Pembelian #PO-2026-089</p>
+                      <p className="text-xs text-slate-300">500 Sak Semen Portland Tipe I</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] text-xs font-bold">
-                      <CheckCircle2 className="w-3 h-3" /> Dispatched
+                      <CheckCircle2 className="w-3 h-3" /> Terkirim
                     </span>
                   </div>
 
                   <div className="bg-[#182844] rounded-2xl p-3.5 border border-slate-700/60 flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-bold text-white">Requisition #REQ-2026-114</p>
-                      <p className="text-xs text-slate-300">12mm Deformed Steel Bars (8 Tons)</p>
+                      <p className="text-xs font-bold text-white">Permintaan Pengadaan #REQ-2026-114</p>
+                      <p className="text-xs text-slate-300">Besi Ulir 12mm (8 Ton)</p>
                     </div>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-400/15 text-amber-300 text-xs font-bold">
-                      <Clock className="w-3 h-3" /> Pending PM Approval
+                      <Clock className="w-3 h-3" /> Menunggu Persetujuan PM
                     </span>
                   </div>
 
                   <div className="bg-[#0B1322] rounded-xl p-3 border border-slate-800 text-xs text-slate-400 flex items-center justify-between">
-                    <span>Central Site Warehouse Balance:</span>
-                    <span className="text-slate-200 font-semibold">1,240 SKUs Reconciled</span>
+                    <span>Saldo Gudang Material Proyek:</span>
+                    <span className="text-slate-200 font-semibold">1.240 Item Terekonsiliasi</span>
                   </div>
                 </div>
               )}
 
               {/* Sub-card Footer */}
               <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                <span>Field-to-Office Data Pipeline</span>
-                <span className="text-[#24D6B0] font-semibold">Real-Time Sync Engine</span>
+                <span>Alur Data Lapangan ke Kantor</span>
+                <span className="text-[#24D6B0] font-semibold">Sinkronisasi Real-Time</span>
               </div>
             </div>
           </div>

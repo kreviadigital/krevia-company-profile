@@ -9,80 +9,79 @@ import {
   LineChart, 
   Check, 
   Clock, 
-  Compass, 
-  MapPin 
+  Compass
 } from "lucide-react";
 
 export function ErpCapabilities() {
   const capabilityGroups = [
     {
       id: "project-ops",
-      title: "Project Operations",
-      status: "In Active Development",
+      title: "Operasional Proyek & Pekerjaan",
+      status: "Pengembangan Aktif",
       statusVariant: "active",
       icon: FolderKanban,
       summary:
-        "Centralize project records, task assignments, and daily site logs in a single operational repository.",
+        "Sentralisasi data proyek, penugasan tim, milestone, dan log harian dalam satu repositori terpadu.",
       items: [
-        "Project master records, contractual timelines, and key milestones",
-        "Site daily logs (weather conditions, equipment usage, active personnel)",
-        "Progress photo uploads and site inspection documentation",
+        "Master data proyek, jadwal kontrak, dan pelacakan tahapan milestone",
+        "Log harian lapangan (kondisi cuaca, utilisasi alat berat, absensi personel)",
+        "Dokumentasi foto progres dan verifikasi berita acara pemeriksaan fisik",
       ],
     },
     {
       id: "budget-control",
-      title: "Budget & Cost Control",
-      status: "In Active Development",
+      title: "Kontrol Biaya & Anggaran (RAB)",
+      status: "Pengembangan Aktif",
       statusVariant: "active",
       icon: Coins,
       summary:
-        "Maintain continuous visibility between initial RAB budget estimates and real-time field expenditures.",
+        "Visibilitas berkesinambungan antara estimasi rencana anggaran awal dan pengeluaran aktual di lapangan.",
       items: [
-        "RAB (Rencana Anggaran Biaya) structural baseline imports",
-        "Direct recording of field labor, material, and equipment disbursements",
-        "Dynamic variance tracking to identify budget overruns before month-end",
+        "Penyusunan dan impor baseline struktur RAB (Rencana Anggaran Biaya)",
+        "Pencatatan langsung pengeluaran upah tenaga kerja, material, dan sewa alat",
+        "Pemantauan varian dinamis untuk mendeteksi potensi pembengkakan biaya lebih dini",
       ],
     },
     {
       id: "procurement",
-      title: "Materials & Procurement",
-      status: "Prototype & Architecture",
+      title: "Manajemen Pengadaan & Material",
+      status: "Arsitektur & Prototipe",
       statusVariant: "design",
       icon: Truck,
       summary:
-        "Streamline purchasing workflows from initial site requisition to warehouse receipt verification.",
+        "Efisiensi alur pembelian mulai dari permintaan dari lapangan hingga verifikasi penerimaan di gudang.",
       items: [
-        "Material catalogs with standardized item codes and specifications",
-        "Purchase request (PR) approval chains and Purchase Order generation",
-        "Warehouse inventory tracking and site dispatch reconciliations",
+        "Katalog material dengan kode barang terstandar dan spesifikasi mutu",
+        "Alur persetujuan surat permintaan pembelian (PR) dan pembuatan Purchase Order",
+        "Pelacakan saldo inventaris gudang dan rekonsiliasi surat jalan pengiriman",
       ],
     },
     {
       id: "workforce",
-      title: "Workforce & Field Operations",
-      status: "Proposed / Early Spec",
+      title: "Manajemen SDM & Tim Lapangan",
+      status: "Spesifikasi Awal",
       statusVariant: "proposed",
       icon: Users,
       summary:
-        "Coordinate subcontractor teams, site specialists, and daily attendance logs across multiple locations.",
+        "Koordinasi tenaga kerja, tim spesialis, dan mitra subkontraktor di berbagai lokasi kerja.",
       items: [
-        "Subcontractor registry, trade specialties, and rate cards",
-        "Personnel assignment across active project zones",
-        "Proposed GPS-verified field attendance logging (Subject to rollout)",
+        "Registri subkontraktor, spesialisasi keahlian kerja, dan kartu tarif dasar",
+        "Alokasi penempatan personel ke zona proyek yang aktif",
+        "Rencana presensi lapangan berbasis verifikasi titik GPS (Tahap Implementasi)",
       ],
     },
     {
       id: "reporting",
-      title: "Reporting & Executive Insights",
-      status: "Planned Roadmap",
+      title: "Laporan Operasional & Analitik Eksekutif",
+      status: "Peta Jalan Produk",
       statusVariant: "planned",
       icon: LineChart,
       summary:
-        "Generate audit-ready progress dossiers and executive financial summaries without repetitive spreadsheet assembly.",
+        "Hasilkan berkas progres siap audit dan ringkasan keuangan tanpa proses rekapitulasi spreadsheet yang melelahkan.",
       items: [
-        "Consolidated multi-project dashboard for corporate directors",
-        "Automated PDF progress summaries for client and stakeholder reviews",
-        "Historical cost analysis to refine future project tender bids",
+        "Dasbor multi-proyek terkonsolidasi untuk jajaran direksi dan manajemen",
+        "Ekspor laporan ringkasan berkala otomatis format PDF untuk klien dan pemangku kepentingan",
+        "Analisis historis efisiensi biaya untuk memperkuat akurasi penawaran tender berikutnya",
       ],
     },
   ];
@@ -94,15 +93,15 @@ export function ErpCapabilities() {
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-            <span>Modular ERP Engine</span>
+            <span>Mesin ERP Modular</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Designed for Real Construction Workflows.
+            Dirancang untuk Berbagai Kebutuhan Industri.
           </h2>
 
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Our capabilities are structured around tangible operational domains. We distinguish clearly between actively developed modules and planned capabilities to uphold total engineering integrity.
+            Platform ERP Krevia dirancang secara modular agar mudah disesuaikan bagi kontraktor, bisnis berbasis proyek, ritel, distribusi, hingga perhotelan. Kami membedakan status kesiapan modul secara jujur demi integritas rekayasa.
           </p>
         </div>
 
@@ -164,8 +163,8 @@ export function ErpCapabilities() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                  <span>Scope validation</span>
-                  <span className="text-[#101D35] font-semibold">Krevia Modular Spec</span>
+                  <span>Cakupan Arsitektur</span>
+                  <span className="text-[#101D35] font-semibold">Spesifikasi Modular Krevia</span>
                 </div>
               </div>
             );
