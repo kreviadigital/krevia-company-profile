@@ -12,7 +12,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Core Positioning & CTAs */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-7 space-y-6">
             {/* Eyebrow Pill */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/5 border border-slate-300/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
               <span className="w-2 h-2 rounded-full bg-[#24D6B0]" />
@@ -60,57 +60,64 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Clean & Elegant Krevia Brand Showcase */}
-          <div className="lg:col-span-6 relative">
-            {/* Background Glow */}
-            <div className="absolute -top-10 -right-10 w-96 h-96 bg-gradient-to-br from-[#24D6B0]/15 via-blue-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+          {/* Right Column: Stylized Monogram Graphic & Live Operational Badges */}
+          <div className="lg:col-span-5 relative flex items-center justify-center min-h-[360px] sm:min-h-[440px] py-4">
+            {/* Ambient Background Glow behind logo */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-br from-[#24D6B0]/15 via-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-            {/* Main Brand Showcase Card */}
-            <div className="relative bg-[#101D35] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-700/80 overflow-hidden min-h-[380px] sm:min-h-[420px] flex flex-col items-center justify-center text-center">
-              
-              {/* Subtle Ambient Background Mesh & Glow */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#24D6B0]/10 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="relative z-10 flex flex-col items-center justify-center space-y-6 max-w-sm mx-auto">
-                {/* Floating Emblem */}
-                <div className="relative group">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-[#24D6B0]/30 to-blue-500/30 rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-300" />
-                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-3xl bg-[#0B1322] border border-slate-700/80 shadow-2xl p-4 flex items-center justify-center">
-                    <Image
-                      src="/logo-mark.png"
-                      alt="Krevia Digital Emblem"
-                      width={112}
-                      height={112}
-                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
-                      priority
-                    />
-                  </div>
-                </div>
-
-                {/* Brand Identity Typography */}
-                <div className="space-y-2">
-                  <Image
-                    src="/logo-horizontal.png"
-                    alt="Krevia Digital"
-                    width={320}
-                    height={76}
-                    className="h-8 sm:h-9 w-auto mx-auto object-contain brightness-0 invert opacity-95"
-                    priority
-                  />
-                  <p className="text-xs sm:text-sm text-slate-300 font-medium tracking-wide">
-                    Platform ERP Modular & Solusi Bisnis Terintegrasi
-                  </p>
-                </div>
-
-                {/* Subtitle / Verification Tag */}
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-semibold text-slate-200 shadow-xs">
-                  <span className="w-2 h-2 rounded-full bg-[#24D6B0] animate-pulse" />
-                  <span>Sistem Operasional Bisnis Terintegrasi</span>
-                </div>
-              </div>
-
+            {/* Center Monogram Graphic */}
+            <div className="relative w-64 sm:w-72 aspect-square flex items-center justify-center">
+              <Image
+                src="/logo-mark.png"
+                alt="Krevia Digital Emblem"
+                width={320}
+                height={320}
+                className="w-full h-full object-contain select-none opacity-95 drop-shadow-md transition-transform duration-300 hover:scale-105"
+                priority
+              />
             </div>
+
+            {/* Floating Card 1: ERP Modular Status */}
+            <div className="absolute top-2 left-0 sm:-left-4 bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-4 shadow-lg shadow-slate-900/5 max-w-[210px] sm:max-w-[230px] transition-all hover:-translate-y-1 hover:shadow-xl text-left pointer-events-auto">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#24D6B0] animate-pulse" />
+                <p className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+                  ERP MODULAR
+                </p>
+              </div>
+              <h3 className="text-sm font-bold text-[#101D35] mt-1">
+                44+ Modul Bisnis
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Finance, HR, SCM & Proyek
+              </p>
+              <div className="mt-2.5">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#101D35] text-white text-[11px] font-medium shadow-xs">
+                  Siap Terintegrasi
+                </span>
+              </div>
+            </div>
+
+            {/* Floating Card 2: Operational Data Sync */}
+            <div className="absolute bottom-2 right-0 sm:-right-4 bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-4 shadow-lg shadow-slate-900/5 max-w-[220px] sm:max-w-[250px] transition-all hover:-translate-y-1 hover:shadow-xl text-left pointer-events-auto">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <p className="text-[10px] font-bold tracking-wider text-slate-500 uppercase">
+                  OPERASIONAL TERPADU
+                </p>
+              </div>
+              <h3 className="text-sm font-bold text-[#101D35] mt-1">
+                Satu Sistem Terhubung
+              </h3>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Sinkronisasi Kantor & Lapangan
+              </p>
+              <div className="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-medium text-slate-600">
+                <span>Alur Data:</span>
+                <span className="text-emerald-600 font-bold">Real-Time</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
