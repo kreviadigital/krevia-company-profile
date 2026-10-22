@@ -6,16 +6,10 @@ import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export function SmoothScroll() {
   useEffect(() => {
-    // 1. Force manual scroll restoration so browsers do not remember scroll position on refresh
+    // 1. Force manual scroll restoration so browsers do not jerkily snap
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
         window.history.scrollRestoration = "manual";
-      }
-      window.scrollTo(0, 0);
-
-      // Clean URL hash on refresh so browser doesn't auto-jump to section
-      if (window.location.hash) {
-        window.history.replaceState(null, "", window.location.pathname);
       }
     }
 
@@ -28,19 +22,29 @@ export function SmoothScroll() {
       syncTouch: false,
       orientation: "vertical",
       gestureOrientation: "vertical",
-      respectReducedMotion: false, // Ensures Windows doesn't snap to instant/un-eased
+      respectReducedMotion: false,
       autoRaf: true,
     });
 
     // Expose lenis globally for universal access across components
     (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
-    // Force lenis to top immediately on fresh load
-    lenis.scrollTo(0, { immediate: true });
+    // Handle initial hash navigation if present
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hashId = window.location.hash.replace(/^#/, "");
+      const targetElement = document.getElementById(hashId);
+      if (targetElement) {
+        setTimeout(() => {
+          smoothScrollTo(targetElement, {
+            duration: 1200,
+            offset: 80,
+          });
+        }, 400);
+      }
+    }
 
     // 3. Intercept all internal anchor clicks across the entire document
     const handleAnchorClick = (e: MouseEvent) => {
-      // Find closest anchor tag
       const target = (e.target as HTMLElement).closest("a");
       if (!target) return;
 
@@ -53,7 +57,7 @@ export function SmoothScroll() {
 
           // Trigger high-precision cinematic smooth scroll via Lenis
           smoothScrollTo(targetElement, {
-            duration: 1500,
+            duration: 1400,
             offset: 80,
           });
 
@@ -66,15 +70,8 @@ export function SmoothScroll() {
     // Use capture phase so we always intercept before default browser hash jump
     document.addEventListener("click", handleAnchorClick, { capture: true });
 
-    // 4. Reset to top before browser unloads/refreshes
-    const handleBeforeUnload = () => {
-      window.scrollTo(0, 0);
-    };
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
     return () => {
       document.removeEventListener("click", handleAnchorClick, { capture: true });
-      window.removeEventListener("beforeunload", handleBeforeUnload);
       lenis.destroy();
       delete (window as unknown as { lenis?: Lenis }).lenis;
     };

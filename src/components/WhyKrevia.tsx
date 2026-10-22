@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Workflow, Hammer, Blocks, MessageSquareCheck, Milestone } from "lucide-react";
+import Link from "next/link";
+import { Workflow, Hammer, Blocks, MessageSquareCheck, Milestone, ArrowRight } from "lucide-react";
 
 export function WhyKrevia() {
   const pillars = [
@@ -42,11 +43,7 @@ export function WhyKrevia() {
       <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Section Header */}
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-300 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-            <span>Filosofi Produk Kami</span>
-          </div>
-
+        <div className="max-w-3xl space-y-3">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
             Mengapa Memilih Krevia Digital.
           </h2>
@@ -83,7 +80,7 @@ export function WhyKrevia() {
           })}
 
           {/* Callout Card */}
-          <div className="bg-[#101D35] text-white rounded-3xl p-7 sm:p-8 border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="bg-[#101D35] text-white rounded-3xl p-7 sm:p-8 border border-slate-800 shadow-md flex flex-col justify-between space-y-6">
             <div className="space-y-3">
               <span className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
                 Integritas Rekayasa
@@ -96,8 +93,14 @@ export function WhyKrevia() {
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400">
-              Bangun Lebih Cerdas. Beroperasi Lebih Baik.
+            <div className="pt-4 border-t border-slate-800">
+              <Link
+                href="/tentang-kami"
+                className="inline-flex items-center gap-1.5 text-xs text-[#24D6B0] hover:underline font-semibold"
+              >
+                <span>Baca manifesto rekayasa & profil entitas kami</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
         </div>

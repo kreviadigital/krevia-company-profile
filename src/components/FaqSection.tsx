@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface FaqItem {
@@ -54,12 +54,7 @@ export function FaqSection() {
       <div className="max-w-6xl mx-auto space-y-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-            <HelpCircle className="w-3.5 h-3.5 text-[#24D6B0]" />
-            <span>Tanya Jawab & Transparansi</span>
-          </div>
-
+        <div className="max-w-3xl space-y-3">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
             Pertanyaan yang Sering Diajukan.
           </h2>
@@ -69,29 +64,36 @@ export function FaqSection() {
           </p>
         </div>
 
-        {/* Accordion Surface */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm divide-y divide-slate-100">
+        {/* Accordion List */}
+        <div className="space-y-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
+
             return (
-              <div key={index} className="py-4 sm:py-5 first:pt-0 last:pb-0">
+              <div
+                key={index}
+                className={`rounded-2xl transition-all duration-200 border ${
+                  isOpen
+                    ? "bg-white border-[#24D6B0]/60 shadow-sm"
+                    : "bg-white/80 border-slate-200/90 hover:border-slate-300 hover:bg-white"
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => toggleAccordion(index)}
-                  className="w-full flex items-center justify-between text-left gap-4 py-2 group cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0] rounded-lg"
+                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0] rounded-2xl"
                   aria-expanded={isOpen}
                 >
-                  <span className={`text-base sm:text-lg font-bold transition-colors ${
-                    isOpen ? "text-[#101D35]" : "text-slate-800 group-hover:text-[#101D35]"
-                  }`}>
+                  <span className="text-base sm:text-lg font-bold text-[#101D35] leading-snug">
                     {faq.question}
                   </span>
-
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-200 ${
-                    isOpen 
-                      ? "bg-[#101D35] text-white rotate-180" 
-                      : "bg-slate-100 text-slate-600 group-hover:bg-slate-200"
-                  }`}>
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      isOpen
+                        ? "bg-[#101D35] text-[#24D6B0] rotate-180"
+                        : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
@@ -102,10 +104,10 @@ export function FaqSection() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-2 pb-2 pr-6 text-sm sm:text-base text-slate-600 leading-relaxed">
+                      <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-100">
                         {faq.answer}
                       </div>
                     </motion.div>
