@@ -6,6 +6,7 @@ import { ProductSpotlight } from "@/components/ProductSpotlight";
 import { ErpCapabilities } from "@/components/ErpCapabilities";
 import { PricingSection } from "@/components/PricingSection";
 import { ServicesBento } from "@/components/ServicesBento";
+import { FaqSection } from "@/components/FaqSection";
 import { WhyKrevia } from "@/components/WhyKrevia";
 import { HowWeWork } from "@/components/HowWeWork";
 import { About } from "@/components/About";
@@ -26,6 +27,7 @@ export default function Home() {
       <HowWeWork />
       <PricingSection />
       <ServicesBento />
+      <FaqSection />
       <About />
       <ContactSection />
       <Footer />

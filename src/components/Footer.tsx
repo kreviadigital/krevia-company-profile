@@ -114,6 +114,15 @@ export function Footer() {
                   Website Company Profile
                 </a>
               </li>
+              <li>
+                <a
+                  href="#faq"
+                  onClick={(e) => handleNavClick(e, "#faq")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Tanya Jawab (FAQ)
+                </a>
+              </li>
             </ul>
           </div>
 

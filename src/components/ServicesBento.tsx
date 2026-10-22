@@ -8,7 +8,8 @@ import {
   ShieldCheck, 
   Zap, 
   Layers, 
-  CheckCircle2 
+  CheckCircle2,
+  Clock
 } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -74,6 +75,22 @@ export function ServicesBento() {
               <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl w-fit">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 <span>Status: Tersedia untuk Konsultasi & Pengerjaan</span>
+              </div>
+
+              {/* Micro-Badges */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs text-slate-700 font-medium">
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <CheckCircle2 className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                  <span className="leading-tight">Investasi Sekali Bayar</span>
+                </div>
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <Clock className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                  <span className="leading-tight">Selesai 7–14 Hari</span>
+                </div>
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
+                  <Zap className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                  <span className="leading-tight">Domain, Cepat & SEO</span>
+                </div>
               </div>
 
               {/* Dual CTAs */}
