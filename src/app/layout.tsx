@@ -62,6 +62,40 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://kreviadigitalid.my.id/#organization",
+      name: "Krevia Digital",
+      url: "https://kreviadigitalid.my.id",
+      logo: "https://kreviadigitalid.my.id/logo-mark.png",
+      description: "Startup rekayasa perangkat lunak dan transformasi digital berbasis di Pekanbaru, Indonesia.",
+      email: "support@kreviadigitalid.my.id",
+      telephone: "+6285121282601",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Pekanbaru",
+        addressRegion: "Riau",
+        addressCountry: "ID",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://kreviadigitalid.my.id/#erp",
+      name: "Krevia Modular ERP",
+      operatingSystem: "All (Web Based Cloud)",
+      applicationCategory: "BusinessApplication",
+      offers: {
+        "@type": "Offer",
+        price: "399000",
+        priceCurrency: "IDR",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -72,6 +106,10 @@ export default function RootLayout({
       <head>
         <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

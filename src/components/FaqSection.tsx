@@ -36,7 +36,7 @@ export function FaqSection() {
     {
       question: "Untuk layanan Website Company Profile, bagaimana skema biaya dan pengerjaannya?",
       answer:
-        "Pembuatan Website Company Profile berbasis investasi satu kali (one-time project) tanpa biaya langganan bulanan software yang membebani. Estimasi pengerjaan berkisar 7–14 hari kerja, sudah mencakup domain kustom, server kilat, integrasi kontak WhatsApp resmi, serta struktur kode bersih yang ramah mesin pencari (SEO).",
+        "Pembuatan Website Company Profile dirancang berbasis investasi satu kali (one-time project) sesuai cakupan kebutuhan bisnis Anda, tanpa biaya langganan bulanan software yang membebani. Sudah mencakup penataan narasi profesional, domain kustom, infrastruktur server kilat, integrasi kontak WhatsApp resmi, serta arsitektur kode Next.js yang ramah mesin pencari (SEO).",
     },
     {
       question: "Bisakah platform ERP dikustomisasi jika bisnis kami memiliki alur kerja spesifik?",

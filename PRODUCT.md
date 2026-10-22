@@ -28,13 +28,16 @@ Keberhasilan diukur dari penyajian profil perusahaan dan penawaran langganan ERP
 
 ## Operating Context
 
-- Platform web responsif (desktop, tablet, mobile).
+- Platform web responsif (desktop, tablet, mobile) dengan arsitektur multi-halaman Next.js App Router: Beranda (`/`), Katalog ERP Modular (`/produk/erp`), dan Profil Entitas (`/tentang-kami`).
 - Saluran konversi langsung terhubung ke WhatsApp resmi (+62 851-2128-2601) dan email (support@kreviadigitalid.my.id).
 - Lingkungan deployment: Vercel, Next.js App Router, React 19, TypeScript, Tailwind CSS.
 
 ## Capabilities and Constraints
 
 - Bahasa Situs: Bahasa Indonesia profesional, lugas, dan terstruktur.
+- Portofolio Produk & Layanan:
+  - **Platform ERP Modular (Utama)**: Katalog 44 modul lintas operasional, finansial, proyek, dan supply chain.
+  - **Layanan Pintu Masuk (On-ramp Service)**: Jasa pembuatan Website Company Profile profesional untuk membangun fondasi kredibilitas bisnis sebelum adopsi sistem enterprise.
 - Skema Langganan Terpusat:
   - **Basic** (Rp 399.000/bulan): Fondasi ERP praktis untuk bisnis perintis (hingga 5 pengguna, 3 proyek/unit).
   - **Pro** (Rp 999.000/bulan): Alur kerja terhubung, persetujuan bertingkat, dan laporan mendalam (hingga 20 pengguna).

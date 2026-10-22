@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { 
   Building2, 
   FileSpreadsheet, 
@@ -62,7 +63,7 @@ export function ProductSpotlight() {
           <div className="max-w-3xl space-y-4 relative z-10">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-[#24D6B0] text-xs font-bold tracking-wider uppercase">
               <Building2 className="w-3.5 h-3.5" />
-              <span>Solusi Unggulan • Akses Awal / Dalam Pengembangan</span>
+              <span>Solusi Unggulan � Akses Awal / Dalam Pengembangan</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
@@ -84,14 +85,13 @@ export function ProductSpotlight() {
                 &ldquo;Visibilitas terpadu untuk proyek, anggaran, aktivitas lapangan, dan data operasional bisnis.&rdquo;
               </p>
             </div>
-            <a
-              href="#pricing"
-              onClick={(e) => handleNavClick(e, "#pricing")}
+            <Link
+              href="/produk/erp"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#24D6B0] hover:bg-[#1AB895] text-[#101D35] font-bold text-xs sm:text-sm shrink-0 transition-all shadow-xs cursor-pointer"
             >
-              <span>Pelajari Skema Langganan</span>
+              <span>Eksplorasi Katalog ERP & Harga</span>
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
           {/* The Operational Gaps We Are Solving */}

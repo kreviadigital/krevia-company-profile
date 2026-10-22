@@ -1,17 +1,15 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { 
-  Globe, 
   ArrowRight, 
   MessageSquare, 
   ShieldCheck, 
   Zap, 
   Layers, 
-  CheckCircle2,
-  Clock
+  CheckCircle2
 } from "lucide-react";
-import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function ServicesBento() {
@@ -58,16 +56,11 @@ export function ServicesBento() {
             
             {/* Left Column: Positioning & CTAs */}
             <div className="lg:col-span-5 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-                <Globe className="w-3.5 h-3.5 text-[#24D6B0]" />
-                <span>Layanan Pelengkap • Fondasi Awal Bisnis</span>
-              </div>
-
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
                 Belum Siap untuk ERP Skala Penuh? Mulai dari Fondasi Kredibilitas Digital.
               </h2>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+              <p className="text-base text-slate-600 leading-relaxed">
                 Bagi bisnis yang sedang merintis atau ingin memperkuat citra profesional sebelum mengintegrasikan operasional internal, Krevia membantu merancang Website Company Profile berstandar enterprise yang cepat, elegan, dan siap dihubungkan langsung ke sistem ERP saat bisnis Anda siap bertumbuh.
               </p>
 
@@ -80,16 +73,16 @@ export function ServicesBento() {
               {/* Micro-Badges */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs text-slate-700 font-medium">
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                  <CheckCircle2 className="w-4 h-4 text-[#24D6B0] shrink-0" />
-                  <span className="leading-tight">Investasi Sekali Bayar</span>
+                  <ShieldCheck className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                  <span className="leading-tight">Tanpa Biaya Bulanan</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                  <Clock className="w-4 h-4 text-[#24D6B0] shrink-0" />
-                  <span className="leading-tight">Selesai 7–14 Hari</span>
+                  <Layers className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                  <span className="leading-tight">Siap Terhubung ERP</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
                   <Zap className="w-4 h-4 text-[#24D6B0] shrink-0" />
-                  <span className="leading-tight">Domain, Cepat & SEO</span>
+                  <span className="leading-tight">Performa Kilat & SEO</span>
                 </div>
               </div>
 
@@ -105,14 +98,13 @@ export function ServicesBento() {
                   <span>Chat WhatsApp</span>
                 </a>
 
-                <a
-                  href="#contact"
-                  onClick={(e) => handleNavClick(e, "#contact")}
+                <Link
+                  href="/kontak"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#101D35] font-semibold text-xs sm:text-sm border border-slate-300 transition-colors cursor-pointer"
                 >
                   <span>Isi Form Konsultasi</span>
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
 

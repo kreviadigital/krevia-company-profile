@@ -2,14 +2,12 @@ import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { ProductSpotlight } from "@/components/ProductSpotlight";
-import { ErpCapabilities } from "@/components/ErpCapabilities";
-import { PricingSection } from "@/components/PricingSection";
+import { ErpOverview } from "@/components/ErpOverview";
 import { ServicesBento } from "@/components/ServicesBento";
-import { FaqSection } from "@/components/FaqSection";
+import { ProductSpotlight } from "@/components/ProductSpotlight";
 import { WhyKrevia } from "@/components/WhyKrevia";
 import { HowWeWork } from "@/components/HowWeWork";
-import { About } from "@/components/About";
+import { FaqSection } from "@/components/FaqSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
@@ -21,14 +19,12 @@ export default function Home() {
       <SmoothScroll />
       <Navbar />
       <Hero />
+      <ErpOverview />
+      <ServicesBento />
       <ProductSpotlight />
-      <ErpCapabilities />
       <WhyKrevia />
       <HowWeWork />
-      <PricingSection />
-      <ServicesBento />
       <FaqSection />
-      <About />
       <ContactSection />
       <Footer />
       <FloatingWhatsApp />

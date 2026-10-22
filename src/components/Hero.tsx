@@ -2,8 +2,8 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Layers, ShieldCheck } from "lucide-react";
-import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Hero() {
   return (
@@ -13,38 +13,30 @@ export function Hero() {
           
           {/* Left Column: Core Positioning & CTAs */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Eyebrow Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/5 border border-slate-300/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
-              <span className="w-2 h-2 rounded-full bg-[#24D6B0]" />
-              <span>Sistem Bisnis Terintegrasi</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#101D35] leading-[1.12]">
               Hubungkan Seluruh Operasional Bisnis ke Dalam Satu Sistem.
             </h1>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
-              Krevia Digital membangun solusi ERP modular untuk membantu bisnis menghubungkan alur kerja, meningkatkan visibilitas operasional, dan mengelola informasi secara terpadu.
+              Krevia Digital membangun solusi ERP modular dan website berstandar korporat untuk membantu bisnis menghubungkan alur kerja, meningkatkan visibilitas operasional, dan memperkuat kredibilitas pasar.
             </p>
 
             {/* Dual CTAs */}
             <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6">
-              <a
-                href="#pricing"
-                onClick={(e) => handleNavClick(e, "#pricing")}
+              <Link
+                href="/produk/erp"
                 className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white font-semibold text-sm sm:text-base transition-all duration-200 hover:shadow-lg shadow-sm cursor-pointer group"
               >
-                <span>Lihat Paket Harga</span>
+                <span>Lihat Platform ERP</span>
                 <ArrowRight className="w-4 h-4 text-[#24D6B0] transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
+              </Link>
 
-              <a
-                href="#contact"
-                onClick={(e) => handleNavClick(e, "#contact")}
+              <Link
+                href="/kontak"
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white hover:bg-slate-100 text-[#101D35] font-semibold text-sm sm:text-base border border-slate-300/80 transition-colors cursor-pointer"
               >
-                Konsultasi Kebutuhan Bisnis
-              </a>
+                Konsultasi Sekarang
+              </Link>
             </div>
 
             {/* Credibility Micro-Bar */}

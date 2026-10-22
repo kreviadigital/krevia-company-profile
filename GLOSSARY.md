@@ -27,3 +27,15 @@ _Avoid_: Desain grafis, web design dekoratif, template UI generik
 **Business Process Digitization**:
 Rekayasa ulang dan automasi proses bisnis manual, formulir kertas, dan approval bertingkat menjadi alur kerja digital yang cepat dengan jejak audit terverifikasi.
 _Avoid_: Komputerisasi, arsip digital pasif
+
+**On-ramp Service**:
+Layanan implementasi rekayasa berlingkup terukur (seperti Website Company Profile) yang menjadi jembatan kredibilitas awal bagi bisnis sebelum mengadopsi platform ERP modular secara menyeluruh.
+_Avoid_: Jasa bikin web murah, paket agensi lepasan, web instan
+
+**Company Profile Deck**:
+Dokumen presentasi resmi berformat PDF terstruktur yang merangkum kapabilitas teknologi, arsitektur produk, metodologi rekayasa, dan legalitas entitas Krevia untuk proses procurement B2B.
+_Avoid_: Brosur promosi, pamflet penawaran, proposal generik
+
+**Guided Demo**:
+Sesi konsultasi teknis terjadwal (30 menit) bersama tim rekayasa Krevia untuk mengevaluasi kecocokan alur bisnis calon klien dengan modul ERP secara langsung.
+_Avoid_: Sales pitch agresif, obrolan WhatsApp tanpa agenda

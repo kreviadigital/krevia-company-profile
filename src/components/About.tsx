@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Sparkles } from "lucide-react";
+import Link from "next/link";
+import { Sparkles, ArrowRight } from "lucide-react";
 
 export function About() {
   return (
@@ -27,6 +28,16 @@ export function About() {
             <p className="text-sm font-medium text-slate-400">
               Kota Pekanbaru, Riau, Indonesia • Beroperasi Online & On-Site
             </p>
+
+            <div className="pt-2">
+              <Link
+                href="/tentang-kami"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 text-white text-xs font-semibold transition-all border border-slate-700 hover:border-[#24D6B0]/60"
+              >
+                <span>Profil Lengkap & Manifesto Rekayasa</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#24D6B0]" />
+              </Link>
+            </div>
           </div>
 
           {/* Right Column: Narrative & Values */}

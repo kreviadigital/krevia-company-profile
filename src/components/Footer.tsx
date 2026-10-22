@@ -4,7 +4,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MessageSquare, Mail, MapPin } from "lucide-react";
-import { handleNavClick } from "@/lib/smoothScroll";
 import { SITE_CONFIG } from "@/lib/constants";
 
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -46,94 +45,98 @@ export function Footer() {
               />
             </Link>
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
-              Solusi platform ERP modular untuk bisnis modern. Menghubungkan alur operasional, anggaran, dan visibilitas proyek ke dalam satu sistem terpadu.
+              Solusi platform ERP modular dan rekayasa perangkat lunak enterprise untuk bisnis modern. Menghubungkan alur operasional, anggaran, dan visibilitas proyek ke dalam satu ekosistem terpadu.
             </p>
             <p className="text-xs text-slate-400 font-medium">
               Bangun Lebih Cerdas. Beroperasi Lebih Baik.
             </p>
           </div>
 
-          {/* Col 2: ERP Solutions */}
-          <div className="md:col-span-3 space-y-3">
+          {/* Col 2: Products & Solutions */}
+          <div className="md:col-span-4 space-y-3">
             <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              Produk & Navigasi
+              Produk & Layanan
             </p>
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <a
-                  href="#construction-erp"
-                  onClick={(e) => handleNavClick(e, "#construction-erp")}
-                  className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                <Link
+                  href="/produk/erp"
+                  className="hover:text-white transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Konstruksi ERP</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">Akses Awal</span>
-                </a>
+                  <span className="font-semibold text-white">Katalog ERP Modular</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">44 Modul</span>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#capabilities"
-                  onClick={(e) => handleNavClick(e, "#capabilities")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <Link
+                  href="/layanan"
+                  className="hover:text-white transition-colors font-medium text-slate-200"
                 >
-                  Kapabilitas Modul
-                </a>
+                  Layanan Rekayasa & Web Profile
+                </Link>
               </li>
               <li>
-                <a
-                  href="#why-krevia"
-                  onClick={(e) => handleNavClick(e, "#why-krevia")}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Mengapa Krevia
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#how-we-work"
-                  onClick={(e) => handleNavClick(e, "#how-we-work")}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Alur Implementasi
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#pricing"
-                  onClick={(e) => handleNavClick(e, "#pricing")}
-                  className="hover:text-white transition-colors cursor-pointer font-semibold text-white"
+                <Link
+                  href="/produk/erp#pricing"
+                  className="hover:text-white transition-colors"
                 >
                   Paket Langganan ERP
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
-                  onClick={(e) => handleNavClick(e, "#services")}
-                  className="hover:text-white transition-colors cursor-pointer"
-                >
-                  Website Company Profile
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  onClick={(e) => handleNavClick(e, "#faq")}
-                  className="hover:text-white transition-colors cursor-pointer"
+                <Link
+                  href="/#faq"
+                  className="hover:text-white transition-colors"
                 >
                   Tanya Jawab (FAQ)
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Direct Contact */}
-          <div className="md:col-span-4 space-y-3">
+          {/* Col 3: Company & Compliance */}
+          <div className="md:col-span-3 space-y-3">
             <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              Kontak Resmi
+              Perusahaan & Legalitas
             </p>
-            <ul className="space-y-2.5 text-sm text-slate-300">
-              <li className="flex items-center gap-2.5">
-                <MessageSquare className="w-4 h-4 text-[#24D6B0] shrink-0" />
+            <ul className="space-y-2 text-sm text-slate-300">
+              <li>
+                <Link
+                  href="/tentang-kami"
+                  className="hover:text-white transition-colors"
+                >
+                  Tentang Krevia Digital
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/kontak"
+                  className="hover:text-white transition-colors text-white font-medium"
+                >
+                  Hubungi Kami & Konsultasi →
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/syarat-ketentuan"
+                  className="hover:text-white transition-colors"
+                >
+                  Syarat & Ketentuan (SLA)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/kebijakan-privasi"
+                  className="hover:text-white transition-colors"
+                >
+                  Kebijakan Privasi
+                </Link>
+              </li>
+            </ul>
+
+            <div className="pt-3 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+              <div className="flex items-center gap-2">
+                <MessageSquare className="w-3.5 h-3.5 text-[#24D6B0] shrink-0" />
                 <a
                   href={SITE_CONFIG.getWhatsappUrl()}
                   target="_blank"
@@ -142,32 +145,30 @@ export function Footer() {
                 >
                   {SITE_CONFIG.whatsappDisplay}
                 </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#24D6B0] shrink-0" />
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-[#24D6B0] shrink-0" />
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
                   className="hover:text-white transition-colors"
                 >
                   {SITE_CONFIG.email}
                 </a>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#24D6B0] shrink-0 mt-0.5" />
-                <span className="text-slate-400">
-                  {SITE_CONFIG.location}
-                </span>
-              </li>
-            </ul>
+              </div>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#24D6B0] shrink-0 mt-0.5" />
+                <span>{SITE_CONFIG.location}</span>
+              </div>
+            </div>
 
-            <div className="pt-2">
+            <div className="pt-1">
               <a
                 href={SITE_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
               >
-                <InstagramIcon className="w-4 h-4" />
+                <InstagramIcon className="w-3.5 h-3.5" />
                 <span>@{SITE_CONFIG.instagramUsername}</span>
               </a>
             </div>
@@ -181,20 +182,25 @@ export function Footer() {
             &copy; {currentYear} Krevia Digital. Hak Cipta Dilindungi.
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center gap-6">
+            <Link
+              href="/syarat-ketentuan"
+              className="hover:text-white transition-colors"
+            >
+              Syarat & Ketentuan (SLA)
+            </Link>
             <Link
               href="/kebijakan-privasi"
               className="hover:text-white transition-colors"
             >
-              Kebijakan Privasi & Tata Kelola Data
+              Kebijakan Privasi
             </Link>
-            <a
-              href="#hero"
-              onClick={(e) => handleNavClick(e, "#hero")}
+            <Link
+              href="/"
               className="hover:text-white transition-colors"
             >
-              Kembali ke Atas ↑
-            </a>
+              Kembali ke Beranda ↑
+            </Link>
           </div>
         </div>
 
