@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://kreviadigitalid.my.id"),
   title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
   description:
-    "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja di Pekanbaru dan Indonesia.",
+    "Krevia Digital menyediakan solusi ERP modular dan jasa pembuatan website company profile profesional untuk membantu bisnis mengintegrasikan operasional dan memperkuat kredibilitas di Pekanbaru dan Indonesia.",
   keywords: [
     "Krevia Digital",
     "ERP Pekanbaru",
@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "Kontrol Biaya Proyek",
     "Sistem Bisnis Terintegrasi",
     "Aplikasi Manajemen Bisnis",
+    "Jasa Website Company Profile",
+    "Website Profil Perusahaan Pekanbaru",
+    "Jasa Pembuatan Website Profesional",
   ],
   authors: [{ name: "Krevia Digital" }],
   icons: {
@@ -36,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
     description:
-      "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja.",
+      "Krevia Digital menyediakan solusi ERP modular dan jasa pembuatan website company profile untuk membantu bisnis mengintegrasikan operasional dan memperkuat kredibilitas.",
     url: "https://kreviadigitalid.my.id",
     siteName: "Krevia Digital",
     locale: "id_ID",
@@ -54,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Krevia Digital | Solusi ERP Modular & Sistem Bisnis Terintegrasi",
     description:
-      "Krevia Digital menyediakan solusi ERP modular untuk membantu bisnis mengintegrasikan operasional, mengontrol biaya proyek, dan meningkatkan visibilitas alur kerja.",
+      "Krevia Digital menyediakan solusi ERP modular dan jasa pembuatan website company profile untuk membantu bisnis mengintegrasikan operasional dan memperkuat kredibilitas.",
     images: ["/og-image.png"],
   },
 };

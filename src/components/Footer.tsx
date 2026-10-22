@@ -61,15 +61,6 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-slate-300">
               <li>
                 <a
-                  href="#pricing"
-                  onClick={(e) => handleNavClick(e, "#pricing")}
-                  className="hover:text-white transition-colors cursor-pointer font-semibold text-white"
-                >
-                  Paket Langganan ERP
-                </a>
-              </li>
-              <li>
-                <a
                   href="#construction-erp"
                   onClick={(e) => handleNavClick(e, "#construction-erp")}
                   className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
@@ -103,6 +94,24 @@ export function Footer() {
                   className="hover:text-white transition-colors cursor-pointer"
                 >
                   Alur Implementasi
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#pricing"
+                  onClick={(e) => handleNavClick(e, "#pricing")}
+                  className="hover:text-white transition-colors cursor-pointer font-semibold text-white"
+                >
+                  Paket Langganan ERP
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => handleNavClick(e, "#services")}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  Website Company Profile
                 </a>
               </li>
             </ul>

@@ -9,6 +9,7 @@ export function ContactSection() {
     name: "",
     contact: "",
     businessType: "Kontraktor & Konstruksi Umum",
+    serviceType: "Implementasi ERP Modular",
     operationalNeeds: "",
   });
 
@@ -25,6 +26,12 @@ export function ContactSection() {
     "Manufaktur & Fabrikasi",
     "Perhotelan & Pariwisata",
     "Bisnis Berbasis Proyek / Layanan Lainnya",
+  ];
+
+  const serviceTypes = [
+    "Implementasi ERP Modular",
+    "Pembuatan Website Company Profile",
+    "Custom Software & Integrasi Sistem",
   ];
 
   const validateContact = (val: string): boolean => {
@@ -60,15 +67,16 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     const text = `Halo Krevia Digital,
-Saya ingin mendiskusikan operasional bisnis dan mengeksplorasi solusi ERP modular:
+Saya ingin mendiskusikan operasional bisnis dan mengeksplorasi layanan Krevia:
 
 • Nama: ${cleanName}
 • Kontak: ${cleanContact}
 • Bidang Industri / Bisnis: ${formData.businessType}
-• Kebutuhan Modul & Kendala Saat Ini:
+• Jenis Layanan: ${formData.serviceType}
+• Kebutuhan & Kendala Saat Ini:
 ${cleanNeeds || "Belum dijelaskan spesifik."}
 
-Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanjut.`;
+Mohon informasi mengenai estimasi pengerjaan dan jadwal diskusi lebih lanjut.`;
 
     setTimeout(() => {
       setIsSubmitting(false);
@@ -87,6 +95,7 @@ Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanju
       name: "",
       contact: "",
       businessType: "Kontraktor & Konstruksi Umum",
+      serviceType: "Implementasi ERP Modular",
       operationalNeeds: "",
     });
   };
@@ -107,7 +116,7 @@ Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanju
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              Sampaikan bagaimana bisnis Anda saat ini mengelola proyek, pengeluaran, inventaris material, dan alur harian. Kami akan mendiskusikan konfigurasi ERP yang paling tepat tanpa beban biaya awal.
+              Sampaikan bagaimana bisnis Anda saat ini mengelola operasional, alur kerja tim, atau kebutuhan kehadiran digital. Kami akan mendiskusikan solusi teknis yang paling tepat dan transparan.
             </p>
 
             {/* Direct Verified Contact Channels */}
@@ -164,10 +173,10 @@ Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanju
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 <div>
                   <h3 className="text-xl font-bold text-[#101D35]">
-                    Diskusikan Kebutuhan ERP Anda
+                    Diskusikan Kebutuhan Bisnis Anda
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                    Isi formulir ini untuk memulai konsultasi teknis langsung dengan tim engineer kami.
+                    Isi formulir ini untuk memulai konsultasi langsung dengan tim rekayasa perangkat lunak Krevia Digital.
                   </p>
                 </div>
 
@@ -233,17 +242,37 @@ Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanju
                   </select>
                 </div>
 
+                {/* Service Type Field */}
+                <div>
+                  <label htmlFor="service-type" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                    Jenis Layanan <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="service-type"
+                    required
+                    value={formData.serviceType}
+                    onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 bg-white focus:outline-none focus:ring-2 focus:ring-[#24D6B0] focus:border-transparent text-sm transition-all"
+                  >
+                    {serviceTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Operational Needs Field */}
                 <div>
                   <label htmlFor="operational-needs" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                    Kendala Operasional atau Kebutuhan Modul (Opsional)
+                    Kendala Operasional atau Kebutuhan Spesifik (Opsional)
                   </label>
                   <textarea
                     id="operational-needs"
                     rows={4}
                     value={formData.operationalNeeds}
                     onChange={(e) => setFormData({ ...formData, operationalNeeds: e.target.value })}
-                    placeholder="Ceritakan kendala Anda: misalnya pencatatan varian anggaran RAB antar proyek, verifikasi purchase order material semen dan besi, atau integrasi kasir multi-cabang."
+                    placeholder="Ceritakan kebutuhan Anda: misalnya pembuatan website company profile profesional, integrasi pencatatan RAB proyek, atau manajemen inventaris multi-cabang."
                     className="w-full px-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#24D6B0] focus:border-transparent text-sm transition-all resize-none"
                   />
                 </div>
@@ -258,7 +287,7 @@ Mohon informasi mengenai konfigurasi paket dan jadwal diskusi teknis lebih lanju
                     <span>Menyiapkan Pesan...</span>
                   ) : (
                     <>
-                      <span>Diskusikan Kebutuhan ERP</span>
+                      <span>Diskusikan Kebutuhan Bisnis</span>
                       <ArrowRight className="w-4 h-4 text-[#24D6B0]" />
                     </>
                   )}

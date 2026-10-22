@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { handleNavClick } from "@/lib/smoothScroll";
 
 export function Navbar() {
@@ -19,12 +19,11 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Solusi ERP", href: "#solutions" },
-    { label: "Konstruksi ERP", href: "#construction-erp" },
-    { label: "Kapabilitas", href: "#capabilities" },
-    { label: "Paket Harga", href: "#pricing" },
-    { label: "Mengapa Krevia", href: "#why-krevia" },
+    { label: "Solusi ERP", href: "#construction-erp" },
+    { label: "Keunggulan", href: "#why-krevia" },
     { label: "Cara Kerja", href: "#how-we-work" },
+    { label: "Harga", href: "#pricing" },
+    { label: "Layanan Web", href: "#services" },
     { label: "Tentang", href: "#about" },
   ];
 
@@ -37,14 +36,14 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3.5"
-          : "bg-transparent py-5"
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3"
+          : "bg-transparent py-4 sm:py-5"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
           {/* Logo Lockup */}
-          <Link href="/" className="flex items-center group py-1" aria-label="Beranda Krevia Digital">
+          <Link href="/" className="shrink-0 flex items-center group py-1" aria-label="Beranda Krevia Digital">
             <Image
               src="/logo-horizontal.png"
               alt="Krevia Digital"
@@ -56,7 +55,7 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6" aria-label="Navigasi Utama">
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navigasi Utama">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -70,13 +69,13 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Primary CTA */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-3 shrink-0">
             <a
               href="#contact"
               onClick={(e) => onNavClick(e, "#contact")}
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white text-xs sm:text-sm font-semibold transition-all duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
             >
-              <span>Konsultasi ERP</span>
+              <span>Konsultasi Sekarang</span>
               <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
             </a>
           </div>
@@ -92,33 +91,35 @@ export function Navbar() {
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 pb-5 px-4 bg-white/98 backdrop-blur-lg border border-slate-200 rounded-2xl shadow-xl space-y-2 animate-in fade-in slide-in-from-top-2 duration-200">
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200 px-4 pt-4 pb-6 shadow-xl animate-in fade-in duration-200">
+          <nav className="flex flex-col space-y-2.5" aria-label="Navigasi Mobile">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => onNavClick(e, link.href)}
-                className="block py-2.5 text-base font-semibold text-slate-700 hover:text-[#101D35] border-b border-slate-100 last:border-b-0 cursor-pointer"
+                className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-[#101D35] hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-2">
+            <div className="pt-3 border-t border-slate-100">
               <a
                 href="#contact"
                 onClick={(e) => onNavClick(e, "#contact")}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl bg-[#101D35] text-white text-sm font-semibold hover:bg-[#1C2E4F] transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#101D35] text-white text-sm font-bold shadow-sm"
               >
-                <span>Konsultasi ERP</span>
+                <span>Konsultasi Sekarang</span>
                 <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
               </a>
             </div>
-          </div>
-        )}
-      </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

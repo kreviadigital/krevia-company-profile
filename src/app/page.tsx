@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { ProductSpotlight } from "@/components/ProductSpotlight";
 import { ErpCapabilities } from "@/components/ErpCapabilities";
 import { PricingSection } from "@/components/PricingSection";
+import { ServicesBento } from "@/components/ServicesBento";
 import { WhyKrevia } from "@/components/WhyKrevia";
 import { HowWeWork } from "@/components/HowWeWork";
 import { About } from "@/components/About";
@@ -21,9 +22,10 @@ export default function Home() {
       <Hero />
       <ProductSpotlight />
       <ErpCapabilities />
-      <PricingSection />
       <WhyKrevia />
       <HowWeWork />
+      <PricingSection />
+      <ServicesBento />
       <About />
       <ContactSection />
       <Footer />
