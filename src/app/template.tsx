@@ -8,6 +8,25 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Intercept keyboard reload shortcuts (F5, Ctrl+R, Cmd+R) on subpages to return directly to Beranda
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isReloadKey =
+        e.key === "F5" ||
+        ((e.ctrlKey || e.metaKey) && (e.key === "r" || e.key === "R"));
+
+      const isSubpage = pathname !== "/";
+
+      if (isReloadKey && isSubpage) {
+        e.preventDefault();
+        window.location.replace("/");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [pathname]);
+
+  useEffect(() => {
     // When changing routes without a specific hash, scroll cleanly to top
     if (typeof window !== "undefined" && !window.location.hash) {
       const lenis = (window as unknown as { lenis?: { scrollTo: Function } }).lenis;

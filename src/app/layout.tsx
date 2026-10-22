@@ -114,10 +114,28 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              if ('scrollRestoration' in history) {
-                history.scrollRestoration = 'manual';
-              }
-              window.scrollTo(0, 0);
+              try {
+                if ('scrollRestoration' in history) {
+                  history.scrollRestoration = 'manual';
+                }
+                var checkReloadRedirect = function() {
+                  var nav = window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation')[0];
+                  var isReload = (nav && nav.type === 'reload') || (window.performance && window.performance.navigation && window.performance.navigation.type === 1);
+                  var path = window.location.pathname || '';
+                  if (path.length > 1 && path.charAt(path.length - 1) === '/') {
+                    path = path.slice(0, -1);
+                  }
+                  if (isReload && path !== '/' && path !== '') {
+                    window.location.replace('/');
+                    return true;
+                  }
+                  return false;
+                };
+                if (!checkReloadRedirect()) {
+                  window.addEventListener('DOMContentLoaded', checkReloadRedirect);
+                }
+                window.scrollTo(0, 0);
+              } catch (e) {}
             `,
           }}
         />
