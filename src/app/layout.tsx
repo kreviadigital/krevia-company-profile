@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Preloader } from "@/components/Preloader";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -141,6 +142,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${plusJakarta.className} bg-[#F4F7FB] text-[#101D35] antialiased selection:bg-[#24D6B0]/20 selection:text-[#101D35]`}>
+        <Preloader />
         <SmoothScroll />
         {children}
       </body>

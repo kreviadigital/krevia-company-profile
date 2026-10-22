@@ -27,13 +27,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, [pathname]);
 
   useEffect(() => {
-    // Mark session as visited so navigating back to Beranda never re-triggers the preloader
-    if (typeof window !== "undefined") {
-      (window as unknown as { __krevia_has_preloaded?: boolean }).__krevia_has_preloaded = true;
-    }
-  }, []);
-
-  useEffect(() => {
     // When changing routes without a specific hash, scroll cleanly to top
     if (typeof window !== "undefined" && !window.location.hash) {
       const lenis = (window as unknown as { lenis?: { scrollTo: Function } }).lenis;

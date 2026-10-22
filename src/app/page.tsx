@@ -1,4 +1,3 @@
-import { Preloader } from "@/components/Preloader";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ErpOverview } from "@/components/ErpOverview";
@@ -12,7 +11,6 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F4F7FB] text-[#101D35]">
-      <Preloader />
       <Navbar />
       <Hero />
       <ErpOverview />

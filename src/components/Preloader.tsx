@@ -4,35 +4,12 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-declare global {
-  interface Window {
-    __krevia_has_preloaded?: boolean;
-  }
-}
-
 export function Preloader() {
-  const [hasAlreadyPreloaded] = useState(() => {
-    if (typeof window !== "undefined") {
-      return Boolean(window.__krevia_has_preloaded);
-    }
-    return false;
-  });
-
-  const [progress, setProgress] = useState(() => (hasAlreadyPreloaded ? 100 : 0));
-  const [isComplete, setIsComplete] = useState(() => hasAlreadyPreloaded);
+  const [progress, setProgress] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
   const [statusText, setStatusText] = useState("Menginisialisasi Sistem ERP...");
 
   useEffect(() => {
-    // If this session has already preloaded, skip entirely
-    if (hasAlreadyPreloaded || window.__krevia_has_preloaded) {
-      return;
-    }
-
-    // Mark as preloaded so subsequent in-app navigation never re-triggers preloader
-    if (typeof window !== "undefined") {
-      window.__krevia_has_preloaded = true;
-    }
-
     // Pin viewport strictly to top on mount
     if (typeof window !== "undefined") {
       if ("scrollRestoration" in window.history) {
@@ -102,12 +79,7 @@ export function Preloader() {
       const activeLenis = (window as unknown as { lenis?: { start: Function } }).lenis;
       activeLenis?.start();
     };
-  }, [hasAlreadyPreloaded]);
-
-  // If already preloaded in this session, do not render preloader markup at all
-  if (hasAlreadyPreloaded) {
-    return null;
-  }
+  }, []);
 
   return (
     <AnimatePresence>
