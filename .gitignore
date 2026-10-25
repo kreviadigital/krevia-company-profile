@@ -29,5 +29,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local tool config
-.impeccable/*.local.json
+# local tool & ai agent config
+/.agents/
+skills-lock.json
+/.codex/
+/.impeccable/
+/.scratch/
