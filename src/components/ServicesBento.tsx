@@ -47,41 +47,41 @@ export function ServicesBento() {
   return (
     <section id="services" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-200/90 shadow-sm relative overflow-hidden">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-gray-300 shadow-sm relative overflow-hidden">
           
           {/* Subtle Ambient Background */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#24D6B0]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start relative z-10">
             
             {/* Left Column: Positioning & CTAs */}
             <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-                Belum Siap untuk ERP Skala Penuh? Mulai dari Fondasi Kredibilitas Digital.
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                Belum Siap untuk ERP Skala Penuh? Mulai dari Fondasi <span className="text-secondary">Kredibilitas Digital</span>.
               </h2>
 
-              <p className="text-base text-slate-600 leading-relaxed">
+              <p className="text-base text-gray-700 leading-relaxed">
                 Bagi bisnis yang sedang merintis atau ingin memperkuat citra profesional sebelum mengintegrasikan operasional internal, Krevia membantu merancang Website Company Profile berstandar enterprise yang cepat, elegan, dan siap dihubungkan langsung ke sistem ERP saat bisnis Anda siap bertumbuh.
               </p>
 
               {/* Status Indicator */}
-              <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3.5 py-2 rounded-xl w-fit">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center gap-2 text-xs font-bold text-success bg-success/10 border border-success/20 px-3.5 py-2 rounded-xl w-fit">
+                <CheckCircle2 className="w-4 h-4 text-success" />
                 <span>Status: Tersedia untuk Konsultasi & Pengerjaan</span>
               </div>
 
               {/* Micro-Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs text-slate-700 font-medium">
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                  <ShieldCheck className="w-4 h-4 text-[#24D6B0] shrink-0" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1 text-xs text-gray-700 font-medium">
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-gray-50 border border-gray-300">
+                  <ShieldCheck className="w-4 h-4 text-secondary shrink-0" />
                   <span className="leading-tight">Tanpa Biaya Bulanan</span>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                  <Layers className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-gray-50 border border-gray-300">
+                  <Layers className="w-4 h-4 text-secondary shrink-0" />
                   <span className="leading-tight">Siap Terhubung ERP</span>
                 </div>
-                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                  <Zap className="w-4 h-4 text-[#24D6B0] shrink-0" />
+                <div className="flex items-center gap-2 p-2.5 rounded-xl bg-gray-50 border border-gray-300">
+                  <Zap className="w-4 h-4 text-secondary shrink-0" />
                   <span className="leading-tight">Performa Kilat & SEO</span>
                 </div>
               </div>
@@ -92,15 +92,15 @@ export function ServicesBento() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white font-semibold text-xs sm:text-sm transition-all duration-200 hover:shadow-md cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-secondary hover:bg-secondary/90 text-white font-semibold text-xs sm:text-sm transition-all duration-200 hover:shadow-md cursor-pointer"
                 >
-                  <MessageSquare className="w-4 h-4 text-[#24D6B0]" />
+                  <MessageSquare className="w-4 h-4 text-white" />
                   <span>Chat WhatsApp</span>
                 </a>
 
                 <Link
                   href="/kontak"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-slate-50 text-[#101D35] font-semibold text-xs sm:text-sm border border-slate-300 transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white hover:bg-gray-100 text-gray-900 font-semibold text-xs sm:text-sm border border-gray-300 transition-colors cursor-pointer"
                 >
                   <span>Isi Form Konsultasi</span>
                   <ArrowRight className="w-4 h-4" />
@@ -115,15 +115,15 @@ export function ServicesBento() {
                 return (
                   <div
                     key={idx}
-                    className="p-5 sm:p-6 rounded-2xl bg-[#F8FAFC] border border-slate-200/80 hover:border-[#24D6B0]/50 transition-colors space-y-3"
+                    className="p-5 sm:p-6 rounded-2xl bg-gray-50 border border-gray-300 hover:border-accent transition-colors space-y-3"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/80 text-[#101D35] flex items-center justify-center shadow-xs">
-                      <Icon className="w-5 h-5 text-[#24D6B0]" />
+                    <div className="w-10 h-10 rounded-xl bg-white border border-gray-300 text-secondary flex items-center justify-center shadow-xs">
+                      <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <h3 className="text-base font-bold text-[#101D35]">
+                    <h3 className="text-base font-bold text-gray-900">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
                       {item.description}
                     </p>
                   </div>

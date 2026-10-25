@@ -13,7 +13,6 @@ import {
   ShieldAlert, 
   CheckCircle2 
 } from "lucide-react";
-import { handleNavClick } from "@/lib/smoothScroll";
 
 export function ProductSpotlight() {
   const challenges = [
@@ -54,31 +53,31 @@ export function ProductSpotlight() {
       <div id="solutions" className="scroll-mt-24 max-w-6xl mx-auto">
         
         {/* Main Dark Editorial Card */}
-        <div className="bg-[#101D35] text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-slate-700/80 shadow-2xl relative overflow-hidden">
+        <div className="bg-primary text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-gray-700/80 shadow-2xl relative overflow-hidden">
           
           {/* Subtle Ambient Background */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#24D6B0]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
 
           {/* Section Header */}
           <div className="max-w-3xl space-y-4 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-[#24D6B0] text-xs font-bold tracking-wider uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-navy-card border border-gray-700 text-accent text-xs font-bold tracking-wider uppercase">
               <Building2 className="w-3.5 h-3.5" />
-              <span>Solusi Unggulan � Akses Awal / Dalam Pengembangan</span>
+              <span>Solusi Unggulan • Akses Awal / Dalam Pengembangan</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Manajemen Konstruksi, Saling Terhubung.
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
               Sebagai salah satu wujud nyata fleksibilitas platform modular kami, <strong className="text-white font-semibold">Krevia Construction ERP</strong> dibangun khusus untuk menjembatani koordinasi antara staf lapangan, estimator RAB, dan pimpinan perusahaan.
             </p>
           </div>
 
           {/* Core Outcome Banner */}
-          <div className="my-10 p-6 rounded-2xl bg-[#182844] border border-slate-700/70 relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="my-10 p-6 rounded-2xl bg-navy-light/60 border border-gray-700/70 relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 Hasil yang Dituju
               </span>
               <p className="text-base sm:text-lg font-semibold text-white">
@@ -87,7 +86,7 @@ export function ProductSpotlight() {
             </div>
             <Link
               href="/produk/erp"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#24D6B0] hover:bg-[#1AB895] text-[#101D35] font-bold text-xs sm:text-sm shrink-0 transition-all shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent hover:bg-accent/90 text-primary font-bold text-xs sm:text-sm shrink-0 transition-all shadow-xs cursor-pointer"
             >
               <span>Eksplorasi Katalog ERP & Harga</span>
               <ArrowRight className="w-4 h-4" />
@@ -106,21 +105,21 @@ export function ProductSpotlight() {
                 return (
                   <div
                     key={idx}
-                    className="p-5 rounded-2xl bg-[#0B1322] border border-slate-800 hover:border-slate-700 transition-colors flex flex-col justify-between"
+                    className="p-5 rounded-2xl bg-navy-dark border border-gray-800 hover:border-gray-700 transition-colors flex flex-col justify-between"
                   >
                     <div className="space-y-3">
-                      <div className="w-9 h-9 rounded-xl bg-[#1C2E4F] flex items-center justify-center text-[#24D6B0]">
+                      <div className="w-9 h-9 rounded-xl bg-navy-light flex items-center justify-center text-accent">
                         <Icon className="w-5 h-5" />
                       </div>
                       <h4 className="text-base font-bold text-white">
                         {item.problem}
                       </h4>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-1.5 text-xs text-[#24D6B0] font-medium">
+                    <div className="mt-4 pt-3 border-t border-gray-800/80 flex items-center gap-1.5 text-xs text-accent font-medium">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       <span>Terakomodasi dalam Arsitektur ERP</span>
                     </div>
@@ -129,20 +128,20 @@ export function ProductSpotlight() {
               })}
 
               {/* Status & Validation Card */}
-              <div className="p-5 rounded-2xl bg-[#182844]/60 border border-dashed border-slate-700 flex flex-col justify-between">
+              <div className="p-5 rounded-2xl bg-navy-light/40 border border-dashed border-gray-700 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
+                  <div className="w-9 h-9 rounded-xl bg-warning/10 flex items-center justify-center text-warning">
                     <ShieldAlert className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-bold text-white">
                     Divalidasi Bersama Praktisi Lapangan
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
                     Alur modul dipetakan langsung bersama kontraktor, teknisi sipil, dan akuntan proyek untuk memastikan kemudahan adopsi nyata.
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800/80 text-xs text-slate-400 font-medium">
+                <div className="mt-4 pt-3 border-t border-gray-800/80 text-xs text-gray-400 font-medium">
                   Status: Prototipe Aktif & Validasi Kebutuhan
                 </div>
               </div>

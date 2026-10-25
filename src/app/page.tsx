@@ -10,7 +10,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F4F7FB] text-[#101D35]">
+    <main className="min-h-screen bg-gray-50 text-gray-900">
       <Navbar />
       <Hero />
       <ErpOverview />

@@ -39,16 +39,16 @@ export function WhyKrevia() {
   ];
 
   return (
-    <section id="why-krevia" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-[#F1F5F9]/60 border-y border-slate-200/70">
+    <section id="why-krevia" className="scroll-mt-24 py-16 sm:py-24 px-4 sm:px-6 bg-gray-100/60 border-y border-gray-300/70">
       <div className="max-w-6xl mx-auto space-y-12">
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Mengapa Memilih Krevia Digital.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+            Mengapa Memilih <span className="text-secondary">Krevia Digital</span>.
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
             Kami menghindari jargon pemasaran kosong dan klaim sepihak. Perangkat lunak kami dikembangkan dengan prinsip kejujuran rekayasa teknis dan keandalan operasional nyata.
           </p>
         </div>
@@ -60,18 +60,18 @@ export function WhyKrevia() {
             return (
               <div
                 key={idx}
-                className="bg-white rounded-3xl p-7 sm:p-8 border border-slate-200/90 shadow-xs hover:border-slate-300 transition-colors flex flex-col justify-between"
+                className="bg-white rounded-3xl p-7 sm:p-8 border border-gray-300 shadow-xs hover:border-secondary/40 transition-colors flex flex-col justify-between"
               >
                 <div className="space-y-4">
-                  <div className="w-11 h-11 rounded-2xl bg-[#101D35] text-[#24D6B0] flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-2xl bg-primary text-accent flex items-center justify-center">
                     <Icon className="w-5 h-5" />
                   </div>
 
-                  <h3 className="text-lg sm:text-xl font-bold text-[#101D35] leading-snug">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 leading-snug">
                     {pillar.title}
                   </h3>
 
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                  <p className="text-sm text-gray-500 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -80,25 +80,25 @@ export function WhyKrevia() {
           })}
 
           {/* Callout Card */}
-          <div className="bg-[#101D35] text-white rounded-3xl p-7 sm:p-8 border border-slate-800 shadow-md flex flex-col justify-between space-y-6">
+          <div className="bg-primary text-white rounded-3xl p-7 sm:p-8 border border-gray-700/80 shadow-md flex flex-col justify-between space-y-6">
             <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
+              <span className="text-xs font-bold uppercase tracking-wider text-accent">
                 Integritas Rekayasa
               </span>
               <h3 className="text-xl font-bold text-white">
                 Kejujuran Maturitas Produk
               </h3>
-              <p className="text-sm text-slate-300 leading-relaxed">
+              <p className="text-sm text-gray-300 leading-relaxed">
                 Sebagai entitas teknologi tahap awal, kami berkolaborasi erat dengan pemilik usaha untuk menguji dan memvalidasi sistem yang memecahkan hambatan bisnis secara nyata.
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-800">
+            <div className="pt-4 border-t border-gray-700/80">
               <Link
                 href="/tentang-kami"
-                className="inline-flex items-center gap-1.5 text-xs text-[#24D6B0] hover:underline font-semibold"
+                className="inline-flex items-center gap-1.5 text-xs text-accent hover:underline font-semibold"
               >
-                <span>Baca manifesto rekayasa & profil entitas kami</span>
+                <span>Baca manifesto rekayasa &amp; profil entitas kami</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

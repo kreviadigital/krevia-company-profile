@@ -26,7 +26,7 @@ export default function SyaratKetentuanPage() {
       content: (
         <div className="space-y-3">
           <p>
-            Syarat & Ketentuan ini mengatur penyediaan platform Enterprise Resource Planning (ERP) modular berbasis cloud, jasa pembuatan website company profile, integrasi sistem, dan rekayasa perangkat lunak oleh <strong>Krevia Digital</strong> kepada entitas bisnis, institusi, atau perorangan yang terdaftar sebagai klien.
+            Syarat &amp; Ketentuan ini mengatur penyediaan platform Enterprise Resource Planning (ERP) modular berbasis cloud, jasa pembuatan website company profile, integrasi sistem, dan rekayasa perangkat lunak oleh <strong>Krevia Digital</strong> kepada entitas bisnis, institusi, atau perorangan yang terdaftar sebagai klien.
           </p>
           <p>
             Dengan menggunakan sistem atau menandatangani dokumen penawaran kerja bersama Krevia Digital, klien menyetujui seluruh ketentuan yang tercantum dalam dokumen ini.
@@ -42,7 +42,7 @@ export default function SyaratKetentuanPage() {
           <p>
             Krevia Digital memegang prinsip etika rekayasa tertinggi mengenai data bisnis:
           </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-700">
+          <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
             <li>
               <strong>Kepemilikan Mutlak:</strong> Seluruh basis data transaksi, rincian keuangan, master barang, data personal karyawan, catatan log harian, dan arsip proyek yang dimasukkan ke dalam platform Krevia sepenuhnya adalah aset milik klien.
             </li>
@@ -64,7 +64,7 @@ export default function SyaratKetentuanPage() {
           <p>
             Kami berkomitmen menjaga reliabilitas operasional platform ERP klien dengan standar SLA berikut:
           </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-700">
+          <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
             <li>
               <strong>Target Uptime:</strong> Krevia Digital menargetkan ketersediaan sistem cloud <strong>99.5%</strong> setiap bulan kalender, di luar jendela pemeliharaan terjadwal (scheduled maintenance) yang selalu diberitahukan minimal 48 jam sebelumnya.
             </li>
@@ -97,15 +97,15 @@ export default function SyaratKetentuanPage() {
       icon: CheckCircle2,
       content: (
         <div className="space-y-3">
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-700">
+          <ul className="list-disc pl-5 space-y-1.5 text-gray-700">
             <li>
               <strong>Langganan ERP Modular:</strong> Ditagihkan secara periodik (bulanan atau tahunan) sesuai jumlah modul aktif dan kuota pengguna yang dipilih. Klien bebas menambah atau menonaktifkan modul opsional di awal setiap siklus tagihan.
             </li>
             <li>
-              <strong>Proyek Bespoke & Web Profile:</strong> Dilakukan berbasis termin milestone yang transparan (mis. DP awal, termin progres lolos User Acceptance Test, dan termin final setelah pelatihan tim).
+              <strong>Proyek Bespoke &amp; Web Profile:</strong> Dilakukan berbasis termin milestone yang transparan (mis. DP awal, termin progres lolos User Acceptance Test, dan termin final setelah pelatihan tim).
             </li>
             <li>
-              <strong>Transparansi Biaya:</strong> Tidak ada biaya tersembunyi (*hidden fees*). Semua biaya server, domain, dan dukungan teknis dituangkan tertulis dalam rincian penawaran resmi.
+              <strong>Transparansi Biaya:</strong> Tidak ada biaya tersembunyi (<em>hidden fees</em>). Semua biaya server, domain, dan dukungan teknis dituangkan tertulis dalam rincian penawaran resmi.
             </li>
           </ul>
         </div>
@@ -125,27 +125,27 @@ export default function SyaratKetentuanPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F4F7FB] text-[#101D35]">
+    <main className="min-h-screen bg-gray-50 text-gray-900">
       <Navbar />
 
       {/* Header */}
-      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 border-b border-slate-200/80 bg-white/70">
+      <section className="pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 border-b border-gray-300/80 bg-white/70">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#101D35] transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-secondary transition-colors">
               Beranda
             </Link>
             <span>/</span>
-            <span className="text-[#101D35] font-semibold">Syarat & Ketentuan Layanan</span>
+            <span className="text-gray-900 font-semibold">Syarat &amp; Ketentuan Layanan</span>
           </nav>
 
           <div className="space-y-3">
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101D35] tracking-tight leading-[1.15]">
-              Syarat & Ketentuan Layanan (Terms of Service & SLA).
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.15]">
+              Syarat &amp; Ketentuan Layanan <span className="text-secondary">(Terms of Service &amp; SLA)</span>.
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed pt-1">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed pt-1">
               Berlaku sejak 22 Oktober 2026 • Dokumen ini menetapkan komitmen ketersediaan sistem, perlindungan kerahasiaan data, dan hak hukum Anda saat bermitra bersama Krevia Digital.
             </p>
           </div>
@@ -160,18 +160,18 @@ export default function SyaratKetentuanPage() {
             return (
               <div
                 key={sec.title}
-                className="p-7 sm:p-9 rounded-3xl bg-white border border-slate-200/90 shadow-sm space-y-4"
+                className="p-7 sm:p-9 rounded-3xl bg-white border border-gray-300 shadow-sm space-y-4"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center text-[#101D35]">
-                    <Icon className="w-4 h-4 text-[#24D6B0]" />
+                  <div className="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-primary">
+                    <Icon className="w-4 h-4 text-secondary" />
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#101D35]">
+                  <h2 className="text-xl sm:text-2xl font-bold text-gray-900">
                     {sec.title}
                   </h2>
                 </div>
 
-                <div className="text-sm sm:text-base text-slate-700 leading-relaxed pt-1">
+                <div className="text-sm sm:text-base text-gray-700 leading-relaxed pt-1">
                   {sec.content}
                 </div>
               </div>
@@ -179,13 +179,13 @@ export default function SyaratKetentuanPage() {
           })}
 
           {/* Contact / Inquiries Box */}
-          <div className="p-6 rounded-2xl bg-[#101D35] text-white flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs sm:text-sm text-slate-300">
+          <div className="p-6 rounded-2xl bg-primary text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-gray-700/80">
+            <p className="text-xs sm:text-sm text-gray-300">
               Pertanyaan seputar penyesuaian klausul kontrak khusus korporat atau pengajuan draft NDA?
             </p>
             <Link
               href="/kontak"
-              className="px-5 py-2.5 rounded-full bg-[#24D6B0] hover:bg-[#1AB895] text-[#101D35] font-bold text-xs shrink-0 transition-colors"
+              className="px-5 py-2.5 rounded-full bg-accent hover:bg-accent/90 text-primary font-bold text-xs shrink-0 transition-colors"
             >
               Hubungi Tim Legal Kami
             </Link>

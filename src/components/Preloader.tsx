@@ -97,17 +97,17 @@ export function Preloader() {
           className="fixed inset-0 z-[99999] bg-white flex flex-col justify-between p-6 sm:p-12 select-none overflow-hidden"
         >
           {/* Ambient Lighting Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-[#24D6B0]/10 via-[#101D35]/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-secondary/15 via-primary/5 to-transparent rounded-full blur-[140px] pointer-events-none" />
 
           {/* Top Status Header */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="relative z-10 flex items-center justify-between text-xs font-bold tracking-[0.2em] text-slate-400 uppercase"
+            className="relative z-10 flex items-center justify-between text-xs font-bold tracking-[0.2em] text-gray-500 uppercase"
           >
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#24D6B0] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
               <span>Krevia Digital • ERP Terintegrasi</span>
             </div>
             <span>Bangun Lebih Cerdas. Beroperasi Lebih Baik.</span>
@@ -133,7 +133,7 @@ export function Preloader() {
               </div>
 
               {/* Shimmer line underneath */}
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#24D6B0]/60 to-transparent" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-28 h-[1.5px] bg-gradient-to-r from-transparent via-secondary/60 to-transparent" />
             </motion.div>
 
             {/* Dynamic Status Text */}
@@ -142,7 +142,7 @@ export function Preloader() {
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-xs sm:text-sm font-semibold tracking-wide text-slate-500 mt-2"
+              className="text-xs sm:text-sm font-semibold tracking-wide text-gray-500 mt-2"
             >
               {statusText}
             </motion.p>
@@ -150,27 +150,27 @@ export function Preloader() {
 
           {/* Bottom Progress Metrics & Sleek Bar */}
           <div className="relative z-10 max-w-xl mx-auto w-full">
-            <div className="flex items-end justify-between mb-3 text-slate-900">
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
+            <div className="flex items-end justify-between mb-3 text-gray-900">
+              <span className="text-xs font-bold uppercase tracking-widest text-gray-500">
                 Kesiapan Sistem
               </span>
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl sm:text-4xl font-black tracking-tight text-[#101D35] tabular-nums">
+                <span className="text-3xl sm:text-4xl font-black tracking-tight text-primary tabular-nums">
                   {progress}
                 </span>
-                <span className="text-sm font-bold text-[#24D6B0]">%</span>
+                <span className="text-sm font-bold text-secondary">%</span>
               </div>
             </div>
 
-            <div className="relative h-[3px] w-full bg-slate-100 rounded-full overflow-hidden">
+            <div className="relative h-[3px] w-full bg-gray-100 rounded-full overflow-hidden">
               <motion.div
-                className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#101D35] via-[#1C2E4F] to-[#24D6B0] rounded-full"
+                className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-primary via-secondary to-accent rounded-full"
                 style={{ width: `${progress}%` }}
                 transition={{ ease: "easeOut" }}
               />
             </div>
 
-            <div className="mt-3 flex items-center justify-between text-xs tracking-wider font-semibold text-slate-400 uppercase">
+            <div className="mt-3 flex items-center justify-between text-xs tracking-wider font-semibold text-gray-500 uppercase">
               <span>Arsitektur ERP Modular</span>
               <span>v1.0.0</span>
             </div>

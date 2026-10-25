@@ -2,6 +2,8 @@
  * Konfigurasi situs terpusat dan kontak resmi Krevia Digital.
  * Single source of truth untuk seluruh komponen dan halaman.
  */
+export { BRAND_COLORS, type BrandColors } from "./theme";
+
 export const SITE_CONFIG = {
   name: "Krevia Digital",
   tagline: "Bangun Lebih Cerdas. Beroperasi Lebih Baik.",

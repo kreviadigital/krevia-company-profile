@@ -32,10 +32,10 @@ export function IndustrySolutions() {
     <section id="solutions" className="scroll-mt-24 py-16 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mb-10 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#101D35] tracking-tight">
-            Solusi untuk Bisnis Lokal di Riau.
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Solusi untuk <span className="text-secondary">Bisnis Lokal</span> di Riau.
           </h2>
-          <p className="mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
+          <p className="mt-2 text-sm sm:text-base text-gray-700 leading-relaxed">
             Menjawab friksi operasional nyata yang dihadapi pelaku usaha di Pekanbaru dan sekitarnya tanpa teori rumit.
           </p>
         </div>
@@ -46,39 +46,39 @@ export function IndustrySolutions() {
             return (
               <div
                 key={ind.title}
-                className="rounded-3xl p-7 sm:p-8 flex flex-col justify-between bg-white text-slate-800 shadow-sm border border-slate-200/90 hover:border-[#24D6B0]/50 transition-all hover:-translate-y-1"
+                className="rounded-3xl p-7 sm:p-8 flex flex-col justify-between bg-white text-gray-900 shadow-sm border border-gray-300 hover:border-secondary transition-all hover:-translate-y-1"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-6">
-                    <div className="w-11 h-11 rounded-2xl bg-slate-100 text-[#101D35] flex items-center justify-center">
-                      <Icon className="w-5 h-5" />
+                    <div className="w-11 h-11 rounded-2xl bg-gray-100 text-secondary flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-secondary" />
                     </div>
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium">
+                    <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 font-medium">
                       {ind.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#101D35] leading-tight mb-5">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 leading-tight mb-5">
                     {ind.title}
                   </h3>
 
                   <div className="space-y-3.5">
-                    <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-amber-600">
+                    <div className="p-3.5 rounded-2xl bg-gray-50 border border-gray-200 space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-warning">
                         <AlertCircle className="w-3.5 h-3.5 shrink-0" />
                         <span>Tantangan Operasional</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
                         {ind.problem}
                       </p>
                     </div>
 
-                    <div className="p-3.5 rounded-2xl bg-[#24D6B0]/5 border border-[#24D6B0]/20 space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-emerald-700">
-                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-600" />
+                    <div className="p-3.5 rounded-2xl bg-secondary/5 border border-secondary/20 space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase text-secondary">
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-secondary" />
                         <span>Solusi Krevia ERP</span>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+                      <p className="text-xs sm:text-sm text-gray-900 font-medium leading-relaxed">
                         {ind.solution}
                       </p>
                     </div>

@@ -41,7 +41,7 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs py-3"
+          ? "bg-white/95 backdrop-blur-md border-b border-gray-300/80 shadow-xs py-3"
           : "bg-transparent py-4 sm:py-5"
       }`}
     >
@@ -68,10 +68,10 @@ export function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-sm font-semibold transition-colors py-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0] rounded-sm ${
+                  className={`text-sm font-semibold transition-colors py-1 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm ${
                     active
-                      ? "text-[#101D35] font-bold border-b-2 border-[#24D6B0]"
-                      : "text-slate-600 hover:text-[#101D35]"
+                      ? "text-primary font-bold border-b-2 border-secondary"
+                      : "text-gray-700 hover:text-secondary"
                   }`}
                 >
                   {item.label}
@@ -84,10 +84,10 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3 shrink-0">
             <Link
               href="/kontak"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#101D35] hover:bg-[#1C2E4F] text-white text-sm font-semibold transition-all duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-primary hover:bg-navy-light text-white text-sm font-semibold transition-all duration-200 hover:shadow-md cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
             >
               <span>Konsultasi Sekarang</span>
-              <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
+              <ArrowUpRight className="w-4 h-4 text-accent" />
             </Link>
           </div>
 
@@ -95,7 +95,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0]"
+            className="lg:hidden p-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary"
             aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
             aria-expanded={mobileMenuOpen}
           >
@@ -106,7 +106,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200 px-4 pt-4 pb-6 shadow-xl animate-in fade-in duration-200">
+        <div className="lg:hidden bg-white/98 backdrop-blur-lg border-b border-gray-300 px-4 pt-4 pb-6 shadow-xl animate-in fade-in duration-200">
           <nav className="flex flex-col space-y-2.5" aria-label="Navigasi Mobile">
             {navItems.map((item) => {
               const active = isItemActive(item.href);
@@ -118,22 +118,22 @@ export function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-3 py-2 text-sm font-semibold rounded-lg transition-colors cursor-pointer ${
                     active
-                      ? "bg-slate-100 text-[#101D35] font-bold"
-                      : "text-slate-700 hover:text-[#101D35] hover:bg-slate-50"
+                      ? "bg-gray-100 text-primary font-bold"
+                      : "text-gray-700 hover:text-secondary hover:bg-gray-50"
                   }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <div className="pt-3 border-t border-slate-100">
+            <div className="pt-3 border-t border-gray-200">
               <Link
                 href="/kontak"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-[#101D35] text-white text-sm font-bold shadow-sm"
+                className="w-full inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-primary text-white text-sm font-bold shadow-sm"
               >
                 <span>Konsultasi Sekarang</span>
-                <ArrowUpRight className="w-4 h-4 text-[#24D6B0]" />
+                <ArrowUpRight className="w-4 h-4 text-accent" />
               </Link>
             </div>
           </nav>

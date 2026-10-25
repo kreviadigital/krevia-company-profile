@@ -48,15 +48,15 @@ export function HowWeWork() {
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 text-[#101D35] text-xs font-bold tracking-wider uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gray-100 text-primary text-xs font-bold tracking-wider uppercase">
             <span>Kerangka Kerja Implementasi</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Cara Kami Bekerja Bersama Anda.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+            Cara Kami Bekerja <span className="text-secondary">Bersama Anda</span>.
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
             Keberhasilan implementasi ERP memerlukan komunikasi yang terbuka dan tahapan terukur. Berikut adalah pendekatan kerja kolaboratif kami dari konsultasi awal hingga sistem berjalan.
           </p>
         </div>
@@ -68,28 +68,28 @@ export function HowWeWork() {
             return (
               <div
                 key={st.number}
-                className="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white rounded-3xl p-6 border border-gray-300 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-black text-[#24D6B0] tracking-tight">
+                    <span className="text-2xl font-black text-secondary tracking-tight">
                       {st.number}
                     </span>
-                    <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-slate-700">
+                    <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-gray-700">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold text-[#101D35] leading-snug">
+                  <h3 className="text-base font-bold text-gray-900 leading-snug">
                     {st.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
                     {st.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-slate-100 text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <div className="mt-6 pt-3 border-t border-gray-200 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Tahap {st.number}
                 </div>
               </div>

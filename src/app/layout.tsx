@@ -141,7 +141,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.className} bg-[#F4F7FB] text-[#101D35] antialiased selection:bg-[#24D6B0]/20 selection:text-[#101D35]`}>
+      <body className={`${plusJakarta.className} bg-gray-50 text-gray-900 antialiased selection:bg-accent/30 selection:text-primary`}>
         <Preloader />
         <SmoothScroll />
         {children}

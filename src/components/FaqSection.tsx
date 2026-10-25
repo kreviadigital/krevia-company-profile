@@ -55,11 +55,11 @@ export function FaqSection() {
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#101D35] leading-tight">
-            Pertanyaan yang Sering Diajukan.
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+            Pertanyaan yang Sering <span className="text-secondary">Diajukan</span>.
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
             Jawaban lugas dan transparan mengenai implementasi platform ERP modular, keamanan data bisnis, serta layanan digital Krevia.
           </p>
         </div>
@@ -74,24 +74,24 @@ export function FaqSection() {
                 key={index}
                 className={`rounded-2xl transition-all duration-200 border ${
                   isOpen
-                    ? "bg-white border-[#24D6B0]/60 shadow-sm"
-                    : "bg-white/80 border-slate-200/90 hover:border-slate-300 hover:bg-white"
+                    ? "bg-white border-secondary/60 shadow-sm"
+                    : "bg-white/80 border-gray-300 hover:border-gray-400 hover:bg-white"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => toggleAccordion(index)}
-                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#24D6B0] rounded-2xl"
+                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-2xl"
                   aria-expanded={isOpen}
                 >
-                  <span className="text-base sm:text-lg font-bold text-[#101D35] leading-snug">
+                  <span className="text-base sm:text-lg font-bold text-gray-900 leading-snug">
                     {faq.question}
                   </span>
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                       isOpen
-                        ? "bg-[#101D35] text-[#24D6B0] rotate-180"
-                        : "bg-slate-100 text-slate-500"
+                        ? "bg-primary text-accent rotate-180"
+                        : "bg-gray-100 text-gray-500"
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />
@@ -107,7 +107,7 @@ export function FaqSection() {
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-100">
+                      <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-1 text-gray-700 text-sm sm:text-base leading-relaxed border-t border-gray-200">
                         {faq.answer}
                       </div>
                     </motion.div>

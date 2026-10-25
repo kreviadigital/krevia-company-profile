@@ -30,8 +30,8 @@ export function Footer() {
 
   return (
     <footer className="w-full pb-8 pt-4 px-4 sm:px-6 lg:px-8 bg-transparent">
-      <div className="max-w-6xl mx-auto bg-[#101D35] text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-slate-800">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-slate-800">
+      <div className="max-w-6xl mx-auto bg-primary text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-gray-700/80">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-gray-700/80">
           
           {/* Col 1: Brand & Desc */}
           <div className="md:col-span-5 space-y-4">
@@ -44,35 +44,35 @@ export function Footer() {
                 className="h-8 w-auto object-contain brightness-0 invert opacity-95 transition-opacity group-hover:opacity-100"
               />
             </Link>
-            <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
+            <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
               Solusi platform ERP modular dan rekayasa perangkat lunak enterprise untuk bisnis modern. Menghubungkan alur operasional, anggaran, dan visibilitas proyek ke dalam satu ekosistem terpadu.
             </p>
-            <p className="text-xs text-slate-400 font-medium">
+            <p className="text-xs text-gray-400 font-medium">
               Bangun Lebih Cerdas. Beroperasi Lebih Baik.
             </p>
           </div>
 
           {/* Col 2: Products & Solutions */}
           <div className="md:col-span-4 space-y-3">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              Produk & Layanan
+            <p className="text-xs font-bold uppercase tracking-wider text-accent">
+              Produk &amp; Layanan
             </p>
-            <ul className="space-y-2 text-sm text-slate-300">
+            <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <Link
                   href="/produk/erp"
                   className="hover:text-white transition-colors inline-flex items-center gap-1.5"
                 >
                   <span className="font-semibold text-white">Katalog ERP Modular</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-[#24D6B0]/15 text-[#24D6B0] font-bold">44 Modul</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-accent/20 text-accent font-bold">44 Modul</span>
                 </Link>
               </li>
               <li>
                 <Link
                   href="/layanan"
-                  className="hover:text-white transition-colors font-medium text-slate-200"
+                  className="hover:text-white transition-colors font-medium text-gray-200"
                 >
-                  Layanan Rekayasa & Web Profile
+                  Layanan Rekayasa &amp; Web Profile
                 </Link>
               </li>
               <li>
@@ -96,10 +96,10 @@ export function Footer() {
 
           {/* Col 3: Company & Compliance */}
           <div className="md:col-span-3 space-y-3">
-            <p className="text-xs font-bold uppercase tracking-wider text-[#24D6B0]">
-              Perusahaan & Legalitas
+            <p className="text-xs font-bold uppercase tracking-wider text-accent">
+              Perusahaan &amp; Legalitas
             </p>
-            <ul className="space-y-2 text-sm text-slate-300">
+            <ul className="space-y-2 text-sm text-gray-300">
               <li>
                 <Link
                   href="/tentang-kami"
@@ -113,7 +113,7 @@ export function Footer() {
                   href="/kontak"
                   className="hover:text-white transition-colors text-white font-medium"
                 >
-                  Hubungi Kami & Konsultasi →
+                  Hubungi Kami &amp; Konsultasi &rarr;
                 </Link>
               </li>
               <li>
@@ -121,7 +121,7 @@ export function Footer() {
                   href="/syarat-ketentuan"
                   className="hover:text-white transition-colors"
                 >
-                  Syarat & Ketentuan (SLA)
+                  Syarat &amp; Ketentuan (SLA)
                 </Link>
               </li>
               <li>
@@ -134,9 +134,9 @@ export function Footer() {
               </li>
             </ul>
 
-            <div className="pt-3 border-t border-slate-800 space-y-2 text-xs text-slate-400">
+            <div className="pt-3 border-t border-gray-700/80 space-y-2 text-xs text-gray-300">
               <div className="flex items-center gap-2">
-                <MessageSquare className="w-3.5 h-3.5 text-[#24D6B0] shrink-0" />
+                <MessageSquare className="w-3.5 h-3.5 text-accent shrink-0" />
                 <a
                   href={SITE_CONFIG.getWhatsappUrl()}
                   target="_blank"
@@ -147,7 +147,7 @@ export function Footer() {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#24D6B0] shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-accent shrink-0" />
                 <a
                   href={`mailto:${SITE_CONFIG.email}`}
                   className="hover:text-white transition-colors"
@@ -156,7 +156,7 @@ export function Footer() {
                 </a>
               </div>
               <div className="flex items-start gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#24D6B0] shrink-0 mt-0.5" />
+                <MapPin className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
                 <span>{SITE_CONFIG.location}</span>
               </div>
             </div>
@@ -166,7 +166,7 @@ export function Footer() {
                 href={SITE_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-white transition-colors"
               >
                 <InstagramIcon className="w-3.5 h-3.5" />
                 <span>@{SITE_CONFIG.instagramUsername}</span>
@@ -177,7 +177,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Sub-bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
           <p>
             &copy; {currentYear} Krevia Digital. Hak Cipta Dilindungi.
           </p>
@@ -187,7 +187,7 @@ export function Footer() {
               href="/syarat-ketentuan"
               className="hover:text-white transition-colors"
             >
-              Syarat & Ketentuan (SLA)
+              Syarat &amp; Ketentuan (SLA)
             </Link>
             <Link
               href="/kebijakan-privasi"
@@ -199,7 +199,7 @@ export function Footer() {
               href="/"
               className="hover:text-white transition-colors"
             >
-              Kembali ke Beranda ↑
+              Kembali ke Beranda &uarr;
             </Link>
           </div>
         </div>
