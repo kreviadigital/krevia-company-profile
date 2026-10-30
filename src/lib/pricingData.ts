@@ -215,6 +215,332 @@ export const ERP_MODULE_CATEGORIES = [
   { id: "governance", label: "Tata Kelola & Alur Kerja" },
 ] as const;
 
+/**
+ * Katalog harga jasa pembuatan (website, sistem bisnis, integrasi, AI).
+ * Memakai rentang estimasi awal — angka final keluar di quotation setelah scoping.
+ */
+
+export interface ServiceTier {
+  id: string;
+  name: string;
+  scopeLabel: string;
+  priceFormatted: string;
+  priceMin: string;
+  priceMax: string;
+  features: string[];
+  featured?: boolean;
+  prefilledMessage: string;
+}
+
+export interface ServiceComparisonRow {
+  feature: string;
+  values: string[];
+}
+
+export interface ServiceComparison {
+  columns: string[];
+  rows: ServiceComparisonRow[];
+}
+
+export interface ServiceQuickItem {
+  id: string;
+  name: string;
+  priceFormatted: string;
+  description: string;
+}
+
+export interface ServicePricingGroup {
+  id: string;
+  anchor: string;
+  itemNumber: string;
+  navLabel: string;
+  navPrice: string;
+  title: string;
+  summary: string;
+  /** Paket bertingkat (Basic/Standard/Premium) dengan tabel perbandingan. */
+  tiers?: ServiceTier[];
+  comparison?: ServiceComparison;
+  /** Kartu ringkas "Mulai Rp…" untuk layanan tanpa tingkatan paket. */
+  quickItems?: ServiceQuickItem[];
+  /** Catatan tambahan (mis. tabel biaya bulanan AI). */
+  extraNote?: {
+    title: string;
+    columns: string[];
+    rows: string[][];
+    footnote?: string;
+  };
+  /** Tautan tindak lanjut opsional di bawah blok. */
+  crossLink?: {
+    text: string;
+    href: string;
+  };
+}
+
+export const SERVICE_PRICING_GROUPS: ServicePricingGroup[] = [
+  {
+    id: "website",
+    anchor: "website",
+    itemNumber: "01",
+    navLabel: "Website Company Profile",
+    navPrice: "Mulai Rp1,5 juta",
+    title: "Website Company Profile",
+    summary:
+      "Representasi digital resmi bisnis Anda, bekerja 24 jam membangun kredibilitas di mata klien dan mitra.",
+    tiers: [
+      {
+        id: "website-basic",
+        name: "Basic",
+        scopeLabel: "3–5 halaman",
+        priceFormatted: "Rp1,5–3 juta",
+        priceMin: "Rp1,5jt",
+        priceMax: "Rp3jt",
+        features: [
+          "Template pilihan sesuai industri",
+          "Form kontak + tombol WhatsApp",
+          "Metadata SEO dasar",
+          "Garansi bug 14 hari",
+        ],
+        prefilledMessage:
+          "Halo Krevia Digital, saya tertarik dengan Paket Basic Website Company Profile (Rp1,5–3 juta, 3–5 halaman). Mohon informasi lebih lanjut.",
+      },
+      {
+        id: "website-standard",
+        name: "Standard",
+        scopeLabel: "6–10 halaman",
+        priceFormatted: "Rp4–8 juta",
+        priceMin: "Rp4jt",
+        priceMax: "Rp8jt",
+        featured: true,
+        features: [
+          "Desain semi custom",
+          "Blog/berita + CMS terbatas",
+          "Technical + on-page SEO",
+          "GA4 dasar",
+        ],
+        prefilledMessage:
+          "Halo Krevia Digital, saya tertarik dengan Paket Standard Website Company Profile (Rp4–8 juta, 6–10 halaman). Mohon informasi lebih lanjut.",
+      },
+      {
+        id: "website-premium",
+        name: "Premium",
+        scopeLabel: "10+ halaman / custom",
+        priceFormatted: "Rp12–25 juta",
+        priceMin: "Rp12jt",
+        priceMax: "Rp25jt",
+        features: [
+          "Full custom design",
+          "CMS penuh + multi-bahasa",
+          "SEO + schema + Search Console",
+          "GA4 + GTM + pelacakan conversion",
+        ],
+        prefilledMessage:
+          "Halo Krevia Digital, saya tertarik dengan Paket Premium Website Company Profile (Rp12–25 juta, full custom). Mohon informasi lebih lanjut.",
+      },
+    ],
+    comparison: {
+      columns: ["Fitur", "Basic", "Standard", "Premium"],
+      rows: [
+        { feature: "Jumlah halaman", values: ["3–5 halaman", "6–10 halaman", "10+ / custom"] },
+        { feature: "Desain", values: ["Template pilihan", "Semi custom", "Full custom"] },
+        { feature: "Dashboard admin / CMS", values: ["Tidak", "Terbatas", "Penuh"] },
+        { feature: "SEO", values: ["Metadata dasar", "Technical + on-page", "Schema + Search Console"] },
+        { feature: "Analytics", values: ["Tidak", "GA4 dasar", "GA4 + GTM"] },
+        { feature: "Garansi bug", values: ["14 hari", "30 hari", "60 hari"] },
+        { feature: "Estimasi pengerjaan", values: ["5–7 hari", "10–14 hari", "20–30 hari"] },
+      ],
+    },
+  },
+  {
+    id: "sistem",
+    anchor: "sistem",
+    itemNumber: "02",
+    navLabel: "Custom Software & Sistem Bisnis",
+    navPrice: "Mulai Rp8 juta",
+    title: "Custom Software & Sistem Bisnis",
+    summary:
+      "Untuk proses bisnis yang tidak cukup diselesaikan website biasa — dirancang mengikuti alur kerja unik perusahaan Anda.",
+    quickItems: [
+      {
+        id: "admin-dashboard",
+        name: "Admin Dashboard",
+        priceFormatted: "Mulai Rp8 juta",
+        description: "Manajemen data, user role, alur approval, laporan, dan ekspor.",
+      },
+      {
+        id: "booking",
+        name: "Booking & Reservation",
+        priceFormatted: "Mulai Rp12 juta",
+        description: "Jadwal, ketersediaan, transaksi, status, dan notifikasi otomatis.",
+      },
+      {
+        id: "inventory-asset",
+        name: "Inventory & Asset",
+        priceFormatted: "Mulai Rp12 juta",
+        description: "Stok, pergerakan barang, QR code, histori, dan audit trail.",
+      },
+      {
+        id: "crm-lead",
+        name: "CRM & Lead Management",
+        priceFormatted: "Mulai Rp10 juta",
+        description: "Capture lead, pipeline, follow-up, reminder, dan insight.",
+      },
+      {
+        id: "erp-module",
+        name: "Modul ERP / Operasional",
+        priceFormatted: "Mulai Rp20 juta",
+        description: "Jurnal, transaksi, ledger, rekonsiliasi, dan workflow.",
+      },
+      {
+        id: "custom-web-app",
+        name: "Custom Web Application",
+        priceFormatted: "Mulai Rp15 juta",
+        description: "Frontend, backend, database, dan deployment sesuai kebutuhan.",
+      },
+    ],
+    crossLink: {
+      text: "Lihat katalog lengkap modul Krevia ERP",
+      href: "/produk/erp",
+    },
+  },
+  {
+    id: "integrasi",
+    anchor: "integrasi",
+    itemNumber: "03",
+    navLabel: "Integrasi API & Otomasi",
+    navPrice: "Mulai Rp3 juta",
+    title: "Integrasi API & Otomasi Bisnis",
+    summary:
+      "Menghubungkan sistem yang sudah Anda pakai ke dalam satu alur data tersinkronisasi — tanpa entri manual ganda.",
+    quickItems: [
+      {
+        id: "api-integration",
+        name: "Integrasi API Pihak Ketiga",
+        priceFormatted: "Mulai Rp3 juta",
+        description: "Sinkronisasi dengan perbankan, payment gateway, atau sistem legacy.",
+      },
+      {
+        id: "payment-gateway",
+        name: "Payment Gateway",
+        priceFormatted: "Mulai Rp4 juta",
+        description: "Penerimaan pembayaran otomatis dengan verifikasi status transaksi.",
+      },
+      {
+        id: "whatsapp-api",
+        name: "WhatsApp Business API",
+        priceFormatted: "Mulai Rp5 juta",
+        description: "Notifikasi invoice, konfirmasi pembayaran, dan pembaruan status otomatis.",
+      },
+      {
+        id: "workflow-automation",
+        name: "Otomasi Alur Kerja",
+        priceFormatted: "Mulai Rp6 juta",
+        description: "Persetujuan bertingkat, eskalasi tugas, dan pemicu aksi otomatis.",
+      },
+    ],
+    crossLink: {
+      text: "Pelajari layanan integrasi sistem kami",
+      href: "/layanan",
+    },
+  },
+  {
+    id: "ai",
+    anchor: "ai",
+    itemNumber: "04",
+    navLabel: "AI & Chatbot",
+    navPrice: "Mulai Rp3 juta",
+    title: "AI Solutions",
+    summary:
+      "Disiapkan lewat knowledge base, workflow, dan eskalasi ke manusia — bukan sekadar widget chat tempelan.",
+    quickItems: [
+      {
+        id: "ai-chatbot-web",
+        name: "AI Chatbot Website",
+        priceFormatted: "Rp3–6 juta",
+        description: "Menjawab FAQ, mengumpulkan lead, dan mengeskalasi ke tim Anda.",
+      },
+      {
+        id: "ai-whatsapp",
+        name: "AI WhatsApp Business",
+        priceFormatted: "Rp5–10 juta",
+        description: "Auto-reply cerdas, kualifikasi lead, dan routing ke tim terkait.",
+      },
+      {
+        id: "ai-cs-ecommerce",
+        name: "AI CS E-Commerce",
+        priceFormatted: "Mulai Rp8 juta",
+        description: "FAQ, rekomendasi produk, cek status pesanan, dan follow-up.",
+      },
+      {
+        id: "ai-agent",
+        name: "AI Agent Terintegrasi",
+        priceFormatted: "Dibahas saat konsultasi",
+        description: "AI agent yang terhubung ke ERP, CRM, dan email perusahaan lewat API.",
+      },
+      {
+        id: "ai-dashboard",
+        name: "Dashboard Insight AI",
+        priceFormatted: "Rp2–4 juta",
+        description: "Ringkasan pertanyaan, lead, dan topik yang paling sering muncul.",
+      },
+      {
+        id: "ai-knowledge-base",
+        name: "Knowledge Base & Training",
+        priceFormatted: "Mulai Rp2 juta",
+        description: "Penyusunan basis pengetahuan agar jawaban AI akurat dan konsisten.",
+      },
+    ],
+    extraNote: {
+      title: "Biaya Bulanan & Fair-Use",
+      columns: ["Skala", "Volume Chat", "Estimasi per Bulan"],
+      rows: [
+        ["Kecil", "< 500 chat/bulan", "Rp500rb–1 juta"],
+        ["Menengah", "500–2.000 chat/bulan", "Rp1–2,5 juta"],
+        ["Besar", "2.000+ chat/bulan", "Custom"],
+      ],
+      footnote:
+        "Biaya bulanan AI hanya berlaku untuk layanan berbasis AI. Website dan sistem bisnis di halaman ini sekali bayar per proyek.",
+    },
+  },
+];
+
+export interface PricingFaq {
+  question: string;
+  answer: string;
+}
+
+export const SERVICE_PRICING_FAQS: PricingFaq[] = [
+  {
+    question: "Berapa biaya pembuatan website company profile?",
+    answer:
+      "Mulai Rp1,5 juta untuk 3–5 halaman berbasis template, sampai Rp25 juta untuk desain full custom dengan CMS penuh dan multi-bahasa. Yang menentukan posisi angkanya: jumlah halaman, tingkat kustomisasi desain, dan apakah Anda butuh CMS untuk mengelola konten sendiri.",
+  },
+  {
+    question: "Kenapa harganya berupa rentang, bukan angka pasti?",
+    answer:
+      "Ruang lingkup baru terkunci setelah kebutuhan fitur, sumber data, dan integrasi dikonfirmasi. Angka di halaman ini adalah estimasi awal supaya Anda punya gambaran anggaran; angka final keluar di quotation setelah sesi konsultasi.",
+  },
+  {
+    question: "Berapa lama pengerjaannya?",
+    answer:
+      "Website company profile 5–7 hari untuk paket Basic, 10–14 hari untuk Standard, dan 20–30 hari untuk Premium. Sistem bisnis dan custom software memiliki durasi lebih panjang sesuai kompleksitas, biasanya 3–8 minggu.",
+  },
+  {
+    question: "Apakah harga sudah termasuk domain, hosting, dan payment gateway?",
+    answer:
+      "Belum. Harga di halaman ini mencakup jasa pengerjaan sistemnya. Biaya pihak ketiga seperti domain, hosting, payment gateway, dan kuota API AI dibayar langsung ke penyedianya, dan kami bantu proses setup-nya.",
+  },
+  {
+    question: "Bagaimana sistem pembayarannya?",
+    answer:
+      "Bertahap mengikuti progres proyek: DP di awal, pembayaran tahap pengembangan, lalu pelunasan saat proyek selesai. Untuk sistem yang lebih besar, pembayaran dibagi per milestone yang disepakati bersama.",
+  },
+  {
+    question: "Apakah ada biaya bulanan?",
+    answer:
+      "Untuk website dan sistem bisnis, harga di halaman ini sekali bayar per proyek. Yang berjalan bulanan hanya layanan AI, mulai Rp500 ribu untuk volume di bawah 500 chat per bulan. Maintenance dan penambahan fitur dihitung terpisah.",
+  },
+];
+
 export const ERP_MODULE_CATALOG: ErpModule[] = [
   // 1. Keuangan & Akuntansi (Finance & Accounting)
   {

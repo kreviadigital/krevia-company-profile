@@ -28,6 +28,7 @@ export function Navbar() {
     { label: "Beranda", href: "/" },
     { label: "Produk ERP", href: "/produk/erp" },
     { label: "Layanan", href: "/layanan" },
+    { label: "Harga", href: "/harga" },
     { label: "Tentang Kami", href: "/tentang-kami" },
     { label: "Kontak", href: "/kontak" },
   ];

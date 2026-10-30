@@ -77,6 +77,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/harga"
+                  className="hover:text-white transition-colors font-medium text-gray-200"
+                >
+                  Daftar Harga Jasa
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/produk/erp#pricing"
                   className="hover:text-white transition-colors"
                 >
