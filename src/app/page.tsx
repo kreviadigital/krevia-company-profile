@@ -1,11 +1,11 @@
-import { Hero } from "@/components/Hero";
-import { ErpOverview } from "@/components/ErpOverview";
-import { ServicesBento } from "@/components/ServicesBento";
-import { WhyKrevia } from "@/components/WhyKrevia";
-import { FaqSection } from "@/components/FaqSection";
-import { HomeCtaSection } from "@/components/HomeCtaSection";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { Stats } from "@/components/Stats";
+import { Hero } from "@/components/home/Hero";
+import { ErpOverview } from "@/components/home/ErpOverview";
+import { ServicesBento } from "@/components/home/ServicesBento";
+import { WhyKrevia } from "@/components/home/WhyKrevia";
+import { FaqSection } from "@/components/home/FaqSection";
+import { HomeCtaSection } from "@/components/home/HomeCtaSection";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { Stats } from "@/components/home/Stats";
 
 export default function Home() {
   return (

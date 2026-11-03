@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { ArrowLeft, Layers, Compass } from "lucide-react";
 
 export default function NotFound() {

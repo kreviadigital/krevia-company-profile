@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import { PricingPageContent } from "@/components/pricing/PricingPageContent";
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 import {
   Globe,
   Code2,

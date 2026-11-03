@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Archivo } from "next/font/google";
-import { SmoothScroll } from "@/components/SmoothScroll";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({

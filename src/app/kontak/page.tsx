@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { ContactForm } from "@/components/ContactForm";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { ContactForm } from "@/components/company/ContactForm";
 import { SITE_CONFIG } from "@/lib/constants";
 import {
   MessageSquare,

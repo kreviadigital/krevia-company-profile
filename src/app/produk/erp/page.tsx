@@ -1,10 +1,10 @@
 import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
-import { IndustrySolutions } from "@/components/IndustrySolutions";
-import { ErpCapabilities } from "@/components/ErpCapabilities";
-import { PricingSection } from "@/components/PricingSection";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { IndustrySolutions } from "@/components/erp/IndustrySolutions";
+import { ErpCapabilities } from "@/components/erp/ErpCapabilities";
+import { PricingSection } from "@/components/pricing/PricingSection";
 import { ArrowRight, Layers, ShieldCheck, Zap, ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {

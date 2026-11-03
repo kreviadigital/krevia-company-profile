@@ -3,7 +3,7 @@
 import React from "react";
 import { MessageSquare, Mail, MapPin } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/company/ContactForm";
 
 export function ContactSection() {
   return (
