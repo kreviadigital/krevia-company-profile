@@ -15,7 +15,12 @@ import {
   Wallet,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
-import { NOTCH_TALL, NOTCH_WIDE } from "@/lib/notch";
+import {
+  NOTCH_TALL,
+  NOTCH_TALL_FLIP,
+  NOTCH_WIDE,
+  NOTCH_WIDE_FLIP,
+} from "@/lib/notch";
 
 /* -------------------------------------------------------------------------- */
 /*  Bentuk kartu                                                              */
@@ -30,9 +35,15 @@ import { NOTCH_TALL, NOTCH_WIDE } from "@/lib/notch";
  * `NOTCH_TALL` (portrait) di bawah `lg`, `NOTCH_WIDE` (landscape) mulai `lg`.
  * Alasannya kedalaman takik berskala terhadap tinggi elemen — proporsi
  * landscape di kartu portrait yang tinggi akan membuat takiknya membesar.
+ *
+ * `*_FLIP` adalah varian khusus **tile 1**: langkah bawahnya dicerminkan
+ * vertikal supaya sisi kiri terangkat dan sisi kanan turun. Tile lain tetap
+ * memakai bentuk asli.
  */
 const CARD_SHAPE_SM = { ...NOTCH_TALL, id: "svc-notch-sm" } as const;
 const CARD_SHAPE = { ...NOTCH_WIDE, id: "svc-notch" } as const;
+const CARD_SHAPE_SM_FLIP = { ...NOTCH_TALL_FLIP, id: "svc-notch-sm-flip" } as const;
+const CARD_SHAPE_FLIP = { ...NOTCH_WIDE_FLIP, id: "svc-notch-flip" } as const;
 
 /** Container — disamakan dengan `ErpOverview` (`max-w-[90rem]`, padding sama). */
 const CONTAINER = "mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-10";
@@ -149,7 +160,7 @@ export function ServicesBento() {
           di halaman yang sama. */}
       <svg width="0" height="0" aria-hidden="true" className="absolute">
         <defs>
-          {[CARD_SHAPE_SM, CARD_SHAPE].map((shape) => (
+          {[CARD_SHAPE_SM, CARD_SHAPE, CARD_SHAPE_SM_FLIP, CARD_SHAPE_FLIP].map((shape) => (
             <clipPath
               key={shape.id}
               id={shape.id}
@@ -166,11 +177,13 @@ export function ServicesBento() {
           nilainya tidak ter-generate dan `clip-path` dihitung jadi `none`
           (dicek langsung, bukan asumsi). Jadi dipasang di sini, sekaligus
           memilih varian sesuai breakpoint: portrait di bawah `lg`, landscape
-          mulai `lg` — sama seperti `ErpOverview`. */}
+          mulai `lg` — sama seperti `ErpOverview`. Tile 1 memakai varian flip. */}
       <style>{`
         #services .svc-tile { clip-path: url(#${CARD_SHAPE_SM.id}); }
+        #services .svc-tile-flip { clip-path: url(#${CARD_SHAPE_SM_FLIP.id}); }
         @media (min-width: 1024px) {
           #services .svc-tile { clip-path: url(#${CARD_SHAPE.id}); }
+          #services .svc-tile-flip { clip-path: url(#${CARD_SHAPE_FLIP.id}); }
         }
       `}</style>
 
@@ -204,9 +217,9 @@ export function ServicesBento() {
             karena dua tile memakai `row-span-2`. Tanpa itu auto-placement
             menaruh tile 5–6 di baris keempat dan meninggalkan rongga. */}
         <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-12">
-          {/* ---- 1. Struktur konten ---- */}
-          <article className="svc-tile relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" />
+          {/* ---- 1. Struktur konten (langkah bawah di-flip vertikal) ---- */}
+          <article className="svc-tile svc-tile-flip relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
+            <NotchOutline className="text-gray-300" bottomFlip />
 
             <ul className="space-y-2">
               {PAGES.map((page) => (
@@ -464,21 +477,34 @@ export function ServicesBento() {
  * portrait dipakai di bawah `lg`, landscape mulai `lg`, mengikuti `<style>`
  * yang memilih `clip-path`-nya.
  *
+ * `bottomFlip` memilih varian dengan langkah bawah dicerminkan vertikal —
+ * hanya dipakai tile 1, dan harus sepasang dengan class `svc-tile-flip` supaya
+ * garis tepi dan potongannya sama.
+ *
  * Warna garis lewat `text-*`, karena `stroke="currentColor"` membaca `color`
  * (bukan `border-color`). Garisnya 1px: ini penegas tepi, bukan pemisah.
  */
-function NotchOutline({ className }: { className: string }) {
+function NotchOutline({
+  className,
+  bottomFlip = false,
+}: {
+  className: string;
+  bottomFlip?: boolean;
+}) {
+  const tall = bottomFlip ? CARD_SHAPE_SM_FLIP : CARD_SHAPE_SM;
+  const wide = bottomFlip ? CARD_SHAPE_FLIP : CARD_SHAPE;
+
   return (
     <>
       <svg
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 h-full w-full lg:hidden ${className}`}
-        viewBox={`0 0 ${CARD_SHAPE_SM.w} ${CARD_SHAPE_SM.h}`}
+        viewBox={`0 0 ${tall.w} ${tall.h}`}
         preserveAspectRatio="none"
         fill="none"
       >
         <path
-          d={CARD_SHAPE_SM.d}
+          d={tall.d}
           stroke="currentColor"
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
@@ -487,12 +513,12 @@ function NotchOutline({ className }: { className: string }) {
       <svg
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 hidden h-full w-full lg:block ${className}`}
-        viewBox={`0 0 ${CARD_SHAPE.w} ${CARD_SHAPE.h}`}
+        viewBox={`0 0 ${wide.w} ${wide.h}`}
         preserveAspectRatio="none"
         fill="none"
       >
         <path
-          d={CARD_SHAPE.d}
+          d={wide.d}
           stroke="currentColor"
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
