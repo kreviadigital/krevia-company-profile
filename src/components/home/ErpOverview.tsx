@@ -59,6 +59,9 @@ const PILLARS = [
       card: "bg-gray-100 text-gray-900",
       muted: "text-gray-600",
       rule: "border-gray-300",
+      // Warna stroke outline kartu. `stroke="currentColor"` membaca `color`,
+      // bukan `border-color` — jangan pakai `rule` untuk SVG.
+      stroke: "text-gray-300",
       ctaHover:
         "group-hover/cta:border-primary group-hover/cta:bg-primary group-hover/cta:text-white",
     },
@@ -74,6 +77,7 @@ const PILLARS = [
       card: "bg-gray-200 text-gray-900",
       muted: "text-gray-700",
       rule: "border-gray-400/50",
+      stroke: "text-gray-400/50",
       ctaHover:
         "group-hover/cta:border-primary group-hover/cta:bg-primary group-hover/cta:text-white",
     },
@@ -89,6 +93,7 @@ const PILLARS = [
       card: "bg-secondary text-white",
       muted: "text-white/90",
       rule: "border-white/30",
+      stroke: "text-white/30",
       ctaHover:
         "group-hover/cta:border-white group-hover/cta:bg-white group-hover/cta:text-primary",
     },
@@ -104,6 +109,7 @@ const PILLARS = [
       card: "bg-primary text-white",
       muted: "text-gray-300",
       rule: "border-white/20",
+      stroke: "text-white/20",
       ctaHover:
         "group-hover/cta:border-white group-hover/cta:bg-white group-hover/cta:text-primary",
     },
@@ -552,13 +558,17 @@ export function ErpOverview() {
                       bergaris (stroke) dengan bentuk yang persis sama; lapisan
                       ini sendiri ikut ter-clip supaya stroke-nya tidak
                       melewati tepi. `preserveAspectRatio="none"` membuat
-                      gambarnya mengikuti ukuran kartu. Warna garis mengikuti
-                      tema kartu supaya tetap terbaca di atas tiap latar.
+                      gambarnya mengikuti ukuran kartu. Warna garis lewat
+                      `theme.stroke` (`text-*`), bukan `theme.rule`
+                      (`border-*`): `stroke="currentColor"` membaca `color`,
+                      bukan `border-color` — kalau memakai `rule`, garisnya ikut
+                      warna teks kartu (gelap/putih) dan tidak sama dengan
+                      `ServicesBento`.
                       Dua <svg> karena tiap varian punya viewBox sendiri; yang
                       tidak aktif disembunyikan lewat `hidden`. */}
                   <svg
                     aria-hidden="true"
-                    className={`pointer-events-none absolute inset-0 -z-10 h-full w-full lg:hidden ${pil.theme.rule}`}
+                    className={`pointer-events-none absolute inset-0 -z-10 h-full w-full lg:hidden ${pil.theme.stroke}`}
                     viewBox={`0 0 ${CARD_SHAPE_SM.w} ${CARD_SHAPE_SM.h}`}
                     preserveAspectRatio="none"
                     fill="none"
@@ -572,7 +582,7 @@ export function ErpOverview() {
                   </svg>
                   <svg
                     aria-hidden="true"
-                    className={`pointer-events-none absolute inset-0 -z-10 hidden h-full w-full lg:block ${pil.theme.rule}`}
+                    className={`pointer-events-none absolute inset-0 -z-10 hidden h-full w-full lg:block ${pil.theme.stroke}`}
                     viewBox={`0 0 ${CARD_SHAPE.w} ${CARD_SHAPE.h}`}
                     preserveAspectRatio="none"
                     fill="none"
