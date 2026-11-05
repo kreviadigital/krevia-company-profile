@@ -249,7 +249,7 @@ export function ServicesBento() {
 
           {/* ---- 2. Empat pilar ---- */}
           <article className="svc-tile relative isolate col-span-1 flex flex-col justify-between bg-gray-100 px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-400/70" />
+            <NotchOutline className="text-gray-300" />
 
             <ul className="space-y-2.5">
               {PILLARS.map((pillar) => {
@@ -277,7 +277,7 @@ export function ServicesBento() {
 
           {/* ---- 3. Katalog modul (kanan, baris 1–2) ---- */}
           <article className="svc-tile relative isolate col-span-2  flex flex-col justify-between bg-primary px-5 pt-12 pb-12 text-white sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:px-9 lg:pt-14 lg:pb-12">
-            <NotchOutline className="text-white/25" />
+            <NotchOutline className="text-white/20" />
 
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-400">
@@ -331,7 +331,7 @@ export function ServicesBento() {
 
           {/* ---- 4. Paket & durasi (kiri, baris 2–3) ---- */}
           <article className="svc-tile relative isolate col-span-2 flex flex-col justify-between bg-gray-200 px-5 pt-12 pb-12 text-gray-900 sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:px-9 lg:pt-14 lg:pb-12">
-            <NotchOutline className="text-gray-400/70" />
+            <NotchOutline className="text-gray-400/50" />
 
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
@@ -482,7 +482,9 @@ export function ServicesBento() {
  * garis tepi dan potongannya sama.
  *
  * Warna garis lewat `text-*`, karena `stroke="currentColor"` membaca `color`
- * (bukan `border-color`). Garisnya 1px: ini penegas tepi, bukan pemisah.
+ * (bukan `border-color`). Tebalnya 2px dan warnanya mengikuti tema tile —
+ * sama seperti border kartu di `ErpOverview` (`strokeWidth="2"` +
+ * `theme.rule`), supaya kedua section memakai ketebalan tepi yang sama.
  */
 function NotchOutline({
   className,
@@ -506,7 +508,7 @@ function NotchOutline({
         <path
           d={tall.d}
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth="2"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
@@ -520,7 +522,7 @@ function NotchOutline({
         <path
           d={wide.d}
           stroke="currentColor"
-          strokeWidth="1"
+          strokeWidth="4"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
