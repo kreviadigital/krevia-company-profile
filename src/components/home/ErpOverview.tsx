@@ -545,7 +545,7 @@ export function ErpOverview() {
                     cadangan lebih karena tepi bawah kartu juga bertingkat. */}
                 <div
                   data-card
-                  className={`relative isolate origin-top px-5 pt-9 pb-14 sm:px-8 sm:pt-12 sm:pb-16 lg:px-12 lg:pt-12 lg:pb-12 ${pil.theme.card}`}
+                  className={`relative isolate origin-top px-5 pt-8 pb-10 sm:px-8 sm:pt-10 sm:pb-12 lg:px-12 lg:pt-12 lg:pb-12 ${pil.theme.card}`}
                 >
                   {/* Garis tepi mengikuti bentuk notch yang sama. `clip-path`
                       memotong border, jadi tepinya digambar sebagai path
@@ -584,44 +584,52 @@ export function ErpOverview() {
                       vectorEffect="non-scaling-stroke"
                     />
                   </svg>
-                  <div className="grid gap-8 sm:gap-10 lg:grid-cols-12 lg:gap-0">
+                  <div className="grid gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-0">
                     {/* Kiri: nomor, label, judul, deskripsi */}
-                    <div className="flex flex-col justify-between gap-8 sm:gap-12 lg:col-span-7 lg:gap-16 lg:pr-12">
-                      <div data-card-reveal className="flex items-start justify-between gap-6">
-                        <span className="text-[clamp(3.75rem,9vw,8rem)] font-extrabold leading-[0.8] tracking-[-0.06em] tabular-nums">
+                    <div className="flex flex-col justify-between gap-4 sm:gap-5 lg:col-span-7 lg:gap-16 lg:pr-12">
+                      <div data-card-reveal className="flex items-start justify-between gap-3 sm:gap-6">
+                        <span className="text-5xl font-extrabold leading-[0.8] tracking-[-0.06em] tabular-nums sm:text-6xl lg:text-[clamp(3.75rem,9vw,8rem)]">
                           {pil.no}
                         </span>
-                        <div className="pt-1 text-right">
-                          <span className="block text-xs font-semibold uppercase tracking-[0.2em]">
+                        <div className="ml-auto pt-0.5 text-right sm:pt-1">
+                          <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] sm:text-xs">
                             Pilar {pil.no} / 04
                           </span>
-                          <span aria-hidden="true" className="mt-3 flex justify-end gap-1.5">
+                          <span aria-hidden="true" className="mt-2 flex justify-end gap-1 sm:mt-3 sm:gap-1.5">
                             {PILLARS.map((p, k) => (
                               <span
                                 key={p.no}
-                                className={`h-1 w-8 rounded-full bg-current ${k <= i ? "" : "opacity-25"}`}
+                                className={`h-0.5 w-5 rounded-full bg-current sm:h-1 sm:w-6 ${k <= i ? "" : "opacity-25"}`}
                               />
                             ))}
                           </span>
                         </div>
+                        {/* Ikon di baris atas — versi mobile. Di desktop ikon
+                            tetap di kolom kanan (lihat bawah). */}
+                        <span
+                          aria-hidden="true"
+                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border sm:h-11 sm:w-11 lg:hidden ${pil.theme.rule}`}
+                        >
+                          <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                        </span>
                       </div>
 
                       <div>
                         <p
                           data-card-reveal
-                          className="text-xs font-semibold uppercase tracking-[0.2em]"
+                          className="text-[11px] font-semibold uppercase tracking-[0.2em] sm:text-xs"
                         >
                           {pil.label}
                         </p>
                         <h3
                           data-card-reveal
-                          className="mt-3 text-[clamp(2rem,4vw,4rem)] font-extrabold leading-none tracking-[-0.03em]"
+                          className="mt-2 text-2xl font-extrabold leading-[1.1] tracking-[-0.03em] sm:text-3xl lg:mt-3 lg:text-[clamp(2rem,4vw,4rem)] lg:leading-none"
                         >
                           {pil.title}
                         </h3>
                         <p
                           data-card-reveal
-                          className={`mt-5 max-w-[48ch] text-base leading-relaxed sm:text-lg ${pil.theme.muted}`}
+                          className={`mt-3 max-w-[48ch] text-sm leading-relaxed sm:text-base lg:mt-5 lg:text-lg ${pil.theme.muted}`}
                         >
                           {pil.desc}
                         </p>
@@ -630,40 +638,40 @@ export function ErpOverview() {
 
                     {/* Kanan: ikon, daftar kapabilitas, tautan */}
                     <div
-                      className={`flex flex-col justify-between gap-6 border-t pt-6 sm:gap-10 sm:pt-8 lg:col-span-5 lg:border-t-0 lg:border-l lg:pt-0 lg:pl-12 ${pil.theme.rule}`}
+                      className={`flex flex-col justify-between gap-4 sm:gap-6 lg:col-span-5 lg:gap-10 lg:border-l lg:pl-12 ${pil.theme.rule}`}
                     >
                       <div>
                         <div
                           data-card-reveal
                           className="flex items-center justify-between gap-4"
                         >
-                          <span className="text-xs font-semibold uppercase tracking-[0.2em]">
+                          <span className="text-[10px] font-semibold uppercase tracking-[0.2em] sm:text-xs">
                             Contoh kapabilitas
                           </span>
                           <span
                             aria-hidden="true"
-                            className={`flex h-12 w-12 items-center justify-center rounded-2xl border sm:h-14 sm:w-14 ${pil.theme.rule}`}
+                            className={`hidden h-12 w-12 items-center justify-center rounded-2xl border lg:flex lg:h-14 lg:w-14 ${pil.theme.rule}`}
                           >
                             <Icon className="h-6 w-6" />
                           </span>
                         </div>
 
-                        <ul className="mt-5 sm:mt-6">
+                        <ul className="mt-3 sm:mt-4 lg:mt-6">
                           {pil.points.map((pt, k) => (
                             <li
                               key={pt}
                               data-card-reveal
-                              className={`group/pt flex items-center gap-3 border-t py-3 sm:gap-4 sm:py-4 ${pil.theme.rule} ${
-                                k === pil.points.length - 1 ? "border-b" : ""
+                              className={`group/pt flex items-center gap-2.5 py-1.5 sm:gap-3 sm:py-2 lg:gap-4 lg:border-t lg:py-4 ${pil.theme.rule} ${
+                                k === pil.points.length - 1 ? "lg:border-b" : ""
                               }`}
                             >
                               <span
                                 aria-hidden="true"
-                                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border ${pil.theme.rule}`}
+                                className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border sm:h-5 sm:w-5 lg:h-7 lg:w-7 ${pil.theme.rule}`}
                               >
-                                <Check className="h-3.5 w-3.5" />
+                                <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 lg:h-3.5 lg:w-3.5" />
                               </span>
-                              <span className="text-base font-semibold transition-transform duration-300 group-hover/pt:translate-x-1.5 sm:text-lg">
+                              <span className="text-[13px] font-semibold leading-snug transition-transform duration-300 group-hover/pt:translate-x-1.5 sm:text-sm lg:text-lg">
                                 {pt}
                               </span>
                             </li>
@@ -677,14 +685,14 @@ export function ErpOverview() {
                         aria-label={`Lihat modul pilar ${pil.title}`}
                         className="group/cta flex items-center justify-between gap-4 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current focus-visible:outline"
                       >
-                        <span className="text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] sm:text-xs lg:text-sm">
                           Lihat modul pilar ini
                         </span>
                         <span
                           aria-hidden="true"
-                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${pil.theme.rule} ${pil.theme.ctaHover}`}
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 sm:h-9 sm:w-9 lg:h-12 lg:w-12 ${pil.theme.rule} ${pil.theme.ctaHover}`}
                         >
-                          <ArrowRight className="h-5 w-5 -rotate-45 transition-transform duration-300 group-hover/cta:rotate-0" />
+                          <ArrowRight className="h-4 w-4 -rotate-45 transition-transform duration-300 group-hover/cta:rotate-0 lg:h-5 lg:w-5" />
                         </span>
                       </Link>
                     </div>

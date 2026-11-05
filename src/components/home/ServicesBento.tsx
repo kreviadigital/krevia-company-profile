@@ -36,9 +36,9 @@ import {
  * Alasannya kedalaman takik berskala terhadap tinggi elemen — proporsi
  * landscape di kartu portrait yang tinggi akan membuat takiknya membesar.
  *
- * `*_FLIP` adalah varian khusus **tile 1**: langkah bawahnya dicerminkan
- * vertikal supaya sisi kiri terangkat dan sisi kanan turun. Tile lain tetap
- * memakai bentuk asli.
+ * `*_FLIP` adalah varian khusus **tile 1 dan tile 5**: langkah bawahnya
+ * dicerminkan vertikal supaya sisi kiri terangkat dan sisi kanan turun. Tile
+ * lain tetap memakai bentuk asli.
  */
 const CARD_SHAPE_SM = { ...NOTCH_TALL, id: "svc-notch-sm" } as const;
 const CARD_SHAPE = { ...NOTCH_WIDE, id: "svc-notch" } as const;
@@ -276,7 +276,7 @@ export function ServicesBento() {
           </article>
 
           {/* ---- 3. Katalog modul (kanan, baris 1–2) ---- */}
-          <article className="svc-tile relative isolate col-span-2 flex flex-col justify-between bg-primary px-5 pt-12 pb-12 text-white sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:px-9 lg:pt-14 lg:pb-12">
+          <article className="svc-tile relative isolate col-span-2  flex flex-col justify-between bg-primary px-5 pt-12 pb-12 text-white sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:px-9 lg:pt-14 lg:pb-12">
             <NotchOutline className="text-white/25" />
 
             <div>
@@ -390,9 +390,9 @@ export function ServicesBento() {
             </div>
           </article>
 
-          {/* ---- 5. Integrasi ---- */}
-          <article className="svc-tile relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-7 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" />
+          {/* ---- 5. Integrasi (langkah bawah di-flip vertikal) ---- */}
+          <article className="svc-tile svc-tile-flip relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-7 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
+            <NotchOutline className="text-gray-300" bottomFlip />
 
             <ul className="space-y-2">
               {INTEGRATIONS.map((item) => (
@@ -478,7 +478,7 @@ export function ServicesBento() {
  * yang memilih `clip-path`-nya.
  *
  * `bottomFlip` memilih varian dengan langkah bawah dicerminkan vertikal —
- * hanya dipakai tile 1, dan harus sepasang dengan class `svc-tile-flip` supaya
+ * dipakai tile 1 dan 5, dan harus sepasang dengan class `svc-tile-flip` supaya
  * garis tepi dan potongannya sama.
  *
  * Warna garis lewat `text-*`, karena `stroke="currentColor"` membaca `color`
