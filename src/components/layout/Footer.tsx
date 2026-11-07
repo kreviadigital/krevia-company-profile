@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -154,6 +154,55 @@ export function Footer() {
   const [submitted, setSubmitted] = useState(false);
 
   /**
+   * Footer "reveal" — pola yang sama dengan hero: footer `sticky bottom-0`
+   * menempel di dasar viewport, lalu konten di atasnya (`relative z-10`, latar
+   * opaque — lihat layout.tsx) menggulir MENIMPANYA. Jadi saat halaman habis,
+   * footer seolah naik dari bawah. Dipilih `sticky`, bukan `fixed`, karena
+   * elemen sticky melepas dirinya sendiri begitu mencapai posisi naturalnya —
+   * tidak perlu jarak gulir buatan (`margin-bottom` pada <main>) yang harus
+   * dijaga manual.
+   *
+   * Itu sekaligus memperbaiki bug lama: versi `fixed` memasang `margin-bottom`
+   * pada <main> beranda, lalu saat pindah halaman <main> itu dibongkar
+   * sementara <footer> hidup permanen di layout — sisanya tertinggal, jadi
+   * footer `fixed` menimpa halaman lain. Sekarang tidak ada state yang
+   * ditempel ke elemen lain; satu-satunya yang diatur adalah boleh-tidaknya
+   * sticky, dan itu selalu dihitung ulang di halaman mana pun.
+   *
+   * Syarat: footer harus LEBIH PENDEK dari viewport. Elemen sticky yang lebih
+   * tinggi dari scrollport dipaku dengan tepi bawahnya di dasar layar, jadi
+   * bagian atasnya terpotong dan tak bisa dijangkau. Footer ini ±838px
+   * (desktop) dan ±1018px (ponsel); di layar yang lebih pendek dari itu,
+   * reveal dimatikan dan footer kembali ke alur normal supaya seluruh isinya
+   * tetap terbaca.
+   *
+   * Ditulis lewat DOM (bukan state React) supaya markup server dan klien
+   * identik — tidak ada hydration mismatch.
+   */
+  useEffect(() => {
+    const el = document.querySelector("footer");
+    if (!el) return;
+
+    const apply = () => {
+      const fits = el.offsetHeight <= window.innerHeight;
+      document.documentElement.dataset.footerReveal = fits ? "on" : "off";
+    };
+
+    apply();
+    window.addEventListener("resize", apply);
+
+    // Tinggi footer berubah setelah font/gambar siap; ukur ulang.
+    const observer = new ResizeObserver(apply);
+    observer.observe(el);
+
+    return () => {
+      window.removeEventListener("resize", apply);
+      observer.disconnect();
+      delete document.documentElement.dataset.footerReveal;
+    };
+  }, []);
+
+  /**
    * Belum ada backend newsletter, jadi formulir ini membuka klien email
    * dengan alamat yang diisi — bukan diam-diam mengirim ke tempat yang
    * tidak ada.
@@ -173,7 +222,9 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-footer-surface bg-footer-grain pt-8 text-xl leading-[1.2] text-footer-light min-[480px]:pt-12 md:pt-16 desktop:pt-24">
+    <footer
+      className="relative overflow-hidden bg-footer-surface bg-footer-grain pt-8 text-xl leading-[1.2] text-footer-light min-[480px]:pt-12 md:pt-16 desktop:pt-24"
+    >
       {/* Notch atas footer dipindah ke tepi bawah <FaqSection /> — lihat
           komentar `CALENDAR_BOTTOM_PATH` di sana. Yang tinggal di footer hanya
           latar navy-nya. */}

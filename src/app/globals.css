@@ -199,6 +199,35 @@ html[data-intro="play"] [data-hero-anim] {
 /*  Footer — tekstur & mask (bentuk/warna mengikuti flomodia.com)              */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Footer "reveal" ala hero.
+ *
+ * `data-footer-reveal="on"` dipasang oleh <Footer /> hanya bila footer lebih
+ * pendek dari viewport (lihat useEffect di sana). Bila viewport lebih pendek,
+ * nilainya "off" dan footer kembali ke alur normal.
+ *
+ * Mekanismenya murni CSS, tanpa jarak gulir buatan:
+ * - footer `sticky bottom-0` di dasar viewport, jadi ia tertahan di situ
+ *   selama halaman masih bisa digulir;
+ * - `<main>` di halaman mana pun dinaikkan ke `z-10`, jadi kontenlah yang
+ *   MENIMPA footer. Latarnya dibiarkan apa adanya (opaque) — justru itu yang
+ *   menyembunyikan footer sampai konten habis.
+ *
+ * Karena tidak ada `margin-bottom` atau atribut lain yang ditempel ke elemen
+ * yang dibongkar saat pindah halaman, perilakunya sama di semua rute — ini
+ * yang memperbaiki bug footer "nyangkut" setelah navigasi dari halaman lain.
+ */
+html[data-footer-reveal="on"] body > footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 0;
+}
+
+html[data-footer-reveal="on"] main {
+  position: relative;
+  z-index: 10;
+}
+
 /* Grain film halus. Flomodia memakai .webp eksternal; di sini dibuat inline
    dengan feTurbulence supaya tidak ada aset atau request tambahan. */
 .bg-footer-grain {
