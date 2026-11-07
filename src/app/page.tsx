@@ -26,7 +26,7 @@ export default function Home() {
         <ServicesBento />
         <WhyKrevia />
         <FaqSection />
-        <HomeCtaSection />
+        {/* <HomeCtaSection /> */}
       </div>
       
       {/* <FloatingWhatsApp /> */}

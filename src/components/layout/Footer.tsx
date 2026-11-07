@@ -85,10 +85,6 @@ const SOCIAL_LINKS: Array<{
 /*  SVG — path disalin apa adanya dari flomodia.com                            */
 /* -------------------------------------------------------------------------- */
 
-/** Notch atas footer. viewBox 0 0 1280 119. */
-const TOP_NOTCH_PATH =
-  "M1280 0H0V73.5L-3.85786 69.6421C-16.4572 57.0428 -38 65.9662 -38 83.7843V126.5C-38 130.368 -36.9017 133.98 -35 137.041V143.68V832H1318V118H1282.25H1280V0ZM1280 118H1199.28C1193.98 118 1188.89 115.893 1185.14 112.142L1079.86 6.85786C1076.11 3.10714 1071.02 1 1065.72 1H779.784C774.48 1 769.393 3.10714 765.642 6.85787L718.858 53.6421C715.107 57.3929 710.02 59.5 704.716 59.5H413.784C408.48 59.5 403.393 61.6071 399.642 65.3579L352.858 112.142C349.107 115.893 344.02 118 338.716 118H52.7843C47.4799 118 42.3929 115.893 38.6421 112.142L0 73.5V486H1280V118Z";
-
 /** Notch atas kartu krem. viewBox 0 0 1152 51. */
 const CARD_TOP_NOTCH_PATH =
   "M510.716 0.000976562H20C8.95431 0.000976562 0 8.95529 0 20.001V354.501C0 365.547 8.9543 374.501 20 374.501H211.716C217.02 374.501 222.107 376.608 225.858 380.359L249.642 404.143C253.393 407.894 258.48 410.001 263.784 410.001H1104.22C1109.52 410.001 1114.61 407.894 1118.36 404.143L1146.14 376.359C1149.89 372.608 1152 367.521 1152 362.217V52.001C1152 40.9553 1143.05 32.001 1132 32.001H559.284C553.98 32.001 548.893 29.8938 545.142 26.1431L524.858 5.85884C521.107 2.10811 516.02 0.000976562 510.716 0.000976562Z";
@@ -178,24 +174,9 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden bg-footer-surface bg-footer-grain pt-8 text-xl leading-[1.2] text-footer-light min-[480px]:pt-12 md:pt-16 desktop:pt-24">
-      {/* Notch atas — setinggi padding-atas footer, seperti aslinya. */}
-      <div className="pointer-events-none absolute inset-x-0 top-[-1px] z-[2] h-8 min-[480px]:h-12 md:h-16 desktop:h-24">
-        <svg
-          width="100%"
-          height="100%"
-          viewBox="0 0 1280 119"
-          fill="none"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d={TOP_NOTCH_PATH}
-            fill="var(--color-gray-50)"
-          />
-        </svg>
-      </div>
+      {/* Notch atas footer dipindah ke tepi bawah <FaqSection /> — lihat
+          komentar `CALENDAR_BOTTOM_PATH` di sana. Yang tinggal di footer hanya
+          latar navy-nya. */}
 
       {/* .padding-global .padding-section-medium */}
       <div className="relative px-4 py-12 md:px-8 md:py-16">
