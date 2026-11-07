@@ -15,11 +15,16 @@ import {
   Wallet,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
+import { FLOMODIA_SHAPES } from "@/lib/flomodia-notches";
 import {
   NOTCH_TALL,
   NOTCH_TALL_FLIP,
+  NOTCH_TALL_FLIP_XN,
+  NOTCH_TALL_XN,
   NOTCH_WIDE,
   NOTCH_WIDE_FLIP,
+  NOTCH_WIDE_FLIP_XN,
+  NOTCH_WIDE_XN,
 } from "@/lib/notch";
 
 /* -------------------------------------------------------------------------- */
@@ -39,11 +44,57 @@ import {
  * `*_FLIP` adalah varian khusus **tile 1 dan tile 5**: langkah bawahnya
  * dicerminkan vertikal supaya sisi kiri terangkat dan sisi kanan turun. Tile
  * lain tetap memakai bentuk asli.
+ *
+ * Selain itu, tile 1 dan tile 2 memakai **cermin dua tahap** (`*_XN`): seluruh
+ * siluet dicerminkan horizontal (`X`), lalu **hanya takik tepi atas** yang
+ * dicerminkan sekali lagi (`N`). Hasilnya chamfer pindah ke kanan-atas dan
+ * langkah bawah ke sisi seberang, tetapi orientasi takik atas kembali seperti
+ * semula. Tile 1 = bentuk `*_FLIP` + cermin (mempertahankan langkah bawahnya
+ * yang sudah dicerminkan), tile 2 = bentuk asli + cermin.
+ *
+ * Catatan penting: pencerminan **tidak** dikerjakan lewat `transform` di dalam
+ * `clipPath`. `clipPathUnits="objectBoundingBox"` tidak merender apa pun bila
+ * `transform`-nya memuat cermin (diuji di Chromium: `scale(-1 1)`,
+ * `matrix(… a=-sx …)`, dan kombinasi `translate` + `scale` semuanya
+ * menghasilkan bidang kosong). Karena itu pencerminan sudah ditulis ke data
+ * path (`*_XN` di `@/lib/notch`), dan `transform` tetap murni `scale`.
  */
 const CARD_SHAPE_SM = { ...NOTCH_TALL, id: "svc-notch-sm" } as const;
 const CARD_SHAPE = { ...NOTCH_WIDE, id: "svc-notch" } as const;
 const CARD_SHAPE_SM_FLIP = { ...NOTCH_TALL_FLIP, id: "svc-notch-sm-flip" } as const;
 const CARD_SHAPE_FLIP = { ...NOTCH_WIDE_FLIP, id: "svc-notch-flip" } as const;
+const CARD_SHAPE_SM_XN = { ...NOTCH_TALL_XN, id: "svc-notch-sm-xn" } as const;
+const CARD_SHAPE_XN = { ...NOTCH_WIDE_XN, id: "svc-notch-xn" } as const;
+const CARD_SHAPE_SM_FLIP_XN = { ...NOTCH_TALL_FLIP_XN, id: "svc-notch-sm-flip-xn" } as const;
+const CARD_SHAPE_FLIP_XN = { ...NOTCH_WIDE_FLIP_XN, id: "svc-notch-flip-xn" } as const;
+
+/**
+ * Tile 4 (**Paket & durasi**) memakai siluet `team-large` dari katalog Flomodia
+ * (`FLOMODIA_SHAPES.teamLarge`, 1216×528), bukan siluet kartu biasa.
+ *
+ * Bentuknya tidak dipakai `ErpOverview`, jadi tidak ada varian portrait di
+ * `@/lib/notch` seperti siluet lain. Karena itu, sama seperti bentuk katalog di
+ * `WhyKrevia`, **bentuk wide ini dipakai di semua breakpoint** — bukan wide di
+ * `lg` dan portrait di bawahnya. Proporsinya 2,3:1, jauh lebih lebar daripada
+ * tile 4 (1,37:1 di desktop, 0,76:1 di ponsel), jadi flat-nya lebih rendah:
+ * pundak atas turun ±10% (30px di desktop, 47px di ponsel) dan langkah bawah
+ * naik ±10%, bukan ±28–30% seperti siluet kartu. Padding tile 4 dinaikkan
+ * (`pt-16 … lg:pt-24`) supaya teks tidak masuk ke area yang terpotong.
+ */
+const CARD_SHAPE_TEAM = { ...FLOMODIA_SHAPES.teamLarge, id: "svc-notch-team" } as const;
+
+/** Semua `clipPath` yang dibutuhkan, satu per kombinasi bentuk. */
+const CLIP_SHAPES = [
+  CARD_SHAPE_SM,
+  CARD_SHAPE,
+  CARD_SHAPE_SM_FLIP,
+  CARD_SHAPE_FLIP,
+  CARD_SHAPE_SM_XN,
+  CARD_SHAPE_XN,
+  CARD_SHAPE_SM_FLIP_XN,
+  CARD_SHAPE_FLIP_XN,
+  CARD_SHAPE_TEAM,
+] as const;
 
 /** Container — disamakan dengan `ErpOverview` (`max-w-[90rem]`, padding sama). */
 const CONTAINER = "mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-10";
@@ -160,7 +211,7 @@ export function ServicesBento() {
           di halaman yang sama. */}
       <svg width="0" height="0" aria-hidden="true" className="absolute">
         <defs>
-          {[CARD_SHAPE_SM, CARD_SHAPE, CARD_SHAPE_SM_FLIP, CARD_SHAPE_FLIP].map((shape) => (
+          {CLIP_SHAPES.map((shape) => (
             <clipPath
               key={shape.id}
               id={shape.id}
@@ -181,9 +232,15 @@ export function ServicesBento() {
       <style>{`
         #services .svc-tile { clip-path: url(#${CARD_SHAPE_SM.id}); }
         #services .svc-tile-flip { clip-path: url(#${CARD_SHAPE_SM_FLIP.id}); }
+        #services .svc-tile-xn { clip-path: url(#${CARD_SHAPE_SM_XN.id}); }
+        #services .svc-tile-flip-xn { clip-path: url(#${CARD_SHAPE_SM_FLIP_XN.id}); }
+        #services .svc-tile-team { clip-path: url(#${CARD_SHAPE_TEAM.id}); }
         @media (min-width: 1024px) {
           #services .svc-tile { clip-path: url(#${CARD_SHAPE.id}); }
           #services .svc-tile-flip { clip-path: url(#${CARD_SHAPE_FLIP.id}); }
+          #services .svc-tile-xn { clip-path: url(#${CARD_SHAPE_XN.id}); }
+          #services .svc-tile-flip-xn { clip-path: url(#${CARD_SHAPE_FLIP_XN.id}); }
+          #services .svc-tile-team { clip-path: url(#${CARD_SHAPE_TEAM.id}); }
         }
       `}</style>
 
@@ -217,9 +274,9 @@ export function ServicesBento() {
             karena dua tile memakai `row-span-2`. Tanpa itu auto-placement
             menaruh tile 5–6 di baris keempat dan meninggalkan rongga. */}
         <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-12">
-          {/* ---- 1. Struktur konten (langkah bawah di-flip vertikal) ---- */}
-          <article className="svc-tile svc-tile-flip relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" bottomFlip />
+          {/* ---- 1. Struktur konten (langkah bawah flip + cermin + takik dibalik) ---- */}
+          <article className="svc-tile svc-tile-flip-xn relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
+            <NotchOutline className="text-gray-300" bottomFlip flipXN />
 
             <ul className="space-y-2">
               {PAGES.map((page) => (
@@ -247,9 +304,9 @@ export function ServicesBento() {
             </div>
           </article>
 
-          {/* ---- 2. Empat pilar ---- */}
-          <article className="svc-tile relative isolate col-span-1 flex flex-col justify-between bg-gray-100 px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" />
+          {/* ---- 2. Empat pilar (cermin + takik dibalik) ---- */}
+          <article className="svc-tile svc-tile-xn relative isolate col-span-1 flex flex-col justify-between bg-gray-100 px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
+            <NotchOutline className="text-gray-300" flipXN />
 
             <ul className="space-y-2.5">
               {PILLARS.map((pillar) => {
@@ -329,9 +386,9 @@ export function ServicesBento() {
             </div>
           </article>
 
-          {/* ---- 4. Paket & durasi (kiri, baris 2–3) ---- */}
-          <article className="svc-tile relative isolate col-span-2 flex flex-col justify-between bg-gray-200 px-5 pt-12 pb-12 text-gray-900 sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:px-9 lg:pt-14 lg:pb-12">
-            <NotchOutline className="text-gray-400/50" />
+          {/* ---- 4. Paket & durasi (kiri, baris 2–3, siluet `team-large`) ---- */}
+          <article className="svc-tile svc-tile-team relative isolate col-span-2 flex flex-col justify-between bg-gray-200 px-6 pt-16 pb-16 text-gray-900 sm:px-8 sm:pt-20 sm:pb-20 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:px-10 lg:pt-24 lg:pb-24">
+            <NotchOutline className="text-gray-400/50" shape={CARD_SHAPE_TEAM} />
 
             <div>
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500">
@@ -481,20 +538,66 @@ export function ServicesBento() {
  * dipakai tile 1 dan 5, dan harus sepasang dengan class `svc-tile-flip` supaya
  * garis tepi dan potongannya sama.
  *
+ * `flipXN` memilih varian hasil **cermin dua tahap** — seluruh siluet
+ * dicerminkan horizontal lalu takik atas dicerminkan lagi — sepasang dengan
+ * class `svc-tile-xn` (tile 2) dan `svc-tile-flip-xn` (tile 1, di atas
+ * `bottomFlip`). Pencerminan sudah ada di data path, jadi garis tepi memakai
+ * `d` yang sama dengan `clipPath`-nya — tidak ada `transform`, sehingga
+ * `clip-path` dan garis tepi dijamin identik.
+ *
  * Warna garis lewat `text-*`, karena `stroke="currentColor"` membaca `color`
  * (bukan `border-color`). Tebalnya 2px dan warnanya mengikuti tema tile —
  * sama seperti border kartu di `ErpOverview` (`strokeWidth="2"` +
  * `theme.rule`), supaya kedua section memakai ketebalan tepi yang sama.
+ *
+ * `shape` memakai satu siluet katalog apa adanya (mis. `team-large` di tile 4),
+ * dipakai di **semua** breakpoint. Bentuk katalog tidak punya pasangan portrait,
+ * jadi hanya satu `<svg>` yang dirender — bukan dua seperti varian kartu.
  */
 function NotchOutline({
   className,
   bottomFlip = false,
+  flipXN = false,
+  shape,
 }: {
   className: string;
   bottomFlip?: boolean;
+  flipXN?: boolean;
+  shape?: { w: number; h: number; d: string };
 }) {
-  const tall = bottomFlip ? CARD_SHAPE_SM_FLIP : CARD_SHAPE_SM;
-  const wide = bottomFlip ? CARD_SHAPE_FLIP : CARD_SHAPE;
+  if (shape) {
+    return (
+      <svg
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-0 -z-10 h-full w-full ${className}`}
+        viewBox={`0 0 ${shape.w} ${shape.h}`}
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <path
+          d={shape.d}
+          stroke="currentColor"
+          strokeWidth="4"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+    );
+  }
+
+  const tall = flipXN
+    ? bottomFlip
+      ? CARD_SHAPE_SM_FLIP_XN
+      : CARD_SHAPE_SM_XN
+    : bottomFlip
+      ? CARD_SHAPE_SM_FLIP
+      : CARD_SHAPE_SM;
+  const wide = flipXN
+    ? bottomFlip
+      ? CARD_SHAPE_FLIP_XN
+      : CARD_SHAPE_XN
+    : bottomFlip
+      ? CARD_SHAPE_FLIP
+      : CARD_SHAPE;
 
   return (
     <>
