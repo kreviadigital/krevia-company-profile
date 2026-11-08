@@ -16,6 +16,18 @@ import { StatsNotch } from "./StatsNotch";
  * TIDAK memakai `overflow-hidden`, notch `absolute top-full` bisa menggantung ke
  * atas (ke arah hero) tanpa terpotong — latar di belakangnya adalah wrapper
  * berlatar `bg-gray-50` yang senada dengan hero.
+ *
+ * Tata letak: **satu baris memanjang di semua lebar layar**, termasuk ponsel.
+ * Sebelumnya di bawah `lg` grid-nya 2x2, sehingga band ini dua kali lebih
+ * tinggi dan keempat angka terbaca sebagai blok bertumpuk. Empat angka pendek
+ * ("44", "4", "3", "30") tidak butuh dua baris; dengan empat kolom sempit
+ * labelnya masih terbaca utuh di 360px (lihat catatan di bawah), dan band-nya
+ * kembali setipis di desktop.
+ *
+ * Notch hanya digambar mulai `md`. Di ponsel ia tidak diperlukan: hero sudah
+ * penuh satu layar dan notch 8–32px hanya terbaca sebagai gerigi kecil yang
+ * mengganggu, bukan sebagai tepi bertangga. `StatsNotch` sendiri yang
+ * memutuskan lewat `hidden md:block`, jadi markup di sini tidak bercabang.
  */
 const STATS = [
   { value: "44", label: "Modul ERP" },
@@ -41,13 +53,13 @@ export function Stats() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 z-10 bg-primary"
       />
-      <ul className="relative z-20 mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-4 py-8 sm:px-6 sm:py-10 lg:grid-cols-4 lg:gap-x-8">
+      <ul className="relative z-20 mx-auto grid max-w-6xl grid-cols-4 gap-x-2 px-4 py-6 sm:gap-x-6 sm:px-6 sm:py-8">
         {STATS.map((stat) => (
           <li key={stat.label} className="text-center">
-            <strong className="block text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <strong className="block text-2xl font-extrabold tracking-tight text-white tabular-nums sm:text-3xl lg:text-4xl">
               {stat.value}
             </strong>
-            <span className="mt-1 block text-xs font-medium text-gray-300 sm:text-sm">
+            <span className="mt-1 block text-[0.6875rem] leading-tight font-medium text-balance text-gray-300 sm:text-sm">
               {stat.label}
             </span>
           </li>

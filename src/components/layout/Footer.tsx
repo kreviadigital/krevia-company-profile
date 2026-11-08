@@ -231,8 +231,18 @@ export function Footer() {
 
       {/* .padding-global .padding-section-medium */}
       <div className="relative px-4 py-12 md:px-8 md:py-16">
-        {/* .container-large */}
-        <div className="mx-auto w-full max-w-[80rem]">
+        {/* .container-large — 80rem (1280px) terlalu lebar untuk footer: baris
+            tautan dan kartu krem jadi terbentang jauh dari kolom teks di
+            atasnya, sehingga footer terbaca sebagai bidang kosong raksasa
+            alih-alih penutup halaman. Disamakan dengan container isi section
+            lain (`max-w-6xl` = 72rem = 1152px).
+
+            Kebetulan yang menguntungkan: notch kartu krem di bawah memakai
+            `viewBox="0 0 1152 51"`. Pada container 1280px notch itu
+            diregangkan horizontal ~11% (`preserveAspectRatio="none"`),
+            sedangkan pada 1152px ia kembali ke skala aslinya — jadi takiknya
+            berproporsi seperti yang digambar, bukan gepeng. */}
+        <div className="mx-auto w-full max-w-6xl">
           {/* .footer_header */}
           <div className="mb-8 grid grid-cols-1 items-end gap-8 min-[480px]:mb-12 md:mb-24 desktop:mb-32 desktop:grid-cols-[1fr_1.75fr]">
             {/* .footer_header-inner */}

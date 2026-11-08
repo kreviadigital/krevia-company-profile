@@ -74,7 +74,7 @@ export function StatsNotch() {
     <div
       aria-hidden="true"
       ref={ref}
-      className="pointer-events-none absolute inset-x-0 bottom-full z-0 h-8 min-[480px]:h-12 md:h-16 desktop:h-34 -mb-10"
+      className="pointer-events-none absolute inset-x-0 bottom-full z-0 hidden md:block md:h-16 desktop:h-34 -mb-10"
       style={{ transform: "translateY(100%)" }}
     >
       <svg

@@ -6,6 +6,11 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Briefcase, Check, Truck, Users, Wallet } from "lucide-react";
+import { DisplayLine } from "@/components/ui/DisplayLine";
+import {
+  DISPLAY_HEADLINE,
+  DISPLAY_HEADLINE_LEADING,
+} from "@/lib/typography";
 
 /**
  * Empat pilar ERP Krevia — versi redesign.
@@ -198,18 +203,14 @@ const BUTTON_CORNER_PATHS = [
 
 /**
  * Satu baris headline dengan masker. Teks naik dari bawah garis masker saat
- * reveal. Padding + margin negatif menjaga descender (y, g, p) tidak terpotong
- * tanpa mengubah tinggi baris.
+ * reveal.
+ *
+ * Geometri maskernya sekarang ada di `DisplayLine` supaya identik dengan
+ * headline `ErpHero` di halaman katalog ERP. Sebelumnya padding di sini hanya
+ * `0.08em`, kurang dari setengah kebutuhan, jadi huruf kapital dan descender
+ * terpotong ~12px di desktop.
  */
-function Line({ children }: { children: ReactNode }) {
-  return (
-    <span className="-my-[0.08em] block overflow-hidden py-[0.08em]">
-      <span data-line className="block">
-        {children}
-      </span>
-    </span>
-  );
-}
+const Line = DisplayLine;
 
 /** Tombol utama dengan kurung siku ala flomodia. */
 function BracketButton({ href, children }: { href: string; children: ReactNode }) {
@@ -469,7 +470,7 @@ export function ErpOverview() {
           </div>
           <div data-rule className="mt-4 h-px w-full bg-primary" />
 
-          <h2 className="mt-10 text-[clamp(2.75rem,9vw,9rem)] font-extrabold leading-[0.92] tracking-[-0.045em] text-gray-900 sm:mt-14">
+          <h2 className={`mt-10 font-extrabold tracking-[-0.045em] text-gray-900 sm:mt-14 ${DISPLAY_HEADLINE} ${DISPLAY_HEADLINE_LEADING}`}>
             <Line>Empat pilar</Line>
             <Line>yang menopang</Line>
             <Line>
@@ -739,7 +740,7 @@ export function ErpOverview() {
               {MARQUEE_ITEMS.map((text, k) => (
                 <span key={text} className="flex items-center">
                   <span
-                    className={`whitespace-nowrap px-6 text-[clamp(2.5rem,7vw,6.5rem)] font-extrabold leading-none tracking-[-0.04em] sm:px-10 ${
+                    className={`whitespace-nowrap px-6 text-[clamp(1.75rem,7vw,6.5rem)] font-extrabold leading-none tracking-[-0.03em] sm:px-10 sm:tracking-[-0.04em] ${
                       k % 2 === 0
                         ? "text-primary"
                         : "text-transparent [-webkit-text-stroke:2px_var(--color-primary)]"

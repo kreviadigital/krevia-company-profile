@@ -5,6 +5,11 @@ import { ArrowRight, ShieldCheck, Zap, Layers, Compass, Database } from "lucide-
 import { BracketButton } from "./BracketButton";
 import { useSectionReveal } from "./useSectionReveal";
 import { ERP_CONTAINER } from "@/lib/erp-visual";
+import { DisplayLine } from "@/components/ui/DisplayLine";
+import {
+  DISPLAY_HEADLINE,
+  DISPLAY_HEADLINE_LEADING,
+} from "@/lib/typography";
 
 /**
  * Hero katalog ERP.
@@ -46,20 +51,14 @@ const COMMITMENTS = [
   },
 ];
 
-/** Satu baris headline di dalam masker; teks naik dari bawah garis potong. */
-function Line({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="-my-[0.09em] block overflow-hidden py-[0.09em]">
-      <span data-line className="block">
-        {children}
-        {/* Spasi di akhir baris: baris ini `display:block`, jadi spasinya tidak
-            terlihat, tetapi `textContent` tetap terbaca "…operasional tanpa
-            keterikatan…" alih-alih menempel jadi satu kata. */}
-        {" "}
-      </span>
-    </span>
-  );
-}
+/**
+ * Satu baris headline di dalam masker; teks naik dari bawah garis potong.
+ *
+ * Geometrinya dipakai bersama dengan `ErpOverview` di beranda lewat
+ * `DisplayLine`, supaya kedua headline display punya ukuran dan masker yang
+ * persis sama.
+ */
+const Line = DisplayLine;
 
 export function ErpHero() {
   const rootRef = useRef<HTMLElement>(null);
@@ -81,7 +80,7 @@ export function ErpHero() {
         <div data-rule className="mt-3 h-px w-full bg-primary sm:mt-4" />
 
         {/* ===== Headline ===== */}
-        <h1 className="mt-8 text-[clamp(2.5rem,8.4vw,7.5rem)] font-extrabold leading-[0.93] tracking-[-0.045em] text-gray-900 sm:mt-12 lg:mt-16">
+        <h1 className={`mt-8 font-extrabold tracking-[-0.045em] text-gray-900 sm:mt-12 lg:mt-16 ${DISPLAY_HEADLINE} ${DISPLAY_HEADLINE_LEADING}`}>
           <Line>Sistem operasional</Line>
           <Line>tanpa keterikatan</Line>
           <Line>
