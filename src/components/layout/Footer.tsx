@@ -328,12 +328,17 @@ export function Footer() {
 
             {/* .footer_credit — mengambang di atas kartu, rata kanan.
                 Ikon kecil mendahului tiap butir kontak supaya jenis
-                informasinya terbaca sekilas; garis bawahnya dianimasikan. */}
-            <p className="absolute right-0 bottom-[calc(100%_+_1.75rem)] flex flex-wrap items-center gap-x-2 gap-y-1 text-sm leading-[1.2] font-medium text-footer-light md:right-2 md:bottom-[calc(100%_+_2.75rem)] md:w-auto md:justify-end md:text-right max-md:inset-x-0 max-md:top-full max-md:bottom-auto max-md:h-16 max-md:w-full max-md:justify-center max-md:text-center desktop:-right-20 desktop:bottom-[calc(100%_+_1.5rem)] desktop:justify-start desktop:text-left">
+                informasinya terbaca sekilas; garis bawahnya dianimasikan.
+                Di desktop ukurannya diturunkan ke 13px dan tepi kanannya
+                ditempel ke container supaya baris panjang ini tidak keluar
+                dari container 64rem. Posisinya dijaga tepat di atas takik
+                agar seluruh teks tetap terbaca, tidak tertutup bidang putih
+                kartu. */}
+            <p className="absolute right-0 bottom-[calc(100%_+_1.75rem)] flex flex-wrap items-center gap-x-2 gap-y-1 text-sm leading-[1.2] font-medium text-footer-light md:right-2 md:bottom-[calc(100%_+_2.75rem)] md:w-auto md:justify-end md:text-right max-md:inset-x-0 max-md:top-full max-md:bottom-auto max-md:h-16 max-md:w-full max-md:justify-center max-md:text-center desktop:right-0 desktop:bottom-[calc(100%_+_2.25rem)] desktop:justify-start desktop:text-left desktop:text-[12px] desktop:leading-[1.15]">
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
                 <MessageCircle
                   aria-hidden="true"
-                  className="h-3.5 w-3.5 shrink-0 text-footer-muted"
+                  className="h-3.5 w-3.5 shrink-0 text-footer-muted desktop:h-3 desktop:w-3"
                 />
                 <motion.a
                   href={SITE_CONFIG.getWhatsappUrl()}
@@ -356,7 +361,10 @@ export function Footer() {
               </span>
 
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
-                <Mail aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-footer-muted" />
+                <Mail
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 shrink-0 text-footer-muted desktop:h-3 desktop:w-3"
+                />
                 <motion.a
                   href={`mailto:${SITE_CONFIG.email}`}
                   initial="rest"
@@ -375,7 +383,10 @@ export function Footer() {
               </span>
 
               <span className="inline-flex items-center gap-1.5 whitespace-nowrap max-md:hidden">
-                <MapPin aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-footer-muted" />
+                <MapPin
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 shrink-0 text-footer-muted desktop:h-3 desktop:w-3"
+                />
                 {SITE_CONFIG.location}
               </span>
             </p>
