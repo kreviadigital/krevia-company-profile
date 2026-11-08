@@ -3,25 +3,30 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, useReducedMotion } from "framer-motion";
+import { Mail, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/constants";
 import { smoothScrollTo } from "@/lib/smoothScroll";
 
 /**
- * Footer ini mengikuti footer flomodia.com apa adanya ("plek ketiplek"):
- * geometri notch SVG (viewBox + path disalin verbatim), serta seluruh ukuran,
- * rasio kolom, dan titik henti responsifnya (479 / 767 / 991 px).
+ * Footer ini mengikuti footer flomodia.com ("plek ketiplek"): geometri notch
+ * SVG (viewBox + path disalin verbatim), rasio kolom, dan titik henti
+ * responsifnya (479 / 767 / 991 px).
  *
  * Warnanya tidak ikut flomodia: tiap peran dipetakan ke palet Krevia
  * (navy untuk permukaan gelap, gray-100 untuk kartu terangkat, blue untuk
  * aksi, sky untuk elemen interaktif di atas navy) — lihat token
  * --color-footer-* di globals.css.
  *
- * Dua penyesuaian sadar lainnya, keduanya karena konteksnya berbeda:
+ * Tiga penyesuaian sadar, semuanya karena konteksnya berbeda:
  * 1. Notch atas diisi warna section di atas footer — di flomodia #140003
  *    (section penutupnya gelap), di Krevia gray-50 (kanvas halamannya terang).
  *    Yang disalin relasinya, bukan angka heksadesimalnya.
  * 2. Kredit agensi "Website Made by Digidop…" diganti detail kontak Krevia,
  *    dan formulir newsletter membuka klien email karena belum ada backend.
+ * 3. Container dipersempit ke 64rem (flomodia 80rem) supaya footer terasa
+ *    sebagai penutup halaman, bukan bidang kosong; skala teks, ikon kontak,
+ *    dan garis bawah animasi disesuaikan dengan lebar itu.
  */
 
 /* -------------------------------------------------------------------------- */
@@ -119,6 +124,32 @@ const SOCIAL_ICON_PATHS: Record<SocialIconName, { viewBox: string; d: string }> 
 /** Panah tombol submit newsletter. viewBox 0 0 28 22. */
 const SUBMIT_ARROW_PATH =
   "M17.2158 0.000976562L26.8631 9.84129L28 11.001L26.8631 12.1607L17.2158 22.001L14.9419 19.6816C14.9419 19.6816 22.2254 12.7529 22.9711 12.2964L22.8169 12.0666C22.1408 12.6381 0 12.641 0 12.641V9.36093C0 9.36093 22.169 9.36093 22.8169 9.93534L22.9711 9.70557C22.2817 9.3639 14.9419 2.32036 14.9419 2.32036L17.2158 0.000976562Z";
+
+/* -------------------------------------------------------------------------- */
+/*  Gerak                                                                      */
+/* -------------------------------------------------------------------------- */
+
+const MotionLink = motion.create(Link);
+
+/**
+ * Garis bawah yang tumbuh dari kiri saat tautan di-hover atau difokus.
+ * Induk (`MotionLink` / `motion.a`) mengirim varian "hover"; span ini hanya
+ * mengurus skalanya, jadi satu pola dipakai semua tautan teks di footer.
+ */
+function AnimatedUnderline({ className = "bg-accent" }: { className?: string }) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.span
+      aria-hidden="true"
+      variants={{ rest: { scaleX: 0 }, hover: { scaleX: 1 } }}
+      transition={
+        reduceMotion ? { duration: 0 } : { duration: 0.32, ease: [0.22, 1, 0.36, 1] }
+      }
+      className={`pointer-events-none absolute inset-x-0 -bottom-1 h-[1.5px] origin-left ${className}`}
+    />
+  );
+}
 
 /* -------------------------------------------------------------------------- */
 /*  Helpers                                                                    */
@@ -223,7 +254,7 @@ export function Footer() {
 
   return (
     <footer
-      className="relative overflow-hidden bg-footer-surface bg-footer-grain pt-8 text-xl leading-[1.2] text-footer-light min-[480px]:pt-12 md:pt-16 desktop:pt-24"
+      className="relative overflow-hidden bg-footer-surface bg-footer-grain pt-8 text-lg leading-[1.2] text-footer-light min-[480px]:pt-12 md:pt-16 desktop:pt-24"
     >
       {/* Notch atas footer dipindah ke tepi bawah <FaqSection /> — lihat
           komentar `CALENDAR_BOTTOM_PATH` di sana. Yang tinggal di footer hanya
@@ -231,20 +262,15 @@ export function Footer() {
 
       {/* .padding-global .padding-section-medium */}
       <div className="relative px-4 py-12 md:px-8 md:py-16">
-        {/* .container-large — 80rem (1280px) terlalu lebar untuk footer: baris
-            tautan dan kartu krem jadi terbentang jauh dari kolom teks di
-            atasnya, sehingga footer terbaca sebagai bidang kosong raksasa
-            alih-alih penutup halaman. Disamakan dengan container isi section
-            lain (`max-w-6xl` = 72rem = 1152px).
-
-            Kebetulan yang menguntungkan: notch kartu krem di bawah memakai
-            `viewBox="0 0 1152 51"`. Pada container 1280px notch itu
-            diregangkan horizontal ~11% (`preserveAspectRatio="none"`),
-            sedangkan pada 1152px ia kembali ke skala aslinya — jadi takiknya
-            berproporsi seperti yang digambar, bukan gepeng. */}
-        <div className="mx-auto w-full max-w-6xl">
+        {/* .container-large — 64rem (1024px). Lebih rapat dari flomodia
+            (80rem) supaya baris tautan dan kartu krem tidak terbentang jauh
+            dari kolom teks di atasnya. Notch kartu memakai
+            `viewBox="0 0 1152 51"` dengan `preserveAspectRatio="none"`, jadi
+            pada 1024px ia sedikit dimampatkan (~11%) — takiknya tetap
+            simetris, hanya skalanya ikut container. */}
+        <div className="mx-auto w-full max-w-5xl">
           {/* .footer_header */}
-          <div className="mb-8 grid grid-cols-1 items-end gap-8 min-[480px]:mb-12 md:mb-24 desktop:mb-32 desktop:grid-cols-[1fr_1.75fr]">
+          <div className="mb-8 grid grid-cols-1 items-end gap-8 min-[480px]:mb-12 md:mb-24 desktop:mb-32 desktop:grid-cols-[16rem_1fr]">
             {/* .footer_header-inner */}
             <div className="flex max-w-[16rem] flex-col gap-4">
               <div
@@ -260,14 +286,19 @@ export function Footer() {
               {FOOTER_COLUMNS.map((column, index) => (
                 <div key={index} className="flex flex-col items-start gap-3">
                   {column.map((item) => (
-                    <Link
+                    <MotionLink
                       key={item.label}
                       href={item.href}
                       onClick={onHashLink(item.href)}
-                      className="rounded-sm text-base leading-[1.2] transition-colors duration-100 hover:text-accent focus-visible:ring-2 focus-visible:ring-footer-light/70 focus-visible:ring-offset-2 focus-visible:ring-offset-footer-surface focus-visible:outline-none md:text-xl"
+                      initial="rest"
+                      animate="rest"
+                      whileHover="hover"
+                      whileFocus="hover"
+                      className="relative inline-block rounded-sm text-[15px] leading-[1.2] transition-colors duration-200 hover:text-accent focus-visible:ring-2 focus-visible:ring-footer-light/70 focus-visible:ring-offset-2 focus-visible:ring-offset-footer-surface focus-visible:outline-none md:text-lg"
                     >
                       {item.label}
-                    </Link>
+                      <AnimatedUnderline />
+                    </MotionLink>
                   ))}
                 </div>
               ))}
@@ -295,28 +326,56 @@ export function Footer() {
               </svg>
             </div>
 
-            {/* .footer_credit — mengambang di atas kartu, rata kanan. */}
-            <p className="absolute right-0 bottom-[calc(100%_+_1.75rem)] w-[51%] text-sm leading-[1.2] font-medium text-balance text-footer-light md:right-2 md:bottom-[calc(100%_+_1.25rem)] md:overflow-hidden md:text-right max-md:inset-x-0 max-md:top-full max-md:bottom-auto max-md:flex max-md:h-16 max-md:w-full max-md:flex-wrap max-md:items-center max-md:justify-center max-md:gap-x-2 max-md:text-center desktop:right-0 desktop:bottom-[calc(100%_+_1.75rem)] desktop:overflow-visible desktop:text-left">
-              <span className="whitespace-nowrap">
-                WhatsApp{" "}
-                <a
+            {/* .footer_credit — mengambang di atas kartu, rata kanan.
+                Ikon kecil mendahului tiap butir kontak supaya jenis
+                informasinya terbaca sekilas; garis bawahnya dianimasikan. */}
+            <p className="absolute right-0 bottom-[calc(100%_+_1.75rem)] flex flex-wrap items-center gap-x-2 gap-y-1 text-sm leading-[1.2] font-medium text-footer-light md:right-2 md:bottom-[calc(100%_+_2.75rem)] md:w-auto md:justify-end md:text-right max-md:inset-x-0 max-md:top-full max-md:bottom-auto max-md:h-16 max-md:w-full max-md:justify-center max-md:text-center desktop:-right-20 desktop:bottom-[calc(100%_+_1.5rem)] desktop:justify-start desktop:text-left">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                <MessageCircle
+                  aria-hidden="true"
+                  className="h-3.5 w-3.5 shrink-0 text-footer-muted"
+                />
+                <motion.a
                   href={SITE_CONFIG.getWhatsappUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-sm underline underline-offset-4 hover:text-accent focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:outline-none"
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  whileFocus="hover"
+                  className="relative inline-block rounded-sm transition-colors duration-200 hover:text-accent focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:outline-none"
                 >
+                  <span className="sr-only">WhatsApp Krevia Digital: </span>
                   {SITE_CONFIG.whatsappDisplay}
-                </a>
+                  <AnimatedUnderline />
+                </motion.a>
               </span>
-              <span aria-hidden="true">·</span>
-              <a
-                href={`mailto:${SITE_CONFIG.email}`}
-                className="rounded-sm whitespace-nowrap underline underline-offset-4 hover:text-accent focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:outline-none"
-              >
-                {SITE_CONFIG.email}
-              </a>
-              <span className="max-md:hidden">
-                {" · "}
+
+              <span aria-hidden="true" className="text-footer-muted">
+                ·
+              </span>
+
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap">
+                <Mail aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-footer-muted" />
+                <motion.a
+                  href={`mailto:${SITE_CONFIG.email}`}
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  whileFocus="hover"
+                  className="relative inline-block rounded-sm transition-colors duration-200 hover:text-accent focus-visible:ring-2 focus-visible:ring-accent/70 focus-visible:outline-none"
+                >
+                  {SITE_CONFIG.email}
+                  <AnimatedUnderline />
+                </motion.a>
+              </span>
+
+              <span aria-hidden="true" className="text-footer-muted max-md:hidden">
+                ·
+              </span>
+
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap max-md:hidden">
+                <MapPin aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-footer-muted" />
                 {SITE_CONFIG.location}
               </span>
             </p>
@@ -368,7 +427,7 @@ export function Footer() {
 
             {/* .footer_card-bottom */}
             <div className="relative z-[1] mb-0 flex flex-col gap-4 md:-mb-4 desktop:-mb-8">
-              <h2 className="text-2xl leading-none font-medium tracking-[0.02em] desktop:text-5xl">
+              <h2 className="text-2xl leading-none font-medium tracking-[0.02em] desktop:text-4xl">
                 Newsletter
               </h2>
 
@@ -389,7 +448,7 @@ export function Footer() {
                       placeholder="Email"
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
-                      className="h-16 w-full bg-transparent px-4 text-xl leading-[1.2] font-medium lowercase text-footer-light outline-none placeholder:text-footer-muted"
+                      className="h-14 w-full bg-transparent px-4 text-lg leading-[1.2] font-medium lowercase text-footer-light outline-none placeholder:text-footer-muted"
                     />
                     <button
                       type="submit"
@@ -434,7 +493,11 @@ export function Footer() {
                 </p>
 
                 {/* .footer_info-text-out */}
-                <p className="relative left-0 -mt-4 w-full text-left text-sm leading-[1.2] text-footer-surface md:absolute md:top-full md:-left-8 md:mt-4 md:w-[20%] md:text-right md:text-footer-light desktop:mt-0">
+                <p className="relative left-0 -mt-4 w-full text-left text-sm leading-[1.2] text-footer-surface md:absolute md:top-full md:-left-8 md:mt-4 md:w-[30%] md:text-right md:text-footer-light desktop:mt-0 desktop:w-[20%]">
+                  <ShieldCheck
+                    aria-hidden="true"
+                    className="mr-1 inline-block h-3.5 w-3.5 shrink-0 align-[-0.15em]"
+                  />
                   Tanpa spam — hanya kabar yang relevan.
                 </p>
 

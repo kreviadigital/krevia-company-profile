@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -100,25 +101,39 @@ const CLIP_SHAPES = [
 const CONTAINER = "mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-10";
 
 /**
- * Bento "fondasi kredibilitas digital" — **enam** tile ber-notch berjarak.
+ * Bento "fondasi kredibilitas digital" — **enam** tile di desktop, **empat
+ * kartu** di ponsel.
  *
- * **Susunan mengikuti referensi:** desktop 12 kolom × 3 baris; ponsel 2 kolom.
- * Dua tile kecil di kiri-atas, satu tile besar di kanan yang membentang baris
- * 1–2, satu tile besar di kiri yang membentang baris 2–3, lalu dua tile kecil
- * di kanan-bawah. Ponsel: 1 & 2 berdampingan, 3 dan 4 selebar layar, 5 & 6
- * berdampingan.
+ * **Desktop: 12 kolom × 3 baris.** Dua tile kecil di kiri-atas, satu tile besar
+ * di kanan yang membentang baris 1–2, satu tile besar di kiri yang membentang
+ * baris 2–3, lalu dua tile kecil di kanan-bawah.
+ *
+ * **Ponsel: empat kartu, jadi empat notch.** Dua pasangan tile — 1+2 dan 5+6 —
+ * digabung menjadi **satu kartu bertakik** masing-masing. Sebelumnya ponsel
+ * memakai grid 2 kolom, jadi keenam tile tampil sebagai enam siluet takik
+ * sempit (173px) yang berdesakan; setelah digabung tinggal empat siluet, dan
+ * tiap kartu punya lebar penuh untuk teksnya.
+ *
+ * Penggabungan dilakukan **tanpa menduplikasi markup**: pembungkus pasangan
+ * memakai `sm:contents`, artinya mulai 640px elemen itu hilang dari layout dan
+ * kedua `<article>` di dalamnya naik menjadi grid item langsung — jadi
+ * `sm:col-span` dan penempatan `lg:col-start`/`lg:row-start` tiap tile tetap
+ * berlaku persis seperti sebelumnya (tablet 640–1023 kembali ke dua kolom,
+ * desktop ke 12 kolom), sementara di bawah 640px pembungkus itulah yang menjadi
+ * kartu ber-notch (satu `clip-path` + satu `<NotchOutline>`, sedangkan takik
+ * milik tiap `<article>` dimatikan lewat `svc-inner`).
  *
  * ```
- * desktop (12 kolom)                 ponsel (2 kolom)
- * ┌───────┬───────┬───────────┐      ┌──────┬──────┐
- * │   1   │   2   │           │      │  1   │  2   │
- * ├───────┴───────┤     3     │      ├──────┴──────┤
+ * desktop (12 kolom)                 ponsel (satu kolom)
+ * ┌───────┬───────┬───────────┐      ┌─────────────┐
+ * │   1   │   2   │           │      │  1 + 2      │  ← satu kartu
+ * ├───────┴───────┤     3     │      ├─────────────┤
  * │               │           │      │      3      │
  * │       4       ├──────┬────┤      ├─────────────┤
  * │               │  5   │ 6  │      │      4      │
- * └───────────────┴──────┴────┘      ├──────┬──────┤
- *                                    │  5   │  6   │
- *                                    └──────┴──────┘
+ * └───────────────┴──────┴────┘      ├─────────────┤
+ *                                    │  5 + 6      │  ← satu kartu
+ *                                    └─────────────┘
  * ```
  *
  * Penempatan di desktop **eksplisit** (`col-start` + `row-start`), bukan hasil
@@ -126,10 +141,29 @@ const CONTAINER = "mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-10";
  * melempar tile 5–6 ke baris keempat dan meninggalkan rongga; posisi eksplisit
  * membuat keenam tile mengunci ke tiga baris yang sama seperti referensi.
  *
- * **Tile diberi jarak (`gap-3`, `sm:gap-4`) dan tiap tile punya siluet notch
- * utuh.** Jarak dipakai karena notch memotong sudut: kalau dua tile
- * ditempelkan, potongan di tepi yang sama saling menambah dan latar menembus
- * sambungan — sudah diukur lewat `elementFromPoint` pada iterasi sebelumnya.
+ * **Tile diberi jarak dan tiap kartu punya siluet notch utuh.** Jarak dipakai
+ * karena notch memotong sudut: kalau dua kartu ditempelkan, potongan di tepi
+ * yang sama saling menambah dan latar menembus sambungan — sudah diukur lewat
+ * `elementFromPoint` pada iterasi sebelumnya. Jaraknya `gap-5` di ponsel (kartu
+ * kini selebar layar, jadi butuh napas lebih lega) dan tetap `sm:gap-4`
+ * mulai `sm` seperti semula.
+ *
+ * **Bidang warna ikut digabung — satu warna per kartu, tanpa garis pemisah.**
+ * Kartu 1+2 memakai satu bidang putih penuh (latar abu-abu tile 2 hanya hidup
+ * lagi mulai `sm` lewat `sm:bg-gray-100`). Kartu 5+6 memakai satu bidang biru
+ * penuh: paruh integrasi dibuat transparan dengan teks putih, jadi checklist-nya
+ * terbaca putih-di-atas-biru dan tidak ada sambungan yang terlihat. Di desktop
+ * kedua paruh kembali berdiri sendiri dengan latarnya masing-masing.
+ *
+ * **Warna bidang dipasang di pembungkus, bukan di bagian dalam.** Ini bukan
+ * detail gaya: `<NotchOutline>` memakai `-z-10`, dan pembungkus yang membawa
+ * `clip-path` + `isolate` menciptakan stacking context sendiri. Kalau bagian
+ * dalam ikut dicat, cat itu berada **di atas** garis tepi dan menutupi tepi
+ * kiri/kanan/bawah kartu gabungan — terlihat sebagai garis yang "hilang
+ * separuh" padahal path-nya utuh. Jadi tiap `svc-inner` di ponsel memakai
+ * `bg-transparent` dan latarnya baru menyala lagi mulai `sm`
+ * (`sm:bg-white` / `sm:bg-gray-100` / `sm:bg-secondary`), saat ia sudah jadi
+ * grid item mandiri dan punya `<NotchOutline>` sendiri.
  *
  * **Isi tiap tile adalah fakta terverifikasi**, bukan diagram placeholder:
  * route halaman yang benar-benar ada di situs ini, empat pilar dari
@@ -235,12 +269,44 @@ export function ServicesBento() {
         #services .svc-tile-xn { clip-path: url(#${CARD_SHAPE_SM_XN.id}); }
         #services .svc-tile-flip-xn { clip-path: url(#${CARD_SHAPE_SM_FLIP_XN.id}); }
         #services .svc-tile-team { clip-path: url(#${CARD_SHAPE_TEAM.id}); }
+
+        /* --- Kartu gabungan (hanya di bawah 640px) ---------------------------
+
+           Di bawah 640 kedua tile dalam satu pasangan tampil sebagai SATU kartu,
+           jadi takik bagian dalam dimatikan (hanya pembungkus pasangan yang
+           bertakik) dan garis tepi bagian dalam disembunyikan.
+
+           Aturan ini ditulis sebagai CSS biasa dengan selektor ber-ID, bukan
+           utility Tailwind, karena dua alasan:
+             1. \`clip-path: url(#…)\` memang tidak bisa lewat utility arbitrary;
+             2. \`hidden\`/\`sm:block\` yang ditempelkan ke <NotchOutline> akan
+                bertabrakan dengan \`lg:hidden\`/\`lg:block\` di dalam komponen itu
+                (dua media query, pemenangnya bergantung urutan stylesheet).
+                Dengan selektor ber-ID, kemenangannya pasti.
+
+           \`clip-path\` pada pembungkus WAJIB dimatikan mulai 640px. Pembungkus
+           memakai \`sm:contents\`, dan elemen ber-\`display: contents\` tidak
+           menggambar kotak — tetapi \`clip-path\`-nya tetap berlaku dan akan
+           memotong tiap anak yang naik menjadi grid item. */
+        @media (max-width: 639.98px) {
+          #services .svc-inner { clip-path: none; }
+          #services .svc-inner-only { display: none; }
+        }
+
         @media (min-width: 1024px) {
           #services .svc-tile { clip-path: url(#${CARD_SHAPE.id}); }
           #services .svc-tile-flip { clip-path: url(#${CARD_SHAPE_FLIP.id}); }
           #services .svc-tile-xn { clip-path: url(#${CARD_SHAPE_XN.id}); }
           #services .svc-tile-flip-xn { clip-path: url(#${CARD_SHAPE_FLIP_XN.id}); }
           #services .svc-tile-team { clip-path: url(#${CARD_SHAPE_TEAM.id}); }
+        }
+
+        /* Ditaruh PALING AKHIR supaya mengalahkan aturan \`.svc-tile\` di atas:
+           pembungkus pasangan harus bebas clip begitu ia jadi \`display:contents\`
+           (≥640px), termasuk saat \`min-width:1024px\` menyalakan takik landscape. */
+        @media (min-width: 640px) {
+          #services .svc-pair { clip-path: none; }
+          #services .svc-pair-only { display: none; }
         }
       `}</style>
 
@@ -264,76 +330,76 @@ export function ServicesBento() {
           </p>
         </div>
 
-        {/* ============ BENTO 6 TILE — BERJARAK ============
+        {/* ============ BENTO 6 TILE DESKTOP / 4 KARTU PONSEL ============
 
-            Enam tile dengan `gap`, sama seperti kartu pilar di `ErpOverview`.
-            Tidak ada tumpang tindih dan tidak ada pergeseran: tiap tile adalah
-            siluet notch utuh yang berdiri sendiri di atas latar section.
+            Di ≥640px semua tile adalah grid item langsung (ponsel: satu kolom,
+            tablet: dua kolom, desktop: 12 kolom). Di bawah 640px dua pasangan
+            tile dibungkus `BentoPair` (lihat komponen di bawah) yang mulai
+            `sm` memakai `sm:contents` sehingga pembungkusnya hilang dari layout. */}
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:mt-12 sm:grid-cols-2 sm:gap-4 lg:grid-cols-12">
+          {/* ---- Kartu gabungan 1 + 2 (ponsel) ---- */}
+          <BentoPair
+            className="svc-tile svc-tile-flip-xn bg-white"
+            outline={<NotchOutline className="svc-pair-only text-gray-300" bottomFlip flipXN />}
+          >
+            {/* ---- 1. Struktur konten (langkah bawah flip + cermin + takik dibalik) ---- */}
+            <article className="svc-inner svc-tile svc-tile-flip-xn relative isolate flex flex-col justify-between px-4 pt-7 pb-10 text-gray-900 sm:col-span-1 sm:bg-white sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
+              <NotchOutline className="svc-inner-only text-gray-300" bottomFlip flipXN />
 
-            Posisi tiap tile di `lg` ditulis eksplisit (col-start + row-start)
-            karena dua tile memakai `row-span-2`. Tanpa itu auto-placement
-            menaruh tile 5–6 di baris keempat dan meninggalkan rongga. */}
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-4 lg:grid-cols-12">
-          {/* ---- 1. Struktur konten (langkah bawah flip + cermin + takik dibalik) ---- */}
-          <article className="svc-tile svc-tile-flip-xn relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-1 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" bottomFlip flipXN />
-
-            <ul className="space-y-2">
-              {PAGES.map((page) => (
-                <li key={page.path} className="flex items-baseline justify-between gap-2">
-                  <span className="whitespace-nowrap text-xs font-semibold sm:text-sm">
-                    {page.label}
-                  </span>
-                  {/* Route disembunyikan di ponsel: tile ini hanya 173px, jadi
-                      "/tentang-kami" pecah dua baris dan berdesakan dengan
-                      labelnya (terukur: label 2 baris, path 2 baris, jarak 8px). */}
-                  <span className="hidden font-mono text-[10px] text-gray-400 sm:inline">
-                    {page.path}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6">
-              <h3 className="text-sm font-bold leading-tight sm:text-base">
-                Profil perusahaan
-              </h3>
-              <p className="mt-1 text-xs leading-snug text-gray-500 sm:text-sm">
-                Lima halaman inti, satu domain resmi
-              </p>
-            </div>
-          </article>
-
-          {/* ---- 2. Empat pilar (cermin + takik dibalik) ---- */}
-          <article className="svc-tile svc-tile-xn relative isolate col-span-1 flex flex-col justify-between bg-gray-100 px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" flipXN />
-
-            <ul className="space-y-2.5">
-              {PILLARS.map((pillar) => {
-                const Icon = pillar.icon;
-                return (
-                  <li key={pillar.title} className="flex items-center gap-2">
-                    <Icon className="h-3.5 w-3.5 shrink-0 text-secondary" />
-                    <span className="text-xs font-semibold leading-tight sm:text-sm">
-                      {pillar.title}
+              <ul className="space-y-2">
+                {PAGES.map((page) => (
+                  <li key={page.path} className="flex items-baseline justify-between gap-2">
+                    <span className="whitespace-nowrap text-sm font-semibold">
+                      {page.label}
+                    </span>
+                    <span className="hidden font-mono text-[10px] text-gray-400 sm:inline">
+                      {page.path}
                     </span>
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
 
-            <div className="mt-6">
-              <h3 className="text-sm font-bold leading-tight sm:text-base">
-                Empat pilar ERP
-              </h3>
-              <p className="mt-1 text-xs leading-snug text-gray-500 sm:text-sm">
-                Satu basis data bersama
-              </p>
-            </div>
-          </article>
+              <div className="mt-5">
+                <h3 className="text-base font-bold leading-tight">
+                  Profil perusahaan
+                </h3>
+                <p className="mt-1 text-sm leading-snug text-gray-500">
+                  Lima halaman inti, satu domain resmi
+                </p>
+              </div>
+            </article>
+
+            {/* ---- 2. Empat pilar (cermin + takik dibalik) ---- */}
+            <article className="svc-inner svc-tile svc-tile-xn relative isolate flex flex-col justify-between px-4 pb-10 pt-6 text-gray-900 sm:col-span-1 sm:bg-gray-100 sm:px-5 sm:pb-12 sm:pt-7 lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:px-6 lg:pt-9 lg:pb-12">
+              <NotchOutline className="svc-inner-only text-gray-300" flipXN />
+
+              <ul className="space-y-2.5">
+                {PILLARS.map((pillar) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <li key={pillar.title} className="flex items-center gap-2">
+                      <Icon className="h-3.5 w-3.5 shrink-0 text-secondary" />
+                      <span className="text-sm font-semibold leading-tight">
+                        {pillar.title}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <div className="mt-5">
+                <h3 className="text-base font-bold leading-tight">
+                  Empat pilar ERP
+                </h3>
+                <p className="mt-1 text-sm leading-snug text-gray-500">
+                  Satu basis data bersama
+                </p>
+              </div>
+            </article>
+          </BentoPair>
 
           {/* ---- 3. Katalog modul (kanan, baris 1–2) ---- */}
-          <article className="svc-tile relative isolate col-span-2  flex flex-col justify-between bg-primary px-5 pt-12 pb-12 text-white sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:px-9 lg:pt-14 lg:pb-12">
+          <article className="svc-tile relative isolate flex flex-col justify-between bg-primary px-5 pt-12 pb-12 text-white sm:col-span-2 sm:px-7 sm:pt-14 sm:pb-14 lg:col-span-6 lg:col-start-7 lg:row-span-2 lg:row-start-1 lg:px-9 lg:pt-14 lg:pb-12">
             <NotchOutline className="text-white/20" />
 
             <div>
@@ -387,7 +453,7 @@ export function ServicesBento() {
           </article>
 
           {/* ---- 4. Paket & durasi (kiri, baris 2–3, siluet `team-large`) ---- */}
-          <article className="svc-tile svc-tile-team relative isolate col-span-2 flex flex-col justify-between bg-gray-200 px-6 pt-16 pb-16 text-gray-900 sm:px-8 sm:pt-20 sm:pb-20 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:px-10 lg:pt-24 lg:pb-24">
+          <article className="svc-tile svc-tile-team relative isolate flex flex-col justify-between bg-gray-200 px-6 pt-16 pb-16 text-gray-900 sm:col-span-2 sm:px-8 sm:pt-20 sm:pb-20 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-2 lg:px-10 lg:pt-24 lg:pb-24">
             <NotchOutline className="text-gray-400/50" shape={CARD_SHAPE_TEAM} />
 
             <div>
@@ -447,75 +513,127 @@ export function ServicesBento() {
             </div>
           </article>
 
-          {/* ---- 5. Integrasi (langkah bawah di-flip vertikal) ---- */}
-          <article className="svc-tile svc-tile-flip relative isolate col-span-1 flex flex-col justify-between bg-white px-4 pt-7 pb-10 text-gray-900 sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-7 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-gray-300" bottomFlip />
-
-            <ul className="space-y-2">
-              {INTEGRATIONS.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-3 w-3 shrink-0 text-secondary" />
-                  <span className="text-xs font-semibold leading-tight sm:text-sm">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6">
-              <h3 className="text-sm font-bold leading-tight sm:text-base">Integrasi</h3>
-              <p className="mt-1 text-xs leading-snug text-gray-500 sm:text-sm">
-                Siap dihubungkan ke ERP
-              </p>
-            </div>
-          </article>
-
-          {/* ---- 6. Ketentuan paket ---- */}
-          <article className="svc-tile relative isolate col-span-1 flex flex-col justify-between bg-secondary px-4 pt-7 pb-10 text-white sm:px-5 sm:pt-8 sm:pb-12 lg:col-span-3 lg:col-start-10 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
-            <NotchOutline className="text-white/30" />
-
-            <div className="space-y-2.5">
-              {TERMS.map((term) => {
-                const Icon = term.icon;
-                // Di ponsel tile ini hanya 173px, jadi barisnya dirapatkan:
-                // padding dan gap dikecilkan dan toggle dipersempit supaya label
-                // muat satu baris. `whitespace-nowrap` mengunci itu — tanpa itu
-                // label panjang pecah jadi dua baris dan mendesak toggle-nya.
-                return (
-                  <div
-                    key={term.label}
-                    className="flex items-center justify-between gap-1.5 rounded-full border border-white/25 bg-white/10 px-2.5 py-2 sm:gap-2 sm:px-3"
-                  >
-                    <span className="flex items-center gap-1.5 sm:gap-2">
-                      <Icon className="h-3.5 w-3.5 shrink-0" />
-                      <span className="whitespace-nowrap text-[10px] font-semibold sm:text-xs">
-                        {term.label}
-                      </span>
+          {/* ---- Kartu gabungan 5 + 6 (ponsel) ---- */}
+          <BentoPair
+            className="svc-tile svc-tile-flip bg-secondary"
+            outline={<NotchOutline className="svc-pair-only text-white/30" bottomFlip />}
+          >
+            {/* ---- 5. Integrasi (langkah bawah di-flip vertikal) ---- */}
+            <article className="svc-inner svc-tile svc-tile-flip relative isolate flex flex-col justify-between bg-transparent px-4 pt-7 pb-9 text-white sm:col-span-1 sm:bg-white sm:px-5 sm:pt-8 sm:pb-10 sm:text-gray-900 lg:col-span-3 lg:col-start-7 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
+              <NotchOutline className="svc-inner-only text-gray-300" bottomFlip />
+              <ul className="space-y-2">
+                {INTEGRATIONS.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-3 w-3 shrink-0 text-white/70 sm:text-secondary" />
+                    <span className="text-sm font-semibold leading-tight">
+                      {item}
                     </span>
-                    {/* Toggle statis sebagai penanda "termasuk", bukan kontrol. */}
-                    <span
-                      aria-hidden="true"
-                      className="flex h-3.5 w-6 shrink-0 items-center justify-end rounded-full bg-white px-0.5 sm:h-4 sm:w-7"
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-5">
+                <h3 className="text-base font-bold leading-tight">Integrasi</h3>
+                <p className="mt-1 text-sm leading-snug text-white/80 sm:text-gray-500">
+                  Siap dihubungkan ke ERP
+                </p>
+              </div>
+            </article>
+
+            {/* ---- 6. Ketentuan paket ---- */}
+            <article className="svc-inner svc-tile relative isolate flex flex-col justify-between bg-transparent px-4 pb-10 pt-7 text-white sm:col-span-1 sm:bg-secondary sm:px-5 sm:pb-12 sm:pt-8 lg:col-span-3 lg:col-start-10 lg:row-start-3 lg:px-6 lg:pt-9 lg:pb-12">
+              <NotchOutline className="svc-inner-only text-white/30" />
+              <div className="space-y-2.5">
+                {TERMS.map((term) => {
+                  const Icon = term.icon;
+                  return (
+                    <div
+                      key={term.label}
+                      className="flex items-center justify-between gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-2.5"
                     >
-                      <span className="h-2.5 w-2.5 rounded-full bg-secondary sm:h-3 sm:w-3" />
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                      <span className="flex items-center gap-2">
+                        <Icon className="h-3.5 w-3.5 shrink-0" />
+                        <span className="whitespace-nowrap text-xs font-semibold">
+                          {term.label}
+                        </span>
+                      </span>
+                      {/* Toggle statis sebagai penanda "termasuk", bukan kontrol. */}
+                      <span
+                        aria-hidden="true"
+                        className="flex h-4 w-7 shrink-0 items-center justify-end rounded-full bg-white px-0.5"
+                      >
+                        <span className="h-3 w-3 rounded-full bg-secondary" />
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
 
-            <div className="mt-6">
-              <h3 className="text-sm font-bold leading-tight sm:text-base">
-                Tanpa kunci vendor
-              </h3>
-              <p className="mt-1 text-xs leading-snug text-white/80 sm:text-sm">
-                Website sekali bayar, garansi bug 14–60 hari
-              </p>
-            </div>
-          </article>
+              <div className="mt-6">
+                <h3 className="text-base font-bold leading-tight">
+                  Tanpa kunci vendor
+                </h3>
+                <p className="mt-1 text-sm leading-snug text-white/80">
+                  Website sekali bayar, garansi bug 14–60 hari
+                </p>
+              </div>
+            </article>
+          </BentoPair>
         </div>
       </div>
     </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Pembungkus pasangan tile (ponsel)                                         */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Pembungkus dua tile yang di ponsel tampil sebagai **satu kartu bertakik**.
+ *
+ * Kuncinya `sm:contents`: mulai 640px elemen pembungkus ini tidak menghasilkan
+ * kotak sama sekali, sehingga kedua `<article>` di dalamnya naik menjadi grid
+ * item langsung dan `sm:col-span`/`lg:col-start`/`lg:row-start` masing-masing
+ * tetap bekerja seperti sebelum penggabungan. Di bawah 640px pembungkus inilah
+ * yang menjadi grid item, dan ia yang membawa `clip-path` + garis tepi.
+ *
+ * Konsekuensinya di ponsel:
+ *   - bagian dalam membawa `svc-inner` (lihat `<style>`: `clip-path: none`
+ *     di bawah 640px) supaya potongan takik tidak diterapkan dua kali;
+ *   - garis tepi bagian dalam diberi `svc-inner-only` (disembunyikan di bawah
+ *     640px) dan pembungkus yang merender garis tepi kartu gabungan;
+ *   - latar bagian dalam **transparan** di ponsel dan baru menyala mulai `sm`.
+ *     Warna bidang di kartu gabungan hanya boleh datang dari pembungkus: bagian
+ *     dalam yang ikut dicat akan menutupi `<NotchOutline>` pembungkus karena
+ *     garis tepi itu berada di `-z-10`. Gejalanya garis tepi tampak hilang di
+ *     tepi kiri/kanan/bawah, padahal path-nya benar.
+ *
+ * `svc-pair` dipakai untuk mematikan `clip-path` pembungkus mulai 640px:
+ * elemen `display: contents` tidak menggambar kotaknya sendiri, tetapi
+ * `clip-path`-nya tetap berlaku dan akan memotong anak-anak yang naik menjadi
+ * grid item. `clip-path` di pembungkus sendiri datang dari `className` yang
+ * dioper pemanggil (`svc-tile`/`svc-tile-flip`).
+ *
+ * `isolate` wajib ada di sini: `<NotchOutline>` memakai `-z-10`, dan tanpa
+ * stacking context baru garis tepi itu akan jatuh di belakang latar section.
+ */
+function BentoPair({
+  className,
+  outline,
+  children,
+}: {
+  className: string;
+  outline: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`svc-pair relative isolate flex flex-col sm:contents ${className}`}
+    >
+      {outline}
+      {children}
+    </div>
   );
 }
 
